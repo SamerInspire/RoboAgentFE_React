@@ -1,47 +1,66 @@
-import DashboardLayout from "./layout/DashboardLayout";
-import AuthLayout from "./layout/AuthLayout";
+import { Navigate } from 'react-router-dom';
 
 // components
-import Dashboard from "./pages/Dashboard";
-import ErrorPage from "./pages/404";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Blog from "./pages/Blog";
-import Products from "./pages/Products";
-import User from "./pages/User";
+import DashboardLayout from "src/Core/Components/Layout/DashboardLayout";
+import ServicesGetAnswer from "src/Pages/Auth/Services/Page/ServicesGetAnswer";
+import ServicesList from "src/Pages/Auth/Services/Page/ServicesList";
+import ErrorPage from "src/Pages/Common/404";
+import Login from "src/Pages/Public/Login/Pages/Login";
+import Blog from "./Core/Components/Blog/Blog";
+import Dashboard from "./Core/Components/Dashboard/Dashboard";
+import User from "./Core/Components/User/User";
+import Register from "./Pages/Public/Register/Pages/Register";
+import { useLoginInfo } from './Core/Context/LoginInfoContext';
+import { useRoutes } from 'react-router-dom/dist';
 
-const PageRoutes = [
-  // default
-  {
-    path: "/",
-    component: DashboardLayout,
-    routes: [{ path: "/", component: Dashboard }],
-  },
-  // auth
-  {
-    path: "/auth",
-    component: AuthLayout,
-    routes: [
-      { path: "/auth/login", component: Login },
-      { path: "/auth/register", component: Register },
-    ],
-  },
-  // dash
-  {
-    path: "/dashboard",
-    component: DashboardLayout,
-    routes: [
-      { path: "/dashboard/app", component: Dashboard },
-      { path: "/dashboard/user", component: User },
-      { path: "/dashboard/products", component: Products },
-      { path: "/dashboard/blog", component: Blog },
-    ],
-  },
-  // error
-  { path: "*", component: ErrorPage },
-];
 
-export default PageRoutes;
+const Routes = () => {
+  const loginInfo = useLoginInfo()
+  console.log("loginInfo ==> ", loginInfo)
+  const pageRouts = [
+    {
+      // default
+      path: "/",
+      element: <DashboardLayout />,
+      children: [
+        { path: "", element: loginInfo?.login ? <Navigate to="/dash/dashboard" /> : <Navigate to="/auth/login" /> },
+        { path: "*", element: <ErrorPage /> }
+      ],
+    },
+    // auth
+    {
+      path: "auth",
+      element: loginInfo?.login ? <Navigate to="/dash/dashboard" /> : <DashboardLayout />,
+      children: [
+        { path: "login", element: <Login /> },
+        { path: "*", element: <ErrorPage /> },
+        { path: "", element: <ErrorPage /> }
+      ]
+    },
+    // dash
+    {
+      path: "dash",
+      element: loginInfo?.login ? <DashboardLayout /> : <Navigate to="/auth/login" />,
+      children: [
+        { path: "Dashboard", element: <Dashboard /> },
+        { path: "user", element: <User /> },
+        {
+          path: "services", children: [
+            { path: "", element: <ServicesList /> },
+            { path: "getAnswer", element: <ServicesGetAnswer /> }
+          ]
+        },
+        { path: "register", element: <Register /> },
+        { path: "blog", element: <Blog /> },
+        { path: "*", element: <ErrorPage /> }
+      ],
+    }
+  ]
+
+  const routing = useRoutes(pageRouts);
+  return <>{routing}</>
+}
+export default Routes;
 
 /*
 
