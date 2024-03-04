@@ -47,7 +47,7 @@ const ServicesGetAnswer = () => {
         optionCode: values.options,
         reason: values.reason,
         serviceCode: localStorage.getItem('Service')
-      }, baseURL: 'http://localhost:5000/'
+      }, baseURL: 'http://localhost:3001/'
     })
     console.log('hitResult ===> ', hitResult)
     console.log('hitResult ===> ', hitResult.data?.Answer)
@@ -146,25 +146,37 @@ const ServicesGetAnswer = () => {
           </Container>
           <TextField
             variant="outlined"
-            readOnly={true}
+            readOnly
             id="outlined-multiline-static"
             // label="Answer"
             textAlign="right"
             style={{ direction: "rtl" }}
             value={answer}
+            InputProps={{
+              readOnly: true,
+            }}
             // disabled
             helperText="Answer"
             multiline
             rows={10}
             width="100%"
           />
-          <Button variant="contained" color="success" fullWidth={true} type="submit" isLoading={loading} disableElevation>
-            Search
-          </Button>
+          <Container
+            className="form_Container"
+            maxWidth="lg"
+            sx={{
+              display: "grid",
+              gap: { xs: 3, sm: 1 },
+              gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
+            }}>
+            <Button variant="contained" color="success" style={{ width: "100%", }} type="submit" isLoading={loading} disableElevation>
+              Search
+            </Button>
 
-          <Button variant="contained" color="error" style={{ color: "white", backgroundColor: "Red" }} fullWidth={true} href="/dash/services">
-            back
-          </Button>
+            <Button variant="contained" color="error" style={{ width: "100%", color: "white", backgroundColor: "Red" }} width="45%" href="/dash/services">
+              back
+            </Button>
+          </Container>
         </FormStyle >
       </Container >
     </>

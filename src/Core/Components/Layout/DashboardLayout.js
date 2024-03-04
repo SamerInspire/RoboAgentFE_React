@@ -1,12 +1,11 @@
-import React from 'react'
-import { useState } from "react";
-import { makeStyles } from "@material-ui/styles";
 import { Box, styled, Toolbar } from "@material-ui/core";
-
+import { makeStyles } from "@material-ui/styles";
+import React, { useState } from 'react';
+import { useLoginInfo } from "src/Core/Context/LoginInfoContext";
+import { Outlet } from 'react-router';
+import ShowAlert from "src/Core/Components/ShowAlert";
 import MainHeader from "./MainHeader";
 import SideDrawer from "./SideDrawer";
-import ShowAlert from "src/Core/Components/ShowAlert"
-import { Outlet } from 'react-router';
 
 const useStyles = makeStyles((theme) => ({
   drawerPaper: {
@@ -24,6 +23,7 @@ const MainStyle = styled("main")(({ theme }) => ({
 
 const DashboardLayout = (props) => {
   // window width
+  const LoginInfo = useLoginInfo()
   const { window } = props;
   const [toggleMenu, setToggleMenu] = useState(false);
   const classes = useStyles();
@@ -43,12 +43,12 @@ const DashboardLayout = (props) => {
         <MainHeader onClick={handleToggleDrawer} />
 
         {/* Drawer */}
-        <SideDrawer
+        {LoginInfo.login ? <><SideDrawer
           container={container}
           toggleMenu={toggleMenu}
           onClose={handleToggleClose}
           drawerPaper={classes.drawerPaper}
-        />
+        /></> : <></>}
 
         {/* Content */}
         <MainStyle>

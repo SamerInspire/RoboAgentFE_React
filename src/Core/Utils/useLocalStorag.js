@@ -1,8 +1,18 @@
 import { useState, useEffect } from 'react'
 
 function getSavedValue(key, initialValue) {
-    const savedValue = JSON.parse(localStorage.getItem(key))
-    console.log('getSavedValue', savedValue)
+    let savedValue = localStorage.getItem(key)
+    console.log("localStorage.getItem(key) ===> ", typeof (savedValue), savedValue)
+    try {
+        if (key === 'userInfo') {
+            savedValue = JSON.parse(localStorage.getItem(key))
+        }
+
+    }
+    catch (e) {
+
+    }
+
     if (savedValue) return savedValue
 
     //if the intial state value maybe it was a function ()=>{}
@@ -18,11 +28,12 @@ export default function useLocalStorage(key, initialValue = localStorage.getItem
         return getSavedValue(key, initialValue)
     })
     let newValue = ''
-    try {
+    if (typeof (value) == "object") {
         newValue = JSON.stringify(value)
-    } catch {
+    } else {
         newValue = value
     }
+
     useEffect(() => {
         localStorage.setItem(key, newValue)
     }, [key, value, newValue])

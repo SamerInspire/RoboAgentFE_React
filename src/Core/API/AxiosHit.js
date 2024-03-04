@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { HitHandle } from '../Utils/HitHandiling'
-axios.defaults.baseURL = 'http://127.0.0.1:9000/api/'
+axios.defaults.baseURL = 'http://10.150.8.187:9000/api/'
 if (localStorage.getItem('authorization')) {
-    // axios.defaults.headers.common['authorization'] = localStorage.getItem('authorization')
+    axios.defaults.headers.common['authorization'] = localStorage.getItem('authorization')
 }
 
 export default function AxiosHit(config) {

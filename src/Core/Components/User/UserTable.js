@@ -8,11 +8,14 @@ import {
   TableCell,
   Checkbox,
   TablePagination,
+  CircularProgress,
 } from "@material-ui/core";
 import { styled } from "@material-ui/styles";
 import TableToolbar from "./TableToolbar";
 import UserTableHead from "./UserTableHead";
 import UserMore from "./UserMore";
+import AxiosHit from "src/Core/API/AxiosHit";
+import { Box } from "@mui/material";
 
 // style
 const TableStyle = styled(Table)(({ theme }) => ({
@@ -78,14 +81,37 @@ const sortableArr = (arr, comparator) => {
 
 const UserTable = () => {
   // states
+  const [loading, setLoading] = useState(true);
   const [order, setOrder] = useState("asc");
   const [orderBy, setOrderBy] = useState("calories");
   const [selectedItems, setSelectedItems] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-
+  const [usersInfo, setUsersInfo] = useState([]);
+  const [tabelHeaders, setTabelHeaders] = useState([]);
+  const getUsers = async () => {
+    let hitResult = await AxiosHit({
+      method: "get", url: "users/getallusers"
+    })
+    console.log("hitResult.data.users ===> ", hitResult.data.users)
+    return hitResult.data.users
+    // HandelRegularHit({ hitResult, setAlertInfo, loginUpdate, values })
+  }
   //console.log(selectedItems);
+  useState(async () => {
+    let users = await getUsers()
+    console.log("users ===> ", users)
+    users.map((u) => delete u.users)
+    setTabelHeaders(Object.keys(users[0]))
+    setUsersInfo(users)
+    console.log("users ===> ", Object.keys(users[0]))
+    console.log("users ===> ", users)
+    console.log("users ===> ", typeof (users))
+    console.log("users userData===> ", userData)
+    console.log("users userData===> ", typeof (userData))
 
+    setLoading(false)
+  });
   //////     functions      ///////////////////////////////
   // you click on the row, it takes the name as property, check the prop & sort
   const handleRequestSort = (e, property) => {
@@ -153,77 +179,82 @@ const UserTable = () => {
     <>
       {/* Toolbar */}
       <TableToolbar numSelected={selectedItems.length} />
+      {loading ?
+        <Box
+          sx={{
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <CircularProgress disableShrink />
+        </Box>
+        :
+        <TableContainer>
 
-      {/* Table */}
-      <TableContainer>
-        <TableStyle>
-          {/* Table Head */}
-          <UserTableHead
-            numSelected={selectedItems.length}
-            order={order}
-            orderBy={orderBy}
-            onSelectAllClick={handleSelectAllClick}
-            onRequestSort={handleRequestSort}
-            rowCount={userData.length}
-          />
+          <TableStyle>
+            {/* Table Head */}
+            <UserTableHead
+              numSelected={selectedItems.length}
+              order={order}
+              orderBy={orderBy}
+              onSelectAllClick={handleSelectAllClick}
+              onRequestSort={handleRequestSort}
+              rowCount={usersInfo.length}
+              headCells={tabelHeaders}
+            />
 
-          {/* Table Body */}
-          <TableBody>
-            {sortableArr(userData, getComparator(order, orderBy))
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((user, idx) => {
-                const isItemSelected = selectedItems.indexOf(user.name) !== -1;
-                const labelId = `enhanced-table-checkbox-${idx}`;
+            {/* Table Body */}
+            <TableBody>
+              {sortableArr(usersInfo, getComparator(order, orderBy))
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((user, idx) => {
+                  const isItemSelected = selectedItems.indexOf(user.userId) !== -1;
+                  const labelId = `enhanced-table-checkbox-${idx}`;
 
-                return (
-                  <TableRow
-                    key={user.name + idx}
-                    hover
-                    role="checkbox"
-                    tabIndex={-1}
-                    aria-checked={isItemSelected}
-                    selected={isItemSelected}
-                  >
-                    <TableCell padding="checkbox">
-                      <Checkbox
-                        color="primary"
-                        checked={isItemSelected}
-                        inputProps={{ "aria-labelledby": labelId }}
-                        onChange={(e) => handleClick(e, user.name)}
-                      />
-                    </TableCell>
-
-                    <TableCell
-                      component="th"
-                      id={labelId}
-                      scope="row"
-                      padding="none"
+                  return (
+                    <TableRow
+                      key={user.userId + idx}
+                      hover
+                      role="checkbox"
+                      tabIndex={-1}
+                      aria-checked={isItemSelected}
+                      selected={isItemSelected}
                     >
-                      {user.name}
-                    </TableCell>
-                    <TableCell>{user.company}</TableCell>
-                    <TableCell>{user.role}</TableCell>
-                    <TableCell>{user.verified}</TableCell>
-                    <TableCell>
-                      <StatusText text={user.status} />
-                    </TableCell>
-                    <TableCell align="right">
-                      <UserMore />
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
+                      <TableCell padding="checkbox">
+                        <Checkbox
+                          color="primary"
+                          checked={isItemSelected}
+                          inputProps={{ "aria-labelledby": labelId }}
+                          onChange={(e) => handleClick(e, user.userId)}
+                        />
+                      </TableCell>
 
-            {/* empty rows can be added below */}
-            {emptyRows > 0 && (
-              <TableRow style={{ height: 53 * emptyRows }}>
-                <TableCell colSpan={6} />
-              </TableRow>
-            )}
-          </TableBody>
-        </TableStyle>
-      </TableContainer>
+                      {Object.values(user).map(u =>
+                        <TableCell>{user.company}</TableCell>
+                      )}
 
+                      <TableCell align="right">
+                        <UserMore />
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+
+              {/* empty rows can be added below */}
+              {emptyRows > 0 && (
+                <TableRow style={{ height: 53 * emptyRows }}>
+                  <TableCell colSpan={6} />
+                </TableRow>
+              )}
+            </TableBody>
+          </TableStyle>
+        </TableContainer>
+      }
       {/* Table Pagination */}
       <TablePagination
         rowsPerPageOptions={[5, 10, 25]}
