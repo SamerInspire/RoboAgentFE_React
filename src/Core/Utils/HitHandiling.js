@@ -13,7 +13,7 @@ export function HitHandle(result) {
         case '102':
             return { success: false, result: 'error', description: 'User/Password dose not match' }
         case '103':
-            return { success: false, result: 'error', description: 'Email Already Registered' }
+            return { success: false, result: 'error', description: result.data.resultDescription }
         case ('106' || '107' || '108' || '109'):
             return { success: false, result: 'error', description: 'Session Expired', redirectTo: "/", clearStorage: true }
         default:

@@ -3,37 +3,11 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  TableSortLabel,
+  TableSortLabel
 } from "@material-ui/core";
 import { Box } from "@mui/system";
 import { visuallyHidden } from "@mui/utils";
 
-const headCells = [
-  {
-    id: "name",
-    label: "Name",
-  },
-  {
-    id: "company",
-    label: "Company",
-  },
-  {
-    id: "role",
-    label: "Role",
-  },
-  {
-    id: "verified",
-    label: "Verified",
-  },
-  {
-    id: "status",
-    label: "Status",
-  },
-  {
-    id: "menu",
-    label: "",
-  },
-];
 
 const UserTableHead = (props) => {
   const {
@@ -43,8 +17,9 @@ const UserTableHead = (props) => {
     numSelected,
     rowCount,
     onRequestSort,
+    headCells
   } = props;
-
+  console.log("headCells ===> ",headCells)
   // sort
   const createSortHandler = (property) => (e) => onRequestSort(e, property);
 
@@ -67,18 +42,18 @@ const UserTableHead = (props) => {
         {/* rest of the cells */}
         {headCells.map((cell) => (
           <TableCell
-            key={cell.id}
-            sortDirection={orderBy === cell.id ? order : false}
+            key={cell}
+            sortDirection={orderBy === cell ? order : false}
           >
             <TableSortLabel
-              active={orderBy === cell.id}
-              direction={orderBy === cell.id ? order : "asc"}
-              onClick={createSortHandler(cell.id)}
+              active={orderBy === cell}
+              direction={orderBy === cell ? order : "asc"}
+              onClick={createSortHandler(cell)}
             >
-              {cell.label}
+              {cell}
 
               {/* hidden box */}
-              {orderBy === cell.id ? (
+              {orderBy === cell ? (
                 <Box component="span" sx={visuallyHidden}>
                   {order === "desc" ? "sorted descending" : "sorted ascending"}
                 </Box>

@@ -9,18 +9,9 @@ import LeftPanel from "src/Core/Components/AuthPages/LeftPanel";
 
 // img
 import LoginPhoto from "src/Core/Images/image_processing20210907-13511-1juj33d.gif";
+import { ContainerBoxStyle } from "src/Core/Styles/Styles";
 
 // styles
-const ContainerBoxStyle = styled(Box)(({ theme }) => ({
-  minHeight: `calc(100vh - ${theme.mixins.toolbar.minHeight * 2}px)`,
-  display: "grid",
-  gap: theme.spacing(3),
-  gridTemplateColumns: `350px 1fr`,
-
-  [theme.breakpoints.down("sm")]: {
-    gridTemplateColumns: `1fr`,
-  },
-}));
 
 const RightPanelStyle = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -71,12 +62,12 @@ const Login = () => {
         />
 
         <RightPanelStyle>
-          <Typography paragraph className="account_switch">
+          {/* <Typography paragraph className="account_switch">
             Don't have an account?{" "}
             <Link to="/register" component={RouterLink} underline="none">
               Request one
             </Link>
-          </Typography>
+          </Typography> */}
 
           <Container maxWidth="xs" className="form_Container">
             <Typography variant="h4">Sign in</Typography>

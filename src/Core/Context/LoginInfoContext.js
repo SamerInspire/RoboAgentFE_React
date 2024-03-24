@@ -44,10 +44,12 @@ export function useUpdateLoginInfo() {
 export function LoginInfoProvider({ children }) {
     const lang = !localStorage.getItem('lang') ? 'English' : localStorage.getItem('lang')
     const darkMode = !localStorage.getItem('DarkMode') ? false : localStorage.getItem('DarkMode')
+    const userInfo = !localStorage.getItem('userInfo') ? '' : localStorage.getItem('userInfo')
+    const authorization = !localStorage.getItem('authorization') ? '' : localStorage.getItem('authorization')
     const [darkModeStorage, setDarkModeStorage] = useLocalStorage('DarkMode', darkMode)
     const [langStorage, setLangStorage] = useLocalStorage('lang', lang)
-    const [userStorage, setUserStorage] = useLocalStorage('userInfo', '')
-    const [authStorage, setAuthStorage] = useLocalStorage('authorization', '')
+    const [userStorage, setUserStorage] = useLocalStorage('userInfo', userInfo)
+    const [authStorage, setAuthStorage] = useLocalStorage('authorization', authorization)
     const navigate = useNavigate();
 
     function newLangMode(langInfo) {

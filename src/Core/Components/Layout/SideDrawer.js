@@ -131,7 +131,7 @@ const afterLogin = [
 
 const SideDrawer = (props) => {
   const LoginInfo = useLoginInfo()
-  console.log('LoginInfo', LoginInfo)
+  console.log('LoginInfo side ---< ', LoginInfo)
   const links = LoginInfo.login ? afterLogin : beforeLogin
 
   const drawerContent = (
@@ -148,7 +148,7 @@ const SideDrawer = (props) => {
         <Avatar src={userAvatar} alt="User Image" />
 
         <Typography variant="subtitle1" component="h3">
-          {LoginInfo.login ? !!LoginInfo.userInfo.userName ? LoginInfo.userInfo.userName : '' + LoginInfo.userInfo.email.split('@')[0] : "Guest"}
+          {LoginInfo.login ? !!LoginInfo.userInfo.userName ? LoginInfo.userInfo.userName : '' + LoginInfo.userInfo.email?.split('@')[0] : "Guest"}
         </Typography>
       </UserCardStyle>
 
@@ -168,7 +168,7 @@ const SideDrawer = (props) => {
       {/* get more card */}
       <GetMoreStyle>
         <img src={getMoreAvatar} alt="avatar" />
-        Welcome {LoginInfo.login ? !!LoginInfo.userInfo.userName ? LoginInfo.userInfo.userName : '' + LoginInfo.userInfo.email.split('@')[0] : 'Guest'}
+        Welcome {LoginInfo.login ? !!LoginInfo.userInfo.userName ? LoginInfo.userInfo.firstName : '' + LoginInfo.userInfo.email?.split('@')[0] : 'Guest'}
       </GetMoreStyle>
     </>
   );
