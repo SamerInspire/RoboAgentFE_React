@@ -1,0 +1,36 @@
+{
+  "lang": "en",
+  "header_section": {
+    "signin_btn": "Sign In"
+  },
+
+  "logo": "RoboAgent portal",
+  "user": {
+    "welcome": "Welcome"
+  },
+  "links": {
+    "login": "Login",
+    "dashboard": "Dashboard",
+    "user": "User",
+    "manual": "Manual",
+    "services": "Services",
+    "register": "Register"
+  },
+  "dashboard": {
+    "Total active Issues": "Total active Issues",
+    "Current Tickets": "Current Tickets",
+    "Automation Handeled Tickets": "Automation Handeled Tickets",
+    "Users Online": "Users Online",
+    "Website Visits": "Website Visits",
+    "Employee Transfeer": "Employee Transfeer",
+    "Work Permits": "Work Permits",
+    "Visas": "Visas",
+    "User Managments": "User Managments",
+    "Current Visits": "Current Visits"
+  },
+  "signup_page": {
+    "user_reg_header_title": "User Registration Form",
+    "admin_reg_header_title": "Admin Registration Form",
+    "register_btn": "Register"
+  }
+}
