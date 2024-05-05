@@ -4,7 +4,7 @@ import Providers from "./components/Providers";
 import Routes from "./routes";
 const App = () => {
   const { i18n } = useTranslation();
-
+  //
   return (
     <Providers>
       <Routes />
