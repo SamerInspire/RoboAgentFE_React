@@ -16,7 +16,7 @@ import {
   handleFetchAuthorities,
   handleFetchServiceList,
   handleSubmitUserFinalRegistration,
-} from "src/utils/users/api/users";
+} from "src/utils/users/users";
 export async function handleFinalRegistration(
   userRole,
   userTeam,

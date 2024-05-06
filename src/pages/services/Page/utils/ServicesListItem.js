@@ -1,77 +1,117 @@
-import { Card, Link, Typography } from "@material-ui/core";
-import { styled } from "@mui/material";
-import { Box } from "@mui/system";
-import { Link as RouteLink, redirect } from "react-router-dom";
+import { Box, Grid, Typography } from "@mui/material";
+import { redirect } from "react-router-dom";
 import i18n from "src/dictonaries/i18n";
-
+import { glassMorphisimStyle } from "src/styles/styles";
+import CreditCardIcon from "@mui/icons-material/CreditCard";
 // card style
-const CardStyle = styled(Card)(({ theme }) => ({
-  borderRadius: theme.spacing(2),
-  boxShadow: `rgb(145 158 171 / 24%) 0px 0px 2px 0px, rgb(145 158 171 / 24%) 0px 4px 8px -4px`,
-  "&:hover": {
-    boxShadow: `rgb(145 158 171 / 24%) 0px 0px 2px 0px, rgb(145 158 171 / 24%) 0px 16px 32px -4px`,
-  },
-}));
 
 const ServicesListItem = ({ service }) => {
   const lang = i18n.language;
   const navigateToService = () =>
     redirect(`/dash/services/getAnswer/${service.enName}`);
   return (
-    <CardStyle
-      style={{ cursor: "pointer" }}
-      sx={{}}
+    <Grid
+      container
+      item
+      sx={{ ...glassMorphisimStyle, cursor: "pointer" }}
       onClick={navigateToService}
     >
-      {/* Image with Label */}
-      <Link
-        component={RouteLink}
-        to={`/dash/services/getAnswer/${service.enName}`}
-        underline="hover"
-        color="inherit"
+      <Grid
+        container
+        position={"relative"}
+        item
+        sx={{
+          height: "60px",
+          borderTopRightRadius: "10px",
+          borderTopLeftRadius: "10px",
+        }}
       >
         <Box
-          sx={{ pt: "100%", position: "relative" }}
-          href="/dash/services/getAnswer"
+          sx={{
+            width: "80px",
+            height: "80px",
+            borderRadius: "50%",
+            position: "absolute",
+            top: "100%",
+            left: "50px",
+            transform: "translate(-50%,-50%)",
+            bgcolor: "#fff",
+            border: "1px solid ",
+            borderColor: "primary.main",
+            zIndex: 11,
+          }}
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems={"center"}
         >
-          <Box
-            sx={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              position: "absolute",
-              top: 0,
-            }}
-            component="img"
-            src={service.backgroundImg}
-            alt={lang === "en" ? service.enName : service.arName}
-          />
+          <CreditCardIcon sx={{ fontSize: 36, color: "primary.main" }} />
         </Box>
-
-        {/* bottom of the card */}
-        <Box sx={{ py: 2.5, px: 3 }}>
+      </Grid>
+      <Grid
+        container
+        item
+        className="cardImage"
+        justifyContent={"center"}
+        p={4}
+        sx={{ paddingTop: 0 }}
+        position={"relative"}
+        height={"150px"}
+      >
+        <Box
+          position={"absolute"}
+          sx={{
+            objectFit: "conver",
+            borderBottomLeftRadius: "10px",
+            borderBottomRightRadius: "10px",
+            zIndex: -1,
+          }}
+          width={"100%"}
+          height={"100%"}
+          component={"img"}
+          src={service.backgroundImg}
+        />
+        <Box
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          position={"absolute"}
+          sx={{
+            "&:hover": {
+              bgcolor: "rgba(0,0,0,.3)",
+            },
+            bgcolor: "rgba(0,0,0,.4)",
+            zIndex: 0,
+            borderBottomLeftRadius: "10px",
+            borderBottomRightRadius: "10px",
+          }}
+          width={"100%"}
+          height={"100%"}
+        >
           <Typography
-            align="center"
-            variant="subtitle1"
-            style={{ fontWeight: "bold", fontSize: "20px" }}
-            noWrap
+            variant="h5"
+            color={"#fff"}
+            fontWeight={600}
+            textAlign={"center"}
           >
-            {lang === "en" ? service.enName : service.arName}
+            {lang == "en" ? service.enName : service.arName}
           </Typography>
-
-          {/* Price & Color box */}
-          <Box
-            sx={{
-              mt: 2,
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          ></Box>
         </Box>
-      </Link>
-    </CardStyle>
+      </Grid>
+    </Grid>
   );
 };
 
 export default ServicesListItem;
+{
+  /* <Link
+component={RouteLink}
+to={`/dash/services/getAnswer/${service.enName}`}
+underline="hover"
+color="inherit"
+>
+<Box
+  sx={{ pt: "100%", position: "relative" }}
+  href="/dash/services/getAnswer"
+></Box>
+</Link> */
+}

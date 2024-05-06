@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import {
   handleFetchServiceList,
   handleSubmitUserNewService,
-} from "src/utils/users/api/users";
+} from "src/utils/users/users";
 
 function ServiceDialog({
   isEditServiceDialogOpen,

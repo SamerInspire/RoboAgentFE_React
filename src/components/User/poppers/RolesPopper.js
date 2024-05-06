@@ -2,7 +2,7 @@ import DownloadIcon from "@mui/icons-material/Download";
 import UpgradeIcon from "@mui/icons-material/Upgrade";
 import { Button, Grid } from "@mui/material";
 import { useUpdateAlert } from "src/hooks/Context/AlertContext";
-import { hanldeSubmitUserNewRole } from "src/utils/users/api/users";
+import { hanldeSubmitUserNewRole } from "src/utils/users/users";
 
 function RolesPopper({
   userData,

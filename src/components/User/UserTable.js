@@ -7,7 +7,7 @@ import { glassMorphisimStyle } from "src/styles/styles";
 import {
   handleFetchAllUsers,
   handleFetchAuthorities,
-} from "src/utils/users/api/users";
+} from "src/utils/users/users";
 import DNDServicesModal from "./dialogs/DNDServicesModal";
 import ServiceDialog from "./dialogs/ServiceDialog";
 import RolesPopper from "./poppers/RolesPopper";

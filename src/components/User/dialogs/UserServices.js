@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import {
   handleFetchAuthorities,
   handleSubmitUserAuths,
-} from "src/utils/users/api/users";
+} from "src/utils/users/users";
 import servicesIcons from "../../../constants/servicesIcons";
 function UserServices({
   handleCloseServiceDialog,

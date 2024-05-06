@@ -1,16 +1,21 @@
-import { Grid } from "@material-ui/core";
-import { styled } from "@mui/material";
-import { useContext } from "react";
-import { LoginContext } from "src/hooks/Context/LoginInfoContext";
+import { Grid } from "@mui/material";
+import { useEffect, useState } from "react";
 import { Services } from "../Schema/ServicesSchema";
 import ServicesListItem from "./utils/ServicesListItem";
-// grid style
-const GridStyle = styled(Grid)(({ theme }) => ({
-  marginTop: theme.spacing(3),
-}));
+import { handleFetchCurrentUser } from "src/utils/users/users";
+
 const ServicesList = () => {
-  const { loginData } = useContext(LoginContext);
-  if (loginData.role === "TEAM_LEAD" || loginData.role === "ADMIN") {
+  const [currentUserData, setCurrentUserData] = useState({});
+  useEffect(() => {
+    handleFetchCurrentUser({
+      requestAction: "SET_CURRENT_USER",
+      setCurrentUserData,
+    });
+  }, []);
+  if (
+    currentUserData.role === "TEAM_LEAD" ||
+    currentUserData.role === "ADMIN"
+  ) {
     return (
       <Grid container item spacing={4}>
         {Services.map((service) => (
@@ -24,8 +29,8 @@ const ServicesList = () => {
     return (
       <Grid container item spacing={4}>
         {Services.map((service) => {
-          const showService = loginData.roboAuthorities.some((auth) =>
-            service.allowedAuthorities.includes(auth.name)
+          const showService = currentUserData?.roboAuthorities?.some((auth) =>
+            service?.allowedAuthorities?.includes(auth.name)
           );
           return showService ? (
             <Grid key={service.value} item xs={12} sm={6} md={4} lg={3}>

@@ -1,6 +1,6 @@
 import axios from "axios";
 import i18n from "src/dictonaries/i18n";
-import { reshapeUserData } from "src/utils/users/tableUtils";
+import { reshapeUserData } from "src/utils/table/tableReshape";
 
 export function generalSuccessReducer(result, utils) {
   const { body } = result?.data?.roboAgentRs;
@@ -101,6 +101,10 @@ export function generalSuccessReducer(result, utils) {
       const { setAnswer } = utils;
       setAnswer(body.getAnswer.getAnswerResp);
       break;
+    }
+    case "SET_CURRENT_USER": {
+      const { setCurrentUserData } = utils;
+      setCurrentUserData(body.user);
     }
   }
   return result;

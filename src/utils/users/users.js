@@ -109,3 +109,17 @@ export async function handleFetchServiceList(utils) {
     throw new Error(error);
   }
 }
+export async function handleFetchCurrentUser(utils) {
+  try {
+    await AxiosHit(
+      {
+        url: "users/currentuser",
+        method: "get",
+      },
+      utils
+    );
+  } catch (error) {
+    console.log(error);
+    throw new Error(error);
+  }
+}

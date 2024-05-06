@@ -1,7 +1,7 @@
 import { Button, Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import DraggableTest from "./DraggableTest";
-import { handleSubmitUserAuths } from "src/utils/users/api/users";
+import { handleSubmitUserAuths } from "src/utils/users/users";
 import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 
 function DNDServicesModal({

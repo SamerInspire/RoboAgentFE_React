@@ -12,7 +12,7 @@ import RegisterPhoto from "src/assets/Images/auth/register.png";
 import FinalRegister from "src/components/AuthPages/FinalRegister";
 import CustomStepper from "src/components/AuthPages/stepper/CustomStepper";
 import { useUpdateAlert } from "src/hooks/Context/AlertContext";
-import { handleSubmitNewUser } from "src/utils/users/api/users";
+import { handleSubmitNewUser } from "src/utils/users/users";
 
 // styles
 const ContainerBoxStyle = styled(Box)(({ theme }) => ({
