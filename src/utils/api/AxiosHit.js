@@ -1,6 +1,6 @@
 import axios from "axios";
 import { successHitHandle } from "../HitHandiling";
-import { JWTFalureHitHandle } from "../responseHandling/jwtfailureResponseHandling";
+import { JWTFalureHitHandle } from "../responseHandlers";
 
 axios.defaults.baseURL = "http://localhost:3000/api";
 if (JSON.parse(localStorage.getItem("userInfo"))) {

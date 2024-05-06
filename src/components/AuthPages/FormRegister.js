@@ -129,8 +129,14 @@ const FormRegister = ({
         type="hidden"
         hidden={true}
         value={phoneNumber}
-        helperText={phoneNumber.length != 14 && "Enter a valid phone number"}
-        error={phoneNumber.length != 14 ? true : false}
+        {...register("phoneNumber", {
+          pattern: {
+            value: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/,
+            message: "Enter A valid Phone number",
+          },
+        })}
+        helperText={errors.phoneNumber && "Enter a valid phone number"}
+        // error={phoneNumber.length != 14 ? true : false}
       />
       {/* password */}
       <TextField

@@ -47,12 +47,13 @@ export async function hanldeSubmitUserNewRole(utils) {
 }
 
 export async function handleSubmitNewUser(userData, utils) {
+  console.log(userData);
   try {
     const r = await AxiosHit(
       {
         url: "/users/signup",
         method: "post",
-        data: userData,
+        data: { ...userData, roboAuthorities: undefined },
       },
       utils
     );

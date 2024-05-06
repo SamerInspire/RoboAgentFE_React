@@ -20,7 +20,7 @@ const ServicesListItem = ({ service }) => {
   return (
     <CardStyle
       style={{ cursor: "pointer" }}
-      sx={{ borderRadius: "50%"`GFGH Zdxgzfdghxxx nbxfxgh` }}
+      sx={{}}
       onClick={navigateToService}
     >
       {/* Image with Label */}

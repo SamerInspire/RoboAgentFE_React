@@ -127,19 +127,7 @@ const Register = () => {
           <CustomStepper activeStep={activeStep} />
           <Container className="form_Container" maxWidth="md">
             {/* The Actual Form 👇 */}
-            {/* 
-            <Dialog open={true} ref={myref}>
-              <div>
-                fsldf
-                {console.log(myref, "jeslkfjklsdajfklsdjklfjsdklfajkljfs")}
-              </div>
-            </Dialog> */}
-            <Modal open={true} ref={myref}>
-              <div>
-                kjfdksljfklsdajfklsdjfklsdajkl
-                {myref.current && console.log(myref.current.onclick())}
-              </div>
-            </Modal>
+
             {activeStep == 0 && (
               <FormRegister
                 register={register}

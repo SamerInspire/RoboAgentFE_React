@@ -1,11 +1,13 @@
 import { generalSuccessReducer } from "src/hooks/reducers/store";
-import { handleChangePassCodeActions } from "./responseHandling/changePassResponseActions";
-import { handleEmailCodeActions } from "./responseHandling/emailResponseActions";
-import { handleGeneralErrorCodeActions } from "./responseHandling/generalErrorResponseActions";
-import { handleGetAnswerFailure } from "./responseHandling/handleGetAnswerFailure";
-import { JWTFalureHitHandle } from "./responseHandling/jwtfailureResponseHandling";
-import { handleOTPCodeActions } from "./responseHandling/otpResponseActions";
-import { handleUserCodeActions } from "./responseHandling/userResponseActions";
+import {
+  JWTFalureHitHandle,
+  handleChangePassCodeActions,
+  handleEmailCodeActions,
+  handleGeneralErrorCodeActions,
+  handleGetAnswerFailure,
+  handleOTPCodeActions,
+  handleUserCodeActions,
+} from "./responseHandlers";
 
 export function successHitHandle(result, utils) {
   const { code } = result?.data?.roboAgentRs?.header?.responseStatus;
