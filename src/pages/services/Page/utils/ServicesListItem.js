@@ -18,7 +18,11 @@ const ServicesListItem = ({ service }) => {
   const navigateToService = () =>
     redirect(`/dash/services/getAnswer/${service.enName}`);
   return (
-    <CardStyle style={{ cursor: "pointer" }} onClick={navigateToService}>
+    <CardStyle
+      style={{ cursor: "pointer" }}
+      sx={{ borderRadius: "50%"`GFGH Zdxgzfdghxxx nbxfxgh` }}
+      onClick={navigateToService}
+    >
       {/* Image with Label */}
       <Link
         component={RouteLink}

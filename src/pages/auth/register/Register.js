@@ -1,21 +1,18 @@
 import { Container, Link, Typography } from "@material-ui/core";
-import { styled } from "@mui/material";
+import { Modal, styled } from "@mui/material";
 import { Box } from "@mui/system";
 import { Helmet } from "react-helmet";
 import FormRegister from "src/components/AuthPages/FormRegister";
 import LeftPanel from "src/components/AuthPages/LeftPanel";
 
 // img
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import RegisterPhoto from "src/assets/Images/auth/register.png";
 import FinalRegister from "src/components/AuthPages/FinalRegister";
 import CustomStepper from "src/components/AuthPages/stepper/CustomStepper";
-import {
-  handleSubmitNewUser,
-  handleSubmitUserAuths,
-} from "src/utils/users/api/users";
 import { useUpdateAlert } from "src/hooks/Context/AlertContext";
+import { handleSubmitNewUser } from "src/utils/users/api/users";
 
 // styles
 const ContainerBoxStyle = styled(Box)(({ theme }) => ({
@@ -82,6 +79,7 @@ const Register = () => {
   const [registeredId, setRegisteredId] = useState(null);
   const [userData, setUserData] = useState({});
   const setAlertInfo = useUpdateAlert();
+  const myref = useRef();
   const {
     register,
     handleSubmit,
@@ -127,9 +125,21 @@ const Register = () => {
 
         <RightPanelStyle>
           <CustomStepper activeStep={activeStep} />
-
           <Container className="form_Container" maxWidth="md">
             {/* The Actual Form 👇 */}
+            {/* 
+            <Dialog open={true} ref={myref}>
+              <div>
+                fsldf
+                {console.log(myref, "jeslkfjklsdajfklsdjklfjsdklfajkljfs")}
+              </div>
+            </Dialog> */}
+            <Modal open={true} ref={myref}>
+              <div>
+                kjfdksljfklsdajfklsdjfklsdajkl
+                {myref.current && console.log(myref.current.onclick())}
+              </div>
+            </Modal>
             {activeStep == 0 && (
               <FormRegister
                 register={register}

@@ -2,6 +2,7 @@ import { createTheme } from "@mui/material/styles";
 
 // custom theme
 const lightTheme = createTheme({
+  direction: "rtl",
   typography: {
     fontFamily: `"DM Sans", "Roboto", "Arial", sans-serif`,
   },
@@ -50,6 +51,7 @@ const lightTheme = createTheme({
   },
 });
 const darkTheme = createTheme({
+  direction: "rtl",
   typography: {
     fontFamily: `"DM Sans", "Roboto", "Arial", sans-serif`,
   },

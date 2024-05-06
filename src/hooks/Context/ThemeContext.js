@@ -15,7 +15,6 @@ const ThemeContextProvider = ({ children }) => {
     <themeContext.Provider
       value={{ currentTheme, setCurrentTheme, themeStyles }}
     >
-      {console.log(themeStyles)}
       <ThemeProvider theme={themeStyles}>{children}</ThemeProvider>;
     </themeContext.Provider>
   );
