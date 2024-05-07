@@ -17,6 +17,7 @@ export const getResponseShape = (header, code) => {
       return {
         message: currentLang == "ar" ? arabicMsg : englishMsg,
         alertStatus: "error",
+        success: false,
       };
     }
   }
@@ -31,7 +32,7 @@ export function handleChangePassCodeActions(result, code, utils) {
 }
 
 export function JWTFalureHitHandle() {
-  "jwt failure";
+  console.log("jwt failure");
   localStorage.removeItem("userInfo");
 }
 export function handleOTPCodeActions(result, code, utils) {
@@ -58,10 +59,10 @@ export async function handleUserCodeActions(result, code, utils) {
 }
 
 export function handleGeneralErrorCodeActions(result, code, utils) {
-  // const { header } = result.data.roboAgentRs;
-  // const { setAlertInfo } = utils;
-  // const { alertStatus, alertMsg } = getResponseShape(header, code);
-  // setAlertInfo({ alertType: alertStatus, alertMsg: alertMsg });
+  const { header } = result.data.roboAgentRs;
+  const { setAlertInfo } = utils;
+  const { alertStatus, message } = getResponseShape(header, code);
+  setAlertInfo({ alertType: alertStatus, alertMsg: message });
 }
 
 export function handleEmailCodeActions(result, code, utils) {

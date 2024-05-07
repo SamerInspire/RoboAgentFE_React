@@ -11,6 +11,7 @@ import { TopPaneStyle } from "src/styles/styles";
 import { numbersOnly } from "src/utils/DefualtValidators";
 import { Navigate } from "react-router-dom";
 import { handleGetResponse } from "src/utils/api/answer/service";
+import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 
 const ServicesGetAnswer = () => {
   let { servicename } = useParams();
@@ -20,6 +21,7 @@ const ServicesGetAnswer = () => {
     (service) => service.enName == servicename
   )[0];
   const [loading, setLoading] = useState();
+  const setAlertInfo = useUpdateAlert();
   const lang = i18next.language;
   const navigate = useNavigate();
   const [options, setOptions] = useState(() => {
@@ -84,6 +86,7 @@ const ServicesGetAnswer = () => {
             data,
             servicename,
             options,
+            setAlertInfo,
           })
         )}
       >

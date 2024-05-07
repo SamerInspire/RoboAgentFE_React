@@ -28,7 +28,7 @@ export function successHitHandle(result, utils) {
     case "GAM":
       return handleGetAnswerFailure(result, codeNumbers);
     default:
-      return handleGeneralErrorCodeActions(result, codeNumbers);
+      return handleGeneralErrorCodeActions(result, codeNumbers, utils);
   }
 }
 export function handleExtractCodeInfo(code = 0) {

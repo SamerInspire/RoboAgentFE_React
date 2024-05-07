@@ -1,6 +1,5 @@
 import axios from "axios";
 import { successHitHandle } from "../HitHandiling";
-import { JWTFalureHitHandle } from "../responseHandlers";
 
 axios.defaults.baseURL = "http://localhost:3000/api";
 if (JSON.parse(localStorage.getItem("userInfo"))) {
@@ -10,6 +9,6 @@ if (JSON.parse(localStorage.getItem("userInfo"))) {
 export default async function AxiosHit(config, utils) {
   let result = await axios(config)
     .then((successResponse) => successHitHandle(successResponse, utils))
-    .catch((errorResponse) => JWTFalureHitHandle(errorResponse));
+    .catch((errorResponse) => console.log(errorResponse));
   return result;
 }
