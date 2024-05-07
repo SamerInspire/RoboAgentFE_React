@@ -30,7 +30,6 @@ function EmailDialog({
   } = useForm();
   return (
     <Dialog
-      fullWidth={true}
       open={steps == 1}
       sx={{
         textAlign: "center",

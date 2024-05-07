@@ -115,7 +115,7 @@ const Register = () => {
         <title>Register | RoboAgent</title>
       </Helmet>
 
-      <ContainerBoxStyle container>
+      <ContainerBoxStyle>
         <LeftPanel
           title="User registration"
           img={RegisterPhoto}

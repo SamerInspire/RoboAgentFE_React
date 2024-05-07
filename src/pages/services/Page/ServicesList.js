@@ -18,8 +18,8 @@ const ServicesList = () => {
   ) {
     return (
       <Grid container item spacing={4}>
-        {Services.map((service) => (
-          <Grid key={service.value} item xs={12} sm={6} md={4} lg={3}>
+        {Services.map((service, index) => (
+          <Grid key={service.enName + index} item xs={12} sm={6} md={4} lg={3}>
             <ServicesListItem service={service} />
           </Grid>
         ))}
@@ -28,16 +28,30 @@ const ServicesList = () => {
   } else {
     return (
       <Grid container item spacing={4}>
-        {Services.map((service) => {
+        {Services.map((service, index) => {
           const showService = currentUserData?.roboAuthorities?.some((auth) =>
             service?.allowedAuthorities?.includes(auth.name)
           );
           return showService ? (
-            <Grid key={service.value} item xs={12} sm={6} md={4} lg={3}>
+            <Grid
+              key={service.enName + index}
+              item
+              xs={12}
+              sm={6}
+              md={4}
+              lg={3}
+            >
               <ServicesListItem key={service.value} service={service} />
             </Grid>
           ) : service.allowedAuthorities[0] === "all" ? (
-            <Grid key={service.value} item xs={12} sm={6} md={4} lg={3}>
+            <Grid
+              key={service.enName + index}
+              item
+              xs={12}
+              sm={6}
+              md={4}
+              lg={3}
+            >
               <ServicesListItem key={service.value} service={service} />
             </Grid>
           ) : null;

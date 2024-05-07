@@ -41,7 +41,6 @@ function OTPDialog({
   const setAlertInfo = useUpdateAlert();
   return (
     <Dialog
-      fullWidth={true}
       open={steps === 2}
       sx={{
         textAlign: "center",

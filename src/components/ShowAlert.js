@@ -30,7 +30,7 @@ export default function ShowAlert() {
   console.log("alertInfo ====> ", alertInfo);
   if (!!alertInfo) {
     return (
-      <Collapse in={openFailerAlert}>
+      <Collapse in={openFailerAlert} sx={{ mb: 2 }}>
         <Alert variant="filled" severity={alertInfo.alertType}>
           {alertInfo.alertMsg}
         </Alert>

@@ -175,7 +175,7 @@ const SideDrawer = (props) => {
       {/* List of links */}
       <ListStyle>
         {links.map((el) => (
-          <AuthWrapper roles={el.allowedRoles}>
+          <AuthWrapper key={el.id} roles={el.allowedRoles}>
             <CustomListItem
               key={el.id}
               path={el.path}
