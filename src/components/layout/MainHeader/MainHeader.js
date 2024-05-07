@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 
-import { AppBar, Box, IconButton, Toolbar } from "@material-ui/core";
+import { AppBar, Box, IconButton, Toolbar } from "@mui/material";
 
 // icons
 import { BiSearch } from "react-icons/bi";

@@ -1,4 +1,4 @@
-import { IconButton, ListItemText, Menu, MenuItem } from "@material-ui/core";
+import { IconButton, ListItemText, Menu, MenuItem } from "@mui/material";
 import { styled } from "@mui/material";
 
 // images

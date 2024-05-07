@@ -6,6 +6,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  Grid,
   IconButton,
   InputAdornment,
   TextField,
@@ -17,7 +18,13 @@ import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import FormStyle from "src/styles/styles";
 import { handleRestPassword } from "src/utils/api/auth/otp";
 
-function OTPDialog({ handleNext, steps, setSnackbarData, otpToken }) {
+function OTPDialog({
+  handleNext,
+  steps,
+  setSnackbarData,
+  handleClose,
+  otpToken,
+}) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const handleClickShowPassword = () => {
@@ -132,23 +139,30 @@ function OTPDialog({ handleNext, steps, setSnackbarData, otpToken }) {
           </Typography>
         ) : null}
       </DialogContent>
-      <DialogActions sx={{ paddingTop: 0 }}>
-        <FormStyle sx={{ width: "100%" }}>
-          <Button
-            fullWidth
-            variant="contained"
-            onClick={handleSubmit((data) =>
-              handleRestPassword({
-                newPass: data.password,
-                handleNext,
-                setAlertInfo,
-                otpToken,
-              })
-            )}
-          >
-            Change Password
-          </Button>
-        </FormStyle>
+      <DialogActions sx={{ paddingTop: 4 }}>
+        <Grid container item spacing={4}>
+          <Grid item xs={12} md={6}>
+            <Button fullWidth variant="contained" onClick={handleClose}>
+              Cancel
+            </Button>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Button
+              fullWidth
+              variant="contained"
+              onClick={handleSubmit((data) =>
+                handleRestPassword({
+                  newPass: data.password,
+                  handleNext,
+                  setAlertInfo,
+                  otpToken,
+                })
+              )}
+            >
+              Change Password
+            </Button>
+          </Grid>
+        </Grid>
       </DialogActions>
     </Dialog>
   );

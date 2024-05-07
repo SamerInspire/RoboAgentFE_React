@@ -1,4 +1,4 @@
-import { FormGroup } from "@material-ui/core";
+import { FormGroup } from "@mui/material";
 import DashCard from "./DashCard";
 import DashCardHeader from "./DashCardHeader";
 import TasksItem from "./TasksItem";

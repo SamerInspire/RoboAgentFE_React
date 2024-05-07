@@ -5,8 +5,8 @@ import {
   IconButton,
   InputAdornment,
   Link,
-} from "@material-ui/core";
-import { TextField } from "@mui/material";
+  TextField,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import { t } from "i18next";
 import { useContext, useState } from "react";
@@ -25,8 +25,8 @@ const FormLogin = () => {
   const [remember, setRemember] = useState(true);
   const [steps, setSteps] = useState(0);
   const [snackbarData, setSnackbarData] = useState({
-    status: "",
-    text: "",
+    alertType: "",
+    alertMsg: "",
     open: false,
   });
   const { login } = useContext(LoginContext);
@@ -34,7 +34,6 @@ const FormLogin = () => {
   const handleToggleRemember = () => setRemember(!remember);
   const setAlertInfo = useUpdateAlert();
   const [otpToken, setOtpToken] = useState("");
-  console.log(steps);
   const handleNext = () => {
     setSteps((prev) => prev + 1);
   };
@@ -52,34 +51,37 @@ const FormLogin = () => {
     },
   });
 
-  // form submit
-
-  // for reset
-
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
     setSnackbarData((prev) => ({ ...prev, open: false }));
   };
-
+  const handleCloseDialogs = () => setSteps(0);
   return (
     <>
-      <EmailDialog
-        handleNext={handleNext}
-        steps={steps}
-        setSnackbarData={setSnackbarData}
-        setOtpToken={setOtpToken}
-      />
-      {
+      {steps == 1 && (
+        <EmailDialog
+          handleNext={handleNext}
+          steps={steps}
+          setSnackbarData={setSnackbarData}
+          setOtpToken={setOtpToken}
+          register={register}
+          getValues={getValues}
+          handleClose={handleCloseDialogs}
+        />
+      )}
+      {steps === 2 && (
         <OTPDialog
           handleNext={handleNext}
           setSnackbarData={setSnackbarData}
-          email={getValues("email")}
+          email={getValues("rest_email")}
           steps={steps}
           otpToken={otpToken}
+          setOtpToken={setOtpToken}
+          handleClose={handleCloseDialogs}
         />
-      }
+      )}
       {
         <NewPassDialog
           setSnackbarData={setSnackbarData}
@@ -87,9 +89,11 @@ const FormLogin = () => {
           handleNext={handleNext}
           steps={steps}
           otpToken={otpToken}
+          handleClose={handleCloseDialogs}
         />
       }
       <FormStyle
+        noValidate
         component="form"
         onSubmit={handleSubmit((loginData) => login(loginData, setAlertInfo))}
       >
@@ -155,11 +159,13 @@ const FormLogin = () => {
           </Link>
         </Box>
 
-        <Button type="submit" variant="contained" disableElevation>
+        <Button type="submit" variant="contained">
           {t("Login")}
         </Button>
-        <CustomToast snackbarData={snackbarData} handleClose={handleClose} />
       </FormStyle>
+      {snackbarData.open && (
+        <CustomToast snackbarData={snackbarData} handleClose={handleClose} />
+      )}
     </>
   );
 };

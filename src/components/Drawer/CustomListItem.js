@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { ListItem, ListItemIcon, Typography } from "@material-ui/core";
+import { ListItem, ListItemIcon, Typography } from "@mui/material";
 import { styled } from "@mui/material";
 import "src/styles/styles.css";
 const ListItemStyle = styled(ListItem)(() => ({

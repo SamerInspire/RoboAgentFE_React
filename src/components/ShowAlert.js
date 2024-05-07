@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Alert from "@material-ui/lab/Alert";
-import Collapse from "@material-ui/core/Collapse";
+import Alert from "@mui/material/Alert";
+import Collapse from "@mui/material/Collapse";
 import { useAlert, useUpdateAlert } from "../hooks/Context/AlertContext";
 export default function ShowAlert() {
   const [openFailerAlert, setOpenFailerAlert] = useState(false);

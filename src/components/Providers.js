@@ -1,4 +1,4 @@
-import CssBaseline from "@material-ui/core/CssBaseline";
+import CssBaseline from "@mui/material/CssBaseline";
 import i18next from "i18next";
 import { I18nextProvider } from "react-i18next";
 import { AlertProvider } from "src/hooks/Context/AlertContext";

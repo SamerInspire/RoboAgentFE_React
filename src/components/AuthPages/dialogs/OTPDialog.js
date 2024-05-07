@@ -6,6 +6,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  Grid,
   TextField,
   Typography,
 } from "@mui/material";
@@ -14,14 +15,15 @@ import { useForm } from "react-hook-form";
 import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import { LoginContext } from "src/hooks/Context/LoginInfoContext";
 import FormStyle from "src/styles/styles";
-import { handleVerifyOTP } from "src/utils/api/auth/otp";
+import { handleVerifyEmail, handleVerifyOTP } from "src/utils/api/auth/otp";
 function OTPDialog({
-  sendEmail,
   otpToken,
   email,
   steps,
   handleNext,
   setSnackbarData,
+  setOtpToken,
+  handleClose,
 }) {
   const {
     register: otpRegister,
@@ -29,10 +31,8 @@ function OTPDialog({
     formState: { errors: otpErrors },
     setError,
   } = useForm();
-  console.log(email);
   const [counter, setCounter] = useState(60);
   const Ref = useRef(null);
-  const { loginData } = useContext(LoginContext);
   useEffect(() => {
     const timer =
       counter > 0 && setInterval(() => setCounter((prev) => prev - 1), 1000);
@@ -43,10 +43,6 @@ function OTPDialog({
     <Dialog
       fullWidth={true}
       open={steps === 2}
-      // onClose={() => {
-      //   setOpen2(false);
-      //   setCounter(60);
-      // }}
       sx={{
         textAlign: "center",
         "& .MuiPaper-root": {
@@ -86,7 +82,12 @@ function OTPDialog({
           {!counter ? (
             <Button
               onClick={() => {
-                sendEmail();
+                handleVerifyEmail({
+                  email: email,
+                  handleNext: () => {},
+                  setAlertInfo: setSnackbarData,
+                  setOtpToken,
+                });
                 setCounter(60);
               }}
               style={{ color: "#2e7d32", mx: 4 }}
@@ -105,23 +106,30 @@ function OTPDialog({
           )}
         </Box>
       </DialogContent>
-      <DialogActions sx={{ paddingTop: 0 }}>
-        <FormStyle sx={{ width: "100%" }}>
-          <Button
-            fullWidth
-            variant="contained"
-            onClick={otpHandleSubmit((data) =>
-              handleVerifyOTP({
-                otp: data.otp,
-                token: otpToken,
-                handleNext,
-                setAlertInfo,
-              })
-            )}
-          >
-            Submit
-          </Button>
-        </FormStyle>
+      <DialogActions sx={{ paddingTop: 4 }}>
+        <Grid container item spacing={4}>
+          <Grid item xs={12} md={6}>
+            <Button fullWidth variant="contained" onClick={handleClose}>
+              Cancel
+            </Button>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Button
+              fullWidth
+              variant="contained"
+              onClick={otpHandleSubmit((data) =>
+                handleVerifyOTP({
+                  otp: data.otp,
+                  token: otpToken,
+                  handleNext,
+                  setAlertInfo,
+                })
+              )}
+            >
+              Next
+            </Button>
+          </Grid>
+        </Grid>
       </DialogActions>
     </Dialog>
   );

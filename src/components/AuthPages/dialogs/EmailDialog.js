@@ -5,27 +5,33 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  Grid,
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import FormStyle from "src/styles/styles";
 import { handleVerifyEmail } from "src/utils/api/auth/otp";
 
-function EmailDialog({ setOtpToken, setSnackbarData, handleNext, steps }) {
+function EmailDialog({
+  register,
+  setOtpToken,
+  setSnackbarData,
+  handleNext,
+  steps,
+  getValues,
+  handleClose,
+}) {
   const {
-    register: emailRegister,
     handleSubmit: emailHandleSubmit,
+    register: restEmailRegister,
     formState: { errors: emailErrors },
   } = useForm();
-  const setAlertInfo = useUpdateAlert();
   return (
     <Dialog
       fullWidth={true}
       open={steps == 1}
-      //   onClose={handleB}
       sx={{
         textAlign: "center",
         "& .MuiPaper-root": {
@@ -45,7 +51,7 @@ function EmailDialog({ setOtpToken, setSnackbarData, handleNext, steps }) {
         <FormStyle sx={{ width: "100%" }}>
           <TextField
             fullWidth
-            {...emailRegister("email", { required: "Email is Required" })}
+            {...register("rest_email", { required: "Email is Required" })}
           />
         </FormStyle>
         {emailErrors?.email?.message && (
@@ -54,23 +60,30 @@ function EmailDialog({ setOtpToken, setSnackbarData, handleNext, steps }) {
           </Typography>
         )}
       </DialogContent>
-      <DialogActions sx={{ paddingTop: 0 }}>
-        <FormStyle sx={{ width: "100%" }}>
-          <Button
-            fullWidth
-            variant="contained"
-            onClick={emailHandleSubmit((data) =>
-              handleVerifyEmail({
-                email: data.email,
-                handleNext,
-                setAlertInfo,
-                setOtpToken,
-              })
-            )}
-          >
-            Next
-          </Button>
-        </FormStyle>
+      <DialogActions sx={{ paddingTop: 4 }}>
+        <Grid container item spacing={4}>
+          <Grid item xs={12} md={6}>
+            <Button fullWidth variant="contained" onClick={handleClose}>
+              Cancel
+            </Button>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Button
+              fullWidth
+              variant="contained"
+              onClick={emailHandleSubmit((data) =>
+                handleVerifyEmail({
+                  email: getValues("rest_email"),
+                  handleNext,
+                  setAlertInfo: setSnackbarData,
+                  setOtpToken,
+                })
+              )}
+            >
+              Next
+            </Button>
+          </Grid>
+        </Grid>
       </DialogActions>
     </Dialog>
   );

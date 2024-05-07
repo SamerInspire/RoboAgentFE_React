@@ -1,4 +1,4 @@
-import { StopSharp } from "@material-ui/icons";
+import { StopSharp } from "@mui/materialicons";
 import { styled } from "@mui/material";
 
 const Arrow = styled(StopSharp)(({ theme }) => ({

@@ -6,7 +6,7 @@ import {
   ListItemText,
   Menu,
   MenuItem,
-} from "@material-ui/core";
+} from "@mui/material";
 import { styled } from "@mui/material";
 
 // icons

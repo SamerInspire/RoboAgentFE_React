@@ -6,7 +6,7 @@ import {
   FormGroup,
   Radio,
   RadioGroup,
-} from "@material-ui/core";
+} from "@mui/material";
 import { styled } from "@mui/material";
 import { Rating } from "@mui/material";
 import DrawerContentCard from "./DrawerContentCard";

@@ -1,5 +1,4 @@
-import ReactDOM from "react-dom";
-
+import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom/dist";
 import App from "./App";
 import "./dictonaries/i18n";
@@ -11,12 +10,11 @@ console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === "production") {
   console.log("App running in production mode");
 }
-
-ReactDOM.render(
+const root = createRoot(document.getElementById("root"));
+root.render(
   <StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </StrictMode>,
-  document.getElementById("root")
+  </StrictMode>
 );

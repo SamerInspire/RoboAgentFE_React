@@ -16,7 +16,7 @@ I cloned [this dashboard](https://minimal-kit-react.vercel.app/dashboard/app) to
 
 ## Styling
 
-For styling I mainly used `styled` function from `@material-ui/styles`.
+For styling I mainly used `styled` function from `@mui/materialstyles`.
 
 I used the `sx` property when it was available in some certain components.
 

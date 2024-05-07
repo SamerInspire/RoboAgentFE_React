@@ -3,11 +3,10 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  TableSortLabel
-} from "@material-ui/core";
+  TableSortLabel,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import { visuallyHidden } from "@mui/utils";
-
 
 const UserTableHead = (props) => {
   const {
@@ -17,9 +16,9 @@ const UserTableHead = (props) => {
     numSelected,
     rowCount,
     onRequestSort,
-    headCells
+    headCells,
   } = props;
-  console.log("headCells ===> ",headCells)
+  console.log("headCells ===> ", headCells);
   // sort
   const createSortHandler = (property) => (e) => onRequestSort(e, property);
 

@@ -1,4 +1,4 @@
-import { Card, Link, Typography } from "@material-ui/core";
+import { Card, Link, Typography } from "@mui/material";
 import { styled } from "@mui/material";
 import { Box } from "@mui/system";
 import { Link as RouteLink } from "react-router-dom";

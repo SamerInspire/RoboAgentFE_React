@@ -1,4 +1,4 @@
-import { Button, IconButton, InputAdornment } from "@material-ui/core";
+import { Button, IconButton, InputAdornment } from "@mui/material";
 import { Grid, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import { useState } from "react";
@@ -222,13 +222,7 @@ const FormRegister = ({
       />
       {/* submit */}
       <Grid container item xs={12} justifyContent={"flex-end"}>
-        <Button
-          fullWidth
-          type="submit"
-          color="primary.main"
-          variant="contained"
-          disableElevation
-        >
+        <Button fullWidth type="submit" variant="contained" disableElevation>
           Next
         </Button>
       </Grid>

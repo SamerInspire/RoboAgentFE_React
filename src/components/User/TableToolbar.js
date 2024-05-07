@@ -4,7 +4,7 @@ import {
   Toolbar,
   Tooltip,
   Typography,
-} from "@material-ui/core";
+} from "@mui/material";
 import { styled } from "@mui/material";
 import { RiDeleteBinFill, RiFilter3Fill } from "react-icons/ri";
 

@@ -6,7 +6,7 @@ import {
   List,
   Toolbar,
   Typography,
-} from "@material-ui/core";
+} from "@mui/material";
 import { Link } from "react-router-dom";
 
 // icons & images

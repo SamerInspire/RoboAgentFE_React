@@ -1,4 +1,4 @@
-import { Badge, Button } from "@material-ui/core";
+import { Badge, Button } from "@mui/material";
 import { styled } from "@mui/material";
 import { HiShoppingCart } from "react-icons/hi";
 

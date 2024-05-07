@@ -89,7 +89,6 @@ function UserTable() {
     {
       name: "FirstName",
       label: t("firstnameLabel"),
-
       options: {
         filter: true,
       },

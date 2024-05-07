@@ -1,4 +1,4 @@
-import { Grid } from "@material-ui/core";
+import { Grid } from "@mui/material";
 import { styled } from "@mui/material";
 import { products } from "src/utils/api/productApi";
 import ProductListItem from "./ProductListItem";

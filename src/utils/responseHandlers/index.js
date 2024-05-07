@@ -29,16 +29,18 @@ export function handleChangePassCodeActions(result, code, utils) {
   if (success == "success") handleNext();
   setAlertInfo({ alertType: success, alertMsg: message });
 }
+
 export function JWTFalureHitHandle() {
+  "jwt failure";
   localStorage.removeItem("userInfo");
 }
 export function handleOTPCodeActions(result, code, utils) {
   const { header } = result.data.roboAgentRs;
   const { handleNext, setAlertInfo } = utils;
 
-  const { message, success } = getResponseShape(header.code);
-  if (success == "success") handleNext();
-  setAlertInfo({ alertType: success, alertMsg: message });
+  const { alertType, success, alertMsg } = getResponseShape(header.code);
+  if (success) handleNext();
+  setAlertInfo({ alertType: alertType, alertMsg: alertMsg, open: true });
 }
 
 export async function handleUserCodeActions(result, code, utils) {
@@ -56,22 +58,23 @@ export async function handleUserCodeActions(result, code, utils) {
 }
 
 export function handleGeneralErrorCodeActions(result, code, utils) {
-  const { header } = result.data.roboAgentRs;
-  const { setAlertInfo } = utils;
-
-  const { message, success } = getResponseShape(header, code);
-  setAlertInfo({ alertType: success, alertMsg: message });
+  // const { header } = result.data.roboAgentRs;
+  // const { setAlertInfo } = utils;
+  // const { alertStatus, alertMsg } = getResponseShape(header, code);
+  // setAlertInfo({ alertType: alertStatus, alertMsg: alertMsg });
 }
 
 export function handleEmailCodeActions(result, code, utils) {
   const { header } = result.data.roboAgentRs;
   const { handleNext, setAlertInfo, setOtpToken } = utils;
-  const { message, success } = getResponseShape(header, code);
-  if (success == "success") {
+  const { message, success, alertStatus } = getResponseShape(header, code);
+  console.log(getResponseShape(header, code));
+  if (success) {
     setOtpToken(result.headers["authorization"]);
+    console.log("success");
     handleNext();
   }
-  setAlertInfo({ alertType: success, alertMsg: message });
+  setAlertInfo({ alertType: alertStatus, alertMsg: message, open: true });
 }
 
 export function handleGetAnswerFailure() {}

@@ -1,21 +1,22 @@
 import { Alert, Snackbar } from "@mui/material";
 import React from "react";
 
-function CustomToast({ snackbarData, handleClose, isSnackbarOpen }) {
+function CustomToast({ snackbarData, handleClose }) {
+  console.log(snackbarData);
   return (
     <Snackbar
-      open={isSnackbarOpen}
-      autoHideDuration={6000}
+      open={snackbarData.open}
+      autoHideDuration={4000}
       onClose={handleClose}
       anchorOrigin={{ vertical: "top", horizontal: "center" }}
     >
       <Alert
         onClose={handleClose}
-        severity={snackbarData.status}
+        severity={snackbarData.alertType}
         variant="filled"
         sx={{ width: "100%" }}
       >
-        {snackbarData.text}
+        {snackbarData.alertMsg}
       </Alert>
     </Snackbar>
   );

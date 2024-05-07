@@ -1,4 +1,4 @@
-import { Box, Toolbar } from "@material-ui/core";
+import { Box, Toolbar } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { Outlet } from "react-router";
 import ShowAlert from "src/components/ShowAlert";

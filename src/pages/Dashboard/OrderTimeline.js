@@ -1,4 +1,4 @@
-import { Timeline } from "@material-ui/lab";
+import { Timeline } from "@mui/lab";
 import DashCard from "./DashCard";
 import DashCardHeader from "./DashCardHeader";
 import OrderTimelineItem from "./OrderTimelineItem";

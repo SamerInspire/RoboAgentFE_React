@@ -4,7 +4,7 @@ import {
   TimelineDot,
   TimelineItem,
   TimelineSeparator,
-} from "@material-ui/lab";
+} from "@mui/lab";
 import { Typography, styled } from "@mui/material";
 
 const OrderTimelineItem = ({ type, title, time, isLast }) => {

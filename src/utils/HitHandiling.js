@@ -25,10 +25,10 @@ export function successHitHandle(result, utils) {
       return handleChangePassCodeActions(result, codeNumbers, utils);
     case "JWT":
       return JWTFalureHitHandle(result, codeNumbers);
-    case "E":
-      return handleGeneralErrorCodeActions(result, codeNumbers);
     case "GAM":
       return handleGetAnswerFailure(result, codeNumbers);
+    default:
+      return handleGeneralErrorCodeActions(result, codeNumbers);
   }
 }
 export function handleExtractCodeInfo(code = 0) {

@@ -1,4 +1,4 @@
-import { Button, Typography } from "@material-ui/core";
+import { Button, Typography } from "@mui/material";
 import { styled } from "@mui/material";
 import { Box } from "@mui/system";
 import { AiOutlinePlus } from "react-icons/ai";

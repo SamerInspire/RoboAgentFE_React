@@ -1,4 +1,4 @@
-import { Container, Typography } from "@material-ui/core";
+import { Container, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { Helmet } from "react-helmet";
 import FormLogin from "src/components/AuthPages/FormLogin";
@@ -8,6 +8,8 @@ import LeftPanel from "src/components/AuthPages/LeftPanel";
 import LoginPhoto from "src/assets/Images/image_processing20210907-13511-1juj33d.gif";
 import { ContainerBoxStyle } from "src/styles/styles";
 import { styled } from "@mui/material";
+import AuthButtonGroup from "src/components/AuthPages/ButtonGroup";
+import SectionDivider from "src/components/AuthPages/SectionDivider";
 
 // styles
 
@@ -52,7 +54,7 @@ const Login = () => {
         <title>Login | RoboAgent</title>
       </Helmet>
 
-      <ContainerBoxStyle container>
+      <ContainerBoxStyle>
         <LeftPanel
           title="Hi, Login to continue"
           img={LoginPhoto}
@@ -72,13 +74,9 @@ const Login = () => {
             <Typography paragraph color="textSecondary">
               Enter your details below.
             </Typography>
-
             {/* Buttons */}
             {/* <AuthButtonGroup /> */}
-
-            {/* Section Divider */}
             {/* <SectionDivider /> */}
-
             {/* The Actual Form 👇 */}
             <FormLogin />
           </Container>
