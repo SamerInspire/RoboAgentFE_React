@@ -1,12 +1,12 @@
-import ChangeOccupationImg from "src/assets/Images/Services/Career-Change-30-1-1024x512.png";
-import EmployeeListImg from "src/assets/Images/Services/EmployeeList.jpeg";
-import EmployeesTransferImg from "src/assets/Images/Services/Employees Transfer.jpg";
-import ContractManagerImg from "src/assets/Images/Services/contract.jpg";
-import generalImg from "src/assets/Images/Services/general.jpg";
-import PrivilegesImg from "src/assets/Images/Services/privligages.jpg";
-import UserManagmentImg from "src/assets/Images/Services/user_managment.webp";
-import VisasImg from "src/assets/Images/Services/visas(1).jpg";
-import WorkPermitImg from "src/assets/Images/Services/work_permit.jpg";
+import ChangeOccupationImg from "src/assets/Images/Services/change-record-type-svgrepo-com.svg";
+import EmployeeListImg from "src/assets/Images/Services/list-svgrepo-com (1).svg";
+import EmployeesTransferImg from "src/assets/Images/Services/transfer-svgrepo-com.svg";
+import ContractManagerImg from "src/assets/Images/Services/contract-sign-line-svgrepo-com.svg";
+import generalImg from "src/assets/Images/Services/apps-svgrepo-com.svg";
+import PrivilegesImg from "src/assets/Images/Services/permissions-svgrepo-com.svg";
+import UserManagmentImg from "src/assets/Images/Services/user-id-svgrepo-com.svg";
+import VisasImg from "src/assets/Images/Services/passport-svgrepo-com.svg";
+import WorkPermitImg from "src/assets/Images/Services/location-permit-svgrepo-com (1).svg";
 export const Services = [
   {
     enName: "General",

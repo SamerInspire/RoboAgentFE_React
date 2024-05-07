@@ -1,117 +1,54 @@
-import { Box, Grid, Typography } from "@mui/material";
-import { redirect } from "react-router-dom";
+import { Grid, Link, Typography } from "@mui/material";
+import { Box } from "@mui/system";
 import i18n from "src/dictonaries/i18n";
 import { glassMorphisimStyle } from "src/styles/styles";
-import CreditCardIcon from "@mui/icons-material/CreditCard";
-// card style
-
+import { Link as RouterLink } from "react-router-dom";
 const ServicesListItem = ({ service }) => {
   const lang = i18n.language;
-  const navigateToService = () =>
-    redirect(`/dash/services/getAnswer/${service.enName}`);
+
   return (
-    <Grid
-      container
-      item
-      sx={{ ...glassMorphisimStyle, cursor: "pointer" }}
-      onClick={navigateToService}
+    <Link
+      component={RouterLink}
+      sx={{ textDecoration: "none" }}
+      to={`/dash/services/getAnswer/${service.enName}`}
     >
       <Grid
         container
-        position={"relative"}
         item
         sx={{
-          height: "60px",
-          borderTopRightRadius: "10px",
-          borderTopLeftRadius: "10px",
+          ...glassMorphisimStyle,
+          cursor: "pointer",
+          border: "2px solid #4abb7d",
+          "&:hover": {
+            background: "#d9ffea",
+          },
         }}
       >
-        <Box
+        <Grid
+          container
+          position={"relative"}
+          item
           sx={{
-            width: "80px",
-            height: "80px",
-            borderRadius: "50%",
-            position: "absolute",
-            top: "100%",
-            left: "50px",
-            transform: "translate(-50%,-50%)",
-            bgcolor: "#fff",
-            border: "1px solid ",
-            borderColor: "primary.main",
-            zIndex: 11,
+            height: "240px",
+            borderTopRightRadius: "10px",
+            borderTopLeftRadius: "10px",
+            justifyContent: "space-evenly",
+            alignItems: "center",
+            flexDirection: "column",
           }}
-          display={"flex"}
-          justifyContent={"center"}
-          alignItems={"center"}
         >
-          <CreditCardIcon sx={{ fontSize: 36, color: "primary.main" }} />
-        </Box>
-      </Grid>
-      <Grid
-        container
-        item
-        className="cardImage"
-        justifyContent={"center"}
-        p={4}
-        sx={{ paddingTop: 0 }}
-        position={"relative"}
-        height={"150px"}
-      >
-        <Box
-          position={"absolute"}
-          sx={{
-            objectFit: "conver",
-            borderBottomLeftRadius: "10px",
-            borderBottomRightRadius: "10px",
-            zIndex: -1,
-          }}
-          width={"100%"}
-          height={"100%"}
-          component={"img"}
-          src={service.backgroundImg}
-        />
-        <Box
-          display={"flex"}
-          justifyContent={"center"}
-          alignItems={"center"}
-          position={"absolute"}
-          sx={{
-            "&:hover": {
-              bgcolor: "rgba(0,0,0,.3)",
-            },
-            bgcolor: "rgba(0,0,0,.4)",
-            zIndex: 0,
-            borderBottomLeftRadius: "10px",
-            borderBottomRightRadius: "10px",
-          }}
-          width={"100%"}
-          height={"100%"}
-        >
-          <Typography
-            variant="h5"
-            color={"#fff"}
-            fontWeight={600}
-            textAlign={"center"}
-          >
+          <Box
+            component={"img"}
+            src={service.backgroundImg}
+            sx={{ width: "90px", height: "80px" }}
+          />
+          <Typography variant="h5" fontWeight={700} textAlign={"center"}>
             {lang == "en" ? service.enName : service.arName}
           </Typography>
-        </Box>
+        </Grid>
       </Grid>
-    </Grid>
+    </Link>
   );
 };
 
 export default ServicesListItem;
-{
-  /* <Link
-component={RouteLink}
-to={`/dash/services/getAnswer/${service.enName}`}
-underline="hover"
-color="inherit"
->
-<Box
-  sx={{ pt: "100%", position: "relative" }}
-  href="/dash/services/getAnswer"
-></Box>
-</Link> */
-}
