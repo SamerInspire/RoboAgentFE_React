@@ -118,7 +118,7 @@ const Register = () => {
 
       <ContainerBoxStyle container>
         <LeftPanel
-          title="Send Request to register a new user"
+          title="User registration"
           img={RegisterPhoto}
           imgAlt="Register Image"
         />

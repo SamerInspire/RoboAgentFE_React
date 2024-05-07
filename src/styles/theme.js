@@ -9,6 +9,7 @@ const lightTheme = createTheme({
   palette: {
     primary: {
       main: "rgb(0, 82, 73)",
+      light: "#4ABB7D",
     },
     background: {
       default: "#ffffff",
@@ -64,7 +65,7 @@ const darkTheme = createTheme({
     },
     green: {
       main: "rgb(0, 82, 73)",
-      light: "rgb(200, 250, 205)",
+      light: "#4ABB7D",
       lighter: "rgba(0, 171, 85, 0.08)",
       dark: "rgb(0, 123, 85)",
       darker: "rgb(0, 171, 85)",

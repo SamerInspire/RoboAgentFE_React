@@ -47,7 +47,7 @@ const UserCardStyle = styled(Link)(({ theme }) => ({
   margin: "12px",
   padding: "14px 12px",
   borderRadius: theme.spacing(2),
-  textDecoration: "n/one",
+  textDecoration: "none",
   "& .MuiTypography-root": {
     marginLeft: theme.spacing(2),
   },
@@ -58,6 +58,7 @@ const ListStyle = styled(List)(({ theme }) => ({
 }));
 
 const GetMoreStyle = styled(Box)(({ theme }) => ({
+  width: "90%",
   backgroundColor: theme.palette.gray.lighter,
   margin: "12px",
   padding: "60px 12px 14px 12px",
@@ -69,7 +70,7 @@ const GetMoreStyle = styled(Box)(({ theme }) => ({
     position: "absolute",
     bottom: 10,
     left: "50%",
-    width: theme.spacing(4),
+    width: "50px",
     width: 120,
     transform: "translate(-40%, -40%)",
     transition: "all 0.3s ease-in",
@@ -168,9 +169,7 @@ const SideDrawer = (props) => {
       <UserCardStyle to="/" onClick={props.onClose}>
         <Avatar src={userAvatar} alt="User Image" />
 
-        <Typography variant="subtitle1" component="h3">
-          {loginData.firstName}
-        </Typography>
+        <Typography variant="h6">{loginData.firstName}</Typography>
       </UserCardStyle>
 
       {/* List of links */}
@@ -192,7 +191,6 @@ const SideDrawer = (props) => {
       <GetMoreStyle>
         <img src={getMoreAvatar} alt="avatar" />
         <Typography variant="body1">
-          {" "}
           {t("user.welcome")} {loginData.firstName + " "} {loginData.lastName}
         </Typography>
       </GetMoreStyle>

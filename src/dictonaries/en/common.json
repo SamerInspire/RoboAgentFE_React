@@ -16,6 +16,26 @@
     "services": "Services",
     "register": "Register"
   },
+
+  "firstnameLabel": "First Name",
+  "middlenameLabel": "Middle Name",
+  "lastnameLabel": "Last Name",
+  "statusLabel": "Status",
+  "roleLabel": "Role",
+  "emailLabel": "Email",
+  "serviceLabel": "Service",
+  "servicesLabel": "Services",
+  "teamLabel": "Team",
+  "Forgot password?": "Forgot password?",
+  "Login": "Login",
+  "login_page": {
+    "Complaints Management Portal": "Complaints Management Portal",
+    "not_registered_label": "Not registered?",
+    "create_user_acc_label": "Create User Account",
+    "create_admin_acc_label": "Create Admin Account",
+    "login_btn": "Login"
+  },
+
   "dashboard": {
     "Total active Issues": "Total active Issues",
     "Current Tickets": "Current Tickets",

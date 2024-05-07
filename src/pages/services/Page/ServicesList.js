@@ -37,7 +37,9 @@ const ServicesList = () => {
               <ServicesListItem key={service.value} service={service} />
             </Grid>
           ) : service.allowedAuthorities[0] === "all" ? (
-            <ServicesListItem key={service.value} service={service} />
+            <Grid key={service.value} item xs={12} sm={6} md={4} lg={3}>
+              <ServicesListItem key={service.value} service={service} />
+            </Grid>
           ) : null;
         })}
       </Grid>
@@ -46,8 +48,3 @@ const ServicesList = () => {
 };
 
 export default ServicesList;
-// console.log(
-// loginData.roboAuthorities.some((auth) =>
-//   service.allowedAuthorities.includes(auth.name)
-// )
-// );

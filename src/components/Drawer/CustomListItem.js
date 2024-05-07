@@ -1,23 +1,7 @@
 import { NavLink } from "react-router-dom";
-import {
-  ListItem,
-  ListItemIcon,
-  Typography,
-  makeStyles,
-} from "@material-ui/core";
+import { ListItem, ListItemIcon, Typography } from "@material-ui/core";
 import { styled } from "@mui/material";
-
-const usestyles = makeStyles((theme) => ({
-  activeClass: {
-    color: `rgb(0, 123, 85) !important`,
-    backgroundColor: "rgba(0, 171, 85, 0.08)",
-    borderRight: `3px solid rgb(0, 123, 85)`,
-    "& .MuiTypography-subtitle1": {
-      fontWeight: 600,
-    },
-  },
-}));
-
+import "src/styles/styles.css";
 const ListItemStyle = styled(ListItem)(() => ({
   padding: 0,
 }));
@@ -43,11 +27,17 @@ const CustomLinkStyle = styled(NavLink)(({ theme }) => ({
 }));
 
 const CustomListItem = (props) => {
-  const classes = usestyles();
-
   return (
     <ListItemStyle button onClick={props.onClick}>
-      <CustomLinkStyle to={props.path} activeclassname={classes.activeClass}>
+      <CustomLinkStyle
+        to={props.path}
+        style={({ isActive, isPending, isTransitioning }) => {
+          return {
+            fontWeight: isActive ? "600" : "",
+            color: isActive ? "#4ABB7D" : "rgb(99, 115, 129)",
+          };
+        }}
+      >
         <ListItemIcon>{props.icon}</ListItemIcon>
 
         <Typography variant="subtitle1" component="h6">
