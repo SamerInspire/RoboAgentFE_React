@@ -20,7 +20,7 @@ export function onDragOver(event, setAuthorities) {
 
   const activeId = active.id;
   const overId = over.id;
-  if (activeId === overId) return;
+  if (activeId == overId) return;
 
   const isActiveATask = active.data.current?.type === "authority";
   const isOverATask = over.data?.current?.type === "authority";
@@ -30,9 +30,11 @@ export function onDragOver(event, setAuthorities) {
   if (isActiveATask && isOverATask) {
     debouncedSetAuthorities((authorities) => {
       const activeIndex = authorities.findIndex(
-        (auth) => auth.authId === activeId
+        (auth) => String(auth.authId) === activeId
       );
-      const overIndex = authorities.findIndex((auth) => auth.authId === overId);
+      const overIndex = authorities.findIndex(
+        (auth) => String(auth.authId) === overId
+      );
       authorities[activeIndex].containerValue =
         authorities[overIndex].containerValue;
       console.log(arrayMove(authorities, activeIndex, overIndex));
@@ -45,7 +47,7 @@ export function onDragOver(event, setAuthorities) {
   if (draggedContainer !== overContainer) {
     debouncedSetAuthorities((authorities) => {
       const activeIndex = authorities.findIndex(
-        (auth) => auth?.authId === activeId
+        (auth) => String(auth?.authId) === activeId
       );
       authorities[activeIndex].containerValue = overContainer;
 
@@ -62,6 +64,41 @@ export function onDragEnd(event, setActiveContainer, setActiveAuthority) {
   const activeId = active.id;
   const overId = over.id;
 
-  if (activeId === overId) return;
+  if (activeId == overId) return;
 }
 // Usage:
+const handleDragOver = ({ active, over }) => {
+  // Find the containers
+  const activeContainer = findBoardSectionContainer(boardSections, active.id);
+  const overContainer = findBoardSectionContainer(boardSections, over?.id);
+
+  if (!activeContainer || !overContainer || activeContainer === overContainer) {
+    return;
+  }
+
+  setBoardSections((boardSection) => {
+    const activeItems = boardSection[activeContainer];
+    const overItems = boardSection[overContainer];
+
+    // Find the indexes for the items
+    const activeIndex = activeItems.findIndex((item) => item.id === active.id);
+    const overIndex = overItems.findIndex((item) => item.id !== over?.id);
+
+    return {
+      ...boardSection,
+      [activeContainer]: [
+        ...boardSection[activeContainer].filter(
+          (item) => item.id !== active.id
+        ),
+      ],
+      [overContainer]: [
+        ...boardSection[overContainer].slice(0, overIndex),
+        boardSections[activeContainer][activeIndex],
+        ...boardSection[overContainer].slice(
+          overIndex,
+          boardSection[overContainer].length
+        ),
+      ],
+    };
+  });
+};

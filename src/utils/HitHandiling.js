@@ -8,6 +8,7 @@ import {
   handleOTPCodeActions,
   handleUserCodeActions,
 } from "./responseHandlers";
+import { redirect } from "react-router";
 
 export function successHitHandle(result, utils) {
   const { code } = result?.data?.roboAgentRs?.header?.responseStatus;
@@ -23,12 +24,27 @@ export function successHitHandle(result, utils) {
       return handleEmailCodeActions(result, codeNumbers, utils);
     case "CPW":
       return handleChangePassCodeActions(result, codeNumbers, utils);
-    case "JWT":
-      return JWTFalureHitHandle(result, codeNumbers);
     case "GAM":
       return handleGetAnswerFailure(result, codeNumbers);
     default:
       return handleGeneralErrorCodeActions(result, codeNumbers, utils);
+  }
+}
+export function failureHitHandle(result, utils) {
+  const { code } = result?.response.data?.roboAgentRs?.header?.responseStatus;
+  const { codeLetters, codeNumbers } = handleExtractCodeInfo(code);
+  // console.log(result);
+  if (result.response.status == 401) {
+    switch (codeLetters) {
+      case "JWT":
+        return JWTFalureHitHandle(result, codeNumbers);
+      default:
+        return handleGeneralErrorCodeActions(result, codeNumbers, utils);
+    }
+    {
+    }
+  } else {
+    redirect("/dash/error");
   }
 }
 export function handleExtractCodeInfo(code = 0) {

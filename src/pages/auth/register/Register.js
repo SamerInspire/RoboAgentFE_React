@@ -106,7 +106,6 @@ const Register = () => {
       );
     }
   };
-
   const handleBack = () => setActiveStep((prev) => prev - 1);
   return (
     <>

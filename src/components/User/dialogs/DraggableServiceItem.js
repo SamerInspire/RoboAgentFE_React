@@ -1,7 +1,5 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
-import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import { Grid, Typography } from "@mui/material";
 import { useState } from "react";
 import servicesIcons from "src/constants/servicesIcons";
@@ -16,7 +14,7 @@ const DraggableServiceItem = ({ authority, index }) => {
     transition,
     isDragging,
   } = useSortable({
-    id: authority.authId,
+    id: String(authority.authId),
     data: {
       type: "authority",
       authority,
@@ -46,8 +44,8 @@ const DraggableServiceItem = ({ authority, index }) => {
       sx={{
         opacity: isDragging ? "50%" : "100%",
         boxShadow: "0px 2px 12px 1px rgba(0,0,0,0.22)",
+        cursor: "grabbing",
         borderRadius: 10,
-        zIndex: 99,
         bgcolor: isDragging
           ? index == 1
             ? "blue.main"
@@ -64,15 +62,15 @@ const DraggableServiceItem = ({ authority, index }) => {
           {authority.name}
         </Typography>
       </Grid>
-      {mouseIsOver && (
-        <Grid item>
+      {/* {mouseIsOver && (
+        <Grid item xs={2}>
           {authority.containerValue == "all_services" ? (
             <ArrowCircleRightIcon sx={{ color: "inherit" }} />
           ) : (
             <ArrowCircleLeftIcon sx={{ color: "inherit" }} />
           )}
         </Grid>
-      )}
+      )} */}
     </Grid>
   );
 };

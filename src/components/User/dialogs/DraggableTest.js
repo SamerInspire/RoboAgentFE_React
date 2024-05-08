@@ -1,23 +1,28 @@
 import {
   DndContext,
   PointerSensor,
-  closestCorners,
+  closestCenter,
+  rectIntersection,
   useSensor,
   useSensors,
+  pointerWithin,
+  closestCorners,
+  DragOverlay,
+  KeyboardSensor,
 } from "@dnd-kit/core";
 import { Grid, Typography } from "@mui/material";
 import { useState } from "react";
 import { onDragEnd, onDragOver, onDragStart } from "src/utils/dnd/events"; // Import drag event handlers
 import ServiceContainer from "./ServiceContainer";
+import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 
 function DraggableTest({ containers, setAuthorities, authorities }) {
   const [activeContainer, setActiveContainer] = useState(null);
   const [activeAuthority, setActiveAuthority] = useState(null);
   const sensors = useSensors(
-    useSensor(PointerSensor, {
-      activationConstraint: {
-        distance: 10,
-      },
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
     })
   );
   return (

@@ -33,6 +33,7 @@ export function handleChangePassCodeActions(result, code, utils) {
 
 export function JWTFalureHitHandle() {
   console.log("jwt failure");
+  window.location = "/auth/login";
   localStorage.removeItem("userInfo");
 }
 export function handleOTPCodeActions(result, code, utils) {
@@ -57,9 +58,9 @@ export async function handleUserCodeActions(result, code, utils) {
   });
   return result;
 }
-
 export function handleGeneralErrorCodeActions(result, code, utils) {
-  const { header } = result.data.roboAgentRs;
+  console.log("general");
+  const { header } = result?.data?.roboAgentRs;
   const { setAlertInfo } = utils;
   const { alertStatus, message } = getResponseShape(header, code);
   setAlertInfo({ alertType: alertStatus, alertMsg: message });

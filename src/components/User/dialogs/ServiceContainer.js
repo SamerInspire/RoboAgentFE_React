@@ -1,6 +1,5 @@
 import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import { Grid, Typography } from "@mui/material";
-import React from "react";
 import { glassMorphisimStyle } from "src/styles/styles";
 import DraggableServiceItem from "./DraggableServiceItem";
 
@@ -22,16 +21,14 @@ function ServiceContainer({ id, title, container, index, authorities }) {
       ref={setNodeRef}
       {...attributes}
       {...listeners}
-      minHeight={"200px"}
       height={"100%"}
       alignItems={"flex-start"}
-      sx={{ ...glassMorphisimStyle, zIndex: 0 }}
+      sx={{ ...glassMorphisimStyle }}
     >
       <Grid
         container
         item
         justifyContent={"center"}
-        alignItems={"flex-start"}
         py={2}
         borderBottom={"3px solid"}
         sx={{ borderBottomColor: index == 1 ? "blue.main" : "primary.main" }}
@@ -48,24 +45,21 @@ function ServiceContainer({ id, title, container, index, authorities }) {
         container
         item
         p={4}
-        minHeight={"200px"}
-        borderRadius={"10px"}
-        sx={{ borderTopRightRadius: "0", borderTopLeftRadius: 0 }}
         bgcolor={"#f6f6f6"}
+        minHeight={"200px"}
+        alignItems={"flex-start"}
       >
-        <SortableContext
-          items={authorities?.map((authority) => authority.authId)}
-        >
-          <Grid container item gap={8}>
-            {authorities?.map((authority) => (
+        <Grid container item gap={8}>
+          <SortableContext items={authorities}>
+            {authorities?.map((authority, index) => (
               <DraggableServiceItem
-                key={authority.authId}
+                key={authority.name + index}
                 authority={authority}
                 index={container.id}
               />
             ))}
-          </Grid>
-        </SortableContext>
+          </SortableContext>
+        </Grid>
       </Grid>
     </Grid>
   );
