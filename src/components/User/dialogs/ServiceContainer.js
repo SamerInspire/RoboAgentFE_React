@@ -34,7 +34,16 @@ function ServiceContainer({ id, title, authorities, authority }) {
           {title.split("_").join(" ").toUpperCase()}
         </Typography>
       </Grid>
-      <Grid container item p={4} bgcolor={"#f6f6f6"} gap={4} ref={setNodeRef}>
+      <Grid
+        container
+        item
+        p={4}
+        bgcolor={"#f6f6f6"}
+        alignItems={"flex-start"}
+        minHeight={"200px"}
+        gap={4}
+        ref={setNodeRef}
+      >
         <SortableContext
           id={id}
           strategy={verticalListSortingStrategy}

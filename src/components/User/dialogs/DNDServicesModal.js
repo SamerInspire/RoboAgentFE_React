@@ -1,27 +1,24 @@
 import {
   DndContext,
-  DragOverlay,
   KeyboardSensor,
   PointerSensor,
   closestCorners,
-  defaultDropAnimation,
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
+import { Button, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
+import { Box } from "@mui/system";
 import { useState } from "react";
+import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import {
   findBoardSectionContainer,
-  initializeContainer,
   getAuthorityById,
+  initializeContainer,
 } from "src/utils/dnd/service";
-import ServiceContainer from "./ServiceContainer";
-import DraggableServiceItem from "./DraggableServiceItem";
-import { Button, Typography } from "@mui/material";
-import { Box } from "@mui/system";
 import { handleSubmitUserAuths } from "src/utils/users/users";
-import { useUpdateAlert } from "src/hooks/Context/AlertContext";
+import ServiceContainer from "./ServiceContainer";
 
 const DNDServicesModal = ({
   authorities,
@@ -51,11 +48,8 @@ const DNDServicesModal = ({
       containerSections,
       active.id
     );
-    const overContainer = findBoardSectionContainer(
-      containerSections,
-      over?.id
-    );
-
+    const overContainer = findBoardSectionContainer(containerSections, over.id);
+    console.log(overContainer);
     if (
       !activeContainer ||
       !overContainer ||
@@ -156,7 +150,13 @@ const DNDServicesModal = ({
           onDragOver={handleDragOver}
           onDragEnd={handleDragEnd}
         >
-          <Grid container item flexWrap={"nowrap"} gap={12}>
+          <Grid
+            container
+            item
+            flexWrap={"nowrap"}
+            alignItems={"flex-start"}
+            gap={12}
+          >
             {Object.keys(containerSections).map((containerSectionKey) => (
               <Grid container item xs={6}>
                 <ServiceContainer

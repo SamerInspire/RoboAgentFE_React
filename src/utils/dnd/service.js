@@ -22,24 +22,14 @@ export const initializeContainer = (authorities) => {
 };
 
 export const findBoardSectionContainer = (containerSections, id) => {
-  // console.log(id, containerSections);
-  // const isInAllServices = containerSections.all_services.some(
-  //   (service) => service.id == id
-  // );
-  // const isInActiveServices = containerSections.active_services.some(
-  //   (service) => service.id == id
-  // );
-  // if (isInActiveServices) {
-  //   const e = containerSections["active_services"].find(
-  //     (auth) => auth.id === id
-  //   );
-  //   console.log(e);
-  //   return e.id;
-  // } else if (isInAllServices) {
-  //   const e = containerSections["all_services"].find((auth) => auth.id == id);
-  //   return e.id;
-  // }
-
+  const isInAllServices = containerSections.all_services.some(
+    (service) => service.id == id
+  );
+  const isInActiveServices = containerSections.active_services.some(
+    (service) => service.id == id
+  );
+  if (id == "active_services") return "active_services";
+  else if (id == "all_services") return "all_services";
   const container = Object.keys(containerSections).find((key) =>
     containerSections[key].find((item) => item.id === id)
   );
