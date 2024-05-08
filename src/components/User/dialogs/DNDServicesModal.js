@@ -1,35 +1,180 @@
-import { Button, Grid } from "@mui/material";
+import {
+  DndContext,
+  DragOverlay,
+  KeyboardSensor,
+  PointerSensor,
+  closestCorners,
+  defaultDropAnimation,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
+import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
+import Grid from "@mui/material/Grid";
+import { useState } from "react";
+import {
+  findBoardSectionContainer,
+  initializeContainer,
+  getAuthorityById,
+} from "src/utils/dnd/service";
+import ServiceContainer from "./ServiceContainer";
+import DraggableServiceItem from "./DraggableServiceItem";
+import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import DraggableTest from "./DraggableTest";
 import { handleSubmitUserAuths } from "src/utils/users/users";
 import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 
-function DNDServicesModal({
-  userData,
-  containers,
-  setAuthorities,
-  handleCloseServicesModal,
+const DNDServicesModal = ({
   authorities,
-}) {
+  handleCloseServicesModal,
+  userData,
+}) => {
+  const initialContainersSections = initializeContainer(authorities);
+  const [containerSections, setContainerSections] = useState(
+    initialContainersSections
+  );
+  const [activeAuthorityId, setActiveAuthorityId] = useState(null);
   const setAlertInfo = useUpdateAlert();
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
+
+  const handleDragStart = ({ active }) => {
+    setActiveAuthorityId(active.id);
+  };
+
+  const handleDragOver = ({ active, over }) => {
+    // Find the containers
+    const activeContainer = findBoardSectionContainer(
+      containerSections,
+      active.id
+    );
+    const overContainer = findBoardSectionContainer(
+      containerSections,
+      over?.id
+    );
+
+    if (
+      !activeContainer ||
+      !overContainer ||
+      activeContainer === overContainer
+    ) {
+      return;
+    }
+
+    setContainerSections((boardSection) => {
+      const activeItems = boardSection[activeContainer];
+      const overItems = boardSection[overContainer];
+
+      // Find the indexes for the items
+      const activeIndex = activeItems.findIndex(
+        (item) => item.id === active.id
+      );
+      const overIndex = overItems.findIndex((item) => item.id !== over?.id);
+
+      return {
+        ...boardSection,
+        [activeContainer]: [
+          ...boardSection[activeContainer].filter(
+            (item) => item.id !== active.id
+          ),
+        ],
+        [overContainer]: [
+          ...boardSection[overContainer].slice(0, overIndex),
+          containerSections[activeContainer][activeIndex],
+          ...boardSection[overContainer].slice(
+            overIndex,
+            boardSection[overContainer].length
+          ),
+        ],
+      };
+    });
+  };
+
+  const handleDragEnd = ({ active, over }) => {
+    const activeContainer = findBoardSectionContainer(
+      containerSections,
+      active.id
+    );
+    const overContainer = findBoardSectionContainer(
+      containerSections,
+      over?.id
+    );
+
+    if (
+      !activeContainer ||
+      !overContainer ||
+      activeContainer !== overContainer
+    ) {
+      return;
+    }
+
+    const activeIndex = containerSections[activeContainer].findIndex(
+      (task) => task.id === active.id
+    );
+    const overIndex = containerSections[overContainer].findIndex(
+      (task) => task.id === over?.id
+    );
+
+    if (activeIndex !== overIndex) {
+      setContainerSections((boardSection) => ({
+        ...boardSection,
+        [overContainer]: arrayMove(
+          boardSection[overContainer],
+          activeIndex,
+          overIndex
+        ),
+      }));
+    }
+
+    setActiveAuthorityId(null);
+  };
+
+  const authority = activeAuthorityId
+    ? getAuthorityById(authorities, activeAuthorityId)
+    : null;
   return (
-    <>
-      <Grid
-        container
-        item
-        p={4}
-        sx={{
-          overflowX: "hidden",
-          overflowY: "scroll",
-          maxHeight: "calc(90vh - 65px)",
-        }}
-      >
-        <DraggableTest
-          setAuthorities={setAuthorities}
-          containers={containers}
-          authorities={authorities}
-        />
+    <Grid
+      container
+      item
+      maxHeight={"85vh"}
+      sx={{ overflowY: "scroll", overflowX: "clip" }}
+      gap={4}
+    >
+      <Grid container item p={4} gap={4}>
+        <Grid item>
+          <Typography variant="h4" fontWeight={"bold"}>
+            Edit User Services
+          </Typography>
+        </Grid>
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCorners}
+          onDragStart={handleDragStart}
+          onDragOver={handleDragOver}
+          onDragEnd={handleDragEnd}
+        >
+          <Grid container item flexWrap={"nowrap"} gap={12}>
+            {Object.keys(containerSections).map((containerSectionKey) => (
+              <Grid container item xs={6}>
+                <ServiceContainer
+                  key={containerSectionKey}
+                  id={containerSectionKey}
+                  title={containerSectionKey}
+                  authorities={containerSections[containerSectionKey]}
+                  authority={authority}
+                />
+              </Grid>
+            ))}
+          </Grid>
+          {/* <DragOverlay dropAnimation={dropAnimation}>
+            {authority ? <DraggableServiceItem authority={authority} /> : null}
+          </DragOverlay> */}
+        </DndContext>
       </Grid>
+
       <Box
         position={"fixed"}
         bgcolor={"#f6f6f6"}
@@ -59,9 +204,7 @@ function DNDServicesModal({
               fullWidth
               onClick={() =>
                 handleSubmitUserAuths({
-                  roboAuthorities: authorities.filter(
-                    (auth) => auth.containerValue == "active_services"
-                  ),
+                  roboAuthorities: containerSections["active_services"],
                   requestAction: "UPDATE_USER_AUTHORITIES",
                   setAlertInfo,
                   userId: userData[0],
@@ -75,8 +218,8 @@ function DNDServicesModal({
           </Grid>
         </Grid>
       </Box>
-    </>
+    </Grid>
   );
-}
+};
 
 export default DNDServicesModal;

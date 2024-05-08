@@ -1,18 +1,21 @@
+import { v4 as uuidv4 } from "uuid";
+
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { Button, Grid, Modal, Popper, Typography } from "@mui/material";
+import { Box, Button, Grid, Modal, Popper, Typography } from "@mui/material";
 import MUIDataTable from "mui-datatables";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import { glassMorphisimStyle } from "src/styles/styles";
 import {
   handleFetchAllUsers,
   handleFetchAuthorities,
+  handleSubmitUserAuths,
 } from "src/utils/users/users";
 import DNDServicesModal from "./dialogs/DNDServicesModal";
 import ServiceDialog from "./dialogs/ServiceDialog";
 import RolesPopper from "./poppers/RolesPopper";
 import "./usersTable.css";
-import { useTranslation } from "react-i18next";
 export function handleFilterAuthorities(authorities, activeUserAuth) {
   const newAuth = [];
   authorities.map((auth) => {
@@ -20,10 +23,14 @@ export function handleFilterAuthorities(authorities, activeUserAuth) {
       (active) => active.authId === auth.authId
     );
     if (isActiveAuth == -1) {
-      const copyObj = { ...auth, containerValue: "all_services" };
+      const copyObj = { ...auth, containerValue: "all_services", id: uuidv4() };
       newAuth.push(copyObj);
     } else {
-      const copyObj = { ...auth, containerValue: "active_services" };
+      const copyObj = {
+        ...auth,
+        containerValue: "active_services",
+        id: uuidv4(),
+      };
       newAuth.push(copyObj);
     }
   });
@@ -211,9 +218,6 @@ function UserTable() {
               <Grid item>
                 <Typography>{value}</Typography>
               </Grid>
-              {/* <Grid item>
-                <Typography>{value}</Typography>
-              </Grid> */}
             </Grid>
           );
         },
@@ -260,7 +264,6 @@ function UserTable() {
           sx={{
             ...glassMorphisimStyle,
             minHeight: "90vh",
-            overflowX: "clip",
           }}
         >
           <DNDServicesModal

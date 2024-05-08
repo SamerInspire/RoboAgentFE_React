@@ -1,57 +1,16 @@
-import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
 import { Grid, Typography } from "@mui/material";
-import { useState } from "react";
 import servicesIcons from "src/constants/servicesIcons";
-const DraggableServiceItem = ({ authority, index }) => {
-  const [mouseIsOver, setMouseIsOver] = useState(false);
-
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-    isDragging,
-  } = useSortable({
-    id: String(authority.authId),
-    data: {
-      type: "authority",
-      authority,
-    },
-  });
-
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-  };
+const DraggableServiceItem = ({ authority }) => {
   return (
     <Grid
       container
-      ref={setNodeRef}
-      style={style}
       gap={2}
-      {...attributes}
-      {...listeners}
       alignItems={"center"}
       p={2}
-      onMouseEnter={() => {
-        setMouseIsOver(true);
-      }}
-      onMouseLeave={() => {
-        setMouseIsOver(false);
-      }}
       sx={{
-        opacity: isDragging ? "50%" : "100%",
         boxShadow: "0px 2px 12px 1px rgba(0,0,0,0.22)",
         cursor: "grabbing",
-        borderRadius: 10,
-        bgcolor: isDragging
-          ? index == 1
-            ? "blue.main"
-            : "primary.main"
-          : "inherit",
-        color: isDragging ? "white" : index == 1 ? "blue.main" : "primary.main",
+        borderRadius: "15px",
       }}
     >
       <Grid item color={"inherit"}>
@@ -62,15 +21,6 @@ const DraggableServiceItem = ({ authority, index }) => {
           {authority.name}
         </Typography>
       </Grid>
-      {/* {mouseIsOver && (
-        <Grid item xs={2}>
-          {authority.containerValue == "all_services" ? (
-            <ArrowCircleRightIcon sx={{ color: "inherit" }} />
-          ) : (
-            <ArrowCircleLeftIcon sx={{ color: "inherit" }} />
-          )}
-        </Grid>
-      )} */}
     </Grid>
   );
 };

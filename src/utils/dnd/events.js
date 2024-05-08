@@ -67,38 +67,3 @@ export function onDragEnd(event, setActiveContainer, setActiveAuthority) {
   if (activeId == overId) return;
 }
 // Usage:
-const handleDragOver = ({ active, over }) => {
-  // Find the containers
-  const activeContainer = findBoardSectionContainer(boardSections, active.id);
-  const overContainer = findBoardSectionContainer(boardSections, over?.id);
-
-  if (!activeContainer || !overContainer || activeContainer === overContainer) {
-    return;
-  }
-
-  setBoardSections((boardSection) => {
-    const activeItems = boardSection[activeContainer];
-    const overItems = boardSection[overContainer];
-
-    // Find the indexes for the items
-    const activeIndex = activeItems.findIndex((item) => item.id === active.id);
-    const overIndex = overItems.findIndex((item) => item.id !== over?.id);
-
-    return {
-      ...boardSection,
-      [activeContainer]: [
-        ...boardSection[activeContainer].filter(
-          (item) => item.id !== active.id
-        ),
-      ],
-      [overContainer]: [
-        ...boardSection[overContainer].slice(0, overIndex),
-        boardSections[activeContainer][activeIndex],
-        ...boardSection[overContainer].slice(
-          overIndex,
-          boardSection[overContainer].length
-        ),
-      ],
-    };
-  });
-};
