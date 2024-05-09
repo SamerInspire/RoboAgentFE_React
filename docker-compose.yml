@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  work-p:
+    image: $IMAGE_NAME
+    container_name: work-p
+    labels:
+      com.qiwa.runtime.product-name: "qiwa"
+      com.qiwa.runtime.service-name: "gateway-gateway"
+      com.qiwa.runtime.service-vendor: "qa"
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./config.json:/usr/share/nginx/html/config.json
+    environment:
+      VIRTUAL_HOST: working-permits-qiwa.$URL
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost/index.html || exit 1"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+networks:
+  default:
+    external:
+      name: nginx-proxy

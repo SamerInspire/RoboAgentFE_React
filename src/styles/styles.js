@@ -90,7 +90,6 @@ const ContainerBoxStyle = styled(Box)(({ theme }) => ({
   display: "grid",
   gap: theme.spacing(3),
   gridTemplateColumns: `350px 1fr`,
-
   [theme.breakpoints.down("sm")]: {
     gridTemplateColumns: `1fr`,
   },

@@ -5,11 +5,10 @@ import FormLogin from "src/components/AuthPages/FormLogin";
 import LeftPanel from "src/components/AuthPages/LeftPanel";
 
 // img
+import { styled } from "@mui/material";
 import LoginPhoto from "src/assets/Images/image_processing20210907-13511-1juj33d.gif";
 import { ContainerBoxStyle } from "src/styles/styles";
-import { styled } from "@mui/material";
-import AuthButtonGroup from "src/components/AuthPages/ButtonGroup";
-import SectionDivider from "src/components/AuthPages/SectionDivider";
+import { Link } from "react-router-dom";
 
 // styles
 
@@ -62,14 +61,7 @@ const Login = () => {
         />
 
         <RightPanelStyle>
-          {/* <Typography paragraph className="account_switch">
-            Don't have an account?{" "}
-            <Link to="/register" component={RouterLink} underline="none">
-              Request one
-            </Link>
-          </Typography> */}
-
-          <Container maxWidth="xs" className="form_Container">
+          <Container maxWidth="md" className="form_Container">
             <Typography variant="h4">Sign in</Typography>
             <Typography paragraph color="textSecondary">
               Enter your details below.
