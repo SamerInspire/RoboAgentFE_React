@@ -206,9 +206,7 @@ const ServicesGetAnswer = ({}) => {
                     style={{
                       width: "100%",
                       color: "white",
-                      backgroundColor: "Red",
                     }}
-                    width="45%"
                     href="/dash/services"
                   >
                     back

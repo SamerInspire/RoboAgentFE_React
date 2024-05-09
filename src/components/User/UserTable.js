@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { Box, Button, Grid, Modal, Popper, Typography } from "@mui/material";
+import { Button, Grid, Modal, Popper, Typography } from "@mui/material";
 import MUIDataTable from "mui-datatables";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -10,7 +10,6 @@ import { glassMorphisimStyle } from "src/styles/styles";
 import {
   handleFetchAllUsers,
   handleFetchAuthorities,
-  handleSubmitUserAuths,
 } from "src/utils/users/users";
 import DNDServicesModal from "./dialogs/DNDServicesModal";
 import ServiceDialog from "./dialogs/ServiceDialog";
@@ -68,18 +67,7 @@ function UserTable() {
   const handleCloseServiceDialog = () => {
     setIsEditServiceDialogOpen(false);
   };
-  const containers = [
-    {
-      id: "1",
-      title: "All Services",
-      value: "all_services",
-    },
-    {
-      id: "0",
-      title: "Active Services",
-      value: "active_services",
-    },
-  ];
+
   const columns = [
     {
       name: "FirstName",
@@ -267,7 +255,6 @@ function UserTable() {
           }}
         >
           <DNDServicesModal
-            containers={containers}
             userData={userData}
             authorities={authorities}
             setAuthorities={setAuthorities}

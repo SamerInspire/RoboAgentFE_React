@@ -68,7 +68,7 @@ const GetMoreStyle = styled(Box)(({ theme }) => ({
   bottom: 0,
   "& img": {
     position: "absolute",
-    bottom: 10,
+    bottom: 30,
     left: "50%",
     width: "50px",
     width: 120,

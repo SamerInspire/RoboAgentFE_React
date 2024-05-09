@@ -22,12 +22,6 @@ export const initializeContainer = (authorities) => {
 };
 
 export const findBoardSectionContainer = (containerSections, id) => {
-  const isInAllServices = containerSections.all_services.some(
-    (service) => service.id == id
-  );
-  const isInActiveServices = containerSections.active_services.some(
-    (service) => service.id == id
-  );
   if (id == "active_services") return "active_services";
   else if (id == "all_services") return "all_services";
   const container = Object.keys(containerSections).find((key) =>

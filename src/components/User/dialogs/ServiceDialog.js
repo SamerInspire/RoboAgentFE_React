@@ -54,7 +54,7 @@ function ServiceDialog({
           >
             {serviceList?.map?.((service) => (
               <MenuItem key={service.id} value={service.service}>
-                {service.service}
+                {service.service.split("_").join(" ")}
               </MenuItem>
             ))}
           </Select>

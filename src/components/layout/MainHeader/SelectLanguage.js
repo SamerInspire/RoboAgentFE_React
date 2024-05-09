@@ -8,7 +8,6 @@ import AR_Flag from "src/assets/Images/ic_flag_ar.svg";
 import EN_Flag from "src/assets/Images/ic_flag_en.svg";
 
 const StyledMenu = styled(Menu)(({ theme }) => ({
-  marginTop: 35,
   paper: {
     minWidth: 175,
     boxShadow: `0 2px 10px -5px ${theme.palette.green.darker}`,

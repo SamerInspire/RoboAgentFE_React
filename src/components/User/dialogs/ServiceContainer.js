@@ -1,4 +1,4 @@
-import { useDroppable } from "@dnd-kit/core";
+import { DragOverlay, useDroppable, defaultDropAnimation } from "@dnd-kit/core";
 import {
   SortableContext,
   verticalListSortingStrategy,
@@ -8,10 +8,11 @@ import SortableTaskItem from "src/components/dnd/SortableTaskItem";
 import { glassMorphisimStyle } from "src/styles/styles";
 import DraggableServiceItem from "./DraggableServiceItem";
 
-function ServiceContainer({ id, title, authorities, authority }) {
+function ServiceContainer({ id, title, authorities }) {
   const { setNodeRef } = useDroppable({
     id,
   });
+
   return (
     <Grid
       container
@@ -25,11 +26,12 @@ function ServiceContainer({ id, title, authorities, authority }) {
         justifyContent={"center"}
         py={2}
         borderBottom={"3px solid"}
+        borderColor={id == "all_services" ? "blue.main" : "primary.main"}
       >
         <Typography
           fontWeight={600}
           variant="h5"
-          // color={index == 1 ? "blue.main" : "primary.main"}
+          color={id == "all_services" ? "blue.main" : "primary.main"}
         >
           {title.split("_").join(" ").toUpperCase()}
         </Typography>
@@ -53,6 +55,7 @@ function ServiceContainer({ id, title, authorities, authority }) {
             <SortableTaskItem
               key={authority.id}
               id={authority.id}
+              containerId={id}
               authority={authority}
             >
               <DraggableServiceItem authority={authority} />

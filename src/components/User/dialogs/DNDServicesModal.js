@@ -1,8 +1,11 @@
 import {
   DndContext,
+  DragOverlay,
   KeyboardSensor,
+  MouseSensor,
   PointerSensor,
   closestCorners,
+  defaultDropAnimation,
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
@@ -19,7 +22,10 @@ import {
 } from "src/utils/dnd/service";
 import { handleSubmitUserAuths } from "src/utils/users/users";
 import ServiceContainer from "./ServiceContainer";
-
+import DraggableServiceItem from "./DraggableServiceItem";
+const dropAnimation = {
+  ...defaultDropAnimation,
+};
 const DNDServicesModal = ({
   authorities,
   handleCloseServicesModal,
@@ -32,6 +38,7 @@ const DNDServicesModal = ({
   const [activeAuthorityId, setActiveAuthorityId] = useState(null);
   const setAlertInfo = useUpdateAlert();
   const sensors = useSensors(
+    useSensor(MouseSensor, { activationConstraint: { distance: 5 } }),
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
@@ -125,16 +132,16 @@ const DNDServicesModal = ({
 
     setActiveAuthorityId(null);
   };
-
   const authority = activeAuthorityId
     ? getAuthorityById(authorities, activeAuthorityId)
     : null;
+
   return (
     <Grid
       container
       item
       maxHeight={"85vh"}
-      sx={{ overflowY: "scroll", overflowX: "clip" }}
+      sx={{ overflowY: "scroll" }}
       gap={4}
     >
       <Grid container item p={4} gap={4}>
@@ -156,6 +163,7 @@ const DNDServicesModal = ({
             flexWrap={"nowrap"}
             alignItems={"flex-start"}
             gap={12}
+            sx={{ overflowX: "clip" }}
           >
             {Object.keys(containerSections).map((containerSectionKey) => (
               <Grid container item xs={6}>
@@ -164,14 +172,10 @@ const DNDServicesModal = ({
                   id={containerSectionKey}
                   title={containerSectionKey}
                   authorities={containerSections[containerSectionKey]}
-                  authority={authority}
                 />
               </Grid>
             ))}
           </Grid>
-          {/* <DragOverlay dropAnimation={dropAnimation}>
-            {authority ? <DraggableServiceItem authority={authority} /> : null}
-          </DragOverlay> */}
         </DndContext>
       </Grid>
 
