@@ -5,26 +5,27 @@ import DashCardBox from "./DashCardBox";
 import { useTranslation } from "react-i18next";
 
 // chart data series
-const SERIES = [
-  {
-    name: "L1 Team",
-    type: "column",
-    data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
-  },
-  {
-    name: "L2 Team",
-    type: "area",
-    data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
-  },
-  {
-    name: "Admins",
-    type: "line",
-    data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-  },
-];
 
 const ChartSiteVisits = () => {
   const { t } = useTranslation();
+  const SERIES = [
+    {
+      name: t("dashboard.L1 Team"),
+      type: "column",
+      data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
+    },
+    {
+      name: t("dashboard.L2 Team"),
+      type: "area",
+      data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
+    },
+    {
+      name: t("dashboard.Admins"),
+      type: "line",
+      data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
+    },
+  ];
+
   const options = {
     chart: {
       id: "basic-bar",
@@ -90,7 +91,7 @@ const ChartSiteVisits = () => {
     <DashCard>
       <DashCardHeader
         title={t("dashboard.Website Visits")}
-        subheader="(+43%) than last year"
+        subheader={t("dashboard.(+43%) than last year")}
       />
 
       <DashCardBox>

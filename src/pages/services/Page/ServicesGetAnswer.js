@@ -186,7 +186,7 @@ const ServicesGetAnswer = ({}) => {
                   label="Answer"
                   textAlign="right"
                   value={answer}
-                  style={{ direction: "rtl" }}
+                  // style={{ direction: "rtl" }}
                   InputProps={{
                     readOnly: true,
                   }}

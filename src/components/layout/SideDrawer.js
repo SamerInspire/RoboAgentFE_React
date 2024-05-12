@@ -58,7 +58,6 @@ const ListStyle = styled(List)(({ theme }) => ({
 }));
 
 const GetMoreStyle = styled(Box)(({ theme }) => ({
-  width: "90%",
   backgroundColor: theme.palette.gray.lighter,
   margin: "12px",
   padding: "60px 12px 14px 12px",
@@ -72,7 +71,7 @@ const GetMoreStyle = styled(Box)(({ theme }) => ({
     left: "50%",
     width: "50px",
     width: 120,
-    transform: "translate(-40%, -40%)",
+    transform: "translate(-50%, -30%)",
     transition: "all 0.3s ease-in",
   },
   "& h5": {
@@ -95,7 +94,7 @@ const GetMoreStyle = styled(Box)(({ theme }) => ({
 
   "&:hover": {
     "& img": {
-      transform: "translate(-40%, -50%)",
+      transform: "translate(-50%, -0%)",
     },
   },
 }));

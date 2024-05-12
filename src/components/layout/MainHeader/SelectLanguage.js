@@ -3,9 +3,11 @@ import { styled } from "@mui/material";
 
 // images
 import i18next from "i18next";
+import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import AR_Flag from "src/assets/Images/ic_flag_ar.svg";
 import EN_Flag from "src/assets/Images/ic_flag_en.svg";
+import { themeContext } from "src/hooks/Context/ThemeContext";
 
 const StyledMenu = styled(Menu)(({ theme }) => ({
   paper: {
@@ -53,7 +55,7 @@ const languages = [
 
 const LanguageSelector = (props) => {
   // console.log(i18next.language);
-
+  const { setDirection } = useContext(themeContext);
   const { i18n } = useTranslation();
 
   return (
@@ -79,6 +81,7 @@ const LanguageSelector = (props) => {
             value={el.alt}
             onClick={(e) => {
               i18n.changeLanguage(el.lang);
+              // setDirection(el.lang == "ar" ? "rtl" : "ltr");
               props.onClose(e);
             }}
           >

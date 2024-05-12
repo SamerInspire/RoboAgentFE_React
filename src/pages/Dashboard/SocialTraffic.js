@@ -10,6 +10,7 @@ import {
   RiTwitterFill,
 } from "react-icons/ri";
 import { Box, styled } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const BoxContainerStyle = styled(Box)(({ theme }) => ({
   padding: theme.spacing(3),
@@ -19,33 +20,34 @@ const BoxContainerStyle = styled(Box)(({ theme }) => ({
 }));
 
 // items list
-const list = [
-  {
-    title: "Facebook",
-    amount: "47.10k",
-    icon: <RiFacebookFill />,
-  },
-  {
-    title: "Google",
-    amount: "65.60k",
-    icon: <RiGoogleFill />,
-  },
-  {
-    title: "LinkedIn",
-    amount: "84.14k",
-    icon: <RiLinkedinFill />,
-  },
-  {
-    title: "Twitter",
-    amount: "15.70k",
-    icon: <RiTwitterFill />,
-  },
-];
 
 const SocialTraffic = () => {
+  const { t } = useTranslation();
+  const list = [
+    {
+      title: t("dashboard.Facebook"),
+      amount: "47.10k",
+      icon: <RiFacebookFill />,
+    },
+    {
+      title: t("dashboard.Google"),
+      amount: "65.60k",
+      icon: <RiGoogleFill />,
+    },
+    {
+      title: t("dashboard.LinkedIn"),
+      amount: "84.14k",
+      icon: <RiLinkedinFill />,
+    },
+    {
+      title: t("dashboard.Twitter"),
+      amount: "15.70k",
+      icon: <RiTwitterFill />,
+    },
+  ];
   return (
     <DashCard>
-      <DashCardHeader title="Traffic by Site" />
+      <DashCardHeader title={t("dashboard.Traffic by Site")} />
 
       <BoxContainerStyle>
         {list.map((el) => (

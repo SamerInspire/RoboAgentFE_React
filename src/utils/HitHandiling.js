@@ -31,10 +31,13 @@ export function successHitHandle(result, utils) {
   }
 }
 export function failureHitHandle(result, utils) {
-  const { code } = result?.response.data?.roboAgentRs?.header?.responseStatus;
-  const { codeLetters, codeNumbers } = handleExtractCodeInfo(code);
-  // console.log(result);
-  if (result.response.status == 401) {
+  if (
+    result.response.status == 401 ||
+    result.response.status == 402 ||
+    result.response.status == 403
+  ) {
+    const { code } = result?.response.data?.roboAgentRs?.header?.responseStatus;
+    const { codeLetters, codeNumbers } = handleExtractCodeInfo(code);
     switch (codeLetters) {
       case "JWT":
         return JWTFalureHitHandle(result, codeNumbers);
@@ -44,7 +47,8 @@ export function failureHitHandle(result, utils) {
     {
     }
   } else {
-    redirect("/dash/error");
+    window.location = "/error";
+    redirect("/error");
   }
 }
 export function handleExtractCodeInfo(code = 0) {

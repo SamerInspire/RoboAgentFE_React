@@ -4,8 +4,6 @@ import App from "./App";
 import "./dictonaries/i18n";
 import "./index.css";
 import { StrictMode } from "react";
-console.log(process.env);
-console.log(process.env.NODE_ENV);
 
 if (process.env.NODE_ENV === "production") {
   console.log("App running in production mode");

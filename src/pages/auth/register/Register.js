@@ -12,6 +12,7 @@ import FinalRegister from "src/components/AuthPages/FinalRegister";
 import CustomStepper from "src/components/AuthPages/stepper/CustomStepper";
 import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import { handleSubmitNewUser } from "src/utils/users/users";
+import { useTranslation } from "react-i18next";
 
 // styles
 const ContainerBoxStyle = styled(Box)(({ theme }) => ({
@@ -78,6 +79,7 @@ const Register = () => {
   const [registeredId, setRegisteredId] = useState(null);
   const [userData, setUserData] = useState({});
   const setAlertInfo = useUpdateAlert();
+  const { t } = useTranslation();
   const myref = useRef();
   const {
     register,
@@ -116,7 +118,7 @@ const Register = () => {
 
       <ContainerBoxStyle>
         <LeftPanel
-          title="User registration"
+          title={t("register.User registration")}
           img={RegisterPhoto}
           imgAlt="Register Image"
         />
@@ -144,23 +146,23 @@ const Register = () => {
             )}
             {/* Terms */}
             <Typography paragraph color="textSecondary" className="terms">
-              By registering, I agree to RoboAgent{" "}
+              {t("By registering, I agree to RoboAgent")}{" "}
               <Link
                 href="#"
                 onClick={preventDefault}
                 underline="always"
                 color="textPrimary"
               >
-                Terms of Service
+                {t("Terms of Service")}
               </Link>{" "}
-              and{" "}
+              {t("and")}{" "}
               <Link
                 href="#"
                 onClick={preventDefault}
                 underline="always"
                 color="textPrimary"
               >
-                Privacy Policy
+                {t("Privacy Policy")}
               </Link>
               .
             </Typography>

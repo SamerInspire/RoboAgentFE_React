@@ -31,7 +31,6 @@ const allowedPages = {
 };
 const Routes = () => {
   const { loginData } = useContext(LoginContext);
-  console.log(loginData.isLoggedIn);
   const navigate = useNavigate();
 
   const pageRouts = [
@@ -66,7 +65,9 @@ const Routes = () => {
         { path: "", element: <ErrorPage /> },
       ],
     },
+    { path: "/error", element: <SomethingWentWrongError /> },
     // dash
+
     {
       path: "dash",
       element: loginData.isLoggedIn ? (
@@ -86,7 +87,6 @@ const Routes = () => {
             <Navigate to="/dash/dashboard" />
           ),
         },
-        { path: "error", element: <SomethingWentWrongError /> },
         {
           path: "services",
           children: [

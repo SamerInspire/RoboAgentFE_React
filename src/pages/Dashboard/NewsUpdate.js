@@ -12,48 +12,48 @@ import coverImg_3 from "src/assets/Images/newsList/dynamic_identity.jpg";
 import coverImg_4 from "src/assets/Images/newsList/chief-program-officer-chief-program-officer.jpg=ws1280x960";
 import coverImg_5 from "src/assets/Images/newsList/project-manager-functions.jpg";
 import NewsUpdateItem from "./NewsUpdateItem";
+import { t } from "i18next";
 
 // News List
 const loremText = `New Update for Employees that has Borders numbers can accept the new ET`;
 const VisasText = `Seasonal visas is allowed after 2 weeks `;
 
-const newsList = [
-  {
-    title: "Employee Transfeer",
-    subtitle: loremText,
-    photo: coverImg_1,
-    postingTime: "about 12 hours",
-  },
-  {
-    title: "Visas",
-    subtitle: VisasText,
-    photo: coverImg_2,
-    postingTime: "about 2 hours",
-  },
-  {
-    title: "Dynamic Identity Officer",
-    subtitle: loremText,
-    photo: coverImg_3,
-    postingTime: "about 7 hours",
-  },
-  {
-    title: "Chief Program Planner",
-    subtitle: loremText,
-    photo: coverImg_4,
-    postingTime: "about 12 hours",
-  },
-  {
-    title: "Senior Implementation Manager",
-    subtitle: loremText,
-    photo: coverImg_5,
-    postingTime: "about 10 hours",
-  },
-];
-
 const NewsUpdate = () => {
+  const newsList = [
+    {
+      title: t("dashboard.Employee Transfeer"),
+      subtitle: loremText,
+      photo: coverImg_1,
+      postingTime: "about 12 hours",
+    },
+    {
+      title: t("dasbhoard.Visas"),
+      subtitle: VisasText,
+      photo: coverImg_2,
+      postingTime: "about 2 hours",
+    },
+    {
+      title: t("dasbhoard.Dynamic Identity Officer"),
+      subtitle: loremText,
+      photo: coverImg_3,
+      postingTime: "about 7 hours",
+    },
+    {
+      title: t("dashboard.Chief Program Planner"),
+      subtitle: loremText,
+      photo: coverImg_4,
+      postingTime: "about 12 hours",
+    },
+    {
+      title: t("dashboard.Senior Implementation Manager"),
+      subtitle: loremText,
+      photo: coverImg_5,
+      postingTime: "about 10 hours",
+    },
+  ];
   return (
     <DashCard>
-      <DashCardHeader title="Releases" />
+      <DashCardHeader title={t("dashboard.Releases")} />
 
       {/* Main Content */}
 

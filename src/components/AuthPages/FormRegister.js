@@ -2,6 +2,7 @@ import { Button, IconButton, InputAdornment } from "@mui/material";
 import { Grid, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
@@ -23,7 +24,7 @@ const FormRegister = ({
   });
   const [phoneNumber, setPhoneNumber] = useState("");
   const setAlertInfo = useUpdateAlert();
-
+  const { t } = useTranslation();
   // submit
 
   return (
@@ -42,57 +43,57 @@ const FormRegister = ({
           variant="outlined"
           fullWidth
           type="text"
-          label="First Name"
+          label={t("firstnameLabel")}
           {...register("firstName", {
             required: true,
             pattern: {
               value: /^[a-zA-Z]+$/,
-              message: "invalid first name",
+              message: t("register.invalid first name"),
             },
           })}
           error={errors.firstName ? true : false}
           helperText={
             !!errors.firstName?.message
               ? errors.firstName?.message
-              : errors.firstName && "Enter the first name"
+              : errors.firstName && t("register.Enter the first name")
           }
         />
         <TextField
           variant="outlined"
           fullWidth
           type="text"
-          label="Middle  Name"
+          label={t("middlenameLabel")}
           {...register("middleName", {
             required: true,
             pattern: {
               value: /^[a-zA-Z]+$/,
-              message: "invalid middle name",
+              message: t("register.invalid middle name"),
             },
           })}
           error={errors.middleName ? true : false}
           helperText={
             !!errors.middleName?.message
               ? errors.middleName?.message
-              : errors.middleName && "Enter the middle name"
+              : errors.middleName && t("register.Enter the middle name")
           }
         />
         <TextField
           variant="outlined"
           fullWidth
           type="text"
-          label="Last Name"
+          label={t("lastnameLabel")}
           {...register("lastName", {
             required: true,
             pattern: {
               value: /^[a-zA-Z]+$/,
-              message: "invalid last name",
+              message: t("register.invalid last name"),
             },
           })}
           error={errors.lastName ? true : false}
           helperText={
             !!errors.lastName?.message
               ? errors.lastName?.message
-              : errors.lastName && "Enter the last name"
+              : errors.lastName && t("register.Enter the last name")
           }
         />
       </Box>
@@ -102,16 +103,16 @@ const FormRegister = ({
         variant="outlined"
         fullWidth
         type="email"
-        label="Email address"
+        label={t("emailLabel")}
         {...register("email", {
           required: true,
           pattern: {
             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            message: "invalid email address",
+            message: t("register.invalid email address"),
           },
         })}
         error={errors.email ? true : false}
-        helperText={errors.email && "Enter a valid email address"}
+        helperText={errors.email && t("register.Enter a valid email address")}
       />
       <PhoneInput
         // id="phoneNumber"
@@ -132,10 +133,12 @@ const FormRegister = ({
         {...register("phoneNumber", {
           pattern: {
             value: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/,
-            message: "Enter A valid Phone number",
+            message: t("register.Enter A valid Phone number"),
           },
         })}
-        helperText={errors.phoneNumber && "Enter a valid phone number"}
+        helperText={
+          errors.phoneNumber && t("register.Enter a valid phone number")
+        }
         // error={phoneNumber.length != 14 ? true : false}
       />
       {/* password */}
@@ -164,7 +167,7 @@ const FormRegister = ({
             </InputAdornment>
           ),
         }}
-        label="Password"
+        label={t("passwordLabel")}
         {...register("password", {
           required: true,
           minLength: 5,
@@ -174,7 +177,8 @@ const FormRegister = ({
         })}
         error={errors.password ? true : false}
         helperText={
-          errors.password && "Enter a valid password (5-15 characters)"
+          errors.password &&
+          t("register.Enter a valid password (5-15 characters)")
         }
       />
       <TextField
@@ -203,7 +207,7 @@ const FormRegister = ({
             </InputAdornment>
           ),
         }}
-        label="Confirm Password"
+        label={t("confirmPasswordLabel")}
         {...register("confPassword", {
           required: true,
           onChange: (e) =>
@@ -215,15 +219,15 @@ const FormRegister = ({
         }
         helperText={
           errors.confPassword
-            ? "Please Confirm the password"
+            ? t("register.Please Confirm the password")
             : passwordsInfo.valueConf !== passwordsInfo.valuePass &&
-              "Passwords did not match"
+              t("register.Passwords did not match")
         }
       />
       {/* submit */}
       <Grid container item xs={12} justifyContent={"flex-end"}>
         <Button fullWidth type="submit" variant="contained" disableElevation>
-          Next
+          {t("nextButton")}
         </Button>
       </Grid>
     </FormStyle>

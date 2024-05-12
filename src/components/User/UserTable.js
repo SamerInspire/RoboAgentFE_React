@@ -49,7 +49,7 @@ function UserTable() {
 
     setStatusAnchorEl(statusAnchorEl ? null : event.currentTarget);
   };
-  const handleCloseRolePopper = () => setStatusAnchorEl(null);
+  const handleCloseRolePopper = () => setStatusAnchorEl(undefined);
   const statusOpen = Boolean(statusAnchorEl);
   const statusPopperId = statusOpen ? "simple-popper" : undefined;
   const handleOpenServiceDialog = (tableData) => {
@@ -212,6 +212,7 @@ function UserTable() {
       },
     },
   ];
+
   useEffect(() => {
     handleFetchAllUsers({ setTableData, requestAction: "GET_ALL_USERS" });
     handleFetchAuthorities({

@@ -10,6 +10,7 @@ import {
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import "react-phone-number-input/style.css";
 import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import {
@@ -52,9 +53,10 @@ const FinalRegister = ({ handleBack, handleNext }) => {
   const [selectedTeam, setSelectedTeam] = useState("");
   const [selectedAuthorities, setSelectedAuthorities] = useState([]);
   const [selectedService, setSelectedService] = useState("");
+  const { t } = useTranslation();
   const userRoles = [
-    { value: "team_lead", title: "Team Lead" },
-    { value: "member", title: "Member" },
+    { value: "team_lead", title: t("register.Team Lead") },
+    { value: "member", title: t("register.Member") },
   ];
   const teams = ["L1", "L2"];
   // hook form
@@ -103,7 +105,9 @@ const FinalRegister = ({ handleBack, handleNext }) => {
         <Grid container item>
           <Grid container item gap={4} xs={12} md={6} justifyContent={"center"}>
             <Grid item xs={12} textAlign={"center"}>
-              <Typography variant="h5">Choose user role </Typography>
+              <Typography variant="h5">
+                {t("register.Choose user role")}{" "}
+              </Typography>
             </Grid>
             {userRoles.map((role) => (
               <Grid item key={role.value}>
@@ -121,7 +125,9 @@ const FinalRegister = ({ handleBack, handleNext }) => {
           </Grid>
           <Grid container item xs={12} md={6} gap={4} justifyContent={"center"}>
             <Grid item xs={12} textAlign={"center"}>
-              <Typography variant="h5">Choose user team </Typography>
+              <Typography variant="h5">
+                {t("register.Choose user team")}{" "}
+              </Typography>
             </Grid>
             {teams.map((team) => (
               <Grid item key={team}>
@@ -140,13 +146,15 @@ const FinalRegister = ({ handleBack, handleNext }) => {
           <Grid container item spacing={8}>
             <Grid container item xs={12} md={6} gap={4}>
               <Grid item xs={12} textAlign={"center"}>
-                <Typography variant="h5">Choose User Services</Typography>
+                <Typography variant="h5">
+                  {t("register.Choose User Services")}
+                </Typography>
               </Grid>
               <FormControl fullWidth>
-                <InputLabel>Services</InputLabel>
+                <InputLabel>{t("register.Services")}</InputLabel>
                 <Select
                   value={selectedAuthorities.map((e) => e.authId)}
-                  label="Services"
+                  label={t("register.Services")}
                   multiple
                   onChange={handleChange}
                 >
@@ -160,13 +168,15 @@ const FinalRegister = ({ handleBack, handleNext }) => {
             </Grid>
             <Grid container item xs={12} md={6} gap={4}>
               <Grid item xs={12} textAlign={"center"}>
-                <Typography variant="h5">Choose User Main Service</Typography>
+                <Typography variant="h5">
+                  {t("register.Choose User Main Service")}
+                </Typography>
               </Grid>
               <FormControl fullWidth>
-                <InputLabel>Service</InputLabel>
+                <InputLabel>{t("register.Service")}</InputLabel>
                 <Select
                   value={selectedService}
-                  label="Service"
+                  label={t("register.Service")}
                   onChange={(e) => setSelectedService(e.target.value)}
                 >
                   {serviceList.map((service) => (
@@ -188,7 +198,7 @@ const FinalRegister = ({ handleBack, handleNext }) => {
               onClick={handleBack}
               disableElevation
             >
-              Back
+              {t("backButton")}
             </Button>
           </Grid>
           <Grid item xs={12} md={6}>
@@ -199,7 +209,7 @@ const FinalRegister = ({ handleBack, handleNext }) => {
               sx={{ p: 2 }}
               disableElevation
             >
-              Register
+              {t("register.registerButton")}
             </Button>
           </Grid>
         </Grid>
