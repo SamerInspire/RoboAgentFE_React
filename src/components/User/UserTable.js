@@ -195,9 +195,9 @@ function UserTable() {
           return (
             <Grid
               container
+              item
               minWidth={"150px"}
               maxWidth={"150px"}
-              item
               alignItems={"center"}
             >
               <Button

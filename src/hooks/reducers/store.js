@@ -1,11 +1,11 @@
 import axios from "axios";
 import i18n from "src/dictonaries/i18n";
+import { initializeContainer } from "src/utils/dnd/service";
 import { reshapeUserData } from "src/utils/table/tableReshape";
 
 export function generalSuccessReducer(result, utils) {
   const { body } = result?.data?.roboAgentRs;
   const { header } = result?.data?.roboAgentRs;
-  console.log(utils);
   const { setAlertInfo } = utils;
   const currentLang = i18n.language;
   const currentMessageLang =

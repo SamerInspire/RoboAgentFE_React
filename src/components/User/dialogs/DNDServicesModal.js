@@ -217,6 +217,7 @@ const DNDServicesModal = ({
                   setAlertInfo,
                   userId: userData[0],
                   handleClose: handleCloseServicesModal,
+                  setContainerSections,
                 })
               }
               variant="contained"
