@@ -10,7 +10,7 @@ const DivStyle = styled("div")(({ theme }) => ({
   paddingTop: theme.spacing(1),
   "& .apexcharts-legend": {
     borderTop: `1px solid ${theme.palette.gray.light}`,
-    padding: `${theme.spacing(3)}px ${theme.spacing(3)}px`,
+    padding: theme.spacing(1),
   },
   "& .apexcharts-tooltip": {
     backgroundColor: theme.palette.common.white,

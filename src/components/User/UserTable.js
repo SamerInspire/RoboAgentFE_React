@@ -72,7 +72,6 @@ function UserTable() {
     {
       name: "FirstName",
       label: "",
-
       options: {
         filter: true,
         display: "none",
@@ -120,9 +119,15 @@ function UserTable() {
         filter: true,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
-            <Grid container item alignItems={"center"} gap={2}>
+            <Grid
+              container
+              item
+              minWidth={"150px"}
+              alignItems={"center"}
+              gap={2}
+            >
               <Grid item xs={8}>
-                <Typography variant="body1" fontWeight={500}>
+                <Typography variant="body2" fontWeight={500}>
                   {value}
                 </Typography>
               </Grid>
@@ -155,9 +160,16 @@ function UserTable() {
         customBodyRender: (value, tableMeta, updateValue) => {
           const formattedValue = value.split("_").join(" ");
           return (
-            <Grid container item alignItems={"center"} gap={2}>
+            <Grid
+              container
+              item
+              minWidth={"200px"}
+              maxWidth={"200px"}
+              alignItems={"center"}
+              gap={2}
+            >
               <Grid item xs={8}>
-                <Typography variant="body1" fontWeight={500}>
+                <Typography variant="body2" fontWeight={500}>
                   {formattedValue}
                 </Typography>
               </Grid>
@@ -180,9 +192,14 @@ function UserTable() {
       options: {
         filter: false,
         customBodyRender: (value, tableMeta, updateValue) => {
-          // console.log(tableMeta);
           return (
-            <Grid container item alignItems={"center"}>
+            <Grid
+              container
+              minWidth={"150px"}
+              maxWidth={"150px"}
+              item
+              alignItems={"center"}
+            >
               <Button
                 fullWidth
                 variant="contained"
@@ -242,7 +259,6 @@ function UserTable() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          minHeight: "90vh",
         }}
       >
         <Grid
@@ -252,7 +268,6 @@ function UserTable() {
           md={6}
           sx={{
             ...glassMorphisimStyle,
-            minHeight: "90vh",
           }}
         >
           <DNDServicesModal

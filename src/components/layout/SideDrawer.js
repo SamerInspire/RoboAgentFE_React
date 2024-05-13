@@ -94,7 +94,7 @@ const GetMoreStyle = styled(Box)(({ theme }) => ({
 
   "&:hover": {
     "& img": {
-      transform: "translate(-50%, -0%)",
+      transform: "translate(-50%, -50%)",
     },
   },
 }));

@@ -18,7 +18,7 @@ function RolesPopper({
         <Grid item>
           <Button
             fullWidth
-            onClick={() =>
+            onClick={() => {
               hanldeSubmitUserNewRole({
                 userId: userData[0],
                 newRole: "TEAM_LEAD",
@@ -28,8 +28,9 @@ function RolesPopper({
                 userData,
                 handleCloseRolePopper,
                 setAlertInfo,
-              })
-            }
+              });
+              handleCloseRolePopper();
+            }}
             startIcon={<UpgradeIcon />}
             variant="outlined"
           >
@@ -40,7 +41,7 @@ function RolesPopper({
         <Grid item>
           <Button
             fullWidth
-            onClick={() =>
+            onClick={() => {
               hanldeSubmitUserNewRole({
                 userId: userData[0],
                 newRole: "MEMBER",
@@ -50,8 +51,8 @@ function RolesPopper({
                 userData,
                 handleCloseRolePopper,
                 setAlertInfo,
-              })
-            }
+              });
+            }}
             startIcon={<DownloadIcon />}
             variant="outlined"
           >

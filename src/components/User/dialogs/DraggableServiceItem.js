@@ -11,6 +11,8 @@ const DraggableServiceItem = ({ authority }) => {
         boxShadow: "0px 2px 12px 1px rgba(0,0,0,0.22)",
         cursor: "grabbing",
         borderRadius: "15px",
+        position: "relative",
+        zIndex: 9,
       }}
     >
       <Grid item color={"inherit"}>

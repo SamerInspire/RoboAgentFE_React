@@ -10,9 +10,8 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import { Button, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import { Box } from "@mui/system";
 import { useState } from "react";
 import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import {
@@ -162,13 +161,15 @@ const DNDServicesModal = ({
             item
             flexWrap={"nowrap"}
             alignItems={"flex-start"}
-            gap={12}
+            gap={8}
+            marginBottom={8}
             sx={{ overflowX: "clip" }}
           >
             {Object.keys(containerSections).map((containerSectionKey) => (
-              <Grid container item xs={6}>
+              <Grid key={containerSectionKey} container item xs={6}>
                 <ServiceContainer
                   key={containerSectionKey}
+                  authority={authority}
                   id={containerSectionKey}
                   title={containerSectionKey}
                   authorities={containerSections[containerSectionKey]}
@@ -176,17 +177,20 @@ const DNDServicesModal = ({
               </Grid>
             ))}
           </Grid>
+          <DragOverlay dropAnimation={dropAnimation}>
+            {authority ? <DraggableServiceItem authority={authority} /> : null}
+          </DragOverlay>
         </DndContext>
       </Grid>
-
       <Box
-        position={"fixed"}
+        position={"sticky"}
+        width={"100%"}
         bgcolor={"#f6f6f6"}
         height={65}
-        width={"100%"}
         bottom={0}
-        display={"flex"}
         px={4}
+        display={"flex"}
+        zIndex={999}
         alignItems={"center"}
         sx={{
           borderBottomRightRadius: "10px",

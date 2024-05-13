@@ -18,6 +18,7 @@ function ServiceContainer({ id, title, authorities }) {
       container
       item
       alignItems={"flex-start"}
+      position={"relative"}
       sx={{ ...glassMorphisimStyle }}
     >
       <Grid
@@ -45,6 +46,7 @@ function ServiceContainer({ id, title, authorities }) {
         minHeight={"200px"}
         gap={4}
         ref={setNodeRef}
+        position={"relative"}
       >
         <SortableContext
           id={id}

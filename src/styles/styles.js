@@ -1,8 +1,8 @@
 import { Box, styled } from "@mui/material";
 export const glassMorphisimStyle = {
   background: "rgba( 255, 255, 255, 1 )",
-  boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.2 )",
-  backdropFilter: "blur( 20px )",
+  boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.15 )",
+  // backdropFilter: "blur( 20px )",
   borderRadius: "10px",
 };
 // style

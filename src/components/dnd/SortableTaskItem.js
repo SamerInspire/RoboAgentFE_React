@@ -13,11 +13,12 @@ const SortableTaskItem = ({ children, id, authority, containerId }) => {
     transition,
     isDragging,
   } = useSortable({ id, data: authority });
-  console.log(containerId);
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
     borderRadius: 15,
+    position: "relative",
+    zIndex: isDragging ? 9 : "auto",
     backgroundColor: isDragging
       ? containerId == "all_services"
         ? "rgb(4, 41, 122)"
@@ -36,7 +37,8 @@ const SortableTaskItem = ({ children, id, authority, containerId }) => {
       container
       item
       ref={setNodeRef}
-      style={style}
+      zIndex={999}
+      style={{ ...style }}
       {...attributes}
       {...listeners}
     >
