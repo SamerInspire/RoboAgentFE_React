@@ -3,16 +3,16 @@ import DashCardHeader from "./DashCardHeader";
 import SocialTrafficItem from "./SocialTrafficItem";
 
 // icons
+import { Grid, styled } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import {
   RiFacebookFill,
   RiGoogleFill,
   RiLinkedinFill,
   RiTwitterFill,
 } from "react-icons/ri";
-import { Box, styled } from "@mui/material";
-import { useTranslation } from "react-i18next";
 
-const BoxContainerStyle = styled(Box)(({ theme }) => ({
+const BoxContainerStyle = styled(Grid)(({ theme }) => ({
   padding: theme.spacing(3),
   display: "grid",
   gap: theme.spacing(2),

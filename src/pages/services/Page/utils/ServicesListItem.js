@@ -1,27 +1,47 @@
-import { Grid, Link, Typography } from "@mui/material";
+import { Grid, Link, Popper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import i18n from "src/dictonaries/i18n";
 import { glassMorphisimStyle } from "src/styles/styles";
-import { Link as RouterLink } from "react-router-dom";
-const ServicesListItem = ({ service }) => {
+import WarningIcon from "@mui/icons-material/Warning";
+import { useUpdateAlert } from "src/hooks/Context/AlertContext";
+const ServicesListItem = ({ service, queryCenterSignup }) => {
   const lang = i18n.language;
+  const [queryCenterAnchorEl, setQueryCenterAnchorEl] = useState(null);
+  const setAlertInfo = useUpdateAlert();
+  const handleClick = (event) => {
+    setQueryCenterAnchorEl(queryCenterAnchorEl ? null : event.currentTarget);
+  };
+
+  const openQueryCenterPopper = Boolean(queryCenterAnchorEl);
+  const queryCenterId = openQueryCenterPopper ? "simple-popper" : undefined;
 
   return (
     <Link
-      component={RouterLink}
+      component={queryCenterSignup ? "" : RouterLink}
       sx={{ textDecoration: "none" }}
-      to={`/dash/services/getAnswer/${service.enName}`}
+      to={queryCenterSignup ? "" : `/dash/services/getAnswer/${service.enName}`}
     >
       <Grid
         container
         item
+        onClick={() =>
+          setAlertInfo({
+            alertType: "warning",
+            alertMsg:
+              "Please Register in the query center to be able to use the services",
+            sleep: 5000,
+          })
+        }
         sx={{
           ...glassMorphisimStyle,
-          cursor: "pointer",
+          cursor: queryCenterSignup ? "not-allowed" : "pointer",
           border: "2px solid #4abb7d",
           "&:hover": {
-            background: "#d9ffea",
+            background: queryCenterSignup ? "" : "#d9ffea",
           },
+          bgcolor: queryCenterSignup ? "#f6f6f6" : "",
         }}
       >
         <Grid
@@ -47,6 +67,33 @@ const ServicesListItem = ({ service }) => {
           </Typography>
         </Grid>
       </Grid>
+      {/* <Popper
+        id={queryCenterId}
+        open={openQueryCenterPopper}
+        anchorEl={queryCenterAnchorEl}
+      >
+        <Grid
+          container
+          item
+          p={2}
+          alignItems={"center"}
+          sx={{
+            borderRadius: "10px",
+            bgcolor: "#F9F4D6",
+            marginTop: 1,
+            border: "1px solid #E4E0AC",
+          }}
+        >
+          <WarningIcon sx={{ color: "#97732C", fontSize: 32 }} />
+          <Typography variant="body1" fontWeight={600}>
+            Warning :
+          </Typography>
+          <Typography variant="body2" fontWeight={500}>
+            {" "}
+            Please Signup in the query center
+          </Typography>
+        </Grid>
+      </Popper> */}
     </Link>
   );
 };

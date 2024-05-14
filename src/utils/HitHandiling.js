@@ -1,3 +1,4 @@
+import { redirect } from "react-router";
 import { generalSuccessReducer } from "src/hooks/reducers/store";
 import {
   JWTFalureHitHandle,
@@ -8,7 +9,6 @@ import {
   handleOTPCodeActions,
   handleUserCodeActions,
 } from "./responseHandlers";
-import { redirect } from "react-router";
 
 export function successHitHandle(result, utils) {
   const { code } = result?.data?.roboAgentRs?.header?.responseStatus;
@@ -31,11 +31,7 @@ export function successHitHandle(result, utils) {
   }
 }
 export function failureHitHandle(result, utils) {
-  if (
-    result.response.status == 401 ||
-    result.response.status == 402 ||
-    result.response.status == 403
-  ) {
+  if ([401, 402, 403].includes(result.response?.status)) {
     const { code } = result?.response.data?.roboAgentRs?.header?.responseStatus;
     const { codeLetters, codeNumbers } = handleExtractCodeInfo(code);
     switch (codeLetters) {

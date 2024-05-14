@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import AxiosHit from "src/utils/api/AxiosHit";
 import { initialState } from "../reducers/loginReducer";
-import { useLocalStorage } from "../useLocalStorage";
+import { useLocalStorage } from "../custom/useLocalStorage";
 
 export const LoginContext = React.createContext();
 function LoginProvider(props) {

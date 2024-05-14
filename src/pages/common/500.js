@@ -1,10 +1,17 @@
-import { Typography, Button } from "@mui/material";
+import { Button, Typography, styled } from "@mui/material";
 import { Box } from "@mui/system";
-import { styled } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
-import image from "src/assets/Images/something-went-wrong-4344462-3613890.webp";
 import { Helmet } from "react-helmet";
-
+import Lottie from "react-lottie";
+import { Link as RouterLink } from "react-router-dom";
+import animated500 from "src/assets/lottie/500.json";
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: animated500,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
 // style
 const BoxStyle = styled(Box)(({ theme }) => ({
   maxWidth: theme.breakpoints.values.sm,
@@ -43,19 +50,21 @@ const SomethingWentWrongError = () => {
         <title>500 | RoboAgent</title>
       </Helmet>
       <BoxStyle>
-        <Typography variant="h3">Something Went Wrong</Typography>
+        <Typography variant="h3" color={"primary.light"}>
+          Something Went Wrong
+        </Typography>
 
         <Typography paragraph color="textSecondary">
           Sorry Something went wrong from our side
         </Typography>
 
-        <img src={image} alt="404 Error" loading="lazy" />
+        {/* <img src={image} alt="404 Error" loading="lazy" /> */}
+        <Lottie options={defaultOptions} height={300} width={400} />
 
         <Button
           to="/"
           variant="contained"
           component={RouterLink}
-          size="large"
           disableElevation
         >
           Go to Home

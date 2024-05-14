@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
-
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Button, Grid, Modal, Popper, Typography } from "@mui/material";
 import MUIDataTable from "mui-datatables";
@@ -11,6 +9,7 @@ import {
   handleFetchAllUsers,
   handleFetchAuthorities,
 } from "src/utils/users/users";
+import { v4 as uuidv4 } from "uuid";
 import DNDServicesModal from "./dialogs/DNDServicesModal";
 import ServiceDialog from "./dialogs/ServiceDialog";
 import RolesPopper from "./poppers/RolesPopper";
@@ -290,7 +289,6 @@ function UserTable() {
           setAlertInfo={setAlertInfo}
         />
       )}
-
       <Popper
         id={statusPopperId}
         open={statusOpen}

@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from "react";
-import { loginReducer } from "./reducers/loginReducer";
+import { loginReducer } from "../reducers/loginReducer";
 
 function getStorageValue(key, defaultValue) {
   // getting stored value

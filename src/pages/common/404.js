@@ -1,10 +1,17 @@
-import { Typography, Button } from "@mui/material";
+import { Button, Typography, styled } from "@mui/material";
 import { Box } from "@mui/system";
-import { styled } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
-import image from "src/assets/Images/404.svg";
 import { Helmet } from "react-helmet";
-
+import Lottie from "react-lottie";
+import { Link as RouterLink } from "react-router-dom";
+import animated404 from "src/assets/lottie/Animation - 1715605056269 (3).json";
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: animated404,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
 // style
 const BoxStyle = styled(Box)(({ theme }) => ({
   maxWidth: theme.breakpoints.values.sm,
@@ -45,20 +52,22 @@ const ErrorPage = () => {
       </Helmet>
 
       <BoxStyle>
-        <Typography variant="h3">Sorry, page not found!</Typography>
+        <Typography variant="h3" color={"primary.light"}>
+          Sorry, page not found!
+        </Typography>
 
         <Typography paragraph color="textSecondary">
           Sorry, we couldn’t find the page you’re looking for. Perhaps you’ve
           mistyped the URL? Be sure to check your spelling.
         </Typography>
 
-        <img src={image} alt="404 Error" loading="lazy" />
+        {/* <img src={image} alt="404 Error" loading="lazy" /> */}
+        <Lottie options={defaultOptions} height={400} width={400} />
 
         <Button
           to="/"
           variant="contained"
           component={RouterLink}
-          size="large"
           disableElevation
         >
           Go to Home

@@ -8,14 +8,13 @@ export default function ShowAlert() {
   const alertInfo = useAlert();
 
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
   useEffect(() => {
     (async () => {
-      console.log(alertInfo);
       if (!!alertInfo) {
         setOpenFailerAlert(true);
         window.scroll(0, 0);
-        await sleep(5000);
+        console.log(alertInfo);
+        await sleep(alertInfo.sleep || 5000);
         setOpenFailerAlert(false);
         setAlertInfo(null);
         if (!!alertInfo.redirectTo) {
@@ -27,7 +26,6 @@ export default function ShowAlert() {
       }
     })();
   }, [alertInfo, setAlertInfo]);
-  console.log("alertInfo ====> ", alertInfo);
   if (!!alertInfo) {
     return (
       <Collapse in={openFailerAlert} sx={{ mb: 2 }}>

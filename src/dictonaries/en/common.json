@@ -83,7 +83,10 @@
     "Manual Script genrate": "Manual Script genrate",
     "Sprint Showcase": "Sprint Showcase",
     "Send Reminder on UM Email": "Send Reminder on UM Email",
-    "(+43%) than last year": "(+43%) than last year"
+    "(+43%) than last year": "(+43%) than last year",
+    "activeTasks": "Active Tasks",
+    "addTaskTitle": "Add Task Information",
+    "finishedTasks": "Finished Tasks"
   },
   "register": {
     "User registration": "User registration",
