@@ -1,9 +1,9 @@
 import { Grid } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
+import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import { handleFetchCurrentUser } from "src/utils/users/users";
 import { Services } from "../Schema/ServicesSchema";
 import ServicesListItem from "./utils/ServicesListItem";
-import { useAlert, useUpdateAlert } from "src/hooks/Context/AlertContext";
 
 const ServicesList = () => {
   const [currentUserData, setCurrentUserData] = useState({});

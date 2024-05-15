@@ -7,7 +7,6 @@ import { useLocalStorage } from "../custom/useLocalStorage";
 export const LoginContext = React.createContext();
 function LoginProvider(props) {
   const [loginData, loginDispatch] = useLocalStorage("userInfo", initialState);
-  console.log(loginData);
   // function can(capability) {
   //   return loginData.user.capabilities?.includes(capability) && loginData.token;
   // }

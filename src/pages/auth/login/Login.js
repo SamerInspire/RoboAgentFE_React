@@ -8,7 +8,6 @@ import LeftPanel from "src/components/AuthPages/LeftPanel";
 import { styled } from "@mui/material";
 import LoginPhoto from "src/assets/Images/image_processing20210907-13511-1juj33d.gif";
 import { ContainerBoxStyle } from "src/styles/styles";
-import { Link } from "react-router-dom";
 
 // styles
 

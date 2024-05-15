@@ -197,6 +197,7 @@ const FinalRegister = ({ handleBack, handleNext }) => {
               sx={{ p: 2 }}
               onClick={handleBack}
               disableElevation
+              aria-label="back"
             >
               {t("backButton")}
             </Button>
@@ -207,6 +208,7 @@ const FinalRegister = ({ handleBack, handleNext }) => {
               type="submit"
               variant="contained"
               sx={{ p: 2 }}
+              aria-label="register"
               disableElevation
             >
               {t("register.registerButton")}

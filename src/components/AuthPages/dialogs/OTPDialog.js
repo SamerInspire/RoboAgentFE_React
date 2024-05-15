@@ -10,10 +10,9 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useUpdateAlert } from "src/hooks/Context/AlertContext";
-import { LoginContext } from "src/hooks/Context/LoginInfoContext";
 import FormStyle from "src/styles/styles";
 import { handleVerifyEmail, handleVerifyOTP } from "src/utils/api/auth/otp";
 function OTPDialog({
@@ -61,6 +60,7 @@ function OTPDialog({
         <FormStyle sx={{ width: "100%" }}>
           <TextField
             fullWidth
+            label={"OTP"}
             {...otpRegister("otp", { required: "OTP is Required" })}
           />
         </FormStyle>
@@ -108,7 +108,12 @@ function OTPDialog({
       <DialogActions sx={{ paddingTop: 4 }}>
         <Grid container item spacing={4}>
           <Grid item xs={12} md={6}>
-            <Button fullWidth variant="contained" onClick={handleClose}>
+            <Button
+              fullWidth
+              aria-label="cancel"
+              variant="contained"
+              onClick={handleClose}
+            >
               Cancel
             </Button>
           </Grid>
@@ -116,6 +121,7 @@ function OTPDialog({
             <Button
               fullWidth
               variant="contained"
+              aria-label="next"
               onClick={otpHandleSubmit((data) =>
                 handleVerifyOTP({
                   otp: data.otp,

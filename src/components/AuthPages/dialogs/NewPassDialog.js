@@ -18,7 +18,7 @@ import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import FormStyle from "src/styles/styles";
 import { handleRestPassword } from "src/utils/api/auth/otp";
 
-function OTPDialog({
+function NewPassDialog({
   handleNext,
   steps,
   setSnackbarData,
@@ -167,4 +167,4 @@ function OTPDialog({
   );
 }
 
-export default OTPDialog;
+export default NewPassDialog;

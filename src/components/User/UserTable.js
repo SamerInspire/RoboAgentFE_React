@@ -244,7 +244,7 @@ function UserTable() {
     <Grid container item gap={4}>
       <Grid container item>
         <MUIDataTable
-          title={"Users"}
+          title={"Users List"}
           data={tableData}
           columns={columns}
           options={options}

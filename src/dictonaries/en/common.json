@@ -91,6 +91,7 @@
   "register": {
     "User registration": "User registration",
     "user_reg_header_title": "User Registration Form",
+    "Choose user team": "Choose user team",
     "admin_reg_header_title": "Admin Registration Form",
     "register_btn": "Register",
     "Please Confirm the password": "Please Confirm the password",

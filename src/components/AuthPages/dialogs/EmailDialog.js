@@ -10,7 +10,6 @@ import {
   Typography,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
-import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import FormStyle from "src/styles/styles";
 import { handleVerifyEmail } from "src/utils/api/auth/otp";
 
@@ -51,6 +50,7 @@ function EmailDialog({
           <TextField
             fullWidth
             {...register("rest_email", { required: "Email is Required" })}
+            label={"Email"}
           />
         </FormStyle>
         {emailErrors?.email?.message && (
