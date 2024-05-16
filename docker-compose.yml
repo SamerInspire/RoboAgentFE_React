@@ -6,15 +6,16 @@ services:
     container_name: work-p
     labels:
       com.qiwa.runtime.product-name: "qiwa"
-      com.qiwa.runtime.service-name: "gateway-gateway"
-      com.qiwa.runtime.service-vendor: "qa"
+      com.qiwa.runtime.service-name: "roboagent-spa"
+      com.qiwa.runtime.service-vendor: "inspire"
+      # com.qiwa.runtime.log-format: "qiwa"
     restart: unless-stopped
     ports:
-      - "80:80"
+      - "80:80" #might be deleted if we face an error
     volumes:
       - ./config.json:/usr/share/nginx/html/config.json
     environment:
-      VIRTUAL_HOST: working-permits-qiwa.$URL
+      VIRTUAL_HOST: robo-agent.$URL
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost/index.html || exit 1"]
       interval: 60s

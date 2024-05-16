@@ -1,11 +1,10 @@
-import { Grid, Link, Popper, Typography } from "@mui/material";
+import { Grid, Link, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import i18n from "src/dictonaries/i18n";
-import { glassMorphisimStyle } from "src/styles/styles";
-import WarningIcon from "@mui/icons-material/Warning";
 import { useUpdateAlert } from "src/hooks/Context/AlertContext";
+import { glassMorphisimStyle } from "src/styles/styles";
 const ServicesListItem = ({ service, queryCenterSignup }) => {
   const lang = i18n.language;
   const [queryCenterAnchorEl, setQueryCenterAnchorEl] = useState(null);
@@ -13,10 +12,7 @@ const ServicesListItem = ({ service, queryCenterSignup }) => {
   const handleClick = (event) => {
     setQueryCenterAnchorEl(queryCenterAnchorEl ? null : event.currentTarget);
   };
-
-  const openQueryCenterPopper = Boolean(queryCenterAnchorEl);
-  const queryCenterId = openQueryCenterPopper ? "simple-popper" : undefined;
-
+  console.log(queryCenterSignup);
   return (
     <Link
       component={queryCenterSignup ? "" : RouterLink}

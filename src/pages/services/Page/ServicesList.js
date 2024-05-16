@@ -25,6 +25,12 @@ const ServicesList = () => {
           "Please Register in the query center to be able to use the services",
         sleep: 1000000,
       });
+    return () =>
+      setAlertInfo({
+        alertType: "",
+        alertMsg: "",
+        sleep: 0,
+      });
   }, []);
   if (currentUserData.role !== "MEMBER") {
     return (
@@ -34,6 +40,7 @@ const ServicesList = () => {
             <ServicesListItem
               currentUserData={currentUserData}
               service={service}
+              queryCenterSignup={queryCenterSignup}
             />
           </Grid>
         ))}
@@ -59,7 +66,7 @@ const ServicesList = () => {
                 currentUserData={currentUserData}
                 key={service.value}
                 service={service}
-                queryCenterSignup={queryCenterSignup.current}
+                queryCenterSignup={queryCenterSignup}
               />
             </Grid>
           ) : service.allowedAuthorities[0] === "all" ? (

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { failureHitHandle, successHitHandle } from "../HitHandiling";
 
-axios.defaults.baseURL = "http://localhost:3000/api";
+axios.defaults.baseURL = process.env.REACT_APP_BACKEND_API_ENDPOINT_URL;
 if (JSON.parse(localStorage.getItem("userInfo"))) {
   const token = JSON.parse(localStorage.getItem("userInfo")).token;
   axios.defaults.headers.common["authorization"] = token;
