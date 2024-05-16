@@ -23,12 +23,7 @@ const Dashboard = () => {
       <Helmet>
         <title>Dashboard | RoboAgent</title>
       </Helmet>
-      {/*
-      <Typography variant="h6" component="h2">
-        Hi, Welcome in RoboAgent.
-      </Typography> */}
 
-      {/* Info Cards */}
       <InfoCards />
 
       <GridContainerStyle container spacing={3}>

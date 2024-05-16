@@ -6,7 +6,6 @@ import ServicesGetAnswer from "src/pages/services/Page/ServicesGetAnswer";
 import ServicesList from "src/pages/services/Page/ServicesList";
 import ErrorPage from "src/pages/common/404";
 import Login from "src/pages/auth/login/Login";
-import Blog from "./pages/Blog/Blog";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import User from "./components/User/User";
 import Register from "./pages/auth/register/Register";
@@ -104,7 +103,7 @@ const Routes = () => {
             <Navigate to="/dash/dashboard" />
           ),
         },
-        { path: "blog", element: <Blog /> },
+        // { path: "blog", element: <Blog /> },
         { path: "*", element: <ErrorPage /> },
       ],
     },

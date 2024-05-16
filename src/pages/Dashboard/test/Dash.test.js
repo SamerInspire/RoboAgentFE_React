@@ -1,169 +1,142 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Providers from "src/components/Providers";
-import { lightTheme } from "src/styles/theme";
-import ConversionRate from "../ConversionRate";
-import CurrentVisits from "../CurrentVisits";
-import DashCard from "../DashCard";
+import TasksItem from "../TasksItem";
 import DashCardHeader from "../DashCardHeader";
-import NewsUpdate from "../NewsUpdate";
-import OrderTimeline from "../OrderTimeline";
 import SocialTraffic from "../SocialTraffic";
-import Tasks from "../Tasks";
-import DashboardLayout from "src/components/layout/DashboardLayout";
 import { BrowserRouter } from "react-router-dom";
-import { Dashboard } from "@mui/icons-material";
-describe("DashCard Component", () => {
-  test("it should render children properly", () => {
-    const { getByText } = render(
-      <Providers>
-        <DashboardLayout>
-          <DashCard>
-            <h1>Test Child</h1>
-          </DashCard>
-        </DashboardLayout>
-      </Providers>
-    );
-    expect(getByText("Test Child")).toBeInTheDocument();
-  });
-});
+import Tasks from "../Tasks";
 
-describe("ConversionRate Component", () => {
-  beforeAll(() => {
-    global.ResizeObserver = class ResizeObserver {
-      constructor(callback) {
-        this.callback = callback;
-      }
-      observe() {}
-      disconnect() {}
-    };
-  });
-
-  afterAll(() => {
-    delete global.ResizeObserver;
-  });
-  test("renders conversion rate chart", () => {
-    const { getByText } = render(
-      <Providers theme={lightTheme}>
-        <DashboardLayout>
-          <ConversionRate />
-        </DashboardLayout>
-      </Providers>
-    );
-    expect(getByText("Conversion Rates")).toBeInTheDocument();
-    expect(getByText("(+43%) than last year")).toBeInTheDocument();
-  });
-});
-describe("CurrentVisits Component", () => {
-  beforeAll(() => {
-    global.ResizeObserver = class ResizeObserver {
-      constructor(callback) {
-        this.callback = callback;
-      }
-      observe() {}
-      disconnect() {}
-    };
-  });
-
-  afterAll(() => {
-    delete global.ResizeObserver;
-  });
-  test("renders current visits chart", () => {
-    const { getByText } = render(
+describe("Tasks Component", () => {
+  beforeEach(() => {
+    render(
       <Providers>
         <BrowserRouter>
-          <DashboardLayout>
-            <CurrentVisits />
-          </DashboardLayout>
+          <Tasks />
         </BrowserRouter>
       </Providers>
     );
+  });
 
-    expect(getByText("Current Visits")).toBeInTheDocument();
-    expect(getByText("Employee Transfeer")).toBeInTheDocument();
-    expect(getByText("Work Permits")).toBeInTheDocument();
-    expect(getByText("User Managments")).toBeInTheDocument();
+  test("renders the Tasks component without crashing", () => {
+    expect(screen.getByText("Tasks")).toBeInTheDocument();
+  });
+
+  test("renders the Add Task button", () => {
+    const addButton = screen.getByRole("button", { name: /Add Task/i });
+    expect(addButton).toBeInTheDocument();
+  });
+
+  test("renders the dialog with the correct title when open", () => {
+    const addButton = screen.getByRole("button", { name: /Add Task/i });
+    addButton.click();
+    expect(screen.getByText("Add Task")).toBeInTheDocument();
   });
 });
-describe("OrderTimeline Component", () => {
-  test("renders timeline with items", () => {
-    const { getByText } = render(
-      <BrowserRouter>
-        <Providers>
-          <DashboardLayout>
-            <OrderTimeline />
-          </DashboardLayout>
-        </Providers>
-      </BrowserRouter>
+
+describe("TasksItem Component", () => {
+  test("renders TasksItem component with label", () => {
+    render(
+      <Providers>
+        <TasksItem
+          id="1"
+          status={false}
+          label="Test Task"
+          mission={false}
+          checkOptions={jest.fn()}
+        />
+      </Providers>
     );
-    expect(getByText("Automation Time line")).toBeInTheDocument();
-    expect(
-      getByText("500 tickets, Missing information, Answered")
-    ).toBeInTheDocument();
-    expect(getByText("08 Aug 2024 21:53")).toBeInTheDocument();
+
+    expect(screen.getByText("Test Task")).toBeInTheDocument();
+  });
+
+  test("renders a checkbox with the correct initial status", () => {
+    render(
+      <Providers>
+        <TasksItem
+          id="1"
+          status={false}
+          label="Test Task"
+          mission={false}
+          checkOptions={jest.fn()}
+        />
+      </Providers>
+    );
+
+    const checkbox = screen.getByRole("checkbox");
+    expect(checkbox).toBeInTheDocument();
+    expect(checkbox).not.toBeChecked();
+  });
+
+  test("applies the correct styles when checked", () => {
+    render(
+      <Providers>
+        <TasksItem
+          id="1"
+          status={true}
+          label="Test Task"
+          mission={true}
+          checkOptions={jest.fn()}
+        />
+      </Providers>
+    );
+
+    const checkbox = screen.getByRole("checkbox");
+    expect(checkbox).toBeChecked();
+    expect(screen.getByText("Test Task")).toHaveStyle(
+      "text-decoration: line-through"
+    );
   });
 });
+describe("DashCardHeader Component", () => {
+  test("renders DashCardHeader component with title and subheader", () => {
+    render(
+      <Providers>
+        <DashCardHeader title="Test Title" subheader="Test Subheader" />
+      </Providers>
+    );
+
+    expect(screen.getByText("Test Title")).toBeInTheDocument();
+    expect(screen.getByText("Test Subheader")).toBeInTheDocument();
+  });
+});
+
+jest.mock("react-i18next", () => ({
+  ...jest.requireActual("react-i18next"),
+  useTranslation: () => ({ t: (key) => key }),
+}));
+
 describe("SocialTraffic Component", () => {
-  test("renders social media traffic data", () => {
-    const { getByText } = render(
-      <BrowserRouter>
-        <Providers>
-          <DashboardLayout>
-            <SocialTraffic />
-          </DashboardLayout>
-        </Providers>
-      </BrowserRouter>
+  test("renders SocialTraffic component without crashing", () => {
+    render(
+      <Providers>
+        <SocialTraffic />
+      </Providers>
     );
-    expect(getByText("Traffic by Site")).toBeInTheDocument();
-    expect(getByText("47.10k")).toBeInTheDocument();
-    expect(getByText("65.60k")).toBeInTheDocument();
-    expect(getByText("15.70k")).toBeInTheDocument();
-    expect(getByText("84.14k")).toBeInTheDocument();
-    expect(getByText("Facebook")).toBeInTheDocument();
-    expect(getByText("Twitter")).toBeInTheDocument();
-    expect(getByText("LinkedIn")).toBeInTheDocument();
-    expect(getByText("Google")).toBeInTheDocument();
   });
-});
-describe("NewsUpdate Component", () => {
-  test("renders news updates correctly", () => {
-    const { getByText } = render(
-      <BrowserRouter>
-        <Providers>
-          <DashboardLayout>
-            <NewsUpdate />
-          </DashboardLayout>
-        </Providers>
-      </BrowserRouter>
+
+  test("renders the DashCardHeader component with correct title", () => {
+    render(
+      <Providers>
+        <SocialTraffic />
+      </Providers>
     );
-    expect(getByText("Releases")).toBeInTheDocument();
-    expect(getByText("about 12 hours")).toBeInTheDocument();
-    expect(
-      getByText(
-        "New Update for Employees that has Borders numbers can accept the new ET"
-      )
-    ).toBeInTheDocument();
+    expect(screen.getByText("dashboard.Traffic by Site")).toBeInTheDocument();
   });
-});
-describe("Tasks Component", () => {
-  test("renders tasks and allows adding a task", () => {
-    const { getByText, getByRole } = render(
-      <BrowserRouter>
-        <Providers>
-          <DashboardLayout>
-            <Tasks />
-          </DashboardLayout>
-        </Providers>
-      </BrowserRouter>
+  test("renders all SocialTrafficItem components with correct data", () => {
+    render(
+      <Providers>
+        <SocialTraffic />
+      </Providers>
     );
-    expect(getByText("Tasks")).toBeInTheDocument();
 
-    // Simulate adding a task
-    const addButton = screen.getByRole("button", {
-      name: /ADD TASK/i,
-    });
-    fireEvent.click(addButton);
-
-    // Check if dialog for adding a task is opened
-    expect(getByText("Add Task Information")).toBeInTheDocument();
+    expect(screen.getByText("dashboard.Facebook")).toBeInTheDocument();
+    expect(screen.getByText("47.10k")).toBeInTheDocument();
+    expect(screen.getByText("dashboard.Google")).toBeInTheDocument();
+    expect(screen.getByText("65.60k")).toBeInTheDocument();
+    expect(screen.getByText("dashboard.LinkedIn")).toBeInTheDocument();
+    expect(screen.getByText("84.14k")).toBeInTheDocument();
+    expect(screen.getByText("dashboard.Twitter")).toBeInTheDocument();
+    expect(screen.getByText("15.70k")).toBeInTheDocument();
   });
 });

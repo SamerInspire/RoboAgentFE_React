@@ -113,12 +113,12 @@ export default function CustomTransferList({ activeTasks, setActiveTasks }) {
         component="div"
         role="list"
       >
-        {items.map((value) => {
+        {items.map((value, index) => {
           const labelId = `transfer-list-all-item-${value}-label`;
 
           return (
             <ListItemButton
-              key={value}
+              key={index + value.label}
               role="listitem"
               onClick={handleToggle(value)}
             >
