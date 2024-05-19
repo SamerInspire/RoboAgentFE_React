@@ -78,7 +78,10 @@ const Tasks = () => {
       </Grid>
 
       <Grid container p={4} justifyContent={"flex-start"}>
-        <CustomTransferList activeTasks={activeTasks} />
+        <CustomTransferList
+          setActiveTasks={setActiveTasks}
+          activeTasks={activeTasks}
+        />
       </Grid>
       <Dialog open={openAddTask} onClose={handleCloseAddTask}>
         <Grid container item xs={12} p={4} gap={4}>

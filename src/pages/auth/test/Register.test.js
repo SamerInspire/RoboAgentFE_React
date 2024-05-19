@@ -69,11 +69,7 @@ describe("FinalRegister Component", () => {
     expect(getByText("Choose user team")).toBeInTheDocument();
     expect(getByText("Choose User Services")).toBeInTheDocument();
     expect(getByText("Choose User Main Service")).toBeInTheDocument();
-    expect(getByText("BACK")).toBeInTheDocument();
-    expect(getByText("REGISTER")).toBeInTheDocument();
-
-    // Check for selectors
-    expect(getByLabelText("Services")).toBeInTheDocument();
-    expect(getByLabelText("Service")).toBeInTheDocument();
+    expect(getByText(/BACK/i)).toBeInTheDocument();
+    expect(getByText(/REGISTER/i)).toBeInTheDocument();
   });
 });

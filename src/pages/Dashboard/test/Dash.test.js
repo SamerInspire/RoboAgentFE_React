@@ -16,6 +16,7 @@ describe("Tasks Component", () => {
       </Providers>
     );
   });
+  console.log(screen);
 
   test("renders the Tasks component without crashing", () => {
     expect(screen.getByText("Tasks")).toBeInTheDocument();
@@ -105,7 +106,6 @@ jest.mock("react-i18next", () => ({
   ...jest.requireActual("react-i18next"),
   useTranslation: () => ({ t: (key) => key }),
 }));
-
 describe("SocialTraffic Component", () => {
   test("renders SocialTraffic component without crashing", () => {
     render(
