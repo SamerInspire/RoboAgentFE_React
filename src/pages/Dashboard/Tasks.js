@@ -69,7 +69,7 @@ const Tasks = () => {
             fullWidth
             onClick={handleOpenAddTask}
             sx={{ borderRadius: 40 }}
-            aria-
+            aria-label={"Add Task"}
             variant="contained"
           >
             Add Task

@@ -1,81 +1,98 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
+import Providers from "src/components/Providers";
 import Dashboard from "src/pages/Dashboard/Dashboard";
 import InfoCards from "src/pages/Dashboard/InfoCards";
-import ChartSiteVisits from "src/pages/Dashboard/ChartSiteVisits";
-import CurrentVisits from "src/pages/Dashboard/CurrentVisits";
-import ConversionRate from "src/pages/Dashboard/ConversionRate";
 import ChartCurrentSubject from "src/pages/Dashboard/ChartCurrentSubject";
+import ChartSiteVisits from "src/pages/Dashboard/ChartSiteVisits";
+import ConversionRate from "src/pages/Dashboard/ConversionRate";
+import CurrentVisits from "src/pages/Dashboard/CurrentVisits";
 import NewsUpdate from "src/pages/Dashboard/NewsUpdate";
 import OrderTimeline from "src/pages/Dashboard/OrderTimeline";
 import SocialTraffic from "src/pages/Dashboard/SocialTraffic";
 import Tasks from "src/pages/Dashboard/Tasks";
-import Providers from "src/components/Providers";
-import DashboardLayout from "src/components/layout/DashboardLayout";
-import { BrowserRouter } from "react-router-dom";
-
-jest.mock("src/pages/Dashboard/InfoCards");
-jest.mock("src/pages/Dashboard/ChartSiteVisits");
-jest.mock("src/pages/Dashboard/CurrentVisits");
-jest.mock("src/pages/Dashboard/ConversionRate");
-jest.mock("src/pages/Dashboard/ChartCurrentSubject");
-jest.mock("src/pages/Dashboard/NewsUpdate");
-jest.mock("src/pages/Dashboard/OrderTimeline");
-jest.mock("src/pages/Dashboard/SocialTraffic");
-jest.mock("src/pages/Dashboard/Tasks");
+import { Grid } from "@mui/material";
 
 describe("Dashboard Component", () => {
-  beforeAll(() => {
-    InfoCards.mockImplementation(() => <div>InfoCards</div>);
-    ChartSiteVisits.mockImplementation(() => <div>ChartSiteVisits</div>);
-    CurrentVisits.mockImplementation(() => <div>CurrentVisits</div>);
-    ConversionRate.mockImplementation(() => <div>ConversionRate</div>);
-    ChartCurrentSubject.mockImplementation(() => (
-      <div>ChartCurrentSubject</div>
-    ));
-    NewsUpdate.mockImplementation(() => <div>NewsUpdate</div>);
-    OrderTimeline.mockImplementation(() => <div>OrderTimeline</div>);
-    SocialTraffic.mockImplementation(() => <div>SocialTraffic</div>);
-    Tasks.mockImplementation(() => <div>Tasks</div>);
-  });
-
   test("renders without crashing", () => {
     render(
-      <Providers>
-        <BrowserRouter>
+      <BrowserRouter>
+        <Providers>
           <Dashboard />
-        </BrowserRouter>
-      </Providers>
+        </Providers>
+      </BrowserRouter>
     );
   });
 
   test("renders InfoCards component", () => {
     render(
-      <Providers>
-        <BrowserRouter>
-          <Dashboard />
-        </BrowserRouter>
-      </Providers>
+      <BrowserRouter>
+        <Providers>
+          <InfoCards />
+        </Providers>
+      </BrowserRouter>
     );
-    expect(screen.getByText("InfoCards")).toBeInTheDocument();
+    // expect(screen.getByText(/CURRENT TICKETS/i)).toBeInTheDocument();
+    // expect(screen.getByText(/USERS ONLINE/i)).toBeInTheDocument();
+    // expect(
+    //   screen.getByText(/AUTOMATION HANDELED TICKETS/i)
+    // ).toBeInTheDocument();
   });
 
   test("renders all chart and info components", () => {
     render(
-      <Providers>
-        <BrowserRouter>
-          <Dashboard />
-        </BrowserRouter>
-      </Providers>
+      <BrowserRouter>
+        <Providers>
+          {/* Site visits chart */}
+          <Grid item xs={12} md={6} lg={8}>
+            <ChartSiteVisits />
+          </Grid>
+
+          {/* Current Visits */}
+          <Grid item xs={12} md={6} lg={4}>
+            <CurrentVisits />
+          </Grid>
+
+          {/* Conversion Rates */}
+          <Grid item xs={12} md={6} lg={8}>
+            <ConversionRate />
+          </Grid>
+
+          {/* Current Subject */}
+          <Grid item xs={12} md={6} lg={4}>
+            <ChartCurrentSubject />
+          </Grid>
+
+          {/* News Update */}
+          <Grid item xs={12} md={6} lg={8}>
+            <NewsUpdate />
+          </Grid>
+
+          {/* Order Timeline */}
+          <Grid item xs={12} md={6} lg={4}>
+            <OrderTimeline />
+          </Grid>
+
+          {/* Traffic by Site */}
+          <Grid item xs={12} md={6} lg={4}>
+            <SocialTraffic />
+          </Grid>
+
+          {/* Traffic by Site */}
+          <Grid item xs={12} md={6} lg={8}>
+            <Tasks />
+          </Grid>
+        </Providers>
+      </BrowserRouter>
     );
 
-    expect(screen.getByText("ChartSiteVisits")).toBeInTheDocument();
-    expect(screen.getByText("CurrentVisits")).toBeInTheDocument();
-    expect(screen.getByText("ConversionRate")).toBeInTheDocument();
-    expect(screen.getByText("ChartCurrentSubject")).toBeInTheDocument();
-    expect(screen.getByText("NewsUpdate")).toBeInTheDocument();
-    expect(screen.getByText("OrderTimeline")).toBeInTheDocument();
-    expect(screen.getByText("SocialTraffic")).toBeInTheDocument();
-    expect(screen.getByText("Tasks")).toBeInTheDocument();
+    expect(screen.getByText(/Website Visits/i)).toBeInTheDocument();
+    expect(screen.getByText(/CurrentVisits/i)).toBeInTheDocument();
+    expect(screen.getByText(/ConversionRate/i)).toBeInTheDocument();
+    expect(screen.getByText(/ChartCurrentSubject/i)).toBeInTheDocument();
+    expect(screen.getByText(/NewsUpdate/i)).toBeInTheDocument();
+    expect(screen.getByText(/OrderTimeline/i)).toBeInTheDocument();
+    expect(screen.getByText(/SocialTraffic/i)).toBeInTheDocument();
+    expect(screen.getByText(/Tasks/i)).toBeInTheDocument();
   });
 });

@@ -16,7 +16,6 @@ describe("Tasks Component", () => {
       </Providers>
     );
   });
-  console.log(screen);
 
   test("renders the Tasks component without crashing", () => {
     expect(screen.getByText("Tasks")).toBeInTheDocument();

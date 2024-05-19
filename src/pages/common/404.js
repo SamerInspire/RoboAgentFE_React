@@ -1,7 +1,7 @@
 import { Button, Typography, styled } from "@mui/material";
 import { Box } from "@mui/system";
 import { Helmet } from "react-helmet";
-import Lottie from "react-lottie";
+// import Lottie from "react-lottie";
 import { Link as RouterLink } from "react-router-dom";
 import animated404 from "src/assets/lottie/Animation - 1715605056269 (3).json";
 const defaultOptions = {
@@ -62,7 +62,7 @@ const ErrorPage = () => {
         </Typography>
 
         {/* <img src={image} alt="404 Error" loading="lazy" /> */}
-        <Lottie options={defaultOptions} height={400} width={400} />
+        {/* <Lottie options={defaultOptions} height={400} width={400} /> */}
 
         <Button
           to="/"

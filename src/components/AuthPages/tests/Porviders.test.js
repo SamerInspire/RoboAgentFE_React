@@ -21,9 +21,11 @@ jest.mock("src/hooks/Context/ThemeContext", () => ({
 describe("Providers Component", () => {
   test("renders children with all context providers", () => {
     render(
-      <Providers>
-        <div>Test Child</div>
-      </Providers>
+      <BrowserRouter>
+        <Providers>
+          <div>Test Child</div>
+        </Providers>
+      </BrowserRouter>
     );
 
     expect(screen.getByTestId("LoginProvider")).toBeInTheDocument();

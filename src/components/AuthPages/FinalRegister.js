@@ -196,7 +196,7 @@ const FinalRegister = ({ handleBack, handleNext }) => {
               variant="outlined"
               sx={{ p: 2 }}
               onClick={handleBack}
-              disableElevation
+              disableElevationuy0ojh
               aria-label="back"
             >
               {t("backButton")}

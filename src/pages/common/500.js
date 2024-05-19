@@ -1,17 +1,10 @@
 import { Button, Typography, styled } from "@mui/material";
 import { Box } from "@mui/system";
 import { Helmet } from "react-helmet";
-import Lottie from "react-lottie";
+// import Lottie from "react-lottie";
 import { Link as RouterLink } from "react-router-dom";
 import animated500 from "src/assets/lottie/500.json";
-const defaultOptions = {
-  loop: true,
-  autoplay: true,
-  animationData: animated500,
-  rendererSettings: {
-    preserveAspectRatio: "xMidYMid slice",
-  },
-};
+
 // style
 const BoxStyle = styled(Box)(({ theme }) => ({
   maxWidth: theme.breakpoints.values.sm,
@@ -59,7 +52,7 @@ const SomethingWentWrongError = () => {
         </Typography>
 
         {/* <img src={image} alt="404 Error" loading="lazy" /> */}
-        <Lottie options={defaultOptions} height={300} width={400} />
+        {/* <Lottie options={defaultOptions} height={300} width={400} /> */}
 
         <Button
           to="/"

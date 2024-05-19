@@ -1,6 +1,5 @@
 import axios from "axios";
 import i18n from "src/dictonaries/i18n";
-import { initializeContainer } from "src/utils/dnd/service";
 import { reshapeUserData } from "src/utils/table/tableReshape";
 
 export function generalSuccessReducer(result, utils) {

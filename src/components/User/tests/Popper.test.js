@@ -1,5 +1,7 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import { useUpdateAlert } from "src/hooks/Context/AlertContext";
+import { ThemeProvider } from "@emotion/react";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { AlertProvider, useUpdateAlert } from "src/hooks/Context/AlertContext";
+import { lightTheme } from "src/styles/theme";
 import RolesPopper from "../poppers/RolesPopper";
 import Providers from "src/components/Providers";
 
@@ -67,7 +69,7 @@ describe("RolesPopper Component", () => {
     }));
 
     render(
-      <Providers>
+      <Providers theme={lightTheme}>
         <RolesPopper
           userData={userDataMember}
           setTableData={setTableData}
