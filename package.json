@@ -1,5 +1,5 @@
 {
-  "name": "roboagent_fe",
+  "name": "roboagent_spa",
   "version": "0.1.0",
   "proxy": "http://localhost:9000/api",
   "private": true,

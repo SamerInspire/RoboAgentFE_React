@@ -26,7 +26,7 @@ export async function handleFinalRegistration(
   userId
 ) {
   try {
-    const rolePromise = axios.post(`/user-roles/${userId}/roles/${userRole}`);
+    const rolePromise = axios.post(`/api/user-roles/${userId}/roles/${userRole}`);
     const mainServicePromise = axios.post(
       `/service/${userId}/service/${userMainService}`
     );

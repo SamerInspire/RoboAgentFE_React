@@ -21,7 +21,7 @@ describe("handleVerifyEmail", () => {
     expect(AxiosHit).toHaveBeenCalledWith(
       {
         method: "post",
-        url: `/forgot-password/verify-mail/${utils.email}`,
+        url: `/api/forgot-password/verify-mail/${utils.email}`,
       },
       utils
     );
@@ -51,7 +51,7 @@ describe("handleVerifyOTP", () => {
     expect(AxiosHit).toHaveBeenCalledWith(
       {
         method: "post",
-        url: "/forgot-password/verify-otp",
+        url: "/api/forgot-password/verify-otp",
         headers: { Authorization: `${utils.token}` },
         data: { otp: utils.otp },
       },
@@ -82,7 +82,7 @@ describe("handleRestPassword", () => {
 
     expect(AxiosHit).toHaveBeenCalledWith({
       method: "post",
-      url: "/forgot-password/change-password",
+      url: "/api/forgot-password/change-password",
       headers: { Authorization: `${utils.otpToken}` },
       data: { password: utils.newPass },
     });

@@ -6,7 +6,7 @@ export async function handleVerifyEmail(utils) {
     await AxiosHit(
       {
         method: "post",
-        url: `/forgot-password/verify-mail/${email}`,
+        url: `/api/forgot-password/verify-mail/${email}`,
       },
       utils
     );
@@ -22,7 +22,7 @@ export async function handleVerifyOTP(utils) {
     await AxiosHit(
       {
         method: "post",
-        url: "/forgot-password/verify-otp",
+        url: "/api/forgot-password/verify-otp",
         headers: { Authorization: `${token}` },
         data: {
           otp: otp,
@@ -40,7 +40,7 @@ export async function handleRestPassword(utils) {
   try {
     await AxiosHit({
       method: "post",
-      url: "/forgot-password/change-password",
+      url: "/api/forgot-password/change-password",
       headers: { Authorization: `${otpToken}` },
       data: {
         password: newPass,

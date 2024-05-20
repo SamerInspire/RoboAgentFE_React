@@ -21,7 +21,7 @@ describe("API function tests", () => {
     expect(AxiosHit).toHaveBeenCalledWith(
       {
         method: "put",
-        url: "/user-auth",
+        url: "/api/user-auth",
         data: { roboAuthorities: utils.roboAuthorities, userId: utils.userId },
       },
       utils
@@ -34,7 +34,7 @@ describe("API function tests", () => {
     expect(AxiosHit).toHaveBeenCalledWith(
       {
         method: "get",
-        url: "/user-auth",
+        url: "/api/user-auth",
       },
       utils
     );
@@ -46,7 +46,7 @@ describe("API function tests", () => {
     expect(AxiosHit).toHaveBeenCalledWith(
       {
         method: "put",
-        url: `/user-roles/${utils.userId}/roles/${utils.newRole}`,
+        url: `/api/user-roles/${utils.userId}/roles/${utils.newRole}`,
       },
       utils
     );
@@ -64,7 +64,7 @@ describe("API function tests", () => {
 
     expect(AxiosHit).toHaveBeenCalledWith(
       {
-        url: "/users/signup",
+        url: "/api/users/signup",
         method: "post",
         data: { ...userData, roboAuthorities: undefined },
       },
@@ -74,7 +74,7 @@ describe("API function tests", () => {
     expect(AxiosHit).toHaveBeenCalledWith(
       {
         method: "put",
-        url: "/user-auth",
+        url: "/api/user-auth",
         data: { roboAuthorities: userData.roboAuthorities, userId: 1 },
       },
       utils
@@ -111,7 +111,7 @@ describe("API function tests", () => {
     expect(AxiosHit).toHaveBeenCalledWith(
       {
         method: "get",
-        url: "/service",
+        url: "/api/service",
       },
       utils
     );
@@ -122,7 +122,7 @@ describe("API function tests", () => {
     await handleFetchCurrentUser(utils);
     expect(AxiosHit).toHaveBeenCalledWith(
       {
-        url: "users/currentuser",
+        url: "api/users/currentuser",
         method: "get",
       },
       utils

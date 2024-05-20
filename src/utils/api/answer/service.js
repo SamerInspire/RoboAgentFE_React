@@ -16,7 +16,7 @@ export async function handleGetResponse(utils) {
           .join("_")
           .toUpperCase()}`,
         method: "post",
-        baseURL: "http://localhost:3000/",
+        baseURL: process.env.REACT_APP_BACKEND_API_ENDPOINT_URL,
         data: {
           establishmentNumber,
           selectedOptions,

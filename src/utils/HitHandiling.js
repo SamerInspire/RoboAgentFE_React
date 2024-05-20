@@ -13,6 +13,7 @@ import {
 export function successHitHandle(result, utils) {
   const { code } = result?.data?.roboAgentRs?.header?.responseStatus;
   const { codeLetters, codeNumbers } = handleExtractCodeInfo(code, "string");
+  console.log(codeLetters)
   switch (codeLetters) {
     case "":
       return generalSuccessReducer(result, utils);
@@ -43,8 +44,8 @@ export function failureHitHandle(result, utils) {
     {
     }
   } else {
-    window.location = "/error";
-    redirect("/error");
+    // window.location = "/error";
+    // redirect("/error");
   }
 }
 export function handleExtractCodeInfo(code = 0) {
