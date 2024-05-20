@@ -1,13 +1,18 @@
 import { Grid } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import { handleFetchCurrentUser } from "src/utils/users/users";
 import { Services } from "../Schema/ServicesSchema";
 import ServicesListItem from "./utils/ServicesListItem";
+import { LoginContext } from "src/hooks/Context/LoginInfoContext";
 
 const ServicesList = () => {
-  const [currentUserData, setCurrentUserData] = useState({});
-  const queryCenterSignup = useRef(currentUserData.status ? false : true);
+  const { loginData } = useContext(LoginContext);
+  const [currentUserData, setCurrentUserData] = useState(loginData);
+  console.log("currentUserData ===> Siminz ===> ", currentUserData.status)
+  const queryCenterSignup = useRef(currentUserData?.status?.startsWith("0"));
+  console.log("queryCenterSignup ===> Siminz ===> ", queryCenterSignup.current)
+
   const setAlertInfo = useUpdateAlert();
 
   useEffect(() => {
@@ -40,7 +45,7 @@ const ServicesList = () => {
             <ServicesListItem
               currentUserData={currentUserData}
               service={service}
-              queryCenterSignup={queryCenterSignup}
+              queryCenterSignup={queryCenterSignup.current}
             />
           </Grid>
         ))}
@@ -66,7 +71,7 @@ const ServicesList = () => {
                 currentUserData={currentUserData}
                 key={service.value}
                 service={service}
-                queryCenterSignup={queryCenterSignup}
+                queryCenterSignup={queryCenterSignup.current}
               />
             </Grid>
           ) : service.allowedAuthorities[0] === "all" ? (

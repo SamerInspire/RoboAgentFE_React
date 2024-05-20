@@ -13,11 +13,11 @@ import { numbersOnly } from "src/utils/DefualtValidators";
 import { handleGetResponse } from "src/utils/api/answer/service";
 import { handleFetchCurrentUser } from "src/utils/users/users";
 
-const ServicesGetAnswer = ({}) => {
+const ServicesGetAnswer = ({ }) => {
   let { servicename } = useParams();
   const [answer, setAnswer] = useState("");
   const [currentUserData, setCurrentUserData] = useState({});
-
+  console.log("answer ===> Siminz ",answer)
   const currService = Services.filter(
     (service) => service.enName == servicename
   )[0];
@@ -87,15 +87,18 @@ const ServicesGetAnswer = ({}) => {
 
         <form
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
-          onSubmit={handleSubmit((data) =>
-            handleGetResponse({
-              requestActions: "SET_ANSWER",
+          onSubmit={handleSubmit(async (data) => {
+            setLoading(true)
+            await handleGetResponse({
+              requestAction: "SET_ANSWER",
               setAnswer,
               data,
               servicename,
               options,
               setAlertInfo,
             })
+            setLoading(false)
+          }
           )}
         >
           <Grid container item xs={12} md={8} xl={6} gap={4}>
@@ -186,7 +189,7 @@ const ServicesGetAnswer = ({}) => {
                   label="Answer"
                   textAlign="right"
                   value={answer}
-                  // style={{ direction: "rtl" }}
+                  style={{ direction: "rtl" }}
                   InputProps={{
                     readOnly: true,
                   }}
