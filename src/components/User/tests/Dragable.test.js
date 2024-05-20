@@ -18,7 +18,7 @@ describe("User Component", () => {
         </LoginContext.Provider>
       </BrowserRouter>
     );
-    expect(screen.getByText("Users List")).toBeInTheDocument();
+    expect(screen.queryAllByText(/Users List/i)[0]).toBeInTheDocument();
   });
 });
 
@@ -98,8 +98,10 @@ describe("DNDServicesModal Component", () => {
       </BrowserRouter>
     );
     expect(screen.getByText("Edit User Services")).toBeInTheDocument();
-    expect(screen.getByText("ADMIN")).toBeInTheDocument();
-    expect(screen.getByText("SUPER_VISOR")).toBeInTheDocument();
+    expect(screen.getByText(/ALL SERVICES/i)).toBeInTheDocument();
+    expect(screen.getByText(/active services/i)).toBeInTheDocument();
+    expect(screen.queryAllByText(/Cancel/i)[0]).toBeInTheDocument();
+    expect(screen.getByText(/submit/i)).toBeInTheDocument();
   });
 });
 

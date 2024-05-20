@@ -1,4 +1,3 @@
-const AxiosHit = jest.fn();
 import {
   handleSubmitUserAuths,
   handleFetchAuthorities,
@@ -9,8 +8,7 @@ import {
   handleFetchServiceList,
   handleFetchCurrentUser,
 } from "../users/users";
-
-jest.mock("src/utils/api/AxiosHit.js");
+import AxiosHit from "../api/AxiosHit";
 
 describe("API function tests", () => {
   afterEach(() => {

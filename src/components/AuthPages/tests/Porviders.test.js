@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 import Providers from "src/components/Providers";
 
 jest.mock("src/hooks/Context/AlertContext", () => ({

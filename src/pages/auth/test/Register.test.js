@@ -8,6 +8,7 @@ import Register from "../register/Register";
 import { BrowserRouter } from "react-router-dom";
 import Providers from "src/components/Providers";
 import FinalRegister from "src/components/AuthPages/FinalRegister";
+import FormRegister from "src/components/AuthPages/FormRegister";
 
 describe("Register Component", () => {
   test("renders Register component with initial step", () => {
@@ -51,7 +52,7 @@ test("transitions from FormRegister to FinalRegister on button click", () => {
   const nextButton = getByText("Next");
   fireEvent.click(nextButton);
 
-  expect(queryByText("Choose user role")).toBeInTheDocument();
+  expect(getByText("Choose user role")).toBeInTheDocument();
 });
 
 describe("FinalRegister Component", () => {

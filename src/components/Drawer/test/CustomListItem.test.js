@@ -41,11 +41,9 @@ describe("CustomListItem Component", () => {
       </BrowserRouter>
     );
 
-    // Simulate click on the ListItem
-    const listItem = screen.getByRole("listitem");
+    const listItem = screen.getByText("Title");
     listItem.click();
 
-    // Check if the onClick handler is called
     expect(mockOnClick).toHaveBeenCalled();
   });
 });

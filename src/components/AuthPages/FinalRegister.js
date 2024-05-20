@@ -159,7 +159,7 @@ const FinalRegister = ({ handleBack, handleNext }) => {
                   onChange={handleChange}
                 >
                   {authorities.map((auth) => (
-                    <MenuItem value={auth.authId}>
+                    <MenuItem key={auth.authId} value={auth.authId}>
                       {auth.name.split("_").join(" ")}
                     </MenuItem>
                   ))}
@@ -180,7 +180,7 @@ const FinalRegister = ({ handleBack, handleNext }) => {
                   onChange={(e) => setSelectedService(e.target.value)}
                 >
                   {serviceList.map((service) => (
-                    <MenuItem value={service.service}>
+                    <MenuItem key={service.service} value={service.service}>
                       {service.service}
                     </MenuItem>
                   ))}
@@ -196,7 +196,6 @@ const FinalRegister = ({ handleBack, handleNext }) => {
               variant="outlined"
               sx={{ p: 2 }}
               onClick={handleBack}
-              disableElevationuy0ojh
               aria-label="back"
             >
               {t("backButton")}

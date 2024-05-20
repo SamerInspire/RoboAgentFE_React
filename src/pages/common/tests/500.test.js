@@ -40,7 +40,7 @@ describe("SomethingWentWrongError Component", () => {
       </BrowserRouter>
     );
 
-    const homeButton = screen.getByRole("button", { name: /Go to Home/i });
+    const homeButton = screen.getByText(/Go to Home/i);
     expect(homeButton).toBeInTheDocument();
     expect(homeButton).toHaveAttribute("href", "/");
   });

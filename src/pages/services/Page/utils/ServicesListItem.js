@@ -15,7 +15,7 @@ const ServicesListItem = ({ service, queryCenterSignup }) => {
   console.log(queryCenterSignup);
   return (
     <Link
-      component={queryCenterSignup ? "" : RouterLink}
+      component={queryCenterSignup ? "div" : RouterLink}
       sx={{ textDecoration: "none" }}
       to={queryCenterSignup ? "" : `/dash/services/getAnswer/${service.enName}`}
     >
@@ -63,33 +63,6 @@ const ServicesListItem = ({ service, queryCenterSignup }) => {
           </Typography>
         </Grid>
       </Grid>
-      {/* <Popper
-        id={queryCenterId}
-        open={openQueryCenterPopper}
-        anchorEl={queryCenterAnchorEl}
-      >
-        <Grid
-          container
-          item
-          p={2}
-          alignItems={"center"}
-          sx={{
-            borderRadius: "10px",
-            bgcolor: "#F9F4D6",
-            marginTop: 1,
-            border: "1px solid #E4E0AC",
-          }}
-        >
-          <WarningIcon sx={{ color: "#97732C", fontSize: 32 }} />
-          <Typography variant="body1" fontWeight={600}>
-            Warning :
-          </Typography>
-          <Typography variant="body2" fontWeight={500}>
-            {" "}
-            Please Signup in the query center
-          </Typography>
-        </Grid>
-      </Popper> */}
     </Link>
   );
 };
