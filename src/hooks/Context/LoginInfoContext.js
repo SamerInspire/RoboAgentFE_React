@@ -14,7 +14,7 @@ function LoginProvider(props) {
     await AxiosHit(
       {
         method: "post",
-        url: "users/signin",
+        url: "api/users/signin",
         data: {
           email: loginData.email,
           password: loginData.password,

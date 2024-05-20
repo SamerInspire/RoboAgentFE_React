@@ -22,13 +22,16 @@ const ServicesListItem = ({ service, queryCenterSignup }) => {
       <Grid
         container
         item
-        onClick={() =>
-          setAlertInfo({
-            alertType: "warning",
-            alertMsg:
-              "Please Register in the query center to be able to use the services",
-            sleep: 5000,
-          })
+        onClick={() => {
+          if (queryCenterSignup) {
+            setAlertInfo({
+              alertType: "warning",
+              alertMsg:
+                "Please Register in the query center to be able to use the services",
+              sleep: 5000,
+            })
+          }
+}
         }
         sx={{
           ...glassMorphisimStyle,

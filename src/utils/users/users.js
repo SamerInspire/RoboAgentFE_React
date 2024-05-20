@@ -5,7 +5,7 @@ export async function handleSubmitUserAuths(utils) {
     await AxiosHit(
       {
         method: "put",
-        url: "/user-auth",
+        url: "/api/user-auth",
         data: {
           roboAuthorities: roboAuthorities,
           userId: userId,
@@ -22,7 +22,7 @@ export const handleFetchAuthorities = async (utils) => {
     await AxiosHit(
       {
         method: "get",
-        url: "/user-auth",
+        url: "/api/user-auth",
       },
       utils
     );
@@ -36,7 +36,7 @@ export async function hanldeSubmitUserNewRole(utils) {
     await AxiosHit(
       {
         method: "put",
-        url: `/user-roles/${userId}/roles/${newRole}`,
+        url: `/api/user-roles/${userId}/roles/${newRole}`,
       },
       utils
     );
@@ -51,7 +51,7 @@ export async function handleSubmitNewUser(userData, utils) {
   try {
     const r = await AxiosHit(
       {
-        url: "/users/signup",
+        url: "/api/users/signup",
         method: "post",
         data: { ...userData, roboAuthorities: undefined },
       },
@@ -59,7 +59,7 @@ export async function handleSubmitNewUser(userData, utils) {
     );
     handleSubmitUserAuths({
       roboAuthorities: userData.roboAuthorities,
-      userId: r.data.roboAgentRs.body.user.userId,
+      userId: r.data.roboAgentRs.body?.user?.userId,
     });
   } catch (error) {
     console.log(error);
@@ -101,7 +101,7 @@ export async function handleFetchServiceList(utils) {
     await AxiosHit(
       {
         method: "get",
-        url: "/service",
+        url: "/api/service",
       },
       utils
     );
@@ -113,7 +113,7 @@ export async function handleFetchCurrentUser(utils) {
   try {
     await AxiosHit(
       {
-        url: "users/currentuser",
+        url: "api/users/currentuser",
         method: "get",
       },
       utils
