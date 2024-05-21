@@ -1,104 +1,129 @@
+// authorities.test.js
+import { CONTAINER_SECTIONS } from "src/constants/dnd";
 import {
-  findBoardSectionContainer,
-  getAuthorityById,
   getAuthorityByStatus,
+  getAuthorityById,
   initializeContainer,
+  findBoardSectionContainer,
 } from "./service";
 
 const sampleAuthorities = [
   {
-    id: 1,
-    authId: 1,
-    name: "ADMIN",
-    description: "admin",
-    containerValue: "all_services",
-  },
-  {
-    id: 2,
-    authId: 2,
-    name: "SUPER_VISOR",
-    description: "SuperVisor",
-    containerValue: "active_services",
-  },
-  {
-    id: 3,
     authId: 3,
     name: "CM_ROLE",
     description: "CM Role",
+    containerValue: "active_services",
+    id: 3,
+  },
+  {
+    authId: 5,
+    name: "AUTOMATION_ROLE",
+    description: "Automation Role",
     containerValue: "all_services",
+    id: 5,
+  },
+  {
+    authId: 4,
+    name: "WP_ROLE",
+    description: "WP Role",
+    containerValue: "all_services",
+    id: 4,
+  },
+  {
+    authId: 6,
+    name: "HALF_ADMIN",
+    description: "Half Admin",
+    containerValue: "active_services",
+    id: 6,
   },
 ];
 
-describe("Utility Functions", () => {
+describe("Authority Functions", () => {
   describe("getAuthorityByStatus", () => {
-    test("should return authorities with the given status", () => {
-      const result = getAuthorityByStatus(sampleAuthorities, "all_services");
-      expect(result).toEqual([
-        {
-          authId: 1,
-          name: "ADMIN",
-          description: "admin",
-          containerValue: "all_services",
-        },
+    it("should return authorities with the specified status", () => {
+      const activeServices = getAuthorityByStatus(
+        sampleAuthorities,
+        "active_services"
+      );
+      expect(activeServices).toEqual([
         {
           authId: 3,
           name: "CM_ROLE",
           description: "CM Role",
-          containerValue: "all_services",
+          containerValue: "active_services",
+          id: 3,
+        },
+        {
+          authId: 6,
+          name: "HALF_ADMIN",
+          description: "Half Admin",
+          containerValue: "active_services",
+          id: 6,
         },
       ]);
     });
 
-    test("should return an empty array if no authorities match the given status", () => {
-      const result = getAuthorityByStatus(
+    it("should return an empty array if no authorities match the status", () => {
+      const inactiveServices = getAuthorityByStatus(
         sampleAuthorities,
-        "non_existent_status"
+        "inactive_services"
       );
-      expect(result).toEqual([]);
+      expect(inactiveServices).toEqual([]);
     });
   });
 
   describe("getAuthorityById", () => {
-    test("should return the authority with the given id", () => {
-      const result = getAuthorityById(sampleAuthorities, 1);
-      expect(result).toEqual({
-        authId: 1,
-        name: "ADMIN",
-        description: "admin",
+    it("should return the authority with the specified id", () => {
+      const authority = getAuthorityById(sampleAuthorities, 5);
+      expect(authority).toEqual({
+        authId: 5,
+        name: "AUTOMATION_ROLE",
+        description: "Automation Role",
         containerValue: "all_services",
+        id: 5,
       });
     });
 
-    test("should return undefined if no authority matches the given id", () => {
-      const result = getAuthorityById(sampleAuthorities, 99);
-      expect(result).toBeUndefined();
+    it("should return undefined if no authority matches the id", () => {
+      const authority = getAuthorityById(sampleAuthorities, 999);
+      expect(authority).toBeUndefined();
     });
   });
 
   describe("initializeContainer", () => {
-    test("should initialize container sections correctly", () => {
-      const result = initializeContainer(sampleAuthorities);
-      expect(result).toEqual({
+    it("should initialize containers correctly based on status", () => {
+      const containers = initializeContainer(sampleAuthorities);
+      expect(containers).toEqual({
         all_services: [
           {
-            authId: 1,
-            name: "ADMIN",
-            description: "admin",
+            authId: 5,
+            name: "AUTOMATION_ROLE",
+            description: "Automation Role",
             containerValue: "all_services",
+            id: 5,
           },
           {
-            authId: 3,
-            name: "CM_ROLE",
-            description: "CM Role",
+            authId: 4,
+            name: "WP_ROLE",
+            description: "WP Role",
             containerValue: "all_services",
+            id: 4,
           },
         ],
         active_services: [
           {
-            authId: 2,
-            name: "SUPER_VISOR",
-            description: "SuperVisor",
+            authId: 3,
+            name: "CM_ROLE",
+            description: "CM Role",
             containerValue: "active_services",
+            id: 3,
+          },
+          {
+            authId: 6,
+            name: "HALF_ADMIN",
+            description: "Half Admin",
+            containerValue: "active_services",
+            id: 6,
           },
         ],
       });
@@ -106,35 +131,26 @@ describe("Utility Functions", () => {
   });
 
   describe("findBoardSectionContainer", () => {
-    const containerSections = initializeContainer(sampleAuthorities);
-
-    test("should return 'active_services' if id is 'active_services'", () => {
-      const result = findBoardSectionContainer(
-        containerSections,
-        "active_services"
-      );
-      expect(result).toBe("active_services");
+    it("should return the correct section id for active_services", () => {
+      const section = findBoardSectionContainer({}, "active_services");
+      expect(section).toEqual("active_services");
     });
 
-    test("should return 'all_services' if id is 'all_services'", () => {
-      const result = findBoardSectionContainer(
-        containerSections,
-        "all_services"
-      );
-      expect(result).toBe("all_services");
+    it("should return the correct section id for all_services", () => {
+      const section = findBoardSectionContainer({}, "all_services");
+      expect(section).toEqual("all_services");
     });
 
-    test("should return the correct container for a given authority id", () => {
-      const result = findBoardSectionContainer(containerSections, 1);
-      expect(result).toBe("all_services");
-
-      const result2 = findBoardSectionContainer(containerSections, 2);
-      expect(result2).toBe("active_services");
+    it("should return the correct container section for a given id", () => {
+      const containerSections = initializeContainer(sampleAuthorities);
+      const section = findBoardSectionContainer(containerSections, 5);
+      expect(section).toEqual("all_services");
     });
 
-    test("should return undefined if the id does not match any container", () => {
-      const result = findBoardSectionContainer(containerSections, 99);
-      expect(result).toBeUndefined();
+    it("should return undefined if the id is not found in any container section", () => {
+      const containerSections = initializeContainer(sampleAuthorities);
+      const section = findBoardSectionContainer(containerSections, 999);
+      expect(section).toBeUndefined();
     });
   });
 });

@@ -3,7 +3,7 @@ import i18n from "src/dictonaries/i18n";
 import { reshapeUserData } from "src/utils/table/tableReshape";
 
 export function generalSuccessReducer(result, utils) {
-  console.log("utils.requestAction ===> ",utils.requestAction)
+  console.log("utils.requestAction ===> ", utils.requestAction);
   const { body } = result?.data?.roboAgentRs;
   const { header } = result?.data?.roboAgentRs;
   const { setAlertInfo } = utils;

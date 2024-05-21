@@ -49,5 +49,3 @@ const CustomListItem = (props) => {
 };
 
 export default CustomListItem;
-
-//<ListItemText primary={props.title} />

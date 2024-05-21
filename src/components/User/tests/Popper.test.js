@@ -1,9 +1,7 @@
-import { ThemeProvider } from "@emotion/react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { AlertProvider, useUpdateAlert } from "src/hooks/Context/AlertContext";
-import { lightTheme } from "src/styles/theme";
-import RolesPopper from "../poppers/RolesPopper";
 import Providers from "src/components/Providers";
+import { useUpdateAlert } from "src/hooks/Context/AlertContext";
+import RolesPopper from "../poppers/RolesPopper";
 
 jest.mock("src/hooks/Context/AlertContext", () => ({
   useUpdateAlert: jest.fn(),
@@ -69,7 +67,7 @@ describe("RolesPopper Component", () => {
     }));
 
     render(
-      <Providers theme={lightTheme}>
+      <Providers>
         <RolesPopper
           userData={userDataMember}
           setTableData={setTableData}

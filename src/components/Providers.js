@@ -5,10 +5,7 @@ function Providers({ children }) {
   return (
     <LoginProvider>
       <ThemeContextProvider>
-        {/* <CssBaseline /> */}
-        {/* <I18nextProvider i18n={i18next}> */}
         <AlertProvider>{children}</AlertProvider>
-        {/* </I18nextProvider> */}
       </ThemeContextProvider>
     </LoginProvider>
   );

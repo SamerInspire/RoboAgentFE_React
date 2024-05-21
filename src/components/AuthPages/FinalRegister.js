@@ -26,7 +26,9 @@ export async function handleFinalRegistration(
   userId
 ) {
   try {
-    const rolePromise = axios.post(`/api/user-roles/${userId}/roles/${userRole}`);
+    const rolePromise = axios.post(
+      `/api/user-roles/${userId}/roles/${userRole}`
+    );
     const mainServicePromise = axios.post(
       `/service/${userId}/service/${userMainService}`
     );
@@ -55,8 +57,8 @@ const FinalRegister = ({ handleBack, handleNext }) => {
   const [selectedService, setSelectedService] = useState("");
   const { t } = useTranslation();
   const userRoles = [
-    { value: "team_lead", title: t("register.Team Lead") },
-    { value: "member", title: t("register.Member") },
+    { value: "TEAM_LEAD", title: t("register.Team Lead") },
+    { value: "MEMBER", title: t("register.Member") },
   ];
   const teams = ["L1", "L2"];
   // hook form

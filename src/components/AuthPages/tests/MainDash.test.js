@@ -1,17 +1,17 @@
+import { Grid } from "@mui/material";
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import Providers from "src/components/Providers";
-import Dashboard from "src/pages/Dashboard/Dashboard";
-import InfoCards from "src/pages/Dashboard/InfoCards";
 import ChartCurrentSubject from "src/pages/Dashboard/ChartCurrentSubject";
 import ChartSiteVisits from "src/pages/Dashboard/ChartSiteVisits";
 import ConversionRate from "src/pages/Dashboard/ConversionRate";
 import CurrentVisits from "src/pages/Dashboard/CurrentVisits";
+import Dashboard from "src/pages/Dashboard/Dashboard";
+import InfoCards from "src/pages/Dashboard/InfoCards";
 import NewsUpdate from "src/pages/Dashboard/NewsUpdate";
 import OrderTimeline from "src/pages/Dashboard/OrderTimeline";
 import SocialTraffic from "src/pages/Dashboard/SocialTraffic";
 import Tasks from "src/pages/Dashboard/Tasks";
-import { Grid } from "@mui/material";
 
 describe("Dashboard Component", () => {
   test("renders without crashing", () => {

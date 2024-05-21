@@ -79,7 +79,6 @@ describe("handleGetResponse", () => {
       {
         url: expectedUrl,
         method: expectedMethod,
-        baseURL: expectedBaseUrl,
         data: {
           establishmentNumber: expectedEstablishmentNumber,
           selectedOptions: expectedSelectedOptions,

@@ -1,3 +1,4 @@
+import AxiosHit from "../api/AxiosHit.js";
 import {
   handleSubmitUserAuths,
   handleFetchAuthorities,
@@ -8,29 +9,45 @@ import {
   handleFetchServiceList,
   handleFetchCurrentUser,
 } from "../users/users";
-import AxiosHit from "../api/AxiosHit";
 
-describe("API function tests", () => {
+jest.mock("../api/AxiosHit.js");
+
+describe("API handling functions", () => {
+  const utils = {
+    roboAuthorities: ["authority1", "authority2"],
+    userId: "user123",
+    newRole: "admin",
+    userNewService: "service1",
+    someUtil: jest.fn(),
+  };
+
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  test("handleSubmitUserAuths makes a PUT request with correct data", async () => {
-    const utils = { roboAuthorities: ["auth1", "auth2"], userId: 1 };
+  it("handleSubmitUserAuths should call AxiosHit with correct config", async () => {
+    AxiosHit.mockResolvedValueOnce({ data: "success" });
+
     await handleSubmitUserAuths(utils);
+
     expect(AxiosHit).toHaveBeenCalledWith(
       {
         method: "put",
         url: "/api/user-auth",
-        data: { roboAuthorities: utils.roboAuthorities, userId: utils.userId },
+        data: {
+          roboAuthorities: utils.roboAuthorities,
+          userId: utils.userId,
+        },
       },
       utils
     );
   });
 
-  test("handleFetchAuthorities makes a GET request", async () => {
-    const utils = {};
+  it("handleFetchAuthorities should call AxiosHit with correct config", async () => {
+    AxiosHit.mockResolvedValueOnce({ data: "success" });
+
     await handleFetchAuthorities(utils);
+
     expect(AxiosHit).toHaveBeenCalledWith(
       {
         method: "get",
@@ -40,9 +57,11 @@ describe("API function tests", () => {
     );
   });
 
-  test("hanldeSubmitUserNewRole makes a PUT request with correct URL", async () => {
-    const utils = { userId: 1, newRole: "TEAM_LEAD" };
+  it("hanldeSubmitUserNewRole should call AxiosHit with correct config", async () => {
+    AxiosHit.mockResolvedValueOnce({ data: "success" });
+
     await hanldeSubmitUserNewRole(utils);
+
     expect(AxiosHit).toHaveBeenCalledWith(
       {
         method: "put",
@@ -52,13 +71,25 @@ describe("API function tests", () => {
     );
   });
 
-  test("handleSubmitNewUser makes a POST request and calls handleSubmitUserAuths", async () => {
-    const userData = { roboAuthorities: ["auth1", "auth2"], username: "test" };
-    const utils = {};
-    const response = {
-      data: { roboAgentRs: { body: { user: { userId: 1 } } } },
+  it("handleSubmitNewUser should call AxiosHit with correct config and handle subsequent calls", async () => {
+    const userData = {
+      name: "John Doe",
+      email: "john@example.com",
+      roboAuthorities: ["authority1", "authority2"],
     };
-    AxiosHit.mockResolvedValueOnce(response);
+    const mockResponse = {
+      data: {
+        roboAgentRs: {
+          body: {
+            user: {
+              userId: "user123",
+            },
+          },
+        },
+      },
+    };
+
+    AxiosHit.mockResolvedValueOnce(mockResponse);
 
     await handleSubmitNewUser(userData, utils);
 
@@ -75,39 +106,48 @@ describe("API function tests", () => {
       {
         method: "put",
         url: "/api/user-auth",
-        data: { roboAuthorities: userData.roboAuthorities, userId: 1 },
+        data: {
+          roboAuthorities: userData.roboAuthorities,
+          userId: "user123",
+        },
       },
-      utils
+      { roboAuthorities: userData.roboAuthorities, userId: "user123" }
     );
   });
 
-  test("handleSubmitUserNewService makes a PUT request with correct URL", async () => {
-    const utils = { userId: 1, userNewService: "service1" };
+  it("handleSubmitUserNewService should call AxiosHit with correct config", async () => {
+    AxiosHit.mockResolvedValueOnce({ data: "success" });
+
     await handleSubmitUserNewService(utils);
+
     expect(AxiosHit).toHaveBeenCalledWith(
       {
         method: "put",
-        url: `service/${utils.userId}/service/${utils.userNewService}`,
+        url: `/api/service/${utils.userId}/service/${utils.userNewService}`,
       },
       utils
     );
   });
 
-  test("handleFetchAllUsers makes a GET request with correct URL", async () => {
-    const utils = {};
+  it("handleFetchAllUsers should call AxiosHit with correct config", async () => {
+    AxiosHit.mockResolvedValueOnce({ data: "success" });
+
     await handleFetchAllUsers(utils);
+
     expect(AxiosHit).toHaveBeenCalledWith(
       {
-        url: "users/getallusers?size=40",
+        url: "/api/users/getallusers?size=40",
         method: "get",
       },
       utils
     );
   });
 
-  test("handleFetchServiceList makes a GET request with correct URL", async () => {
-    const utils = {};
+  it("handleFetchServiceList should call AxiosHit with correct config", async () => {
+    AxiosHit.mockResolvedValueOnce({ data: "success" });
+
     await handleFetchServiceList(utils);
+
     expect(AxiosHit).toHaveBeenCalledWith(
       {
         method: "get",
@@ -117,12 +157,14 @@ describe("API function tests", () => {
     );
   });
 
-  test("handleFetchCurrentUser makes a GET request with correct URL", async () => {
-    const utils = {};
+  it("handleFetchCurrentUser should call AxiosHit with correct config", async () => {
+    AxiosHit.mockResolvedValueOnce({ data: "success" });
+
     await handleFetchCurrentUser(utils);
+
     expect(AxiosHit).toHaveBeenCalledWith(
       {
-        url: "api/users/currentuser",
+        url: "/api/users/currentuser",
         method: "get",
       },
       utils

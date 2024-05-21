@@ -73,7 +73,7 @@ export async function handleSubmitUserNewService(utils) {
     await AxiosHit(
       {
         method: "put",
-        url: `service/${userId}/service/${userNewService}`,
+        url: `/api/service/${userId}/service/${userNewService}`,
       },
       utils
     );
@@ -86,7 +86,7 @@ export async function handleFetchAllUsers(utils) {
   try {
     await AxiosHit(
       {
-        url: "users/getallusers?size=40",
+        url: "/api/users/getallusers?size=40",
         method: "get",
       },
       utils
@@ -113,7 +113,7 @@ export async function handleFetchCurrentUser(utils) {
   try {
     await AxiosHit(
       {
-        url: "api/users/currentuser",
+        url: "/api/users/currentuser",
         method: "get",
       },
       utils

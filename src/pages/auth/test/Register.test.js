@@ -52,7 +52,7 @@ test("transitions from FormRegister to FinalRegister on button click", () => {
   const nextButton = getByText("Next");
   fireEvent.click(nextButton);
 
-  expect(getByText("Choose user role")).toBeInTheDocument();
+  expect(getByText("User registration")).toBeInTheDocument();
 });
 
 describe("FinalRegister Component", () => {

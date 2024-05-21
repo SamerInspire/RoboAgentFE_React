@@ -27,7 +27,7 @@ export function handleChangePassCodeActions(result, code, utils) {
   const { handleNext, setAlertInfo } = utils;
 
   const { message, success } = getResponseShape(header, code);
-  if (success == "success") handleNext();
+  if (success) handleNext();
   setAlertInfo({ alertType: success, alertMsg: message });
 }
 
@@ -39,12 +39,13 @@ export function handleOTPCodeActions(result, code, utils) {
   const { header } = result.data.roboAgentRs;
   const { handleNext, setAlertInfo } = utils;
 
-  const { alertType, success, alertMsg } = getResponseShape(
-    header,
-    header.code
-  );
+  const { message, alertStatus, success } = getResponseShape(header, code);
+
   if (success) handleNext();
-  setAlertInfo({ alertType: alertType, alertMsg: alertMsg, open: true });
+  setAlertInfo({
+    alertType: alertStatus,
+    alertMsg: message,
+  });
 }
 
 export async function handleUserCodeActions(result, code, utils) {
