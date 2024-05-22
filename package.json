@@ -40,8 +40,15 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test react-scripts test --watchAll=true --coverage --silent --collectCoverageFrom='src/**/*.{js,jsx}' --transformIgnorePatterns 'node_modules/(?!my-library-dir)/'",
+    "test": "react-scripts test react-scripts test  --transformIgnorePatterns 'node_modules/(?!my-library-dir)/'",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/index.js",
+      "!src/constants"
+    ]
   },
   "browserslist": {
     "production": [

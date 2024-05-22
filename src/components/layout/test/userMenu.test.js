@@ -1,4 +1,3 @@
-// UserMenu.test.js
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { LoginContext } from "src/hooks/Context/LoginInfoContext";
@@ -38,9 +37,9 @@ describe("UserMenu Component", () => {
     };
 
     renderWithProviders(
-      <Provider>
+      <Providers>
         <UserMenu {...mockProps} />
-      </Provider>,
+      </Providers>,
       { providerProps }
     );
 
@@ -65,8 +64,10 @@ describe("UserMenu Component", () => {
     const avatarButton = screen.getByRole("button");
     fireEvent.click(avatarButton);
 
-    const menu = screen.getByRole("menu");
-    expect(menu).toBeInTheDocument();
+    expect(screen.getByText(/home/i)).toBeInTheDocument();
+    expect(screen.getByText(/profile/i)).toBeInTheDocument();
+    expect(screen.getByText(/settings/i)).toBeInTheDocument();
+    expect(screen.getByText(/logout/i)).toBeInTheDocument();
 
     // Close the menu
     fireEvent.click(document.body);
@@ -81,7 +82,11 @@ describe("UserMenu Component", () => {
 
     renderWithProviders(
       <Providers>
-        <UserMenu {...mockProps} />
+        <LoginContext
+          value={{ loginData: { ...mockLoginData, isLoggedIn: true } }}
+        >
+          <UserMenu {...mockProps} />
+        </LoginContext>
       </Providers>,
       { providerProps }
     );
@@ -131,7 +136,7 @@ describe("UserMenu Component", () => {
     const avatarButton = screen.getByRole("button");
     fireEvent.click(avatarButton);
 
-    const logoutButton = screen.getByRole("button", { name: /logout/i });
+    const logoutButton = screen.getByText(/logout/i);
     fireEvent.click(logoutButton);
 
     expect(mockLogout).toHaveBeenCalled();

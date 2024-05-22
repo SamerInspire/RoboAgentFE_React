@@ -1,10 +1,10 @@
 import "@testing-library/jest-dom";
 import { render, screen, waitFor } from "@testing-library/react";
-import ShowAlert from "../ShowAlert";
 import {
   AlertContext,
-  UpdateAlertContext,
+  NewAlertContext,
 } from "../../hooks/Context/AlertContext";
+import ShowAlert from "../ShowAlert";
 
 const mockAlertInfo = {
   alertType: "error",
@@ -21,9 +21,9 @@ const renderWithProviders = (
 ) => {
   return render(
     <AlertContext.Provider value={alertValue}>
-      <UpdateAlertContext.Provider value={updateAlertValue}>
+      <NewAlertContext.Provider value={updateAlertValue}>
         {ui}
-      </UpdateAlertContext.Provider>
+      </NewAlertContext.Provider>
     </AlertContext.Provider>,
     renderOptions
   );
