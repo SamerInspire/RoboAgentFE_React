@@ -23,7 +23,7 @@ const ThemeContextProvider = ({ children }) => {
           setDirection,
         }}
       >
-        {children};
+        {children}
       </themeContext.Provider>
     </ThemeProvider>
   );

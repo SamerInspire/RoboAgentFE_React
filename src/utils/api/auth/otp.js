@@ -1,7 +1,8 @@
 import AxiosHit from "../AxiosHit";
 
 export async function handleVerifyEmail(utils) {
-  const { email } = utils;
+  const { email, setIsLoading } = utils;
+  setIsLoading(true);
   try {
     await AxiosHit(
       {
@@ -16,8 +17,9 @@ export async function handleVerifyEmail(utils) {
   }
 }
 export async function handleVerifyOTP(utils) {
-  const { token, otp } = utils;
+  const { token, otp, setIsLoading } = utils;
   console.log(token);
+  setIsLoading(true);
   try {
     await AxiosHit(
       {
@@ -36,7 +38,8 @@ export async function handleVerifyOTP(utils) {
   }
 }
 export async function handleRestPassword(utils) {
-  const { newPass, otpToken } = utils;
+  const { newPass, otpToken, setIsLoading } = utils;
+  setIsLoading(true);
   try {
     await AxiosHit({
       method: "post",
@@ -45,7 +48,7 @@ export async function handleRestPassword(utils) {
       data: {
         password: newPass,
       },
-      utils
+      utils,
     });
   } catch (error) {
     console.log(error);

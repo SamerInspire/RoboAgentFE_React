@@ -13,7 +13,7 @@ import {
 export function successHitHandle(result, utils) {
   const { code } = result?.data?.roboAgentRs?.header?.responseStatus;
   const { codeLetters, codeNumbers } = handleExtractCodeInfo(code, "string");
-  console.log(codeLetters)
+  console.log("Code Letter======>", codeLetters);
   switch (codeLetters) {
     case "":
       return generalSuccessReducer(result, utils);

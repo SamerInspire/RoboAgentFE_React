@@ -21,6 +21,7 @@ describe("Code Actions", () => {
     handleNext: jest.fn(),
     setAlertInfo: jest.fn(),
     setOtpToken: jest.fn(),
+    setLoading: jest.fn(),
   };
 
   beforeEach(() => {
@@ -187,6 +188,7 @@ describe("Code Actions", () => {
 
     expect(mockUtils.setOtpToken).toHaveBeenCalledWith("mock-token");
     expect(mockUtils.handleNext).toHaveBeenCalled();
+    expect(mockUtils.setLoading).toHaveBeenCalled();
     expect(mockUtils.setAlertInfo).toHaveBeenCalledWith({
       alertType: "success",
       alertMsg: "Success",

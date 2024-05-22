@@ -86,7 +86,7 @@ const TopPaneStyle = styled(Box)(({ theme }) => ({
   },
 }));
 const ContainerBoxStyle = styled(Box)(({ theme }) => ({
-  minHeight: `calc(100vh - ${theme.mixins.toolbar.minHeight * 2}px)`,
+  maxHeight: `100vh`,
   display: "grid",
   gap: theme.spacing(3),
   gridTemplateColumns: `350px 1fr`,

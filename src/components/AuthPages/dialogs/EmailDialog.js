@@ -9,7 +9,9 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import Loader from "src/components/loader/Loader";
 import FormStyle from "src/styles/styles";
 import { handleVerifyEmail } from "src/utils/api/auth/otp";
 
@@ -27,9 +29,12 @@ function EmailDialog({
     register: restEmailRegister,
     formState: { errors: emailErrors },
   } = useForm();
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <Dialog
       open={steps == 1}
+      fullWidth={true}
+      maxWidth={"sm"}
       sx={{
         textAlign: "center",
         "& .MuiPaper-root": {
@@ -62,7 +67,12 @@ function EmailDialog({
       <DialogActions sx={{ paddingTop: 4 }}>
         <Grid container item spacing={4}>
           <Grid item xs={12} md={6}>
-            <Button fullWidth variant="contained" onClick={handleClose}>
+            <Button
+              sx={{ height: "45px" }}
+              fullWidth
+              variant="contained"
+              onClick={handleClose}
+            >
               Cancel
             </Button>
           </Grid>
@@ -70,14 +80,28 @@ function EmailDialog({
             <Button
               fullWidth
               variant="contained"
-              onClick={emailHandleSubmit((data) =>
-                handleVerifyEmail({
+              disabled={isLoading ? true : false}
+              endIcon={
+                isLoading ? (
+                  <Loader
+                    styles={{
+                      marginLeft: "10px",
+                      width: "30px",
+                      height: "30px",
+                    }}
+                  />
+                ) : null
+              }
+              onClick={emailHandleSubmit(async (data) => {
+                await handleVerifyEmail({
                   email: getValues("rest_email"),
                   handleNext,
                   setAlertInfo: setSnackbarData,
                   setOtpToken,
-                })
-              )}
+                  setIsLoading,
+                });
+                setIsLoading(false);
+              })}
             >
               Next
             </Button>

@@ -23,20 +23,13 @@ const MainStyle = styled("main")(({ theme }) => ({
 }));
 
 const DashboardLayout = (props) => {
-  // window width
   const { loginData } = useContext(LoginContext);
   const { window } = props;
   const [toggleMenu, setToggleMenu] = useState(false);
-  // const classes = usestyles();
-
-  // toggle drawer
   const handleToggleDrawer = () => setToggleMenu(!toggleMenu);
   const handleToggleClose = () => setToggleMenu(false);
-
-  // I don't know the work of container yet
   const container =
     window !== undefined ? () => window().document.body : undefined;
-
   return (
     <React.Fragment>
       <Box sx={{ display: "flex" }}>

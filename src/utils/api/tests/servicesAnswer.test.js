@@ -71,7 +71,6 @@ describe("handleGetResponse", () => {
     const expectedSelectedOptions = ["option1", "option3"];
     const expectedUrl = "roboAgent/get-answer?service=TEST_SERVICE";
     const expectedMethod = "post";
-    const expectedBaseUrl = "http://localhost:3000/";
 
     await handleGetResponse(utils);
 

@@ -24,9 +24,10 @@ export const getResponseShape = (header, code) => {
 };
 export function handleChangePassCodeActions(result, code, utils) {
   const { header } = result.data.roboAgentRs;
-  const { handleNext, setAlertInfo } = utils;
+  const { handleNext, setAlertInfo, setIsLoading } = utils;
 
   const { message, success } = getResponseShape(header, code);
+  setIsLoading(false);
   if (success) handleNext();
   setAlertInfo({ alertType: success, alertMsg: message });
 }
@@ -37,10 +38,11 @@ export function JWTFalureHitHandle() {
 }
 export function handleOTPCodeActions(result, code, utils) {
   const { header } = result.data.roboAgentRs;
-  const { handleNext, setAlertInfo } = utils;
+  const { handleNext, setAlertInfo, setIsLoading } = utils;
 
   const { message, alertStatus, success } = getResponseShape(header, code);
-
+  setIsLoading(false);
+  console.log(message);
   if (success) handleNext();
   setAlertInfo({
     alertType: alertStatus,
@@ -70,12 +72,12 @@ export function handleGeneralErrorCodeActions(result, code, utils) {
 
 export function handleEmailCodeActions(result, code, utils) {
   const { header } = result.data.roboAgentRs;
-  const { handleNext, setAlertInfo, setOtpToken } = utils;
+  const { handleNext, setIsLoading, setAlertInfo, setOtpToken } = utils;
   const { message, success, alertStatus } = getResponseShape(header, code);
 
   if (success) {
     setOtpToken(result.headers["authorization"]);
-
+    setIsLoading(false);
     handleNext();
   }
   setAlertInfo({ alertType: alertStatus, alertMsg: message, open: true });

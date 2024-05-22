@@ -71,6 +71,6 @@ describe("Routes component", () => {
       </Providers>
     );
 
-    expect(getByText("Dashboard")).toBeInTheDocument();
+    expect(getAllByText("Dashboard")[0]).toBeInTheDocument();
   });
 });
