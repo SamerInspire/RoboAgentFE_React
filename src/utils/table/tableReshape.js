@@ -16,3 +16,11 @@ export function reshapeUserData(usersArr = []) {
   })
   return newUsersArr;
 }
+// export function reshapeUserData(usersArr = []) {
+//   const newUsersArr = [];
+//   usersArr.forEach((user) => {
+//     user.status = user.status.split("-")[1];
+//     newUsersArr.push(Object.values(user));
+//   });
+//   return newUsersArr;
+// }

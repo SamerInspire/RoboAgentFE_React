@@ -16,6 +16,10 @@ export function generalSuccessReducer(result, utils) {
     case "GET_ALL_USERS": {
       const { setTableData } = utils;
       const newUsersDataReshaped = reshapeUserData(body.users);
+      console.log(
+        "new users data reshaped =============>",
+        newUsersDataReshaped
+      );
       setTableData(newUsersDataReshaped);
       break;
     }

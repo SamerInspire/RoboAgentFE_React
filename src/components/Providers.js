@@ -10,5 +10,4 @@ function Providers({ children }) {
     </LoginProvider>
   );
 }
-
 export default Providers;
