@@ -56,7 +56,7 @@ function UserTable() {
     setIsEditServiceDialogOpen(true);
   };
   const handleOpenServiceModal = (userData) => {
-    setAuthorities(handleFilterAuthorities(authorities, userData[8]));
+    setAuthorities(handleFilterAuthorities(authorities, userData[9]));
     setUserData(userData);
     setIsOpenServicesModal(true);
   };
@@ -77,6 +77,13 @@ function UserTable() {
         customBodyRender: (value, tableMeta, updateValue) => {
           return <Grid display={"none"}></Grid>;
         },
+      },
+    },
+    {
+      name: "UserName",
+      label: t("UserNameLabel"),
+      options: {
+        filter: true,
       },
     },
     {

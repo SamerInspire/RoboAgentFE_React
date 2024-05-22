@@ -45,6 +45,7 @@ export async function handleRestPassword(utils) {
       data: {
         password: newPass,
       },
+      utils
     });
   } catch (error) {
     console.log(error);

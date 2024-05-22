@@ -132,7 +132,7 @@ const ServicesGetAnswer = ({ }) => {
                     id="outlined-multiline-static"
                     label="Establishment Number"
                     pattern="[0-9]*"
-                    {...register("establishment_number", {
+                    {...register("establishmentNumber", {
                       onChange: (e) => numbersOnly(e),
                       onPaste: (e) => numbersOnly(e),
                       require: true,
