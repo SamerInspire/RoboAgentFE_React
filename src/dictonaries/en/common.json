@@ -16,7 +16,7 @@
     "services": "Services",
     "register": "Register"
   },
-
+  "UserNameLabel": "User Name",
   "firstnameLabel": "First Name",
   "middlenameLabel": "Middle Name",
   "lastnameLabel": "Last Name",
