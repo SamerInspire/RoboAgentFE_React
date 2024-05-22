@@ -15,6 +15,7 @@
     "services": "الخدمات",
     "register": "تسجيل"
   },
+  "UserNameLabel": "إسم المستخدم",
   "firstnameLabel": "الاسم الأول",
   "middlenameLabel": "الاسم الأوسط",
   "lastnameLabel": "الاسم الأخير",
