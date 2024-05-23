@@ -87,6 +87,7 @@ const TopPaneStyle = styled(Box)(({ theme }) => ({
 }));
 const ContainerBoxStyle = styled(Box)(({ theme }) => ({
   maxHeight: `100vh`,
+  height: "100vh",
   display: "grid",
   gap: theme.spacing(3),
   gridTemplateColumns: `350px 1fr`,
