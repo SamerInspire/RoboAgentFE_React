@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useUpdateAlert } from "src/hooks/Context/AlertContext";
+import LoadingButton from "src/components/buttons/LoadingButton";
 import FormStyle from "src/styles/styles";
 import { handleRestPassword } from "src/utils/api/auth/otp";
 
@@ -39,6 +39,7 @@ function NewPassDialog({
     handleSubmit,
     watch,
     getValues,
+    reset,
     formState: { errors },
   } = useForm();
   const [isLoading, setIsLoading] = useState(false);
@@ -144,26 +145,32 @@ function NewPassDialog({
       <DialogActions sx={{ paddingTop: 4 }}>
         <Grid container item spacing={4}>
           <Grid item xs={12} md={6}>
-            <Button fullWidth variant="contained" onClick={handleClose}>
+            <Button
+              fullWidth
+              variant="contained"
+              onClick={() => {
+                handleClose();
+                reset();
+              }}
+            >
               Cancel
             </Button>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Button
-              fullWidth
-              variant="contained"
-              onClick={handleSubmit((data) =>
-                handleRestPassword({
+            <LoadingButton
+              title="Change Password"
+              isLoading={isLoading}
+              clickHandler={handleSubmit(async (data) => {
+                await handleRestPassword({
                   newPass: data.password,
                   handleNext,
                   setAlertInfo: setSnackbarData,
                   otpToken,
                   setIsLoading,
-                })
-              )}
-            >
-              Change Password
-            </Button>
+                });
+                reset();
+              })}
+            />
           </Grid>
         </Grid>
       </DialogActions>

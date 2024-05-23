@@ -9,7 +9,6 @@ import { ContainerBoxStyle } from "src/styles/styles";
 const RightPanelStyle = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-
   "& .account_switch": {
     textAlign: "right",
     paddingRight: theme.spacing(1),

@@ -32,9 +32,11 @@ export async function handleVerifyOTP(utils) {
       },
       utils
     );
+    setIsLoading(false);
   } catch (error) {
+    setIsLoading(false);
+
     console.log(error);
-    throw new Error(error);
   }
 }
 export async function handleRestPassword(utils) {

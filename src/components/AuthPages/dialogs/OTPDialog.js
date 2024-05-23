@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import LoadingButton from "src/components/buttons/LoadingButton";
 import Loader from "src/components/loader/Loader";
 import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import FormStyle from "src/styles/styles";
@@ -38,7 +39,6 @@ function OTPDialog({
       counter > 0 && setInterval(() => setCounter((prev) => prev - 1), 1000);
     return () => clearInterval(timer);
   }, [counter]);
-  const setAlertInfo = useUpdateAlert();
   const [isLoading, setIsLoading] = useState(false);
 
   return (
@@ -126,23 +126,11 @@ function OTPDialog({
             </Button>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Button
-              fullWidth
-              variant="contained"
-              aria-label="next"
-              disabled={isLoading ? true : false}
-              endIcon={
-                isLoading ? (
-                  <Loader
-                    styles={{
-                      marginLeft: "10px",
-                      width: "30px",
-                      height: "30px",
-                    }}
-                  />
-                ) : null
-              }
-              onClick={otpHandleSubmit(async (data) => {
+            <LoadingButton
+              setIsLoading={setIsLoading}
+              isLoading={isLoading}
+              title={"Verify"}
+              clickHandler={otpHandleSubmit(async (data) => {
                 await handleVerifyOTP({
                   otp: data.otp,
                   token: otpToken,
@@ -150,11 +138,8 @@ function OTPDialog({
                   setAlertInfo: setSnackbarData,
                   setIsLoading,
                 });
-                setIsLoading(false);
               })}
-            >
-              Next
-            </Button>
+            />
           </Grid>
         </Grid>
       </DialogActions>
