@@ -7,7 +7,7 @@ import { styled } from "@mui/material";
 import MainHeader from "./MainHeader/MainHeader";
 import SideDrawer from "./SideDrawer";
 
-export const drawerWidth = 240; // You'll need to define this value
+export const drawerWidth = 240;
 
 const DrawerPaper = styled("div")(({ theme }) => ({
   width: drawerWidth,
@@ -18,30 +18,23 @@ const DrawerPaper = styled("div")(({ theme }) => ({
 
 const MainStyle = styled("main")(({ theme }) => ({
   flexGrow: 1,
-  minHeight: "100vh",
+  height: "100vh",
   padding: theme.spacing(3),
 }));
 
 const DashboardLayout = (props) => {
-  // window width
   const { loginData } = useContext(LoginContext);
   const { window } = props;
   const [toggleMenu, setToggleMenu] = useState(false);
-  // const classes = usestyles();
-
-  // toggle drawer
   const handleToggleDrawer = () => setToggleMenu(!toggleMenu);
   const handleToggleClose = () => setToggleMenu(false);
-
-  // I don't know the work of container yet
   const container =
     window !== undefined ? () => window().document.body : undefined;
-
   return (
     <React.Fragment>
       <Box sx={{ display: "flex" }}>
         {/* App Bar */}
-        <MainHeader onClick={handleToggleDrawer} />
+        {loginData.isLoggedIn && <MainHeader onClick={handleToggleDrawer} />}
 
         {/* Drawer */}
         {loginData.isLoggedIn ? (
@@ -59,10 +52,8 @@ const DashboardLayout = (props) => {
 
         {/* Content */}
         <MainStyle>
-          <Toolbar />
+          {loginData.isLoggedIn && <Toolbar />}
           <ShowAlert />
-
-          {/* Main parts */}
           <Outlet />
         </MainStyle>
       </Box>

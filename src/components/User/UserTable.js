@@ -56,7 +56,7 @@ function UserTable() {
     setIsEditServiceDialogOpen(true);
   };
   const handleOpenServiceModal = (userData) => {
-    setAuthorities(handleFilterAuthorities(authorities, userData[9]));
+    setAuthorities(handleFilterAuthorities(authorities, userData[8]));
     setUserData(userData);
     setIsOpenServicesModal(true);
   };
@@ -79,13 +79,13 @@ function UserTable() {
         },
       },
     },
-    {
-      name: "UserName",
-      label: t("UserNameLabel"),
-      options: {
-        filter: true,
-      },
-    },
+    // {
+    //   name: "UserName",
+    //   label: t("UserNameLabel"),
+    //   options: {
+    //     filter: true,
+    //   },
+    // },
     {
       name: "FirstName",
       label: t("firstnameLabel"),

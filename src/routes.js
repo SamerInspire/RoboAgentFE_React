@@ -49,8 +49,6 @@ const Routes = () => {
         { path: "*", element: <ErrorPage /> },
       ],
     },
-
-    // auth
     {
       path: "auth",
       element: loginData.isLoggedIn ? (

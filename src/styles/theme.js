@@ -52,6 +52,13 @@ const lightTheme = (dir) =>
         },
       },
     },
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: { minWidth: 0, height: "45px" },
+        },
+      },
+    },
   });
 const darkTheme = (dir) =>
   createTheme({
@@ -103,5 +110,12 @@ const darkTheme = (dir) =>
         },
       },
     },
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: { minWidth: 0, height: "45px" },
+        },
+      },
+    },
   });
-export { lightTheme, darkTheme };
+export { darkTheme, lightTheme };

@@ -41,10 +41,13 @@ function NewPassDialog({
     getValues,
     formState: { errors },
   } = useForm();
-  const setAlertInfo = useUpdateAlert();
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
     <Dialog
       open={steps === 3}
+      fullWidth={true}
+      maxWidth={"sm"}
       sx={{
         textAlign: "center",
         "& .MuiPaper-root": {
@@ -153,8 +156,9 @@ function NewPassDialog({
                 handleRestPassword({
                   newPass: data.password,
                   handleNext,
-                  setAlertInfo,
+                  setAlertInfo: setSnackbarData,
                   otpToken,
+                  setIsLoading,
                 })
               )}
             >
