@@ -12,6 +12,8 @@ import FormStyle from "src/styles/styles";
 const FormRegister = ({
   handleNext,
   setRegisteredId,
+  setUserData,
+  userData,
   register,
   errors,
   handleSubmit,
@@ -22,7 +24,7 @@ const FormRegister = ({
     toggleconfPassword: false,
     valueConf: "",
   });
-  const [phoneNumber, setPhoneNumber] = useState("");
+
   const setAlertInfo = useUpdateAlert();
   const { t } = useTranslation();
   // submit
@@ -120,17 +122,21 @@ const FormRegister = ({
         international
         countryCallingCodeEditable={false}
         defaultCountry="SA"
+        keyboardType="phone-pad"
         maxLength="16"
+        value={userData?.phoneNumber}
         onChange={(value) => {
-          setPhoneNumber(!!value ? value?.replace(0, 10) : "");
+          console.log("value ===> ",value)
+          value = !!value ? value?.substring(0, 13) : "" 
+          setUserData((prev) => ({ ...prev, phoneNumber: value}));
         }}
       />
       <TextField
         variant="standard"
         type="hidden"
         hidden={true}
-        value={phoneNumber}
-        {...register("phoneNumber", {
+        value={userData?.phoneNumber}
+        {...register("phone_Number", {
           pattern: {
             value: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/,
             message: t("register.Enter A valid Phone number"),
@@ -139,7 +145,7 @@ const FormRegister = ({
         helperText={
           errors.phoneNumber && t("register.Enter a valid phone number")
         }
-        // error={phoneNumber.length != 14 ? true : false}
+      // error={phoneNumber.length != 14 ? true : false}
       />
       {/* password */}
       <TextField
@@ -221,7 +227,7 @@ const FormRegister = ({
           errors.confPassword
             ? t("register.Please Confirm the password")
             : passwordsInfo.valueConf !== passwordsInfo.valuePass &&
-              t("register.Passwords did not match")
+            t("register.Passwords did not match")
         }
       />
       {/* submit */}

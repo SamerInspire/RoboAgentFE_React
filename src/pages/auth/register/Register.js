@@ -133,6 +133,8 @@ const Register = () => {
                 register={register}
                 setRegisteredId={setRegisteredId}
                 handleNext={handleNext}
+                setUserData={setUserData}
+                userData={userData}
                 handleSubmit={handleSubmit}
                 errors={errors}
               />
