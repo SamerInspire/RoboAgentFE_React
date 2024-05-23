@@ -38,7 +38,7 @@ export async function handleVerifyOTP(utils) {
   }
 }
 export async function handleRestPassword(utils) {
-  const { newPass, otpToken, setIsLoading } = utils;
+  const { newPass, otpToken, setIsLoading, handleClose } = utils;
   setIsLoading(true);
   try {
     await AxiosHit({
@@ -47,9 +47,10 @@ export async function handleRestPassword(utils) {
       headers: { Authorization: `${otpToken}` },
       data: {
         password: newPass,
-      },
+      },},
       utils,
-    });
+    );
+    handleClose()
   } catch (error) {
     console.log(error);
     throw new Error(error);

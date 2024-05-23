@@ -56,6 +56,7 @@ function UserTable() {
     setIsEditServiceDialogOpen(true);
   };
   const handleOpenServiceModal = (userData) => {
+    console.log("userData ===> ",userData)
     setAuthorities(handleFilterAuthorities(authorities, userData[8]));
     setUserData(userData);
     setIsOpenServicesModal(true);
@@ -79,13 +80,13 @@ function UserTable() {
         },
       },
     },
-    // {
-    //   name: "UserName",
-    //   label: t("UserNameLabel"),
-    //   options: {
-    //     filter: true,
-    //   },
-    // },
+    {
+      name: "UserName",
+      label: t("UserNameLabel"),
+      options: {
+        filter: true,
+      },
+    },
     {
       name: "FirstName",
       label: t("firstnameLabel"),
@@ -237,7 +238,7 @@ function UserTable() {
   ];
 
   useEffect(() => {
-    handleFetchAllUsers({ setTableData, requestAction: "GET_ALL_USERS" });
+    handleFetchAllUsers({ setTableData, requestAction: "GET_ALL_USERS", setAlertInfo:setAlertInfo });
     handleFetchAuthorities({
       setAuthorities,
       requestAction: "GET_ALL_AUTHORITIES",

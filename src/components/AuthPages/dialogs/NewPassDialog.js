@@ -14,7 +14,6 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import FormStyle from "src/styles/styles";
 import { handleRestPassword } from "src/utils/api/auth/otp";
 
@@ -22,6 +21,7 @@ function NewPassDialog({
   handleNext,
   steps,
   setSnackbarData,
+  setAlertInfo,
   handleClose,
   otpToken,
 }) {
@@ -155,10 +155,11 @@ function NewPassDialog({
               onClick={handleSubmit((data) =>
                 handleRestPassword({
                   newPass: data.password,
-                  handleNext,
-                  setAlertInfo: setSnackbarData,
-                  otpToken,
-                  setIsLoading,
+                  setAlertInfo: setAlertInfo,
+                  handleNext:handleNext,
+                  otpToken: otpToken,
+                  handleClose:handleClose,
+                  setIsLoading: setIsLoading,
                 })
               )}
             >

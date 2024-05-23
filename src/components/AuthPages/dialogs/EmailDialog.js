@@ -23,6 +23,7 @@ function EmailDialog({
   steps,
   getValues,
   handleClose,
+  setAlertInfo
 }) {
   const {
     handleSubmit: emailHandleSubmit,
@@ -96,7 +97,7 @@ function EmailDialog({
                 await handleVerifyEmail({
                   email: getValues("rest_email"),
                   handleNext,
-                  setAlertInfo: setSnackbarData,
+                  setAlertInfo: setAlertInfo,
                   setOtpToken,
                   setIsLoading,
                 });
