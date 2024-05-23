@@ -60,10 +60,11 @@ export async function handleSubmitNewUser(userData, utils) {
       },
       utils
     );
-    handleSubmitUserAuths({
-      roboAuthorities: userData.roboAuthorities,
-      userId: r.data.roboAgentRs.body?.user?.userId,
-    });
+    // console.log("r ======> ",r)
+    // handleSubmitUserAuths({
+    //   roboAuthorities: userData.roboAuthorities,
+    //   userId: r.data.roboAgentRs.body?.user?.userId,
+    // });
   } catch (error) {
     console.log(error);
     throw new Error(error);

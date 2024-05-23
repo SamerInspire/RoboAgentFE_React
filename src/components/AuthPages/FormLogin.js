@@ -69,6 +69,7 @@ const FormLogin = () => {
           register={register}
           getValues={getValues}
           handleClose={handleCloseDialogs}
+          setAlertInfo={setAlertInfo}
         />
       )}
       {steps === 2 && (
@@ -78,6 +79,7 @@ const FormLogin = () => {
           email={getValues("rest_email")}
           steps={steps}
           otpToken={otpToken}
+          setAlertInfo={setAlertInfo}
           setOtpToken={setOtpToken}
           handleClose={handleCloseDialogs}
         />
@@ -85,6 +87,7 @@ const FormLogin = () => {
       {
         <NewPassDialog
           setSnackbarData={setSnackbarData}
+          setAlertInfo={setAlertInfo}
           email={getValues("email")}
           handleNext={handleNext}
           steps={steps}

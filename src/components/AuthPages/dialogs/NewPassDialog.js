@@ -22,6 +22,7 @@ function NewPassDialog({
   handleNext,
   steps,
   setSnackbarData,
+  setAlertInfo,
   handleClose,
   otpToken,
 }) {

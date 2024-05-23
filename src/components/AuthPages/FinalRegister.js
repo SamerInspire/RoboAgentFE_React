@@ -162,7 +162,7 @@ const FinalRegister = ({ handleBack, handleNext }) => {
                 >
                   {authorities.map((auth) => (
                     <MenuItem key={auth.authId} value={auth.authId}>
-                      {auth.name.split("_").join(" ")}
+                      {auth.description}
                     </MenuItem>
                   ))}
                 </Select>
