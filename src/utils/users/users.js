@@ -19,6 +19,8 @@ export async function handleSubmitUserAuths(utils) {
 }
 export const handleFetchAuthorities = async (utils) => {
   try {
+    const { setIsLoading } = utils;
+    setIsLoading(true);
     await AxiosHit(
       {
         method: "get",
@@ -26,6 +28,7 @@ export const handleFetchAuthorities = async (utils) => {
       },
       utils
     );
+    setIsLoading(false);
   } catch (error) {
     throw new Error(error);
   }
@@ -85,6 +88,8 @@ export async function handleSubmitUserNewService(utils) {
 }
 export async function handleFetchAllUsers(utils) {
   try {
+    const { setIsLoading } = utils;
+    setIsLoading(true);
     await AxiosHit(
       {
         url: "/api/users/getallusers?size=40",
@@ -92,6 +97,7 @@ export async function handleFetchAllUsers(utils) {
       },
       utils
     );
+    setIsLoading(false);
   } catch (error) {
     console.log(error);
     throw new Error(error);
@@ -99,6 +105,8 @@ export async function handleFetchAllUsers(utils) {
 }
 export async function handleFetchServiceList(utils) {
   try {
+    const { setIsLoading } = utils;
+    setIsLoading(true);
     await AxiosHit(
       {
         method: "get",
@@ -106,6 +114,7 @@ export async function handleFetchServiceList(utils) {
       },
       utils
     );
+    setIsLoading(false);
   } catch (error) {
     throw new Error(error);
   }

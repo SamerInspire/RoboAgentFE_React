@@ -1,5 +1,4 @@
 import {
-  Button,
   Checkbox,
   FormControlLabel,
   IconButton,
@@ -15,11 +14,11 @@ import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
 import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import { LoginContext } from "src/hooks/Context/LoginInfoContext";
 import FormStyle from "src/styles/styles";
+import LoadingButton from "../buttons/LoadingButton";
 import CustomToast from "../toast/CustomToast";
 import EmailDialog from "./dialogs/EmailDialog";
 import NewPassDialog from "./dialogs/NewPassDialog";
 import OTPDialog from "./dialogs/OTPDialog";
-
 const FormLogin = () => {
   const [showPassword, setShowPassord] = useState(false);
   const [remember, setRemember] = useState(true);
@@ -58,6 +57,7 @@ const FormLogin = () => {
     setSnackbarData((prev) => ({ ...prev, open: false }));
   };
   const handleCloseDialogs = () => setSteps(0);
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <>
       {steps == 1 && (
@@ -98,7 +98,9 @@ const FormLogin = () => {
       <FormStyle
         noValidate
         component="form"
-        onSubmit={handleSubmit((loginData) => login(loginData, setAlertInfo))}
+        onSubmit={handleSubmit((loginData) =>
+          login(loginData, setAlertInfo, setIsLoading)
+        )}
       >
         {/* Email */}
         <TextField
@@ -162,9 +164,12 @@ const FormLogin = () => {
           </Link>
         </Box>
 
-        <Button type="submit" variant="contained">
-          {t("Login")}
-        </Button>
+        <LoadingButton
+          setIsLoading={setIsLoading}
+          isLoading={isLoading}
+          title={t("Login")}
+          clickHandler={() => {}}
+        />
       </FormStyle>
       {snackbarData.open && (
         <CustomToast snackbarData={snackbarData} handleClose={handleClose} />

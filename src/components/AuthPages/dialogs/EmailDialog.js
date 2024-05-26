@@ -11,25 +11,25 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import Loader from "src/components/loader/Loader";
+import LoadingButton from "src/components/buttons/LoadingButton";
 import FormStyle from "src/styles/styles";
 import { handleVerifyEmail } from "src/utils/api/auth/otp";
 
 function EmailDialog({
-  register,
   setOtpToken,
   setSnackbarData,
   handleNext,
   steps,
   getValues,
   handleClose,
-  setAlertInfo
+  register,
 }) {
   const {
     handleSubmit: emailHandleSubmit,
-    register: restEmailRegister,
     formState: { errors: emailErrors },
+    reset,
   } = useForm();
+
   const [isLoading, setIsLoading] = useState(false);
   return (
     <Dialog
@@ -72,28 +72,19 @@ function EmailDialog({
               sx={{ height: "45px" }}
               fullWidth
               variant="contained"
-              onClick={handleClose}
+              onClick={() => {
+                handleClose;
+                reset();
+              }}
             >
               Cancel
             </Button>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Button
-              fullWidth
-              variant="contained"
-              disabled={isLoading ? true : false}
-              endIcon={
-                isLoading ? (
-                  <Loader
-                    styles={{
-                      marginLeft: "10px",
-                      width: "30px",
-                      height: "30px",
-                    }}
-                  />
-                ) : null
-              }
-              onClick={emailHandleSubmit(async (data) => {
+            <LoadingButton
+              title="Send OTP"
+              isLoading={isLoading}
+              clickHandler={emailHandleSubmit(async () => {
                 await handleVerifyEmail({
                   email: getValues("rest_email"),
                   handleNext,
@@ -103,9 +94,7 @@ function EmailDialog({
                 });
                 setIsLoading(false);
               })}
-            >
-              Next
-            </Button>
+            />
           </Grid>
         </Grid>
       </DialogActions>

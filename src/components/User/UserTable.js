@@ -1,7 +1,7 @@
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Button, Grid, Modal, Popper, Typography } from "@mui/material";
 import MUIDataTable from "mui-datatables";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import { glassMorphisimStyle } from "src/styles/styles";
@@ -10,6 +10,7 @@ import {
   handleFetchAuthorities,
 } from "src/utils/users/users";
 import { v4 as uuidv4 } from "uuid";
+import LoadingTableBody from "./TableLoading";
 import DNDServicesModal from "./dialogs/DNDServicesModal";
 import ServiceDialog from "./dialogs/ServiceDialog";
 import RolesPopper from "./poppers/RolesPopper";
@@ -42,6 +43,8 @@ function UserTable() {
   const [isEditServiceDialogOpen, setIsEditServiceDialogOpen] = useState(false);
   const [statusAnchorEl, setStatusAnchorEl] = useState(null);
   const setAlertInfo = useUpdateAlert();
+  const [isLoading, setIsLoading] = useState(false);
+
   const { t } = useTranslation();
   const handleStatusClick = (event, rowData) => {
     setUserData(rowData);
@@ -56,7 +59,6 @@ function UserTable() {
     setIsEditServiceDialogOpen(true);
   };
   const handleOpenServiceModal = (userData) => {
-    console.log("userData ===> ",userData)
     setAuthorities(handleFilterAuthorities(authorities, userData[9]));
     setUserData(userData);
     setIsOpenServicesModal(true);
@@ -70,8 +72,8 @@ function UserTable() {
 
   const columns = [
     {
-      name: "FirstName",
-      label: "",
+      name: "userId",
+      label: "User ID",
       options: {
         filter: true,
         display: "none",
@@ -91,7 +93,8 @@ function UserTable() {
       name: "FirstName",
       label: t("firstnameLabel"),
       options: {
-        filter: true,
+        display: "none",
+        filter: false,
       },
     },
     {
@@ -99,7 +102,9 @@ function UserTable() {
       label: t("middlenameLabel"),
 
       options: {
-        filter: true,
+        display: "none",
+
+        filter: false,
       },
     },
     {
@@ -107,7 +112,8 @@ function UserTable() {
       label: t("lastnameLabel"),
 
       options: {
-        filter: true,
+        filter: false,
+        display: "none",
       },
     },
     {
@@ -236,12 +242,20 @@ function UserTable() {
       },
     },
   ];
-
+  const BodyComponent = useMemo(
+    () => (props) => <LoadingTableBody loading={isLoading} {...props} />,
+    [isLoading]
+  );
   useEffect(() => {
-    handleFetchAllUsers({ setTableData, requestAction: "GET_ALL_USERS", setAlertInfo:setAlertInfo });
+    handleFetchAllUsers({
+      setTableData,
+      requestAction: "GET_ALL_USERS",
+      setIsLoading,
+    });
     handleFetchAuthorities({
       setAuthorities,
       requestAction: "GET_ALL_AUTHORITIES",
+      setIsLoading,
     });
   }, []);
   const options = {
@@ -256,6 +270,7 @@ function UserTable() {
           data={tableData}
           columns={columns}
           options={options}
+          components={{ TableBody: BodyComponent }}
         />
       </Grid>
 

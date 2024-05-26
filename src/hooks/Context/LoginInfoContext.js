@@ -10,7 +10,9 @@ function LoginProvider(props) {
   // function can(capability) {
   //   return loginData.user.capabilities?.includes(capability) && loginData.token;
   // }
-  async function login(loginData, setAlertInfo) {
+  async function login(loginData, setAlertInfo, setIsLoading) {
+    setIsLoading(true);
+
     await AxiosHit(
       {
         method: "post",
@@ -20,8 +22,14 @@ function LoginProvider(props) {
           password: loginData.password,
         },
       },
-      { setAlertInfo, loginDispatch, requestAction: "SET_IS_LOGGED_IN" }
+      {
+        setAlertInfo,
+        loginDispatch,
+        requestAction: "SET_IS_LOGGED_IN",
+        setIsLoading,
+      }
     );
+    setIsLoading(false);
   }
   function logout() {
     console.log("logout");

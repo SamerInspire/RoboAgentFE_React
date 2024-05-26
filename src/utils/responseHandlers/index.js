@@ -42,12 +42,9 @@ export function handleOTPCodeActions(result, code, utils) {
 
   const { message, alertStatus, success } = getResponseShape(header, code);
   setIsLoading(false);
-  console.log(message);
+  console.log(alertStatus, message);
   if (success) handleNext();
-  setAlertInfo({
-    alertType: alertStatus,
-    alertMsg: message,
-  });
+  setAlertInfo({ alertType: alertStatus, alertMsg: message, open: true });
 }
 
 export async function handleUserCodeActions(result, code, utils) {
