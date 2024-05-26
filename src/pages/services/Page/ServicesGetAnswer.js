@@ -40,6 +40,7 @@ const ServicesGetAnswer = ({ }) => {
     handleFetchCurrentUser({
       requestAction: "SET_CURRENT_USER",
       setCurrentUserData,
+      setAlertInfo
     });
   }, []);
   const {

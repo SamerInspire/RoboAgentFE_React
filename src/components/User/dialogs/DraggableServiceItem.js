@@ -20,7 +20,7 @@ const DraggableServiceItem = ({ authority }) => {
       </Grid>
       <Grid item xs={8}>
         <Typography variant="body1" fontWeight={600}>
-          {authority.name}
+          {authority.description}
         </Typography>
       </Grid>
     </Grid>

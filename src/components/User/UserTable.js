@@ -57,7 +57,7 @@ function UserTable() {
   };
   const handleOpenServiceModal = (userData) => {
     console.log("userData ===> ",userData)
-    setAuthorities(handleFilterAuthorities(authorities, userData[8]));
+    setAuthorities(handleFilterAuthorities(authorities, userData[9]));
     setUserData(userData);
     setIsOpenServicesModal(true);
   };

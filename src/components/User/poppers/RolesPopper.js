@@ -14,7 +14,7 @@ function RolesPopper({
 
   return (
     <Grid container item alignItems={"center"} gap={2} p={2}>
-      {userData[5]?.toLowerCase() == "MEMBER".toLowerCase() ? (
+      {userData[6]?.toLowerCase() == "MEMBER".toLowerCase() ? (
         <Grid item>
           <Button
             fullWidth
