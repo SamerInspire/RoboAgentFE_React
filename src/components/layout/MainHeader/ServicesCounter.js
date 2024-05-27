@@ -90,25 +90,10 @@ function ServicesCounter() {
           borderTopRightRadius: "5px",
           borderBottomRightRadius: "5px",
         }}
-        onClick={() => setTicketsCounter((prev) => prev + 1)}
+        onClick={() => setTicketsCounter((prev) => Number(prev) + 1)}
       >
         <AddIcon />
       </Grid>
-
-      {/* <Grid container item xs={4} spacing={4}>
-        <Grid item width={"50px"} height={"50px"} bgcolor={"#f1f"}>
-          -
-        </Grid>
-        <Grid item width={"50px"} height={"50px"} bgcolor={"#f1f"}>
-          +
-        </Grid>
-      </Grid>
-      <Typography variant="body2" fontWeight={600}>
-        {ticketsCounter} Ticket Finished
-      </Typography>
-      {/* <Badge color="primary" badgeContent={99}>
-        <AssignmentIcon sx={{ color: "primary.light" }} />
-      </Badge> */}
     </Grid>
   );
 }
