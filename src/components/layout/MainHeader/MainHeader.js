@@ -3,17 +3,15 @@ import { useContext, useState } from "react";
 import { AppBar, Box, IconButton, Toolbar } from "@mui/material";
 
 // icons
-import { BiSearch } from "react-icons/bi";
 import { RiMenu3Line } from "react-icons/ri";
 
 // components
 import { styled } from "@mui/material";
-import Notifications from "src/components/layout/MainHeader/Notifications";
 import LanguageSelector from "src/components/layout/MainHeader/SelectLanguage";
 import UserMenu from "src/components/layout/MainHeader/UserMenu";
 import { LoginContext } from "src/hooks/Context/LoginInfoContext";
 import { drawerWidth } from "../DashboardLayout";
-import DarkModeSelector from "./DarkModeSelector";
+import ServicesCounter from "./ServicesCounter";
 const AppBarStyle = styled(AppBar)(({ theme }) => ({
   boxShadow: "none",
   backdropFilter: "blur(6px)",
@@ -65,7 +63,6 @@ const MainHeader = (props) => {
   const handleOpenUserMenu = (e) => setShowUserMenu(e.currentTarget);
   const handleCloseUserMenu = () => setShowUserMenu(null);
   const { loginData } = useContext(LoginContext);
-  console.log(loginData.isLoggedIn);
   if (loginData.isLoggedIn) {
     return (
       <AppBarStyle position="fixed">
@@ -81,8 +78,9 @@ const MainHeader = (props) => {
               <RiMenu3Line />
             </ToggleButtonStyle>
 
+            <ServicesCounter />
             <IconButton aria-label="search">
-              <BiSearch fontSize="small" />
+              {/* <BiSearch fontSize="small" /> */}
             </IconButton>
           </ContainerStyle>
 

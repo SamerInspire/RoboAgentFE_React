@@ -8,6 +8,7 @@ import { glassMorphisimStyle } from "src/styles/styles";
 import {
   handleFetchAllUsers,
   handleFetchAuthorities,
+  handleFetchServiceList,
 } from "src/utils/users/users";
 import { v4 as uuidv4 } from "uuid";
 import LoadingTableBody from "./TableLoading";
@@ -43,7 +44,8 @@ function UserTable() {
   const [isEditServiceDialogOpen, setIsEditServiceDialogOpen] = useState(false);
   const [statusAnchorEl, setStatusAnchorEl] = useState(null);
   const setAlertInfo = useUpdateAlert();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [serviceList, setServiceList] = useState([]);
 
   const { t } = useTranslation();
   const handleStatusClick = (event, rowData) => {
@@ -250,12 +252,20 @@ function UserTable() {
     handleFetchAllUsers({
       setTableData,
       requestAction: "GET_ALL_USERS",
-      setIsLoading,
+      setIsLoading: () => {},
+      setAlertInfo,
     });
     handleFetchAuthorities({
       setAuthorities,
       requestAction: "GET_ALL_AUTHORITIES",
+      setIsLoading: () => {},
+      setAlertInfo,
+    });
+    handleFetchServiceList({
+      setServiceList,
+      requestAction: "SET_SERVICE_LIST",
       setIsLoading,
+      setAlertInfo,
     });
   }, []);
   const options = {
@@ -310,6 +320,8 @@ function UserTable() {
           tableData={tableData}
           setTableData={setTableData}
           setAlertInfo={setAlertInfo}
+          serviceList={serviceList}
+          setServiceList={setServiceList}
         />
       )}
       <Popper

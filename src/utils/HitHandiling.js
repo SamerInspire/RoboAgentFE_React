@@ -33,6 +33,7 @@ export function successHitHandle(result, utils) {
 }
 export function failureHitHandle(result, utils) {
   const { setAlertInfo } = utils;
+  console.log(result);
   if ([401, 402, 403].includes(result.response?.status)) {
     const { code } = result?.response.data?.roboAgentRs?.header?.responseStatus;
     const { codeLetters, codeNumbers } = handleExtractCodeInfo(code);
@@ -43,9 +44,8 @@ export function failureHitHandle(result, utils) {
         return handleGeneralErrorCodeActions(result, codeNumbers, utils);
     }
   } else {
-    console.log("result ===> ",result.message)
-    setAlertInfo({ alertType: 'error', alertMsg: result.message });
-
+    console.log("result ===> ", result.message);
+    setAlertInfo({ alertType: "error", alertMsg: result.message });
   }
 }
 export function handleExtractCodeInfo(code = 0) {

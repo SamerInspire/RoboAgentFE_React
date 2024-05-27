@@ -7,12 +7,12 @@ import LeftPanel from "src/components/AuthPages/LeftPanel";
 // img
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import RegisterPhoto from "src/assets/Images/auth/register.png";
 import FinalRegister from "src/components/AuthPages/FinalRegister";
 import CustomStepper from "src/components/AuthPages/stepper/CustomStepper";
 import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import { handleSubmitNewUser } from "src/utils/users/users";
-import { useTranslation } from "react-i18next";
 
 // styles
 const ContainerBoxStyle = styled(Box)(({ theme }) => ({
@@ -72,7 +72,6 @@ const RightPanelStyle = styled(Box)(({ theme }) => ({
     },
   },
 }));
-
 const Register = () => {
   const preventDefault = (e) => e.preventDefault();
   const [activeStep, setActiveStep] = useState(0);
@@ -85,20 +84,23 @@ const Register = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     defaultValues: {
       firstName: "",
       lastName: "",
       email: "",
       password: "",
+      userRole: "MEMBER",
+      userTeam: "L2",
     },
   });
-  const handleNext = (data) => {
+  const handleNext = async (data, clearFinalForm) => {
     if (activeStep == 0) {
       setUserData((prev) => ({ ...prev, ...data }));
       setActiveStep((prev) => prev + 1);
     } else {
-      handleSubmitNewUser(
+      await handleSubmitNewUser(
         { ...userData, ...data },
         {
           setRegisteredId,
@@ -106,6 +108,8 @@ const Register = () => {
           requestAction: "REGISTER_NEW_USER",
         }
       );
+      reset();
+      clearFinalForm();
     }
   };
   const handleBack = () => setActiveStep((prev) => prev - 1);

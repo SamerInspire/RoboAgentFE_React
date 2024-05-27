@@ -16,7 +16,6 @@ import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import {
   handleFetchAuthorities,
   handleFetchServiceList,
-  handleSubmitUserFinalRegistration,
 } from "src/utils/users/users";
 export async function handleFinalRegistration(
   userRole,
@@ -47,12 +46,12 @@ export async function handleFinalRegistration(
     throw new Error(error);
   }
 }
-const FinalRegister = ({ handleBack, handleNext }) => {
+const FinalRegister = ({ handleBack, handleNext, clearInitialForm }) => {
   const setAlertInfo = useUpdateAlert();
-  const [selectedRole, setSelectedRole] = useState("");
+  const [selectedRole, setSelectedRole] = useState("MEMBER");
   const [serviceList, setServiceList] = useState([]);
   const [authorities, setAuthorities] = useState([]);
-  const [selectedTeam, setSelectedTeam] = useState("");
+  const [selectedTeam, setSelectedTeam] = useState("L2");
   const [selectedAuthorities, setSelectedAuthorities] = useState([]);
   const [selectedService, setSelectedService] = useState("");
   const { t } = useTranslation();
@@ -61,10 +60,9 @@ const FinalRegister = ({ handleBack, handleNext }) => {
     { value: "MEMBER", title: t("register.Member") },
   ];
   const teams = ["L1", "L2"];
-  // hook form
   const {
-    register,
     handleSubmit,
+    reset: clearFinalForm,
     formState: { errors },
   } = useForm({});
 
@@ -72,10 +70,12 @@ const FinalRegister = ({ handleBack, handleNext }) => {
     handleFetchAuthorities({
       setAuthorities,
       requestAction: "GET_ALL_AUTHORITIES",
+      setIsLoading: () => {},
     });
     handleFetchServiceList({
       setServiceList,
       requestAction: "SET_SERVICE_LIST",
+      setIsLoading: () => {},
     });
   }, []);
 
@@ -95,12 +95,15 @@ const FinalRegister = ({ handleBack, handleNext }) => {
     <form
       noValidate
       onSubmit={handleSubmit(() =>
-        handleNext({
-          role: selectedRole,
-          team: selectedTeam,
-          roboAuthorities: selectedAuthorities,
-          service: selectedService,
-        })
+        handleNext(
+          {
+            role: selectedRole,
+            team: selectedTeam,
+            roboAuthorities: selectedAuthorities,
+            service: selectedService,
+          },
+          clearFinalForm
+        )
       )}
     >
       <Grid container item gap={4}>
@@ -112,7 +115,7 @@ const FinalRegister = ({ handleBack, handleNext }) => {
               </Typography>
             </Grid>
             {userRoles.map((role) => (
-              <Grid item key={role.value}>
+              <Grid item xs={12} md={4} key={role.value}>
                 <Button
                   fullWidth
                   variant={
@@ -132,11 +135,11 @@ const FinalRegister = ({ handleBack, handleNext }) => {
               </Typography>
             </Grid>
             {teams.map((team) => (
-              <Grid item key={team}>
+              <Grid item xs={12} md={4} key={team}>
                 <Button
                   fullWidth
                   variant={team == selectedTeam ? "contained" : "outlined"}
-                  onClick={() => setSelectedTeam(team)}
+                  onClick={(e) => setSelectedTeam(team)}
                 >
                   {team}
                 </Button>
