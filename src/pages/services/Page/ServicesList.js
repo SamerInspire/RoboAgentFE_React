@@ -1,18 +1,17 @@
 import { Grid } from "@mui/material";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useUpdateAlert } from "src/hooks/Context/AlertContext";
+import { LoginContext } from "src/hooks/Context/LoginInfoContext";
 import { handleFetchCurrentUser } from "src/utils/users/users";
 import { Services } from "../Schema/ServicesSchema";
 import ServicesListItem from "./utils/ServicesListItem";
-import { LoginContext } from "src/hooks/Context/LoginInfoContext";
 
 const ServicesList = () => {
   const { loginData } = useContext(LoginContext);
   const [currentUserData, setCurrentUserData] = useState(loginData);
-  console.log("currentUserData ===> Siminz ===> ", currentUserData.status)
+  console.log("currentUserData ===> Siminz ===> ", currentUserData.status);
   const queryCenterSignup = useRef(currentUserData?.status?.startsWith("0"));
-  console.log("queryCenterSignup ===> Siminz ===> ", queryCenterSignup.current)
-
+  console.log("queryCenterSignup ===> Siminz ===> ", queryCenterSignup.current);
   const setAlertInfo = useUpdateAlert();
 
   useEffect(() => {
@@ -23,6 +22,7 @@ const ServicesList = () => {
   }, []);
 
   useEffect(() => {
+    console.log(queryCenterSignup);
     if (queryCenterSignup.current)
       setAlertInfo({
         alertType: "warning",
@@ -96,5 +96,4 @@ const ServicesList = () => {
     );
   }
 };
-
 export default ServicesList;

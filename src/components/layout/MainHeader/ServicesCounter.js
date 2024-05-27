@@ -38,9 +38,6 @@ const textTicketStyles = {
 };
 function ServicesCounter() {
   const [ticketsCounter, setTicketsCounter] = useState(0);
-  const handleChangeTickets = (e) => {
-    setTicketsCounter(e.target.value);
-  };
 
   return (
     <Grid container item alignItems={"center"}>
@@ -56,7 +53,7 @@ function ServicesCounter() {
           borderBottomLeftRadius: "5px",
         }}
         onClick={() =>
-          ticketsCounter == 0 ? 0 : setTicketsCounter((prev) => prev - 1)
+          ticketsCounter == 0 ? null : setTicketsCounter((prev) => prev - 1)
         }
       >
         <RemoveIcon />
