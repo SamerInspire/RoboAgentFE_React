@@ -18,7 +18,7 @@ function ServiceDialog({
   handleCloseServiceDialog,
   userId,
   tableData,
-  setAlertInfo,
+  setAlert,
   serviceList,
   setTableData,
 }) {
@@ -64,7 +64,7 @@ function ServiceDialog({
               requestAction: "SET_SUBMIT_USER_SERVICE",
               tableData,
               setTableData,
-              setAlertInfo,
+              setAlert,
             })
           }
         >

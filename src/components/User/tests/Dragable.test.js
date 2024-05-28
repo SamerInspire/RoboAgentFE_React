@@ -63,7 +63,7 @@ describe("ServiceDialog Component", () => {
     handleCloseServiceDialog: jest.fn(),
     userId: 1,
     tableData: [],
-    setAlertInfo: jest.fn(),
+    setAlert: jest.fn(),
     setTableData: jest.fn(),
   };
 

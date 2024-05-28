@@ -22,7 +22,7 @@ function NewPassDialog({
   handleNext,
   steps,
   setSnackbarData,
-  setAlertInfo,
+  setAlert,
   handleClose,
   otpToken,
 }) {
@@ -165,7 +165,7 @@ function NewPassDialog({
                 await handleRestPassword({
                   newPass: data.password,
                   handleNext,
-                  setAlertInfo: setSnackbarData,
+                  setAlert: setSnackbarData,
                   otpToken,
                   setIsLoading,
                 });

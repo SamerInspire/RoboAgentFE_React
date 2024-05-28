@@ -19,7 +19,7 @@ jest.mock("src/hooks/reducers/store", () => ({
 describe("Code Actions", () => {
   const mockUtils = {
     handleNext: jest.fn(),
-    setAlertInfo: jest.fn(),
+    setAlert: jest.fn(),
     setOtpToken: jest.fn(),
     setLoading: jest.fn(),
   };
@@ -49,7 +49,7 @@ describe("Code Actions", () => {
     handleChangePassCodeActions(result, code, mockUtils);
 
     expect(mockUtils.handleNext).toHaveBeenCalled();
-    expect(mockUtils.setAlertInfo).toHaveBeenCalledWith({
+    expect(mockUtils.setAlert).toHaveBeenCalledWith({
       alertType: true,
       alertMsg: "Success",
     });
@@ -76,7 +76,7 @@ describe("Code Actions", () => {
     handleChangePassCodeActions(result, code, mockUtils);
 
     expect(mockUtils.handleNext).not.toHaveBeenCalled();
-    expect(mockUtils.setAlertInfo).toHaveBeenCalledWith({
+    expect(mockUtils.setAlert).toHaveBeenCalledWith({
       alertType: false,
       alertMsg: "Failure",
     });
@@ -103,7 +103,7 @@ describe("Code Actions", () => {
     handleOTPCodeActions(result, code, mockUtils);
 
     expect(mockUtils.handleNext).toHaveBeenCalled();
-    expect(mockUtils.setAlertInfo).toHaveBeenCalledWith({
+    expect(mockUtils.setAlert).toHaveBeenCalledWith({
       alertType: "success",
       alertMsg: "Success",
     });
@@ -130,7 +130,7 @@ describe("Code Actions", () => {
     await handleUserCodeActions(result, code, mockUtils);
 
     expect(generalSuccessReducer).toHaveBeenCalledWith(result, mockUtils);
-    expect(mockUtils.setAlertInfo).toHaveBeenCalledWith({
+    expect(mockUtils.setAlert).toHaveBeenCalledWith({
       alertType: "success",
       alertMsg: "Success",
     });
@@ -156,7 +156,7 @@ describe("Code Actions", () => {
 
     handleGeneralErrorCodeActions(result, code, mockUtils);
 
-    expect(mockUtils.setAlertInfo).toHaveBeenCalledWith({
+    expect(mockUtils.setAlert).toHaveBeenCalledWith({
       alertType: "error",
       alertMsg: "Error",
     });
@@ -189,7 +189,7 @@ describe("Code Actions", () => {
     expect(mockUtils.setOtpToken).toHaveBeenCalledWith("mock-token");
     expect(mockUtils.handleNext).toHaveBeenCalled();
     expect(mockUtils.setLoading).toHaveBeenCalled();
-    expect(mockUtils.setAlertInfo).toHaveBeenCalledWith({
+    expect(mockUtils.setAlert).toHaveBeenCalledWith({
       alertType: "success",
       alertMsg: "Success",
       open: true,

@@ -24,12 +24,12 @@ export const getResponseShape = (header, code) => {
 };
 export function handleChangePassCodeActions(result, code, utils) {
   const { header } = result.data.roboAgentRs;
-  const { handleNext, setAlertInfo, setIsLoading } = utils;
+  const { handleNext, setAlert, setIsLoading } = utils;
 
   const { message, success } = getResponseShape(header, code);
   setIsLoading(false);
   if (success) handleNext();
-  setAlertInfo({ alertType: success, alertMsg: message });
+  setAlert({ alertType: success, alertMsg: message });
 }
 
 export function JWTFalureHitHandle() {
@@ -38,23 +38,23 @@ export function JWTFalureHitHandle() {
 }
 export function handleOTPCodeActions(result, code, utils) {
   const { header } = result.data.roboAgentRs;
-  const { handleNext, setAlertInfo, setIsLoading } = utils;
+  const { handleNext, setAlert, setIsLoading } = utils;
 
   const { message, alertStatus, success } = getResponseShape(header, code);
   setIsLoading(false);
   console.log(alertStatus, message);
   if (success) handleNext();
-  setAlertInfo({ alertType: alertStatus, alertMsg: message, open: true });
+  setAlert({ alertType: alertStatus, alertMsg: message, open: true });
 }
 
 export async function handleUserCodeActions(result, code, utils) {
   const { header } = result.data.roboAgentRs;
-  const { setAlertInfo } = utils;
+  const { setAlert } = utils;
   const { message, alertStatus, success } = getResponseShape(header, code);
   if (success) {
     generalSuccessReducer(result, utils);
   }
-  setAlertInfo({
+  setAlert({
     alertType: alertStatus,
     alertMsg: message,
   });
@@ -62,14 +62,14 @@ export async function handleUserCodeActions(result, code, utils) {
 }
 export function handleGeneralErrorCodeActions(result, code, utils) {
   const { header } = result?.data?.roboAgentRs;
-  const { setAlertInfo } = utils;
+  const { setAlert } = utils;
   const { alertStatus, message } = getResponseShape(header, code);
-  setAlertInfo({ alertType: alertStatus, alertMsg: message });
+  setAlert({ alertType: alertStatus, alertMsg: message });
 }
 
 export function handleEmailCodeActions(result, code, utils) {
   const { header } = result.data.roboAgentRs;
-  const { handleNext, setIsLoading, setAlertInfo, setOtpToken } = utils;
+  const { handleNext, setIsLoading, setAlert, setOtpToken } = utils;
   const { message, success, alertStatus } = getResponseShape(header, code);
 
   if (success) {
@@ -77,7 +77,7 @@ export function handleEmailCodeActions(result, code, utils) {
     setIsLoading(false);
     handleNext();
   }
-  setAlertInfo({ alertType: alertStatus, alertMsg: message, open: true });
+  setAlert({ alertType: alertStatus, alertMsg: message, open: true });
 }
 
 export function handleGetAnswerFailure() {}

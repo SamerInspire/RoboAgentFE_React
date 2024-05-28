@@ -1,10 +1,10 @@
 import { Grid } from "@mui/material";
 import { useContext, useEffect, useRef, useState } from "react";
-import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import { LoginContext } from "src/hooks/Context/LoginInfoContext";
 import { handleFetchCurrentUser } from "src/utils/users/users";
 import { Services } from "../Schema/ServicesSchema";
 import ServicesListItem from "./utils/ServicesListItem";
+import { AlertContext } from "src/hooks/Context/AlertContext";
 
 const ServicesList = () => {
   const { loginData } = useContext(LoginContext);
@@ -12,7 +12,7 @@ const ServicesList = () => {
   console.log("currentUserData ===> Siminz ===> ", currentUserData.status);
   const queryCenterSignup = useRef(currentUserData?.status?.startsWith("0"));
   console.log("queryCenterSignup ===> Siminz ===> ", queryCenterSignup.current);
-  const setAlertInfo = useUpdateAlert();
+  const { setAlert } = useContext(AlertContext);
 
   useEffect(() => {
     handleFetchCurrentUser({
@@ -24,14 +24,14 @@ const ServicesList = () => {
   useEffect(() => {
     console.log(queryCenterSignup);
     if (queryCenterSignup.current)
-      setAlertInfo({
+      setAlert({
         alertType: "warning",
         alertMsg:
           "Please Register in the query center to be able to use the services",
         sleep: 1000000,
       });
     return () =>
-      setAlertInfo({
+      setAlert({
         alertType: "",
         alertMsg: "",
         sleep: 0,

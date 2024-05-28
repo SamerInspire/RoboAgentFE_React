@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 export function handleFilterServices(activeServices = [], allServices = []) {
   console.log(activeServices);
   const filteredArray2 = allServices.filter(
@@ -18,15 +20,23 @@ export function reshapeUserData(usersArr = []) {
   return newUsersArr;
 }
 
-// export function reshapeUserData(usersArr = []) {
-//   const newUsersArr = [];
-//   for (let user of usersArr) {
-//     let newUserArr = [];
-//     for (let key of Object.keys(user)) {
-//       newUserArr.push(user[key]);
-//     }
-
-//     newUsersArr.push(newUserArr);
-//   }
-//   return newUsersArr;
-// }
+export function handleFilterAuthorities(authorities, activeUserAuth) {
+  const newAuth = [];
+  authorities.map((auth) => {
+    const isActiveAuth = activeUserAuth.findIndex(
+      (active) => active.authId === auth.authId
+    );
+    if (isActiveAuth == -1) {
+      const copyObj = { ...auth, containerValue: "all_services", id: uuidv4() };
+      newAuth.push(copyObj);
+    } else {
+      const copyObj = {
+        ...auth,
+        containerValue: "active_services",
+        id: uuidv4(),
+      };
+      newAuth.push(copyObj);
+    }
+  });
+  return newAuth;
+}

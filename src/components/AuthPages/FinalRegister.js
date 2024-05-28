@@ -12,7 +12,6 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import "react-phone-number-input/style.css";
-import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import {
   handleFetchAuthorities,
   handleFetchServiceList,
@@ -46,8 +45,7 @@ export async function handleFinalRegistration(
     throw new Error(error);
   }
 }
-const FinalRegister = ({ handleBack, handleNext, clearInitialForm }) => {
-  const setAlertInfo = useUpdateAlert();
+const FinalRegister = ({ handleBack, handleNext }) => {
   const [selectedRole, setSelectedRole] = useState("MEMBER");
   const [serviceList, setServiceList] = useState([]);
   const [authorities, setAuthorities] = useState([]);
@@ -186,7 +184,7 @@ const FinalRegister = ({ handleBack, handleNext, clearInitialForm }) => {
                 >
                   {serviceList.map((service) => (
                     <MenuItem key={service.service} value={service.service}>
-                      {service.service}
+                      {service.description}
                     </MenuItem>
                   ))}
                 </Select>

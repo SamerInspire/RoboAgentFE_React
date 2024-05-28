@@ -5,13 +5,13 @@ import FormRegister from "src/components/AuthPages/FormRegister";
 import LeftPanel from "src/components/AuthPages/LeftPanel";
 
 // img
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import RegisterPhoto from "src/assets/Images/auth/register.png";
 import FinalRegister from "src/components/AuthPages/FinalRegister";
 import CustomStepper from "src/components/AuthPages/stepper/CustomStepper";
-import { useUpdateAlert } from "src/hooks/Context/AlertContext";
+import { AlertContext } from "src/hooks/Context/AlertContext";
 import { handleSubmitNewUser } from "src/utils/users/users";
 
 // styles
@@ -78,7 +78,7 @@ const Register = () => {
   const [registeredId, setRegisteredId] = useState(null);
   const [userData, setUserData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const setAlertInfo = useUpdateAlert();
+  const { setAlert } = useContext(AlertContext);
   const { t } = useTranslation();
   const myref = useRef();
   const {
@@ -101,7 +101,7 @@ const Register = () => {
       setUserData((prev) => ({ ...prev, ...data }));
       setActiveStep((prev) => prev + 1);
     } else {
-      setAlertInfo({
+      setAlert({
         alertType: "info",
         alertMsg: "Registering User",
         sleep: 99999,
@@ -110,7 +110,7 @@ const Register = () => {
         { ...userData, ...data },
         {
           setRegisteredId,
-          setAlertInfo,
+          setAlert,
           requestAction: "REGISTER_NEW_USER",
         }
       );
@@ -141,7 +141,6 @@ const Register = () => {
             {activeStep == 0 && (
               <FormRegister
                 register={register}
-                setRegisteredId={setRegisteredId}
                 handleNext={handleNext}
                 setUserData={setUserData}
                 userData={userData}
@@ -150,11 +149,7 @@ const Register = () => {
               />
             )}
             {activeStep == 1 && (
-              <FinalRegister
-                registeredId={registeredId}
-                handleBack={handleBack}
-                handleNext={handleNext}
-              />
+              <FinalRegister handleBack={handleBack} handleNext={handleNext} />
             )}
             {/* Terms */}
             <Typography paragraph color="textSecondary" className="terms">

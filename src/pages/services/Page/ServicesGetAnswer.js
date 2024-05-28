@@ -2,10 +2,10 @@ import { Services } from "../Schema/ServicesSchema";
 
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import i18next from "i18next";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router";
-import { useUpdateAlert } from "src/hooks/Context/AlertContext";
+import { AlertContext } from "src/hooks/Context/AlertContext";
 import TasksItem from "src/pages/Dashboard/TasksItem";
 import { TopPaneStyle } from "src/styles/styles";
 import { numbersOnly } from "src/utils/DefualtValidators";
@@ -22,7 +22,7 @@ const ServicesGetAnswer = ({}) => {
     (service) => service.enName == servicename
   )[0];
   const [loading, setLoading] = useState();
-  const setAlertInfo = useUpdateAlert();
+  const { setAlert } = useContext(AlertContext);
   const lang = i18next.language;
   const navigate = useNavigate();
   const [options, setOptions] = useState(() => {
@@ -40,7 +40,7 @@ const ServicesGetAnswer = ({}) => {
     handleFetchCurrentUser({
       requestAction: "SET_CURRENT_USER",
       setCurrentUserData,
-      setAlertInfo,
+      setAlert,
     });
   }, []);
   useEffect(() => {
@@ -56,7 +56,7 @@ const ServicesGetAnswer = ({}) => {
         });
       }
     }
-    return setAlertInfo();
+    return setAlert();
   }, [currentUserData]);
   const {
     register,
@@ -94,7 +94,7 @@ const ServicesGetAnswer = ({}) => {
         onSubmit={handleSubmit(async (data) => {
           if (isEligiable.current) {
             setLoading(true);
-            setAlertInfo({
+            setAlert({
               alertType: "info",
               alertMsg: "Generating Ticket Answer",
               sleep: 999999,
@@ -105,11 +105,11 @@ const ServicesGetAnswer = ({}) => {
               data,
               servicename,
               options,
-              setAlertInfo,
+              setAlert,
             });
             setLoading(false);
           } else {
-            setAlertInfo({
+            setAlert({
               alertType: "error",
               alertMsg: "Sorry You Are not Eligiable to use this service",
             });

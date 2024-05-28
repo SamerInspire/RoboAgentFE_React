@@ -11,12 +11,10 @@ import { useTranslation } from "react-i18next";
 import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import FormStyle from "src/styles/styles";
 
 const FormRegister = ({
   handleNext,
-  setRegisteredId,
   setUserData,
   userData,
   register,
@@ -30,7 +28,6 @@ const FormRegister = ({
     valueConf: "",
   });
 
-  const setAlertInfo = useUpdateAlert();
   const { t } = useTranslation();
   // submit
 
@@ -189,6 +186,12 @@ const FormRegister = ({
           onChange: (e) =>
             setPasswordsInfo({ ...passwordsInfo, valuePass: e.target.value }),
         })}
+        helperText={
+          errors.password &&
+          t(
+            "Password must contain at least one capital letter one small and one number"
+          )
+        }
         error={errors.password ? true : false}
       />
       <TextField

@@ -1,18 +1,17 @@
 import { Grid, Link, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import i18n from "src/dictonaries/i18n";
-import { useUpdateAlert } from "src/hooks/Context/AlertContext";
+import { AlertContext } from "src/hooks/Context/AlertContext";
 import { glassMorphisimStyle } from "src/styles/styles";
 const ServicesListItem = ({ service, queryCenterSignup }) => {
   const lang = i18n.language;
   const [queryCenterAnchorEl, setQueryCenterAnchorEl] = useState(null);
-  const setAlertInfo = useUpdateAlert();
+  const { setAlert } = useContext(AlertContext);
   const handleClick = (event) => {
     setQueryCenterAnchorEl(queryCenterAnchorEl ? null : event.currentTarget);
   };
-  console.log(queryCenterSignup);
   return (
     <Link
       component={queryCenterSignup ? "div" : RouterLink}
@@ -24,15 +23,14 @@ const ServicesListItem = ({ service, queryCenterSignup }) => {
         item
         onClick={() => {
           if (queryCenterSignup) {
-            setAlertInfo({
+            setAlert({
               alertType: "warning",
               alertMsg:
                 "Please Register in the query center to be able to use the services",
               sleep: 5000,
-            })
+            });
           }
-}
-        }
+        }}
         sx={{
           ...glassMorphisimStyle,
           cursor: queryCenterSignup ? "not-allowed" : "pointer",

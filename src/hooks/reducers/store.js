@@ -6,7 +6,7 @@ export function generalSuccessReducer(result, utils) {
   console.log("utils.requestAction ===> ", utils.requestAction);
   const { body } = result?.data?.roboAgentRs;
   const { header } = result?.data?.roboAgentRs;
-  const { setAlertInfo } = utils;
+  const { setAlert } = utils;
   const currentLang = i18n.language;
   const currentMessageLang =
     currentLang === "ar"
@@ -50,8 +50,8 @@ export function generalSuccessReducer(result, utils) {
       break;
     }
     case "REGISTER_NEW_USER": {
-      const { setAlertInfo } = utils;
-      setAlertInfo({
+      const { setAlert } = utils;
+      setAlert({
         alertType: "success",
         alertMsg: currentMessageLang,
       });
@@ -68,17 +68,17 @@ export function generalSuccessReducer(result, utils) {
 
       setTableData(updateTableData(tableData, 5, newRole, userId));
       handleCloseRolePopper();
-      setAlertInfo({
+      setAlert({
         alertType: "success",
         alertMsg: currentMessageLang,
       });
       break;
     }
     case "UPDATE_USER_AUTHORITIES": {
-      const { handleClose, setAlertInfo } = utils;
+      const { handleClose, setAlert } = utils;
       console.log("updated");
       handleClose();
-      setAlertInfo({
+      setAlert({
         alertType: "success",
         alertMsg: currentMessageLang,
       });
@@ -94,10 +94,10 @@ export function generalSuccessReducer(result, utils) {
         userId,
         tableData,
         userNewService,
-        setAlertInfo,
+        setAlert,
       } = utils;
       setTableData(updateTableData(tableData, 7, userNewService, userId));
-      setAlertInfo({ alertType: "success", alertMsg: currentMessageLang });
+      setAlert({ alertType: "success", alertMsg: currentMessageLang });
       handleCloseServiceDialog();
       break;
     }

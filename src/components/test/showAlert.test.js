@@ -13,7 +13,7 @@ const mockAlertInfo = {
   redirectTo: "/new-page",
 };
 
-const mockSetAlertInfo = jest.fn();
+const mocksetAlert = jest.fn();
 
 const renderWithProviders = (
   ui,
@@ -37,7 +37,7 @@ describe("ShowAlert Component", () => {
   test("renders alert when alertInfo is provided", async () => {
     renderWithProviders(<ShowAlert />, {
       alertValue: mockAlertInfo,
-      updateAlertValue: mockSetAlertInfo,
+      updateAlertValue: mocksetAlert,
     });
 
     expect(screen.getByRole("alert")).toBeInTheDocument();
@@ -47,7 +47,7 @@ describe("ShowAlert Component", () => {
   test("closes alert after specified duration", async () => {
     renderWithProviders(<ShowAlert />, {
       alertValue: mockAlertInfo,
-      updateAlertValue: mockSetAlertInfo,
+      updateAlertValue: mocksetAlert,
     });
 
     expect(screen.getByRole("alert")).toBeInTheDocument();
@@ -59,7 +59,7 @@ describe("ShowAlert Component", () => {
       { timeout: mockAlertInfo.sleep + 500 } // Adding extra time to account for any delays
     );
 
-    expect(mockSetAlertInfo).toHaveBeenCalledWith(null);
+    expect(mocksetAlert).toHaveBeenCalledWith(null);
   });
 
   test("scrolls to top and redirects when alertInfo is provided", async () => {
@@ -69,7 +69,7 @@ describe("ShowAlert Component", () => {
 
     renderWithProviders(<ShowAlert />, {
       alertValue: mockAlertInfo,
-      updateAlertValue: mockSetAlertInfo,
+      updateAlertValue: mocksetAlert,
     });
 
     expect(window.scroll).toHaveBeenCalledWith(0, 0);
@@ -81,13 +81,13 @@ describe("ShowAlert Component", () => {
       { timeout: mockAlertInfo.sleep + 500 }
     );
 
-    expect(mockSetAlertInfo).toHaveBeenCalledWith(null);
+    expect(mocksetAlert).toHaveBeenCalledWith(null);
   });
 
   test("does not render alert when alertInfo is not provided", () => {
     renderWithProviders(<ShowAlert />, {
       alertValue: null,
-      updateAlertValue: mockSetAlertInfo,
+      updateAlertValue: mocksetAlert,
     });
 
     expect(screen.queryByRole("alert")).not.toBeInTheDocument();

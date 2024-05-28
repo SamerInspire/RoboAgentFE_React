@@ -1,6 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Providers from "src/components/Providers";
-import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import RolesPopper from "../poppers/RolesPopper";
 
 jest.mock("src/hooks/Context/AlertContext", () => ({
@@ -89,7 +88,7 @@ describe("RolesPopper Component", () => {
       tableData: [],
       userData: userDataMember,
       handleCloseRolePopper,
-      setAlertInfo: useUpdateAlert,
+      setAlert: useUpdateAlert,
     });
   });
 });

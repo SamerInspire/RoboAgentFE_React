@@ -88,7 +88,7 @@ function EmailDialog({
                 await handleVerifyEmail({
                   email: getValues("rest_email"),
                   handleNext,
-                  setAlertInfo: setSnackbarData,
+                  setAlert: setSnackbarData,
                   setOtpToken,
                   setIsLoading,
                 });
