@@ -77,6 +77,7 @@ const Register = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [registeredId, setRegisteredId] = useState(null);
   const [userData, setUserData] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
   const setAlertInfo = useUpdateAlert();
   const { t } = useTranslation();
   const myref = useRef();
@@ -100,6 +101,11 @@ const Register = () => {
       setUserData((prev) => ({ ...prev, ...data }));
       setActiveStep((prev) => prev + 1);
     } else {
+      setAlertInfo({
+        alertType: "info",
+        alertMsg: "Registering User",
+        sleep: 99999,
+      });
       await handleSubmitNewUser(
         { ...userData, ...data },
         {

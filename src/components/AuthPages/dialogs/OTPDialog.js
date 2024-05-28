@@ -135,7 +135,7 @@ function OTPDialog({
                   otp: data.otp,
                   token: otpToken,
                   handleNext,
-                  setAlertInfo: setAlertInfo,
+                  setAlertInfo: setSnackbarData,
                   setIsLoading,
                 });
               })}

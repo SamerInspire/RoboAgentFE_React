@@ -1,7 +1,7 @@
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { Grid, TextField } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const buttonsStyle = {
   bgcolor: "#f6f6f6",
   height: "40px",
@@ -37,8 +37,15 @@ const textTicketStyles = {
   },
 };
 function ServicesCounter() {
-  const [ticketsCounter, setTicketsCounter] = useState(0);
-
+  const [ticketsCounter, setTicketsCounter] = useState(() => {
+    return sessionStorage.getItem("ticketsResolved")
+      ? sessionStorage.getItem("ticketsResolved")
+      : 0;
+  });
+  useEffect(() => {
+    if (ticketsCounter > 0)
+      sessionStorage.setItem("ticketsResolved", ticketsCounter);
+  }, [ticketsCounter]);
   return (
     <Grid container item alignItems={"center"}>
       <Grid
