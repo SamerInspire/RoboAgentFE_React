@@ -12,7 +12,6 @@ function RolesPopper({
   handleCloseRolePopper,
 }) {
   const { setAlert } = useContext(AlertContext);
-
   return (
     <Grid container item alignItems={"center"} gap={2} p={2}>
       {userData[6]?.toLowerCase() == "MEMBER".toLowerCase() ? (

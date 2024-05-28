@@ -8,6 +8,7 @@ import { handleFilterAuthorities } from "src/utils/table/tableReshape";
 import {
   handleFetchAllUsers,
   handleFetchAuthorities,
+  handleFetchCurrentUser,
   handleFetchServiceList,
 } from "src/utils/users/users";
 import LoadingTableBody from "./TableLoading";
@@ -24,6 +25,7 @@ function UserTable() {
   const [userData, setUserData] = useState({ userId: null });
   const [isEditServiceDialogOpen, setIsEditServiceDialogOpen] = useState(false);
   const [statusAnchorEl, setStatusAnchorEl] = useState(null);
+  const [currentUserData, setCurrentUserData] = useState({});
 
   const [isOpenServicesModal, setIsOpenServicesModal] = useState(false);
   const handleCloseRolePopper = () => setStatusAnchorEl(undefined);
@@ -63,19 +65,29 @@ function UserTable() {
       setIsLoading: () => {},
       setAlert,
     });
+    handleFetchCurrentUser({
+      requestAction: "SET_CURRENT_USER",
+      setCurrentUserData,
+      setAlert,
+    });
     handleFetchAuthorities({
       setAuthorities,
       requestAction: "GET_ALL_AUTHORITIES",
-      setIsLoading: () => {},
-      setAlert,
-    });
-    handleFetchServiceList({
-      setServiceList,
-      requestAction: "SET_SERVICE_LIST",
       setIsLoading,
       setAlert,
     });
   }, []);
+  useEffect(() => {
+    console.log(currentUserData.role);
+    if (currentUserData.role === "ADMIN") {
+      handleFetchServiceList({
+        setServiceList,
+        requestAction: "SET_SERVICE_LIST",
+        setIsLoading,
+        setAlert,
+      });
+    }
+  }, [currentUserData]);
   const options = {
     filterType: "checkbox",
     selectableRowsHeader: false,
@@ -91,6 +103,7 @@ function UserTable() {
             handleStatusClick,
             handleOpenServiceDialog,
             handleOpenServiceModal,
+            currentUserData,
           })}
           options={options}
           components={{ TableBody: BodyComponent }}

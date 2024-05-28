@@ -18,8 +18,11 @@ export function AlertProvider({ children }) {
   const location = useLocation();
 
   function setAlert(alert) {
-    handleOpenAlert(alert);
-    setAlertInfo(alert);
+    if (alert) {
+      setOpenFailerAlert(false);
+      handleOpenAlert(alert);
+      setAlertInfo(alert);
+    }
   }
   const handleCloseAlert = () => setOpenFailerAlert(false);
   const handleOpenAlert = async (alert) => {

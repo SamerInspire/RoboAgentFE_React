@@ -81,3 +81,10 @@ export function handleEmailCodeActions(result, code, utils) {
 }
 
 export function handleGetAnswerFailure() {}
+export function unAuthorizedHitHandle(result, codeNumbers, utils) {
+  try {
+    window.location = "/dash/dashboard";
+  } catch (error) {
+    console.log(error);
+  }
+}

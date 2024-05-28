@@ -65,8 +65,8 @@ export function generalSuccessReducer(result, utils) {
         newRole,
         handleCloseRolePopper,
       } = utils;
-
-      setTableData(updateTableData(tableData, 5, newRole, userId));
+      console.log(tableData);
+      setTableData(updateTableData(tableData, 6, newRole, userId));
       handleCloseRolePopper();
       setAlert({
         alertType: "success",
