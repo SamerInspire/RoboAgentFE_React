@@ -11,6 +11,7 @@ import { t } from "i18next";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
+import { AlertContext } from "src/hooks/Context/AlertContext";
 import { LoginContext } from "src/hooks/Context/LoginInfoContext";
 import FormStyle from "src/styles/styles";
 import LoadingButton from "../buttons/LoadingButton";
@@ -18,7 +19,6 @@ import CustomToast from "../toast/CustomToast";
 import EmailDialog from "./dialogs/EmailDialog";
 import NewPassDialog from "./dialogs/NewPassDialog";
 import OTPDialog from "./dialogs/OTPDialog";
-import { AlertContext } from "src/hooks/Context/AlertContext";
 const FormLogin = () => {
   const [showPassword, setShowPassord] = useState(false);
   const [remember, setRemember] = useState(true);
@@ -84,7 +84,7 @@ const FormLogin = () => {
           handleClose={handleCloseDialogs}
         />
       )}
-      {
+      {steps == 3 && (
         <NewPassDialog
           setSnackbarData={setSnackbarData}
           setAlert={setAlert}
@@ -94,7 +94,7 @@ const FormLogin = () => {
           otpToken={otpToken}
           handleClose={handleCloseDialogs}
         />
-      }
+      )}
       <FormStyle
         noValidate
         component="form"

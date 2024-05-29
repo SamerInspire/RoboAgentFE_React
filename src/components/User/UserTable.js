@@ -78,7 +78,6 @@ function UserTable() {
     });
   }, []);
   useEffect(() => {
-    console.log(currentUserData.role);
     if (currentUserData.role === "ADMIN") {
       handleFetchServiceList({
         setServiceList,

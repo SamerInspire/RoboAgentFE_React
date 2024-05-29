@@ -1,8 +1,7 @@
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { t } from "i18next";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AlertContext } from "src/hooks/Context/AlertContext";
-import { handleFetchCurrentUser } from "src/utils/users/users";
 
 const { Grid, Button, Typography } = require("@mui/material");
 
@@ -74,6 +73,7 @@ function tableColumns(utils) {
 
       options: {
         filter: true,
+        display: currentUserData.role == "TEAM_LEAD" ? "none" : true,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <Grid
@@ -115,7 +115,6 @@ function tableColumns(utils) {
       options: {
         filter: true,
         display: currentUserData.role == "TEAM_LEAD" ? "none" : true,
-
         customBodyRender: (value, tableMeta, updateValue) => {
           const formattedValue = value.split("_").join(" ");
           return (

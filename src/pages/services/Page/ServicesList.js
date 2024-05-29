@@ -5,6 +5,7 @@ import { handleFetchCurrentUser } from "src/utils/users/users";
 import { Services } from "../Schema/ServicesSchema";
 import ServicesListItem from "./utils/ServicesListItem";
 import { AlertContext } from "src/hooks/Context/AlertContext";
+import { Helmet } from "react-helmet";
 
 const ServicesList = () => {
   const { loginData } = useContext(LoginContext);
@@ -40,6 +41,9 @@ const ServicesList = () => {
   if (currentUserData.role !== "MEMBER") {
     return (
       <Grid container item spacing={4}>
+        <Helmet>
+          <title>Services | RoboAgent</title>
+        </Helmet>
         {Services.map((service, index) => (
           <Grid key={service.enName + index} item xs={12} sm={6} md={4} lg={3}>
             <ServicesListItem
@@ -54,6 +58,9 @@ const ServicesList = () => {
   } else {
     return (
       <Grid container item spacing={4}>
+        <Helmet>
+          <title>Services | RoboAgent</title>
+        </Helmet>
         {Services.map((service, index) => {
           const showService = currentUserData?.roboAuthorities?.some((auth) =>
             service?.allowedAuthorities?.includes(auth.name)
