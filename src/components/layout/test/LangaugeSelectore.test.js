@@ -51,7 +51,7 @@ describe("LanguageSelector Component", () => {
     const languageButton = screen.getByRole("button");
     expect(languageButton).toBeInTheDocument();
 
-    expect(screen.getAllByAltText(/english|arabic/)[0]).toBeInTheDocument();
+    expect(screen.getAllByAltText(/english|arabic/i)[0]).toBeInTheDocument();
   });
 
   test("opens and closes the menu on button click", () => {

@@ -39,6 +39,8 @@ describe("FormLogin", () => {
     ).toBeInTheDocument();
     expect(screen.getByLabelText("Email")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Cancel" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Next" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Send OTP" })
+    ).toBeInTheDocument();
   });
 });

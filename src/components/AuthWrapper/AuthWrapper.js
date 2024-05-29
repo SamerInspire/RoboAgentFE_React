@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { LoginContext } from "src/hooks/Context/LoginInfoContext";
-function isAllowedRole(allowedRoles = "", userRole = "") {
+function isAllowedRole(allowedRoles = [], userRole = "") {
   const isAllowed = allowedRoles.some(
     (e) => e.toLowerCase() == userRole.toLowerCase()
   );

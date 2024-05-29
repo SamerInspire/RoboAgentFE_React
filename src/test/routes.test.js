@@ -1,9 +1,8 @@
-import React from "react";
-import { getAllByText, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
+import Providers from "src/components/Providers";
 import { LoginContext } from "../hooks/Context/LoginInfoContext";
 import Routes from "../routes";
-import Providers from "src/components/Providers";
 jest.mock("react-apexcharts", () => ({
   __esModule: true,
   default: () => <div />,
@@ -61,7 +60,7 @@ describe("Routes component", () => {
   it("redirects to dashboard if role is not allowed", () => {
     const loginData = { isLoggedIn: true, role: "MEMBER" };
 
-    const { getByText } = render(
+    const { getByText, getAllByText } = render(
       <Providers>
         <LoginContext.Provider value={{ loginData }}>
           <MemoryRouter initialEntries={["/dash/register"]}>
@@ -70,7 +69,6 @@ describe("Routes component", () => {
         </LoginContext.Provider>
       </Providers>
     );
-
-    expect(getAllByText("Dashboard")[0]).toBeInTheDocument();
+    expect(getByText("Website Visits")).toBeInTheDocument();
   });
 });

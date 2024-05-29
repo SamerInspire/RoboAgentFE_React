@@ -1,15 +1,14 @@
 // actions.test.js
 import i18next from "i18next";
+import { generalSuccessReducer } from "src/hooks/reducers/store";
 import {
   handleChangePassCodeActions,
-  JWTFalureHitHandle,
+  handleEmailCodeActions,
+  handleGeneralErrorCodeActions,
+  handleGetAnswerFailure,
   handleOTPCodeActions,
   handleUserCodeActions,
-  handleGeneralErrorCodeActions,
-  handleEmailCodeActions,
-  handleGetAnswerFailure,
 } from "../responseHandlers";
-import { generalSuccessReducer } from "src/hooks/reducers/store";
 
 jest.mock("i18next");
 jest.mock("src/hooks/reducers/store", () => ({
@@ -21,7 +20,7 @@ describe("Code Actions", () => {
     handleNext: jest.fn(),
     setAlert: jest.fn(),
     setOtpToken: jest.fn(),
-    setLoading: jest.fn(),
+    setIsLoading: jest.fn(),
   };
 
   beforeEach(() => {

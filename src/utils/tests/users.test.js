@@ -19,6 +19,7 @@ describe("API handling functions", () => {
     newRole: "admin",
     userNewService: "service1",
     someUtil: jest.fn(),
+    setIsLoading: jest.fn(),
   };
 
   afterEach(() => {

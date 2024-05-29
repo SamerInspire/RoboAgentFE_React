@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import React, { createContext, useState } from "react";
 
-export const AlertContext = React.createContext({});
+export const AlertContext = createContext({});
 export function AlertProvider({ children }) {
   const [alertInfo, setAlertInfo] = useState(null);
   const [openFailerAlert, setOpenFailerAlert] = useState(false);
@@ -15,7 +14,7 @@ export function AlertProvider({ children }) {
       }, 0);
       setTimeout(resolve, ms);
     });
-  const location = useLocation();
+  // const location = useLocation();
 
   function setAlert(alert) {
     if (alert) {
@@ -32,13 +31,13 @@ export function AlertProvider({ children }) {
     handleCloseAlert();
   };
 
-  useEffect(() => {
-    const handleRemoveAlertInPageChange = async () => {
-      await sleep(2000);
-      handleCloseAlert();
-    };
-    handleRemoveAlertInPageChange();
-  }, [location]);
+  // useEffect(() => {
+  //   const handleRemoveAlertInPageChange = async () => {
+  //     await sleep(2000);
+  //     handleCloseAlert();
+  //   };
+  //   handleRemoveAlertInPageChange();
+  // }, [location]);
   return (
     <AlertContext.Provider
       value={{

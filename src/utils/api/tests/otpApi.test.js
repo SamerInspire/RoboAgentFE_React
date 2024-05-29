@@ -9,11 +9,7 @@ const {
 jest.mock("../AxiosHit");
 
 describe("handleVerifyEmail", () => {
-  let utils;
-
-  beforeEach(() => {
-    utils = { email: "test@example.com" };
-  });
+  let utils = { email: "test@example.com", setIsLoading: jest.fn() };
 
   test("should call AxiosHit with correct parameters", async () => {
     await handleVerifyEmail(utils);
@@ -39,11 +35,7 @@ describe("handleVerifyEmail", () => {
 });
 
 describe("handleVerifyOTP", () => {
-  let utils;
-
-  beforeEach(() => {
-    utils = { token: "test-token", otp: "123456" };
-  });
+  const utils = { token: "test-token", otp: "123456", setIsLoading: jest.fn() };
 
   test("should call AxiosHit with correct parameters", async () => {
     await handleVerifyOTP(utils);
@@ -71,11 +63,11 @@ describe("handleVerifyOTP", () => {
 });
 
 describe("handleRestPassword", () => {
-  let utils;
-
-  beforeEach(() => {
-    utils = { newPass: "new-password", otpToken: "test-otp-token" };
-  });
+  let utils = {
+    newPass: "new-password",
+    otpToken: "test-otp-token",
+    setIsLoading: jest.fn(),
+  };
 
   test("should call AxiosHit with correct parameters", async () => {
     await handleRestPassword(utils);

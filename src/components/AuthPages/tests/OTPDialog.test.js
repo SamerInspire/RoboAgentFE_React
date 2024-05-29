@@ -7,6 +7,6 @@ describe("otp Dialog", () => {
     render(<OTPDialog steps={2} register={registerMock} />);
     // expect(screen.getByLabelText("OTP")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "cancel" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "next" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Verify" })).toBeInTheDocument();
   });
 });

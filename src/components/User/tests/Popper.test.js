@@ -1,10 +1,8 @@
+import { ThemeProvider } from "@mui/material";
 import { fireEvent, render, screen } from "@testing-library/react";
-import Providers from "src/components/Providers";
+import { AlertContext } from "src/hooks/Context/AlertContext";
+import { lightTheme } from "src/styles/theme";
 import RolesPopper from "../poppers/RolesPopper";
-
-jest.mock("src/hooks/Context/AlertContext", () => ({
-  useUpdateAlert: jest.fn(),
-}));
 
 describe("RolesPopper Component", () => {
   const setTableData = jest.fn();
@@ -29,14 +27,24 @@ describe("RolesPopper Component", () => {
 
   it('displays "Promote to Team Lead" button when user role is MEMBER', () => {
     render(
-      <Providers>
-        <RolesPopper
-          userData={userDataMember}
-          setTableData={setTableData}
-          tableData={[]}
-          handleCloseRolePopper={handleCloseRolePopper}
-        />
-      </Providers>
+      <AlertContext.Provider
+        value={{
+          alertInfo: jest.fn(),
+          handleCloseAlert: jest.fn(),
+          setAlert: jest.fn(),
+          handleOpenAlert: jest.fn(),
+          openFailerAlert: false,
+        }}
+      >
+        <ThemeProvider theme={lightTheme()}>
+          <RolesPopper
+            userData={userDataMember}
+            setTableData={setTableData}
+            tableData={[]}
+            handleCloseRolePopper={handleCloseRolePopper}
+          />
+        </ThemeProvider>
+      </AlertContext.Provider>
     );
 
     expect(screen.getByText("Promote to team Lead")).toBeInTheDocument();
@@ -45,14 +53,24 @@ describe("RolesPopper Component", () => {
 
   it('displays "Demote to Member" button when user role is not MEMBER', () => {
     render(
-      <Providers>
-        <RolesPopper
-          userData={userDataTeamLead}
-          setTableData={setTableData}
-          tableData={[]}
-          handleCloseRolePopper={handleCloseRolePopper}
-        />
-      </Providers>
+      <AlertContext.Provider
+        value={{
+          alertInfo: jest.fn(),
+          handleCloseAlert: jest.fn(),
+          setAlert: jest.fn(),
+          handleOpenAlert: jest.fn(),
+          openFailerAlert: false,
+        }}
+      >
+        <ThemeProvider theme={lightTheme()}>
+          <RolesPopper
+            userData={userDataTeamLead}
+            setTableData={setTableData}
+            tableData={[]}
+            handleCloseRolePopper={handleCloseRolePopper}
+          />
+        </ThemeProvider>
+      </AlertContext.Provider>
     );
 
     expect(screen.getByText("Emote to Member")).toBeInTheDocument();
@@ -66,14 +84,24 @@ describe("RolesPopper Component", () => {
     }));
 
     render(
-      <Providers>
-        <RolesPopper
-          userData={userDataMember}
-          setTableData={setTableData}
-          tableData={[]}
-          handleCloseRolePopper={handleCloseRolePopper}
-        />
-      </Providers>
+      <AlertContext
+        value={{
+          alertInfo: jest.fn(),
+          handleCloseAlert: jest.fn(),
+          setAlert: jest.fn(),
+          handleOpenAlert: jest.fn(),
+          openFailerAlert: false,
+        }}
+      >
+        <ThemeProvider theme={lightTheme()}>
+          <RolesPopper
+            userData={userDataMember}
+            setTableData={setTableData}
+            tableData={[]}
+            handleCloseRolePopper={handleCloseRolePopper}
+          />
+        </ThemeProvider>
+      </AlertContext>
     );
 
     const button = screen.getByText("Promote to team Lead");

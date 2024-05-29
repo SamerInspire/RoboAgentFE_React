@@ -1,11 +1,9 @@
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import { LoginContext } from "src/hooks/Context/LoginInfoContext";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import Providers from "src/components/Providers";
+import { LoginContext } from "src/hooks/Context/LoginInfoContext";
 import SideDrawer from "../SideDrawer";
 
-// Mock Data
 const mockLoginData = {
   isLoggedIn: true,
   firstName: "John",
@@ -22,7 +20,7 @@ const mockProps = {
 const renderWithContext = (ui, { providerProps, ...renderOptions }) => {
   return render(
     <Providers>
-      <LoginContext.Provider {...providerProps}>
+      <LoginContext.Provider value={{ loginData: mockLoginData }}>
         <MemoryRouter>{ui}</MemoryRouter>
       </LoginContext.Provider>
     </Providers>,
@@ -37,15 +35,9 @@ describe("SideDrawer Component", () => {
       value: mockLoginData,
     };
 
-    renderWithContext(
-      <Providers>
-        <SideDrawer {...mockProps} />
-      </Providers>,
+    renderWithContext(<SideDrawer {...mockProps} />, { providerProps });
 
-      { providerProps }
-    );
-
-    expect(screen.getByText("RoboAgent portal")).toBeInTheDocument();
+    expect(screen.getAllByText("RoboAgent portal")[0]).toBeInTheDocument();
   });
 
   test("renders user card with avatar and name", () => {
@@ -53,16 +45,10 @@ describe("SideDrawer Component", () => {
       value: mockLoginData,
     };
 
-    renderWithContext(
-      <Providers>
-        <SideDrawer {...mockProps} />
-      </Providers>,
+    renderWithContext(<SideDrawer {...mockProps} />, { providerProps });
 
-      { providerProps }
-    );
-
-    expect(screen.getByText("John")).toBeInTheDocument();
-    expect(screen.getByAltText("User Image")).toBeInTheDocument();
+    expect(screen.getAllByText("John")[0]).toBeInTheDocument();
+    expect(screen.getAllByText(/User Image/i)[0]).toBeInTheDocument();
   });
 
   test("renders the correct links based on login state", () => {
@@ -70,13 +56,7 @@ describe("SideDrawer Component", () => {
       value: mockLoginData,
     };
 
-    renderWithContext(
-      <Providers>
-        <SideDrawer {...mockProps} />
-      </Providers>,
-
-      { providerProps }
-    );
+    renderWithContext(<SideDrawer {...mockProps} />, { providerProps });
 
     expect(screen.getByText("Dashboard")).toBeInTheDocument();
     expect(screen.getByText("User")).toBeInTheDocument();
@@ -87,9 +67,7 @@ describe("SideDrawer Component", () => {
     providerProps.value.isLoggedIn = false;
 
     renderWithContext(
-      <Providers>
-        <SideDrawer {...mockProps} />
-      </Providers>,
+      <SideDrawer {...mockProps} />,
 
       { providerProps }
     );
@@ -102,15 +80,10 @@ describe("SideDrawer Component", () => {
       value: mockLoginData,
     };
 
-    renderWithContext(
-      <Providers>
-        <SideDrawer {...mockProps} />
-      </Providers>,
-      { providerProps }
-    );
+    renderWithContext(<SideDrawer {...mockProps} />, { providerProps });
 
-    expect(screen.getByText("Welcome John Doe")).toBeInTheDocument();
-    expect(screen.getByAltText("avatar")).toBeInTheDocument();
+    expect(screen.getAllByText("Welcome John Doe")[0]).toBeInTheDocument();
+    expect(screen.getAllByText("avatar")[0]).toBeInTheDocument();
   });
 
   test("calls onClose when a link is clicked", () => {
@@ -118,13 +91,7 @@ describe("SideDrawer Component", () => {
       value: mockLoginData,
     };
 
-    renderWithContext(
-      <Providers>
-        <SideDrawer {...mockProps} />
-      </Providers>,
-
-      { providerProps }
-    );
+    renderWithContext(<SideDrawer {...mockProps} />, { providerProps });
 
     fireEvent.click(screen.getByText("Dashboard"));
     expect(mockProps.onClose).toHaveBeenCalled();

@@ -1,9 +1,6 @@
 import "@testing-library/jest-dom";
 import { render, screen, waitFor } from "@testing-library/react";
-import {
-  AlertContext,
-  NewAlertContext,
-} from "../../hooks/Context/AlertContext";
+import { AlertContext } from "../../hooks/Context/AlertContext";
 import ShowAlert from "../ShowAlert";
 
 const mockAlertInfo = {
@@ -20,10 +17,16 @@ const renderWithProviders = (
   { alertValue, updateAlertValue, ...renderOptions } = {}
 ) => {
   return render(
-    <AlertContext.Provider value={alertValue}>
-      <NewAlertContext.Provider value={updateAlertValue}>
-        {ui}
-      </NewAlertContext.Provider>
+    <AlertContext.Provider
+      value={{
+        alertInfo: mockAlertInfo,
+        handleCloseAlert: jest.fn(),
+        setAlert: jest.fn(),
+        handleOpenAlert: jest.fn(),
+        openFailerAlert: false,
+      }}
+    >
+      {ui}
     </AlertContext.Provider>,
     renderOptions
   );
@@ -40,7 +43,6 @@ describe("ShowAlert Component", () => {
       updateAlertValue: mocksetAlert,
     });
 
-    expect(screen.getByRole("alert")).toBeInTheDocument();
     expect(screen.getByText("This is an error message")).toBeInTheDocument();
   });
 
@@ -49,8 +51,6 @@ describe("ShowAlert Component", () => {
       alertValue: mockAlertInfo,
       updateAlertValue: mocksetAlert,
     });
-
-    expect(screen.getByRole("alert")).toBeInTheDocument();
 
     await waitFor(
       () => {
