@@ -11,6 +11,7 @@ describe("RolesPopper Component", () => {
   const userDataMember = [
     1,
     "John",
+    "",
     "Doe",
     "john.doe@example.com",
     "Active",
@@ -19,6 +20,7 @@ describe("RolesPopper Component", () => {
   const userDataTeamLead = [
     2,
     "Jane",
+    "",
     "Smith",
     "jane.smith@example.com",
     "Active",
