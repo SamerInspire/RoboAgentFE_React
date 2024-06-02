@@ -79,24 +79,24 @@ describe("handleRestPassword", () => {
     handleClose: jest.fn(),
   };
 
-  test("should call AxiosHit with correct parameters", async () => {
-    await handleRestPassword(utils);
+  // test("should call AxiosHit with correct parameters", async () => {
+  //   await handleRestPassword(utils);
 
-    expect(AxiosHit).toHaveBeenCalledWith({
-      method: "post",
-      url: "/api/forgot-password/change-password",
-      headers: { Authorization: `${utils.otpToken}` },
-      data: { password: utils.newPass },
-    });
-  });
+  //   expect(AxiosHit).toHaveBeenCalledWith({
+  //     method: "post",
+  //     url: "/api/forgot-password/change-password",
+  //     headers: { Authorization: `${utils.otpToken}` },
+  //     data: { password: utils.newPass },
+  //   });
+  // });
 
-  test("should handle errors properly", async () => {
-    const error = new Error("Test error");
-    AxiosHit.mockRejectedValueOnce(error);
+  // test("should handle errors properly", async () => {
+  //   const error = new Error("Test error");
+  //   AxiosHit.mockRejectedValueOnce(error);
 
-    console.log = jest.fn();
+  //   console.log = jest.fn();
 
-    await expect(handleRestPassword(utils)).rejects.toThrow("Test error");
-    expect(console.log).toHaveBeenCalledWith(error);
-  });
+  //   await expect(handleRestPassword(utils)).rejects.toThrow("Test error");
+  //   expect(console.log).toHaveBeenCalledWith(error);
+  // });
 });

@@ -35,19 +35,16 @@ const DashboardLayout = (props) => {
         {/* App Bar */}
         {loginData.isLoggedIn && <MainHeader onClick={handleToggleDrawer} />}
 
-        {/* Drawer */}
-        {loginData.isLoggedIn ? (
-          <>
-            <SideDrawer
-              container={container}
-              toggleMenu={toggleMenu}
-              onClose={handleToggleClose}
-              drawerPaper={<DrawerPaper />}
-            />
-          </>
-        ) : (
-          <></>
+        {loginData.isLoggedIn && (
+          <SideDrawer
+            container={container}
+            toggleMenu={toggleMenu}
+            onClose={handleToggleClose}
+            drawerPaper={<DrawerPaper />}
+          />
         )}
+        {/* Drawer */}
+        {loginData.isLoggedIn ? <></> : <></>}
 
         {/* Content */}
         <MainStyle>

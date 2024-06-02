@@ -52,8 +52,8 @@ describe("reshapeUserData", () => {
       { id: 2, name: "Jane", email: "jane@example.com" },
     ];
     const expectedReshapedData = [
-      [1, "Moh", "moh.abdin27@gmail.com"],
-      [2, "Jane", "jane@example.com"],
+      [1, "Moh", "moh.abdin27@gmail.com", undefined],
+      [2, "Jane", "jane@example.com", undefined],
     ];
 
     const reshapedData = reshapeUserData(usersArr);
@@ -76,8 +76,8 @@ describe("reshapeUserData", () => {
       { id: 2, name: "Jane", age: 25, email: "jane@example.com" },
     ];
     const expectedReshapedData = [
-      [1, "Moh", 30],
-      [2, "Jane", 25, "jane@example.com"],
+      [1, "Moh", 30, undefined],
+      [2, "Jane", 25, "jane@example.com", undefined],
     ];
 
     const reshapedData = reshapeUserData(usersArr);

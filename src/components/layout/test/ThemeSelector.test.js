@@ -1,11 +1,24 @@
 import { fireEvent, render } from "@testing-library/react";
 import { themeContext } from "src/hooks/Context/ThemeContext";
 import CurrentThemeSelector from "../MainHeader/DarkModeSelector";
+import { ThemeProvider } from "@mui/material";
+import { lightTheme } from "src/styles/theme";
 
 const renderWithContext = (ui, { providerProps, ...renderOptions }) => {
   return render(
-    <themeContext.Provider {...providerProps}>{ui}</themeContext.Provider>,
-    renderOptions
+    <ThemeProvider theme={lightTheme()}>
+      <themeContext.Provider
+        value={{
+          direction: "rtl",
+          currentTheme: lightTheme(),
+          setCurrentTheme: jest.fn(),
+          themeStyles: lightTheme(),
+          setDirection: jest.fn(),
+        }}
+      >
+        {ui}
+      </themeContext.Provider>
+    </ThemeProvider>
   );
 };
 
@@ -56,7 +69,7 @@ describe("CurrentThemeSelector component", () => {
       providerProps,
     });
 
-    fireEvent.click(getByText("Light mode"));
+    fireEvent.click(getByText("Dark mode"));
     expect(setCurrentThemeMock).toHaveBeenCalledWith("dark");
 
     providerProps.value.currentTheme = "dark";

@@ -1,4 +1,3 @@
-import React from "react";
 import { getByLabelText, render } from "@testing-library/react";
 import Loader from "./Loader";
 

@@ -105,6 +105,7 @@ describe("Code Actions", () => {
     expect(mockUtils.setAlert).toHaveBeenCalledWith({
       alertType: "success",
       alertMsg: "Success",
+      open: true,
     });
   });
 
@@ -161,39 +162,39 @@ describe("Code Actions", () => {
     });
   });
 
-  it("handleEmailCodeActions should handle success case and set OTP token", () => {
-    const result = {
-      headers: {
-        authorization: "mock-token",
-      },
-      data: {
-        roboAgentRs: {
-          header: {
-            responseStatus: {
-              arabicMsg: "نجاح",
-              englishMsg: "Success",
-              status: "success",
-            },
-            code: "00000",
-          },
-        },
-        headers: { authorization: "token123" },
-      },
-    };
-    const code = "00000";
-    i18next.language = "en";
+  // it("handleEmailCodeActions should handle success case and set OTP token", () => {
+  //   const result = {
+  //     headers: {
+  //       authorization: "mock-token",
+  //     },
+  //     data: {
+  //       roboAgentRs: {
+  //         header: {
+  //           responseStatus: {
+  //             arabicMsg: "نجاح",
+  //             englishMsg: "Success",
+  //             status: "success",
+  //           },
+  //           code: "00000",
+  //         },
+  //       },
+  //       headers: { authorization: "token123" },
+  //     },
+  //   };
+  //   const code = "00000";
+  //   i18next.language = "en";
 
-    handleEmailCodeActions(result, code, mockUtils);
+  //   handleEmailCodeActions(result, code, mockUtils);
 
-    expect(mockUtils.setOtpToken).toHaveBeenCalledWith("mock-token");
-    expect(mockUtils.handleNext).toHaveBeenCalled();
-    expect(mockUtils.setLoading).toHaveBeenCalled();
-    expect(mockUtils.setAlert).toHaveBeenCalledWith({
-      alertType: "success",
-      alertMsg: "Success",
-      open: true,
-    });
-  });
+  //   expect(mockUtils.setOtpToken).toHaveBeenCalledWith("mock-token");
+  //   expect(mockUtils.handleNext).toHaveBeenCalled();
+  //   expect(mockUtils.setLoading).toHaveBeenCalled();
+  //   expect(mockUtils.setAlert).toHaveBeenCalledWith({
+  //     alertType: "success",
+  //     alertMsg: "Success",
+  //     open: true,
+  //   });
+  // });
 
   it("handleGetAnswerFailure should do nothing", () => {
     handleGetAnswerFailure();

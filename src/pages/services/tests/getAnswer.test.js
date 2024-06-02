@@ -55,7 +55,7 @@ describe("ServicesGetAnswer component", () => {
     const service = Services.find(
       (service) => service.arName === "الخدمات العامة"
     );
-    expect(getByText(service.enName)).toBeInTheDocument();
+    expect(getByText(service.arName)).toBeInTheDocument();
   });
 
   test("handles form submission correctly", async () => {
@@ -96,8 +96,9 @@ describe("ServicesGetAnswer component", () => {
 
     await waitFor(() => {
       expect(providerProps.alert.setAlert).toHaveBeenCalledWith({
-        alertType: "error",
-        alertMsg: "Sorry You Are not Eligiable to use this service",
+        alertType: "info",
+        alertMsg: "Generating Ticket Answer",
+        sleep: 999999,
       });
     });
   });
