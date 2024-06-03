@@ -13,15 +13,15 @@ import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import { Box, Button, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { useContext, useState } from "react";
+import { AlertContext } from "src/hooks/Context/AlertContext";
 import {
   findBoardSectionContainer,
   getAuthorityById,
   initializeContainer,
 } from "src/utils/dnd/service";
 import { handleSubmitUserAuths } from "src/utils/users/users";
-import ServiceContainer from "./ServiceContainer";
 import DraggableServiceItem from "./DraggableServiceItem";
-import { AlertContext } from "src/hooks/Context/AlertContext";
+import ServiceContainer from "./ServiceContainer";
 const dropAnimation = {
   ...defaultDropAnimation,
 };
@@ -29,6 +29,9 @@ const DNDServicesModal = ({
   authorities,
   handleCloseServicesModal,
   userData,
+  setAuthorities,
+  setTableData,
+  tableData,
 }) => {
   const initialContainersSections = initializeContainer(authorities);
   const [containerSections, setContainerSections] = useState(
@@ -212,12 +215,13 @@ const DNDServicesModal = ({
               fullWidth
               onClick={() =>
                 handleSubmitUserAuths({
-                  roboAuthorities: containerSections["active_services"],
                   requestAction: "UPDATE_USER_AUTHORITIES",
                   setAlert,
                   userId: userData[0],
                   handleClose: handleCloseServicesModal,
-                  setContainerSections,
+                  containerSections,
+                  setTableData,
+                  tableData,
                 })
               }
               variant="contained"

@@ -116,36 +116,47 @@ const ServicesGetAnswer = ({}) => {
           }
         })}
       >
-        <Grid container item position={"relative"} xs={12} gap={4}>
-          <Grid item xs={12}>
-            <TextField
-              id="outlined-multiline-static"
-              label="Reason"
-              fullWidth
-              {...register("reason", {
-                onChange: (e) =>
-                  numbersOnly(e, {
-                    type: "IDNo",
-                    maxNumber: 10,
-                    replaceWith: "",
-                  }),
-                onPaste: (e) =>
-                  numbersOnly(e, {
-                    type: "IDNo",
-                    maxNumber: 10,
-                    replaceWith: "",
-                  }),
-              })}
-              disabled={loading}
-            />
-          </Grid>
-          <Grid container item gap={4}>
-            <Grid container item spacing={4}>
-              <Grid item xs={12} md={6}>
+        <Grid container item xs={12} gap={4}>
+          <Grid container item spacing={4}>
+            <Grid container item xs={6} gap={1}>
+              <Grid item xs={12}>
+                <Typography variant="body1" fontWeight={500}>
+                  Reason *
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  id="outlined-multiline-static"
+                  fullWidth
+                  {...register("reason", {
+                    onChange: (e) =>
+                      numbersOnly(e, {
+                        type: "IDNo",
+                        maxNumber: 10,
+                        replaceWith: "",
+                      }),
+                    onPaste: (e) =>
+                      numbersOnly(e, {
+                        type: "IDNo",
+                        maxNumber: 10,
+                        replaceWith: "",
+                      }),
+                  })}
+                  disabled={loading}
+                />
+              </Grid>
+            </Grid>
+            <Grid container item xs={6} gap={1}>
+              <Grid item xs={12}>
+                <Typography variant="body1" fontWeight={500}>
+                  Establishment Number *
+                </Typography>
+              </Grid>
+
+              <Grid item xs={12}>
                 <TextField
                   fullWidth
                   id="outlined-multiline-static"
-                  label="Establishment Number"
                   pattern="[0-9]*"
                   {...register("establishmentNumber", {
                     onChange: (e) => numbersOnly(e),
@@ -157,11 +168,19 @@ const ServicesGetAnswer = ({}) => {
                   helperText={errors.email && "Enter a valid email address"}
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
+            </Grid>
+          </Grid>
+          <Grid container item spacing={4}>
+            <Grid container item xs={6} gap={1}>
+              <Grid item xs={12}>
+                <Typography variant="body1" fontWeight={500}>
+                  ID or Iqameh *
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
                 <TextField
                   fullWidth
                   id="outlined-multiline-static"
-                  label="ID or Iqameh"
                   {...register("id_number", {
                     onChange: (e) =>
                       numbersOnly(e, {
@@ -180,7 +199,13 @@ const ServicesGetAnswer = ({}) => {
                 />
               </Grid>
             </Grid>
-            <Grid container item justifyContent={"space-between"} spacing={4}>
+            <Grid
+              container
+              item
+              xs={6}
+              justifyContent={"space-between"}
+              spacing={4}
+            >
               {currService.options.map((el) => (
                 <Grid
                   container
@@ -188,7 +213,6 @@ const ServicesGetAnswer = ({}) => {
                   item
                   xs={12}
                   md={6}
-                  lg={4}
                   xl={3}
                 >
                   <TasksItem
@@ -202,51 +226,50 @@ const ServicesGetAnswer = ({}) => {
                 </Grid>
               ))}
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                readOnly
-                id="outlined-multiline-static"
-                label="Answer"
-                textAlign="right"
-                value={answer}
-                style={{ direction: "rtl" }}
-                InputProps={{
-                  readOnly: true,
-                }}
-                disabled
-                multiline
-                rows={10}
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              variant="outlined"
+              readOnly
+              id="outlined-multiline-static"
+              label="Answer"
+              textAlign="right"
+              value={answer}
+              style={{ direction: "rtl" }}
+              InputProps={{
+                readOnly: true,
+              }}
+              disabled
+              multiline
+              rows={10}
+              fullWidth
+            />
+          </Grid>
+          <Grid container item spacing={4}>
+            <Grid item xs={12} md={6}>
+              <Button
                 fullWidth
-              />
+                variant="contained"
+                color="error"
+                style={{
+                  width: "100%",
+                  color: "white",
+                }}
+                href="/dash/services"
+              >
+                back
+              </Button>
             </Grid>
-
-            <Grid container item spacing={4}>
-              <Grid item xs={12} md={6}>
-                <Button
-                  fullWidth
-                  variant="contained"
-                  color="error"
-                  style={{
-                    width: "100%",
-                    color: "white",
-                  }}
-                  href="/dash/services"
-                >
-                  back
-                </Button>
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <Button
-                  fullWidth
-                  variant="contained"
-                  type="submit"
-                  isLoading={loading}
-                  disableElevation
-                >
-                  Search
-                </Button>
-              </Grid>
+            <Grid item xs={12} md={6}>
+              <Button
+                fullWidth
+                variant="contained"
+                type="submit"
+                isLoading={loading}
+                disableElevation
+              >
+                Search
+              </Button>
             </Grid>
           </Grid>
         </Grid>

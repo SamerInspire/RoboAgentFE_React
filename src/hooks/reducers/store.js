@@ -75,9 +75,23 @@ export function generalSuccessReducer(result, utils) {
       break;
     }
     case "UPDATE_USER_AUTHORITIES": {
-      const { handleClose, setAlert } = utils;
-      console.log("updated");
+      const {
+        handleClose,
+        setAlert,
+        containerSections,
+        userId,
+        tableData,
+        setTableData,
+      } = utils;
       handleClose();
+      setTableData(
+        updateTableData(
+          tableData,
+          9,
+          [...containerSections["active_services"]],
+          userId
+        )
+      );
       setAlert({
         alertType: "success",
         alertMsg: currentMessageLang,
@@ -96,7 +110,7 @@ export function generalSuccessReducer(result, utils) {
         userNewService,
         setAlert,
       } = utils;
-      setTableData(updateTableData(tableData, 7, userNewService, userId));
+      setTableData(updateTableData(tableData, 8, userNewService, userId));
       setAlert({ alertType: "success", alertMsg: currentMessageLang });
       handleCloseServiceDialog();
       break;

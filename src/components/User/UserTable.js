@@ -26,7 +26,6 @@ function UserTable() {
   const [isEditServiceDialogOpen, setIsEditServiceDialogOpen] = useState(false);
   const [statusAnchorEl, setStatusAnchorEl] = useState(null);
   const [currentUserData, setCurrentUserData] = useState({});
-
   const [isOpenServicesModal, setIsOpenServicesModal] = useState(false);
   const handleCloseRolePopper = () => setStatusAnchorEl(undefined);
 
@@ -130,6 +129,8 @@ function UserTable() {
           <DNDServicesModal
             userData={userData}
             authorities={authorities}
+            setTableData={setTableData}
+            tableData={tableData}
             setAuthorities={setAuthorities}
             handleCloseServicesModal={handleCloseServicesModal}
           />

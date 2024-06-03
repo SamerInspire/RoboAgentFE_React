@@ -1,13 +1,13 @@
 import AxiosHit from "src/utils/api/AxiosHit";
 export async function handleSubmitUserAuths(utils) {
-  const { roboAuthorities, userId } = utils;
+  const { containerSections, userId } = utils;
   try {
     await AxiosHit(
       {
         method: "put",
         url: "/api/user-auth",
         data: {
-          roboAuthorities: roboAuthorities,
+          roboAuthorities: containerSections["active_services"],
           userId: userId,
         },
       },
