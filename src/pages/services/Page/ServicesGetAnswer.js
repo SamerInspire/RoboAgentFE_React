@@ -19,7 +19,7 @@ function handleChangeCurrentService(serviceName, setCurrService) {
 const ServicesGetAnswer = ({}) => {
   let { servicename } = useParams();
   const [answer, setAnswer] = useState("");
-  const [currentUserData, setCurrentUserData] = useState(null);
+  const [currentUserData, setCurrentUserData] = useState({});
   const isEligiable = useRef(false);
   console.log("answer ===> Siminz ", answer);
   const [currService, setCurrService] = useState(
@@ -278,13 +278,45 @@ const ServicesGetAnswer = ({}) => {
         height={"100%"}
         maxHeight={"100%"}
         alignItems={"flex-start"}
+        gap={4}
       >
         {Services.map((service, index) => {
           const showService = currentUserData?.roboAuthorities?.some((auth) =>
             service?.allowedAuthorities?.includes(auth.name)
           );
-          return showService ? (
-            <Grid key={service.enName + index} p={1} item xs={12}>
+          return currentUserData.role == "ADMIN" ? (
+            <Grid key={service.enName + index} item xs={12}>
+              <Grid
+                container
+                item
+                gap={2}
+                alignItems={"center"}
+                p={1}
+                onClick={() =>
+                  handleChangeCurrentService(service.enName, setCurrService)
+                }
+                sx={{
+                  cursor: "pointer",
+                  fontWeight:
+                    service.enName === currService.enName ? "600" : "",
+                  color: service.enName === currService.enName ? "#04554C" : "",
+                  backgroundColor:
+                    service.enName === currService.enName ? "#d9ffea" : "",
+                }}
+              >
+                <Box
+                  component={"img"}
+                  src={service.backgroundImg}
+                  sx={{ width: "20px", height: "20px" }}
+                />
+                <Typography variant="body1" fontWeight={"600"} color={"gray"}>
+                  {" "}
+                  {lang == "en" ? service.enName : service.arName}
+                </Typography>
+              </Grid>
+            </Grid>
+          ) : showService ? (
+            <Grid key={service.enName + index} py={2} item xs={12}>
               <Grid
                 container
                 item
