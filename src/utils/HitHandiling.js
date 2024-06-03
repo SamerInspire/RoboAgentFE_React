@@ -43,8 +43,8 @@ export function failureHitHandle(result, utils) {
         return handleGeneralErrorCodeActions(result, codeNumbers, utils);
     }
   } else {
-    console.log("result ===> ",result.message)
-    setAlertInfo({ alertType: 'error', alertMsg: result.message });
+    console.log("result ===> ",result?.message)
+    setAlertInfo({ alertType: 'error', alertMsg: result?.message });
 
   }
 }
