@@ -6,7 +6,7 @@ const ListItemStyle = styled(ListItem)(() => ({
   padding: 0,
 }));
 
-const CustomLinkStyle = styled(NavLink)(({ theme }) => ({
+export const CustomLinkStyle = styled(NavLink)(({ theme }) => ({
   width: "100%",
   padding: "8px 8px 8px 32px",
   display: "flex",
