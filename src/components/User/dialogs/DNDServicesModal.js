@@ -12,8 +12,7 @@ import {
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import { Box, Button, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import { useState } from "react";
-import { useUpdateAlert } from "src/hooks/Context/AlertContext";
+import { useContext, useState } from "react";
 import {
   findBoardSectionContainer,
   getAuthorityById,
@@ -22,6 +21,7 @@ import {
 import { handleSubmitUserAuths } from "src/utils/users/users";
 import ServiceContainer from "./ServiceContainer";
 import DraggableServiceItem from "./DraggableServiceItem";
+import { AlertContext } from "src/hooks/Context/AlertContext";
 const dropAnimation = {
   ...defaultDropAnimation,
 };
@@ -35,7 +35,7 @@ const DNDServicesModal = ({
     initialContainersSections
   );
   const [activeAuthorityId, setActiveAuthorityId] = useState(null);
-  const setAlertInfo = useUpdateAlert();
+  const { setAlert } = useContext(AlertContext);
   const sensors = useSensors(
     useSensor(MouseSensor, { activationConstraint: { distance: 5 } }),
     useSensor(PointerSensor),
@@ -214,7 +214,7 @@ const DNDServicesModal = ({
                 handleSubmitUserAuths({
                   roboAuthorities: containerSections["active_services"],
                   requestAction: "UPDATE_USER_AUTHORITIES",
-                  setAlertInfo,
+                  setAlert,
                   userId: userData[0],
                   handleClose: handleCloseServicesModal,
                   setContainerSections,

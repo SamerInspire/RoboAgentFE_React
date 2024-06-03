@@ -13,7 +13,7 @@ describe("Hit Handling", () => {
     const result = {
       data: { roboAgentRs: { header: { responseStatus: { code: "00000" } } } },
     };
-    const utils = { test: "test-utils" };
+    const utils = { test: "test-utils", setAlert: jest.fn() };
 
     successHitHandle(result, utils);
 
@@ -28,7 +28,7 @@ describe("Hit Handling", () => {
         },
       },
     };
-    const utils = { test: "test-utils" };
+    const utils = { test: "test-utils", setAlert: jest.fn() };
 
     failureHitHandle(result, utils);
 

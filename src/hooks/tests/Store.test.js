@@ -69,17 +69,17 @@ describe("generalSuccessReducer", () => {
   it("should invoke  the REGISTER_NEW_USER data correctly ", () => {
     const mockUtils = {
       requestAction: "REGISTER_NEW_USER",
-      setAlertInfo: jest.fn(),
+      setAlert: jest.fn(),
     };
 
     generalSuccessReducer(mockResult, mockUtils);
-    expect(mockUtils.setAlertInfo).toHaveBeenCalled();
+    expect(mockUtils.setAlert).toHaveBeenCalled();
   });
   it("should invoke  the UPDATE_USER_ROLE data correctly ", () => {
     const mockUtils = {
       requestAction: "UPDATE_USER_ROLE",
       tableData: [],
-      setAlertInfo: jest.fn(),
+      setAlert: jest.fn(),
       setTableData: jest.fn(),
       handleCloseRolePopper: jest.fn(),
     };
@@ -87,18 +87,18 @@ describe("generalSuccessReducer", () => {
     generalSuccessReducer(mockResult, mockUtils);
     expect(mockUtils.setTableData).toHaveBeenCalled();
     expect(mockUtils.handleCloseRolePopper).toHaveBeenCalled();
-    expect(mockUtils.setAlertInfo).toHaveBeenCalled();
+    expect(mockUtils.setAlert).toHaveBeenCalled();
   });
   it("should invoke  the UPDATE_USER_AUTHORITIES data correctly ", () => {
     const mockUtils = {
       requestAction: "UPDATE_USER_AUTHORITIES",
       handleClose: jest.fn(),
-      setAlertInfo: jest.fn(),
+      setAlert: jest.fn(),
     };
 
     generalSuccessReducer(mockResult, mockUtils);
     expect(mockUtils.handleClose).toHaveBeenCalled();
-    expect(mockUtils.setAlertInfo).toHaveBeenCalled();
+    expect(mockUtils.setAlert).toHaveBeenCalled();
   });
   it("should invoke  the set submit user service data correctly ", () => {
     const mockUtils = {
@@ -106,13 +106,13 @@ describe("generalSuccessReducer", () => {
       handleCloseServiceDialog: jest.fn(),
       tableData: [],
       setTableData: jest.fn(),
-      setAlertInfo: jest.fn(),
+      setAlert: jest.fn(),
     };
 
     generalSuccessReducer(mockResult, mockUtils);
     expect(mockUtils.handleCloseServiceDialog).toHaveBeenCalled();
     expect(mockUtils.setTableData).toHaveBeenCalled();
-    expect(mockUtils.setAlertInfo).toHaveBeenCalled();
+    expect(mockUtils.setAlert).toHaveBeenCalled();
   });
   it("should invoke  the setAnswer  data correctly ", () => {
     const mockUtils = {

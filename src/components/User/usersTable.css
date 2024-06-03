@@ -15,3 +15,8 @@
   > div {
   width: 100% !important;
 }
+body
+  > div.MuiPopover-root.MuiModal-root.css-1i0e6f3-MuiModal-root-MuiPopover-root
+  > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation2.MuiPopover-paper.css-ubpweo-MuiPaper-root-MuiPopover-paper {
+  padding: 20px;
+}

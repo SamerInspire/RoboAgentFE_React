@@ -11,7 +11,7 @@ import { t } from "i18next";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
-import { useUpdateAlert } from "src/hooks/Context/AlertContext";
+import { AlertContext } from "src/hooks/Context/AlertContext";
 import { LoginContext } from "src/hooks/Context/LoginInfoContext";
 import FormStyle from "src/styles/styles";
 import LoadingButton from "../buttons/LoadingButton";
@@ -31,7 +31,7 @@ const FormLogin = () => {
   const { login } = useContext(LoginContext);
   const handleTogglePassword = () => setShowPassord(!showPassword);
   const handleToggleRemember = () => setRemember(!remember);
-  const setAlertInfo = useUpdateAlert();
+  const { setAlert } = useContext(AlertContext);
   const [otpToken, setOtpToken] = useState("");
   const handleNext = () => {
     setSteps((prev) => prev + 1);
@@ -69,7 +69,7 @@ const FormLogin = () => {
           register={register}
           getValues={getValues}
           handleClose={handleCloseDialogs}
-          setAlertInfo={setAlertInfo}
+          setAlert={setAlert}
         />
       )}
       {steps === 2 && (
@@ -79,27 +79,27 @@ const FormLogin = () => {
           email={getValues("rest_email")}
           steps={steps}
           otpToken={otpToken}
-          setAlertInfo={setAlertInfo}
+          setAlert={setAlert}
           setOtpToken={setOtpToken}
           handleClose={handleCloseDialogs}
         />
       )}
-      {
+      {steps == 3 && (
         <NewPassDialog
           setSnackbarData={setSnackbarData}
-          setAlertInfo={setAlertInfo}
+          setAlert={setAlert}
           email={getValues("email")}
           handleNext={handleNext}
           steps={steps}
           otpToken={otpToken}
           handleClose={handleCloseDialogs}
         />
-      }
+      )}
       <FormStyle
         noValidate
         component="form"
         onSubmit={handleSubmit((loginData) =>
-          login(loginData, setAlertInfo, setIsLoading)
+          login(loginData, setAlert, setIsLoading)
         )}
       >
         {/* Email */}

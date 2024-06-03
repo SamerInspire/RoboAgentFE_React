@@ -11,30 +11,22 @@ import {
   Select,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import {
-  handleFetchServiceList,
-  handleSubmitUserNewService,
-} from "src/utils/users/users";
+import { handleSubmitUserNewService } from "src/utils/users/users";
 
 function ServiceDialog({
   isEditServiceDialogOpen,
   handleCloseServiceDialog,
   userId,
   tableData,
-  setAlertInfo,
+  setAlert,
+  serviceList,
   setTableData,
 }) {
   const [userNewService, setUserNewService] = useState();
-  const [serviceList, setServiceList] = useState([]);
   const handleChangeUserNewService = (serviceId) => {
     setUserNewService(serviceId.target.value);
   };
-  useEffect(() => {
-    handleFetchServiceList({
-      setServiceList,
-      requestAction: "SET_SERVICE_LIST",
-    });
-  }, []);
+  useEffect(() => {}, []);
   return (
     <Dialog
       disableEscapeKeyDown
@@ -72,7 +64,7 @@ function ServiceDialog({
               requestAction: "SET_SUBMIT_USER_SERVICE",
               tableData,
               setTableData,
-              setAlertInfo,
+              setAlert,
             })
           }
         >

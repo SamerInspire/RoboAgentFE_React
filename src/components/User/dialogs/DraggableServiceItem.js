@@ -1,5 +1,6 @@
 import { Grid, Typography } from "@mui/material";
 import servicesIcons from "src/constants/servicesIcons";
+import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 const DraggableServiceItem = ({ authority }) => {
   return (
     <Grid
@@ -22,6 +23,9 @@ const DraggableServiceItem = ({ authority }) => {
         <Typography variant="body1" fontWeight={600}>
           {authority.description}
         </Typography>
+      </Grid>
+      <Grid item>
+        <DragIndicatorIcon />
       </Grid>
     </Grid>
   );

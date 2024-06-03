@@ -73,7 +73,7 @@ function EmailDialog({
               fullWidth
               variant="contained"
               onClick={() => {
-                handleClose;
+                handleClose();
                 reset();
               }}
             >
@@ -88,7 +88,7 @@ function EmailDialog({
                 await handleVerifyEmail({
                   email: getValues("rest_email"),
                   handleNext,
-                  setAlertInfo: setAlertInfo,
+                  setAlert: setSnackbarData,
                   setOtpToken,
                   setIsLoading,
                 });

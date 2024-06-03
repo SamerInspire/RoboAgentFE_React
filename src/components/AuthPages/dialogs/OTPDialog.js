@@ -14,7 +14,6 @@ import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import LoadingButton from "src/components/buttons/LoadingButton";
 import Loader from "src/components/loader/Loader";
-import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import FormStyle from "src/styles/styles";
 import { handleVerifyEmail, handleVerifyOTP } from "src/utils/api/auth/otp";
 function OTPDialog({
@@ -90,7 +89,7 @@ function OTPDialog({
                 await handleVerifyEmail({
                   email: email,
                   handleNext: () => {},
-                  setAlertInfo: setSnackbarData,
+                  setAlert: setSnackbarData,
                   setOtpToken,
                   setIsLoading,
                 });
@@ -135,7 +134,7 @@ function OTPDialog({
                   otp: data.otp,
                   token: otpToken,
                   handleNext,
-                  setAlertInfo: setAlertInfo,
+                  setAlert: setSnackbarData,
                   setIsLoading,
                 });
               })}

@@ -1,17 +1,20 @@
-import { Button, IconButton, InputAdornment } from "@mui/material";
-import { Grid, TextField } from "@mui/material";
+import {
+  Button,
+  Grid,
+  IconButton,
+  InputAdornment,
+  TextField,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import { useUpdateAlert } from "src/hooks/Context/AlertContext";
 import FormStyle from "src/styles/styles";
 
 const FormRegister = ({
   handleNext,
-  setRegisteredId,
   setUserData,
   userData,
   register,
@@ -25,7 +28,6 @@ const FormRegister = ({
     valueConf: "",
   });
 
-  const setAlertInfo = useUpdateAlert();
   const { t } = useTranslation();
   // submit
 
@@ -126,9 +128,9 @@ const FormRegister = ({
         maxLength="16"
         value={userData?.phoneNumber}
         onChange={(value) => {
-          console.log("value ===> ",value)
-          value = !!value ? value?.substring(0, 13) : "" 
-          setUserData((prev) => ({ ...prev, phoneNumber: value}));
+          console.log("value ===> ", value);
+          value = !!value ? value?.substring(0, 13) : "";
+          setUserData((prev) => ({ ...prev, phoneNumber: value }));
         }}
       />
       <TextField
@@ -145,7 +147,7 @@ const FormRegister = ({
         helperText={
           errors.phoneNumber && t("register.Enter a valid phone number")
         }
-      // error={phoneNumber.length != 14 ? true : false}
+        // error={phoneNumber.length != 14 ? true : false}
       />
       {/* password */}
       <TextField
@@ -176,16 +178,21 @@ const FormRegister = ({
         label={t("passwordLabel")}
         {...register("password", {
           required: true,
-          minLength: 5,
-          maxLength: 15,
+          pattern: {
+            value: /^(?=.*[A-Z])(?=.*\d).+$/,
+            message:
+              "Password must contain at least one capital letter one small and one number",
+          },
           onChange: (e) =>
             setPasswordsInfo({ ...passwordsInfo, valuePass: e.target.value }),
         })}
-        error={errors.password ? true : false}
         helperText={
           errors.password &&
-          t("register.Enter a valid password (5-15 characters)")
+          t(
+            "Password must contain at least one capital letter one small and one number"
+          )
         }
+        error={errors.password ? true : false}
       />
       <TextField
         variant="outlined"
@@ -227,7 +234,7 @@ const FormRegister = ({
           errors.confPassword
             ? t("register.Please Confirm the password")
             : passwordsInfo.valueConf !== passwordsInfo.valuePass &&
-            t("register.Passwords did not match")
+              t("register.Passwords did not match")
         }
       />
       {/* submit */}

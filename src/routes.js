@@ -1,19 +1,18 @@
-import { Navigate, redirect, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 // components
+import { useContext } from "react";
+import { useRoutes } from "react-router-dom/dist";
 import DashboardLayout from "src/components/layout/DashboardLayout";
+import Login from "src/pages/auth/login/Login";
+import ErrorPage from "src/pages/common/404";
 import ServicesGetAnswer from "src/pages/services/Page/ServicesGetAnswer";
 import ServicesList from "src/pages/services/Page/ServicesList";
-import ErrorPage from "src/pages/common/404";
-import Login from "src/pages/auth/login/Login";
-import Dashboard from "./pages/Dashboard/Dashboard";
 import User from "./components/User/User";
-import Register from "./pages/auth/register/Register";
-import { useRoutes } from "react-router-dom/dist";
-import { useContext } from "react";
 import { LoginContext } from "./hooks/Context/LoginInfoContext";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Register from "./pages/auth/register/Register";
 import SomethingWentWrongError from "./pages/common/500";
-import { Services } from "./pages/services/Schema/ServicesSchema";
 const allowedPages = {
   usersTable: {
     allowedRoles: ["ADMIN", "TEAM_LEAD"],
@@ -30,7 +29,6 @@ const allowedPages = {
 };
 const Routes = () => {
   const { loginData } = useContext(LoginContext);
-  const navigate = useNavigate();
 
   const pageRouts = [
     {
@@ -49,6 +47,7 @@ const Routes = () => {
         { path: "*", element: <ErrorPage /> },
       ],
     },
+
     {
       path: "auth",
       element: loginData.isLoggedIn ? (

@@ -1,16 +1,7 @@
 import { Box } from "@mui/material";
 
 const DashCardBox = (props) => {
-  return (
-    <Box
-      sx={{
-        padding: { xs: 2, sm: 3 },
-        paddingBottom: { xs: 1, sm: 1 },
-      }}
-    >
-      {props.children}
-    </Box>
-  );
+  return <Box padding={4}>{props.children}</Box>;
 };
 
 export default DashCardBox;

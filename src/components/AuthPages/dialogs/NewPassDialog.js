@@ -22,7 +22,7 @@ function NewPassDialog({
   handleNext,
   steps,
   setSnackbarData,
-  setAlertInfo,
+  setAlert,
   handleClose,
   otpToken,
 }) {
@@ -44,12 +44,15 @@ function NewPassDialog({
     formState: { errors },
   } = useForm();
   const [isLoading, setIsLoading] = useState(false);
-
   return (
     <Dialog
       open={steps === 3}
       fullWidth={true}
       maxWidth={"sm"}
+      onClose={() => {
+        reset();
+        setIsLoading(false);
+      }}
       sx={{
         textAlign: "center",
         "& .MuiPaper-root": {
@@ -128,7 +131,7 @@ function NewPassDialog({
             }}
             // error={errors.email ? true : false}
             // helperText={errors.email && "Enter a valid email address"}
-            {...register("confirmPassword", { required: true })}
+            {...register("restConfirmPass", { required: true })}
           />
         </FormStyle>
         {errors?.otp?.message && (
@@ -136,8 +139,8 @@ function NewPassDialog({
             {errors?.otp?.message}
           </Typography>
         )}
-        {watch("confirmPassword") !== watch("password") &&
-        getValues("confirmPassword") ? (
+        {watch("restConfirmPass") !== watch("password") &&
+        getValues("restConfirmPass") ? (
           <Typography color={"#FF0000"} marginTop={2} variant="body2">
             Passwords do not match
           </Typography>
@@ -165,9 +168,10 @@ function NewPassDialog({
                 await handleRestPassword({
                   newPass: data.password,
                   handleNext,
-                  setAlertInfo: setSnackbarData,
+                  setAlert,
                   otpToken,
                   setIsLoading,
+                  handleClose,
                 });
                 reset();
               })}

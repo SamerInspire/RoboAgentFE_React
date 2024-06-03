@@ -1,7 +1,8 @@
 import DownloadIcon from "@mui/icons-material/Download";
 import UpgradeIcon from "@mui/icons-material/Upgrade";
 import { Button, Grid } from "@mui/material";
-import { useUpdateAlert } from "src/hooks/Context/AlertContext";
+import { useContext } from "react";
+import { AlertContext } from "src/hooks/Context/AlertContext";
 import { hanldeSubmitUserNewRole } from "src/utils/users/users";
 
 function RolesPopper({
@@ -10,8 +11,7 @@ function RolesPopper({
   tableData,
   handleCloseRolePopper,
 }) {
-  const setAlertInfo = useUpdateAlert();
-
+  const { setAlert } = useContext(AlertContext);
   return (
     <Grid container item alignItems={"center"} gap={2} p={2}>
       {userData[6]?.toLowerCase() == "MEMBER".toLowerCase() ? (
@@ -27,7 +27,7 @@ function RolesPopper({
                 tableData,
                 userData,
                 handleCloseRolePopper,
-                setAlertInfo,
+                setAlert,
               });
               handleCloseRolePopper();
             }}
@@ -50,7 +50,7 @@ function RolesPopper({
                 tableData,
                 userData,
                 handleCloseRolePopper,
-                setAlertInfo,
+                setAlert,
               });
             }}
             startIcon={<DownloadIcon />}

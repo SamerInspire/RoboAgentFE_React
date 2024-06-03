@@ -1,9 +1,8 @@
-import { Box, Toolbar } from "@mui/material";
+import { Box, Toolbar, styled } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { Outlet } from "react-router";
 import ShowAlert from "src/components/ShowAlert";
 import { LoginContext } from "src/hooks/Context/LoginInfoContext";
-import { styled } from "@mui/material";
 import MainHeader from "./MainHeader/MainHeader";
 import SideDrawer from "./SideDrawer";
 
@@ -18,7 +17,7 @@ const DrawerPaper = styled("div")(({ theme }) => ({
 
 const MainStyle = styled("main")(({ theme }) => ({
   flexGrow: 1,
-  height: "100vh",
+  height: `calc(100vh - 65px)`,
   padding: theme.spacing(3),
 }));
 
@@ -36,19 +35,16 @@ const DashboardLayout = (props) => {
         {/* App Bar */}
         {loginData.isLoggedIn && <MainHeader onClick={handleToggleDrawer} />}
 
-        {/* Drawer */}
-        {loginData.isLoggedIn ? (
-          <>
-            <SideDrawer
-              container={container}
-              toggleMenu={toggleMenu}
-              onClose={handleToggleClose}
-              drawerPaper={<DrawerPaper />}
-            />
-          </>
-        ) : (
-          <></>
+        {loginData.isLoggedIn && (
+          <SideDrawer
+            container={container}
+            toggleMenu={toggleMenu}
+            onClose={handleToggleClose}
+            drawerPaper={<DrawerPaper />}
+          />
         )}
+        {/* Drawer */}
+        {loginData.isLoggedIn ? <></> : <></>}
 
         {/* Content */}
         <MainStyle>

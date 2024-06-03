@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
-import { Services } from "../Schema/ServicesSchema";
-import ServicesList from "../Page/ServicesList";
-import Providers from "src/components/Providers";
-import ServicesListItem from "../Page/utils/ServicesListItem";
 import { BrowserRouter } from "react-router-dom";
+import Providers from "src/components/Providers";
+import ServicesList from "../Page/ServicesList";
+import ServicesListItem from "../Page/utils/ServicesListItem";
+import { Services } from "../Schema/ServicesSchema";
 
 describe("ServicesList Component", () => {
   test("renders services for authorized user", () => {
