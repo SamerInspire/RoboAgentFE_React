@@ -21,6 +21,7 @@ const ServicesListItem = ({
   const handleClick = (event) => {
     setQueryCenterAnchorEl(queryCenterAnchorEl ? null : event.currentTarget);
   };
+  console.log("service ===>", service)
   //uncomment this line
 
   // const isEligiableService =
@@ -29,7 +30,7 @@ const ServicesListItem = ({
 
   //change this line to be the above commented code i dont have access to the query center in jordan
   const isEligiableService =
-    true &&
+    queryCenterSignup &&
     (!eligiableServices[service.enName] || currentUserData.role != "MEMBER");
   const handleClosePopper = () => setQueryCenterAnchorEl(null);
   return (
@@ -37,7 +38,7 @@ const ServicesListItem = ({
       component={isEligiableService ? "" : RouterLink}
       sx={{ textDecoration: "none", position: "relative" }}
       to={
-        isEligiableService ? "" : `/dash/services/getAnswer/${service.enName}`
+        isEligiableService ? "" : `/dash/services/getAnswer/${service.value}`
       }
     >
       <Grid
@@ -106,7 +107,7 @@ const ServicesListItem = ({
               {queryCenterSignup
                 ? "Please Register in the query center to be able to use the services"
                 : isEligiableService &&
-                  "You don't have access to view this service"}
+                "You don't have access to view this service"}
             </Typography>
           </Box>
         </Popper>

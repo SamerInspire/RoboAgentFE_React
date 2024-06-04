@@ -20,7 +20,7 @@ const ServicesGetAnswer = ({}) => {
   const isEligiable = useRef(false);
   console.log("answer ===> Siminz ", answer);
   const [currService, setCurrService] = useState(
-    Services.filter((service) => service.enName == servicename)[0]
+    Services.filter((service) => service.value == servicename)[0]
   );
   const [loading, setLoading] = useState();
   const { setAlert, handleCloseAlert } = useContext(AlertContext);
@@ -101,7 +101,7 @@ const ServicesGetAnswer = ({}) => {
                 requestAction: "SET_ANSWER",
                 setAnswer,
                 data,
-                servicename: currService.enName,
+                servicename: currService.value,
                 options,
                 setAlert,
               });
