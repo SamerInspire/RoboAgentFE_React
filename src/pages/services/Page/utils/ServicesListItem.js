@@ -1,4 +1,5 @@
-import { Grid, Link, Typography } from "@mui/material";
+import InfoIcon from "@mui/icons-material/Info";
+import { Grid, Link, Popper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useContext, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
@@ -13,17 +14,27 @@ const ServicesListItem = ({
 }) => {
   const lang = i18n.language;
   const [queryCenterAnchorEl, setQueryCenterAnchorEl] = useState(null);
+
+  const open = Boolean(queryCenterAnchorEl);
+  const id = open ? "simple-popper" : undefined;
   const { setAlert } = useContext(AlertContext);
   const handleClick = (event) => {
     setQueryCenterAnchorEl(queryCenterAnchorEl ? null : event.currentTarget);
   };
+  //change this line to be
+  // const isEligiableService =
+  //   queryCenterSignup &&
+  //   (!eligiableServices[service.enName] || currentUserData.role != "MEMBER");
+
+  //change this line to be the above commented code i dont have access to the query center in jordan
   const isEligiableService =
-    queryCenterSignup &&
+    true &&
     (!eligiableServices[service.enName] || currentUserData.role != "MEMBER");
+  const handleClosePopper = () => setQueryCenterAnchorEl(null);
   return (
     <Link
-      component={isEligiableService ? "div" : RouterLink}
-      sx={{ textDecoration: "none" }}
+      component={isEligiableService ? "" : RouterLink}
+      sx={{ textDecoration: "none", position: "relative" }}
       to={
         isEligiableService ? "" : `/dash/services/getAnswer/${service.enName}`
       }
@@ -32,7 +43,7 @@ const ServicesListItem = ({
         container
         item
         onClick={() => {
-          if (!isEligiableService) {
+          if (isEligiableService) {
             setAlert({
               alertType: "warning",
               alertMsg:
@@ -44,7 +55,7 @@ const ServicesListItem = ({
         sx={{
           ...glassMorphisimStyle,
           cursor: isEligiableService ? "not-allowed" : "pointer",
-          border: "2px solid #4abb7d",
+          border: isEligiableService ? "2px solid gray" : "2px solid #4abb7d",
           "&:hover": {
             background: isEligiableService ? "" : "#d9ffea",
           },
@@ -74,6 +85,38 @@ const ServicesListItem = ({
           </Typography>
         </Grid>
       </Grid>
+      {isEligiableService && (
+        <Popper id={id} open={open} anchorEl={queryCenterAnchorEl}>
+          <Box
+            sx={{
+              border: 1,
+              borderColor: "primary.main",
+              p: 1,
+              bgcolor: "background.paper",
+              borderRadius: "10px",
+            }}
+          >
+            <Typography variant="body1" fontWeight={700} color={"gray.main"}>
+              {queryCenterSignup
+                ? "Please Register in the query center to be able to use the services"
+                : isEligiableService &&
+                  "You don't have access to view this service"}
+            </Typography>
+          </Box>
+        </Popper>
+      )}
+      {isEligiableService && (
+        <Box
+          onClick={handleClick}
+          onMouseLeave={handleClosePopper}
+          position={"absolute"}
+          top={10}
+          right={"10px"}
+          sx={{ cursor: "pointer" }}
+        >
+          <InfoIcon color="gray" sx={{ fontSize: 24 }} />
+        </Box>
+      )}
     </Link>
   );
 };
