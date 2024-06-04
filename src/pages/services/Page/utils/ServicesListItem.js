@@ -5,24 +5,38 @@ import { Link as RouterLink } from "react-router-dom";
 import i18n from "src/dictonaries/i18n";
 import { AlertContext } from "src/hooks/Context/AlertContext";
 import { glassMorphisimStyle } from "src/styles/styles";
-const ServicesListItem = ({ service, queryCenterSignup }) => {
+const ServicesListItem = ({
+  service,
+  queryCenterSignup,
+  eligiableServices,
+  currentUserData,
+}) => {
   const lang = i18n.language;
   const [queryCenterAnchorEl, setQueryCenterAnchorEl] = useState(null);
   const { setAlert } = useContext(AlertContext);
   const handleClick = (event) => {
     setQueryCenterAnchorEl(queryCenterAnchorEl ? null : event.currentTarget);
   };
+  const isEligiableService =
+    queryCenterSignup ||
+    !eligiableServices[service.enName] ||
+    currentUserData.role == "ADMIN"
+      ? true
+      : false;
+  console.log(eligiableServices);
   return (
     <Link
-      component={queryCenterSignup ? "div" : RouterLink}
+      component={isEligiableService ? "div" : RouterLink}
       sx={{ textDecoration: "none" }}
-      to={queryCenterSignup ? "" : `/dash/services/getAnswer/${service.enName}`}
+      to={
+        isEligiableService ? "" : `/dash/services/getAnswer/${service.enName}`
+      }
     >
       <Grid
         container
         item
         onClick={() => {
-          if (queryCenterSignup) {
+          if (!isEligiableService) {
             setAlert({
               alertType: "warning",
               alertMsg:
@@ -33,12 +47,12 @@ const ServicesListItem = ({ service, queryCenterSignup }) => {
         }}
         sx={{
           ...glassMorphisimStyle,
-          cursor: queryCenterSignup ? "not-allowed" : "pointer",
+          cursor: isEligiableService ? "not-allowed" : "pointer",
           border: "2px solid #4abb7d",
           "&:hover": {
-            background: queryCenterSignup ? "" : "#d9ffea",
+            background: isEligiableService ? "" : "#d9ffea",
           },
-          bgcolor: queryCenterSignup ? "#f6f6f6" : "",
+          bgcolor: isEligiableService ? "#f0f0f0" : "",
         }}
       >
         <Grid
