@@ -8,10 +8,11 @@ import {
   Typography,
 } from "@mui/material";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import "react-phone-number-input/style.css";
+import { AlertContext } from "src/hooks/Context/AlertContext";
 import {
   handleFetchAuthorities,
   handleFetchServiceList,
@@ -53,6 +54,7 @@ const FinalRegister = ({ handleBack, handleNext }) => {
   const [selectedAuthorities, setSelectedAuthorities] = useState([]);
   const [selectedService, setSelectedService] = useState("");
   const { t } = useTranslation();
+  const { setAlert } = useContext(AlertContext);
   const userRoles = [
     { value: "TEAM_LEAD", title: t("register.Team Lead") },
     { value: "MEMBER", title: t("register.Member") },
@@ -69,11 +71,13 @@ const FinalRegister = ({ handleBack, handleNext }) => {
       setAuthorities,
       requestAction: "GET_ALL_AUTHORITIES",
       setIsLoading: () => {},
+      setAlert,
     });
     handleFetchServiceList({
       setServiceList,
       requestAction: "SET_SERVICE_LIST",
       setIsLoading: () => {},
+      setAlert,
     });
   }, []);
 

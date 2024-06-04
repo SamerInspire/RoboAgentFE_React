@@ -1,11 +1,11 @@
 import { Grid } from "@mui/material";
 import { useContext, useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet";
+import { AlertContext } from "src/hooks/Context/AlertContext";
 import { LoginContext } from "src/hooks/Context/LoginInfoContext";
 import { handleFetchCurrentUser } from "src/utils/users/users";
 import { Services } from "../Schema/ServicesSchema";
 import ServicesListItem from "./utils/ServicesListItem";
-import { AlertContext } from "src/hooks/Context/AlertContext";
-import { Helmet } from "react-helmet";
 
 const ServicesList = () => {
   const { loginData } = useContext(LoginContext);
@@ -19,6 +19,7 @@ const ServicesList = () => {
     handleFetchCurrentUser({
       requestAction: "SET_CURRENT_USER",
       setCurrentUserData,
+      setAlert,
     });
   }, []);
 
