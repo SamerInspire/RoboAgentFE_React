@@ -1,11 +1,12 @@
-import { Box } from "@mui/system";
 import { Services } from "../Schema/ServicesSchema";
 
-import { Button, Grid, TextField, Typography } from "@mui/material";
+import { Grid, TextField, Typography } from "@mui/material";
 import i18next from "i18next";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router";
+import GetAnswerToolbar from "src/components/services/GetAnswerToolbar";
+import ServicesSidebar from "src/components/services/ServicesSidebar";
 import { AlertContext } from "src/hooks/Context/AlertContext";
 import TasksItem from "src/pages/Dashboard/TasksItem";
 import { numbersOnly } from "src/utils/DefualtValidators";
@@ -19,6 +20,7 @@ function handleChangeCurrentService(serviceName, setCurrService) {
 const ServicesGetAnswer = ({}) => {
   let { servicename } = useParams();
   const [answer, setAnswer] = useState("");
+
   const [currentUserData, setCurrentUserData] = useState({});
   const isEligiable = useRef(false);
   console.log("answer ===> Siminz ", answer);
@@ -75,7 +77,7 @@ const ServicesGetAnswer = ({}) => {
   });
 
   return (
-    <Grid container flexDirection={"row"} flexWrap={"nowrap"} gap={8}>
+    <Grid container item alignItems={"flex-start"} flexWrap={"nowrap"} gap={8}>
       <Grid container item sm={12} md={10} gap={4}>
         <Grid item xs={12}>
           <Typography variant="h4" style={{ fontWeight: "bold" }}>
@@ -113,7 +115,7 @@ const ServicesGetAnswer = ({}) => {
             }
           })}
         >
-          <Grid container item xs={12} gap={4}>
+          <Grid container item position={"relative"} xs={12} gap={4}>
             <Grid container item spacing={4}>
               <Grid container item xs={12} gap={1}>
                 <Grid item xs={12}>
@@ -197,16 +199,9 @@ const ServicesGetAnswer = ({}) => {
               </Grid>
             </Grid>
             <Grid container item>
-              <Grid container item xs={12}>
+              <Grid container gap={4} item xs={12}>
                 {currService.options.map((el) => (
-                  <Grid
-                    container
-                    key={el.label.enLabel}
-                    item
-                    xs={12}
-                    md={6}
-                    xl={3}
-                  >
+                  <Grid key={el.label.enLabel} item>
                     <TasksItem
                       key={el.id}
                       id={el.id}
@@ -239,145 +234,16 @@ const ServicesGetAnswer = ({}) => {
                 fullWidth
               />
             </Grid>
-            <Grid container item spacing={4}>
-              <Grid item xs={12} md={6}>
-                <Button
-                  fullWidth
-                  variant="contained"
-                  color="error"
-                  style={{
-                    width: "100%",
-                    color: "white",
-                  }}
-                  href="/dash/services"
-                >
-                  back
-                </Button>
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <Button
-                  fullWidth
-                  variant="contained"
-                  type="submit"
-                  isLoading={loading}
-                  disableElevation
-                >
-                  Search
-                </Button>
-              </Grid>
-            </Grid>
+            <GetAnswerToolbar loading={loading} />
           </Grid>
         </form>
       </Grid>
-      <Grid
-        container
-        item
-        borderLeft={"1px solid darkgray"}
-        display={{ sm: "none", md: "grid" }}
-        md={2}
-        height={"100%"}
-        maxHeight={"100%"}
-        alignItems={"flex-start"}
-        gap={4}
-      >
-        {Services.map((service, index) => {
-          const showService = currentUserData?.roboAuthorities?.some((auth) =>
-            service?.allowedAuthorities?.includes(auth.name)
-          );
-          return currentUserData.role == "ADMIN" ? (
-            <Grid key={service.enName + index} item xs={12}>
-              <Grid
-                container
-                item
-                gap={2}
-                alignItems={"center"}
-                p={1}
-                onClick={() =>
-                  handleChangeCurrentService(service.enName, setCurrService)
-                }
-                sx={{
-                  cursor: "pointer",
-                  fontWeight:
-                    service.enName === currService.enName ? "600" : "",
-                  color: service.enName === currService.enName ? "#04554C" : "",
-                  backgroundColor:
-                    service.enName === currService.enName ? "#d9ffea" : "",
-                }}
-              >
-                <Box
-                  component={"img"}
-                  src={service.backgroundImg}
-                  sx={{ width: "20px", height: "20px" }}
-                />
-                <Typography variant="body1" fontWeight={"600"} color={"gray"}>
-                  {" "}
-                  {lang == "en" ? service.enName : service.arName}
-                </Typography>
-              </Grid>
-            </Grid>
-          ) : showService ? (
-            <Grid key={service.enName + index} py={2} item xs={12}>
-              <Grid
-                container
-                item
-                gap={2}
-                alignItems={"center"}
-                p={1}
-                onClick={() =>
-                  handleChangeCurrentService(service.enName, setCurrService)
-                }
-                sx={{
-                  cursor: "pointer",
-                  fontWeight:
-                    service.enName === currService.enName ? "600" : "",
-                  color: service.enName === currService.enName ? "#04554C" : "",
-                  backgroundColor:
-                    service.enName === currService.enName ? "#d9ffea" : "",
-                }}
-              >
-                <Box
-                  component={"img"}
-                  src={service.backgroundImg}
-                  sx={{ width: "20px", height: "20px" }}
-                />
-                <Typography variant="body1" fontWeight={"600"} color={"gray"}>
-                  {" "}
-                  {lang == "en" ? service.enName : service.arName}
-                </Typography>
-              </Grid>
-            </Grid>
-          ) : service.allowedAuthorities[0] === "all" ? (
-            <Grid
-              container
-              item
-              key={service.enName + index}
-              gap={2}
-              p={1}
-              onClick={() =>
-                handleChangeCurrentService(service.enName, setCurrService)
-              }
-              alignItems={"center"}
-              sx={{
-                cursor: "pointer",
-                fontWeight: service.enName === currService.enName ? "600" : "",
-                color: service.enName === currService.enName ? "#04554C" : "",
-                backgroundColor:
-                  service.enName === currService.enName ? "#d9ffea" : "",
-              }}
-            >
-              <Box
-                component={"img"}
-                src={service.backgroundImg}
-                sx={{ width: "20px", height: "20px" }}
-              />
-              <Typography variant="body1" fontWeight={"600"} color={"gray"}>
-                {" "}
-                {lang == "en" ? service.enName : service.arName}
-              </Typography>
-            </Grid>
-          ) : null;
-        })}
-      </Grid>
+      <ServicesSidebar
+        currService={currService}
+        currentUserData={currentUserData}
+        handleChangeCurrentService={handleChangeCurrentService}
+        setCurrService={setCurrService}
+      />
     </Grid>
   );
 };
