@@ -112,10 +112,10 @@ const Register = () => {
           setRegisteredId,
           setAlert,
           requestAction: "REGISTER_NEW_USER",
+          reset,
+          clearFinalForm,
         }
       );
-      reset();
-      clearFinalForm();
     }
   };
   const handleBack = () => setActiveStep((prev) => prev - 1);

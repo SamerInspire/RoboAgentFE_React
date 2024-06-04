@@ -18,9 +18,8 @@ const ServicesListItem = ({
     setQueryCenterAnchorEl(queryCenterAnchorEl ? null : event.currentTarget);
   };
   const isEligiableService =
-    queryCenterSignup && (
-      !eligiableServices[service.enName] ||
-      currentUserData.role != 'MEMBER'); 
+    queryCenterSignup &&
+    (!eligiableServices[service.enName] || currentUserData.role != "MEMBER");
   return (
     <Link
       component={isEligiableService ? "div" : RouterLink}

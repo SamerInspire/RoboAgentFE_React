@@ -50,11 +50,13 @@ export function generalSuccessReducer(result, utils) {
       break;
     }
     case "REGISTER_NEW_USER": {
-      const { setAlert } = utils;
+      const { setAlert, reset, clearFinalForm } = utils;
       setAlert({
         alertType: "success",
         alertMsg: currentMessageLang,
       });
+      reset();
+      clearFinalForm();
       break;
     }
     case "UPDATE_USER_ROLE": {
