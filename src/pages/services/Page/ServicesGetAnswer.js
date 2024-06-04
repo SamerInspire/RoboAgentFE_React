@@ -21,7 +21,9 @@ const ServicesGetAnswer = ({}) => {
   let { servicename } = useParams();
   const [answer, setAnswer] = useState("");
 
-  const [currentUserData, setCurrentUserData] = useState({});
+  const [currentUserData, setCurrentUserData] = useState({
+    roboAuthorities: [],
+  });
   const isEligiable = useRef(false);
   console.log("answer ===> Siminz ", answer);
   const [currService, setCurrService] = useState(
@@ -75,110 +77,67 @@ const ServicesGetAnswer = ({}) => {
       check_options: "",
     },
   });
-
-  return (
-    <Grid container item alignItems={"flex-start"} flexWrap={"nowrap"} gap={8}>
-      <Grid container item sm={12} md={10} gap={4}>
-        <Grid item xs={12}>
-          <Typography variant="h4" style={{ fontWeight: "bold" }}>
-            {lang === "en" ? currService.enName : currService.arName}
-          </Typography>
-        </Grid>
-        <form
-          style={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-          }}
-          onSubmit={handleSubmit(async (data) => {
-            if (isEligiable.current) {
-              setLoading(true);
-              setAlert({
-                alertType: "info",
-                alertMsg: "Generating Ticket Answer",
-                sleep: 999999,
-              });
-              await handleGetResponse({
-                requestAction: "SET_ANSWER",
-                setAnswer,
-                data,
-                servicename,
-                options,
-                setAlert,
-              });
-              setLoading(false);
-            } else {
-              setAlert({
-                alertType: "error",
-                alertMsg: "Sorry You Are not Eligiable to use this service",
-              });
-            }
-          })}
-        >
-          <Grid container item position={"relative"} xs={12} gap={4}>
-            <Grid container item spacing={4}>
-              <Grid container item xs={12} gap={1}>
-                <Grid item xs={12}>
-                  <Typography variant="body1" fontWeight={500}>
-                    Reason *
-                  </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    id="outlined-multiline-static"
-                    fullWidth
-                    {...register("reason", {
-                      onChange: (e) =>
-                        numbersOnly(e, {
-                          type: "IDNo",
-                          maxNumber: 10,
-                          replaceWith: "",
-                        }),
-                      onPaste: (e) =>
-                        numbersOnly(e, {
-                          type: "IDNo",
-                          maxNumber: 10,
-                          replaceWith: "",
-                        }),
-                    })}
-                    disabled={loading}
-                  />
-                </Grid>
-              </Grid>
-              <Grid container item xs={12} spacing={4}>
-                <Grid container item xs={12} md={6}>
+  if (!isEligiable.current) {
+    navigate("/dash/services");
+  } else
+    return (
+      <Grid
+        container
+        item
+        alignItems={"flex-start"}
+        flexWrap={"nowrap"}
+        gap={8}
+      >
+        <Grid container item sm={12} md={10} gap={4}>
+          <Grid item xs={12}>
+            <Typography variant="h4" style={{ fontWeight: "bold" }}>
+              {lang === "en" ? currService.enName : currService.arName}
+            </Typography>
+          </Grid>
+          <form
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+            }}
+            onSubmit={handleSubmit(async (data) => {
+              if (isEligiable.current) {
+                setLoading(true);
+                setAlert({
+                  alertType: "info",
+                  alertMsg: "Generating Ticket Answer",
+                  sleep: 999999,
+                });
+                await handleGetResponse({
+                  requestAction: "SET_ANSWER",
+                  setAnswer,
+                  data,
+                  servicename,
+                  options,
+                  setAlert,
+                });
+                setLoading(false);
+              } else {
+                setAlert({
+                  alertType: "error",
+                  alertMsg: "Sorry You Are not Eligiable to use this service",
+                });
+              }
+            })}
+          >
+            <Grid container item position={"relative"} xs={12} gap={4}>
+              <Grid container item spacing={4}>
+                <Grid container item xs={12} gap={1}>
                   <Grid item xs={12}>
                     <Typography variant="body1" fontWeight={500}>
-                      Establishment Number *
+                      Reason *
                     </Typography>
                   </Grid>
                   <Grid item xs={12}>
                     <TextField
-                      fullWidth
                       id="outlined-multiline-static"
-                      pattern="[0-9]*"
-                      {...register("establishmentNumber", {
-                        onChange: (e) => numbersOnly(e),
-                        onPaste: (e) => numbersOnly(e),
-                        require: true,
-                      })}
-                      disabled={loading}
-                      error={errors.email ? true : false}
-                      helperText={errors.email && "Enter a valid email address"}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container item xs={12} md={6} gap={1}>
-                  <Grid item xs={12}>
-                    <Typography variant="body1" fontWeight={500}>
-                      ID or Iqameh *
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
                       fullWidth
-                      id="outlined-multiline-static"
-                      {...register("id_number", {
+                      {...register("reason", {
                         onChange: (e) =>
                           numbersOnly(e, {
                             type: "IDNo",
@@ -196,56 +155,109 @@ const ServicesGetAnswer = ({}) => {
                     />
                   </Grid>
                 </Grid>
-              </Grid>
-            </Grid>
-            <Grid container item>
-              <Grid container gap={4} item xs={12}>
-                {currService.options.map((el) => (
-                  <Grid key={el.label.enLabel} item>
-                    <TasksItem
-                      key={el.id}
-                      id={el.id}
-                      status={!el.active}
-                      label={
-                        lang === "en" ? el.label.enLabel : el.label.arLabel
-                      }
-                      mission={false}
-                      checkOptions={handelCheckValue}
-                    />
+                <Grid container item xs={12} spacing={4}>
+                  <Grid container item xs={12} gap={1} md={6}>
+                    <Grid item xs={12}>
+                      <Typography variant="body1" fontWeight={500}>
+                        Establishment Number *
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        fullWidth
+                        id="outlined-multiline-static"
+                        pattern="[0-9]*"
+                        {...register("establishmentNumber", {
+                          onChange: (e) => numbersOnly(e),
+                          onPaste: (e) => numbersOnly(e),
+                          require: true,
+                        })}
+                        disabled={loading}
+                        error={errors.email ? true : false}
+                        helperText={
+                          errors.email && "Enter a valid email address"
+                        }
+                      />
+                    </Grid>
                   </Grid>
-                ))}
+                  <Grid container item xs={12} md={6} gap={1}>
+                    <Grid item xs={12}>
+                      <Typography variant="body1" fontWeight={500}>
+                        ID or Iqameh *
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        fullWidth
+                        id="outlined-multiline-static"
+                        {...register("id_number", {
+                          onChange: (e) =>
+                            numbersOnly(e, {
+                              type: "IDNo",
+                              maxNumber: 10,
+                              replaceWith: "",
+                            }),
+                          onPaste: (e) =>
+                            numbersOnly(e, {
+                              type: "IDNo",
+                              maxNumber: 10,
+                              replaceWith: "",
+                            }),
+                        })}
+                        disabled={loading}
+                      />
+                    </Grid>
+                  </Grid>
+                </Grid>
               </Grid>
+              <Grid container item>
+                <Grid container gap={4} item xs={12}>
+                  {currService.options.map((el) => (
+                    <Grid key={el.label.enLabel} item>
+                      <TasksItem
+                        key={el.id}
+                        id={el.id}
+                        status={!el.active}
+                        label={
+                          lang === "en" ? el.label.enLabel : el.label.arLabel
+                        }
+                        mission={false}
+                        checkOptions={handelCheckValue}
+                      />
+                    </Grid>
+                  ))}
+                </Grid>
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  readOnly
+                  id="outlined-multiline-static"
+                  label="Answer"
+                  textAlign="right"
+                  value={answer}
+                  style={{ direction: "rtl" }}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                  disabled
+                  multiline
+                  rows={10}
+                  fullWidth
+                />
+              </Grid>
+              <GetAnswerToolbar loading={loading} />
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                readOnly
-                id="outlined-multiline-static"
-                label="Answer"
-                textAlign="right"
-                value={answer}
-                style={{ direction: "rtl" }}
-                InputProps={{
-                  readOnly: true,
-                }}
-                disabled
-                multiline
-                rows={10}
-                fullWidth
-              />
-            </Grid>
-            <GetAnswerToolbar loading={loading} />
-          </Grid>
-        </form>
+          </form>
+        </Grid>
+        <ServicesSidebar
+          currService={currService}
+          currentUserData={currentUserData}
+          handleChangeCurrentService={handleChangeCurrentService}
+          setCurrService={setCurrService}
+        />
       </Grid>
-      <ServicesSidebar
-        currService={currService}
-        currentUserData={currentUserData}
-        handleChangeCurrentService={handleChangeCurrentService}
-        setCurrService={setCurrService}
-      />
-    </Grid>
-  );
+    );
 };
 
 export default ServicesGetAnswer;

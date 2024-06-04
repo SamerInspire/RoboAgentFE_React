@@ -31,7 +31,7 @@ function ServicesSidebar({
               item
               gap={2}
               alignItems={"center"}
-              p={1}
+              p={2}
               onClick={() =>
                 handleChangeCurrentService(service.enName, setCurrService)
               }
