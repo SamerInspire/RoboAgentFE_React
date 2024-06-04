@@ -5,7 +5,6 @@ import { AlertContext } from "src/hooks/Context/AlertContext";
 import { handleFetchCurrentUser } from "src/utils/users/users";
 import { Services } from "../Schema/ServicesSchema";
 import ServicesListItem from "./utils/ServicesListItem";
-
 const ServicesList = () => {
   const [currentUserData, setCurrentUserData] = useState({});
   console.log("currentUserData ===> Siminz ===> ", currentUserData.status);

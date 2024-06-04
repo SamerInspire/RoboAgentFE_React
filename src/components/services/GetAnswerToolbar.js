@@ -1,7 +1,7 @@
 import { Button, Grid } from "@mui/material";
 function GetAnswerToolbar({ loading }) {
   return (
-    <Grid container item spacing={4} position={"sticky"} bottom={50}>
+    <Grid container item spacing={4}>
       <Grid item xs={12} md={6}>
         <Button
           fullWidth

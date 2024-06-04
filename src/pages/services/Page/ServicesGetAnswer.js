@@ -1,3 +1,4 @@
+import { fontSize } from "@mui/system";
 import { Services } from "../Schema/ServicesSchema";
 
 import { Grid, TextField, Typography } from "@mui/material";
@@ -12,15 +13,10 @@ import TasksItem from "src/pages/Dashboard/TasksItem";
 import { numbersOnly } from "src/utils/DefualtValidators";
 import { handleGetResponse } from "src/utils/api/answer/service";
 import { handleFetchCurrentUser } from "src/utils/users/users";
-function handleChangeCurrentService(serviceName, setCurrService) {
-  setCurrService(
-    Services.filter((service) => service.enName == serviceName)[0]
-  );
-}
+
 const ServicesGetAnswer = ({}) => {
   let { servicename } = useParams();
   const [answer, setAnswer] = useState("");
-
   const [currentUserData, setCurrentUserData] = useState({});
   const isEligiable = useRef(false);
   console.log("answer ===> Siminz ", answer);
@@ -28,7 +24,7 @@ const ServicesGetAnswer = ({}) => {
     Services.filter((service) => service.enName == servicename)[0]
   );
   const [loading, setLoading] = useState();
-  const { setAlert } = useContext(AlertContext);
+  const { setAlert, handleCloseAlert } = useContext(AlertContext);
   const lang = i18next.language;
   const navigate = useNavigate();
   const [options, setOptions] = useState(() => {
@@ -63,6 +59,13 @@ const ServicesGetAnswer = ({}) => {
     }
     return setAlert();
   }, [currentUserData]);
+  function handleChangeCurrentService(serviceName, setCurrService) {
+    navigate("/dash/services/getAnswer/" + serviceName, { replace: true });
+
+    setCurrService(
+      Services.filter((service) => service.enName == serviceName)[0]
+    );
+  }
   const {
     register,
     handleSubmit,
@@ -94,17 +97,17 @@ const ServicesGetAnswer = ({}) => {
               setAlert({
                 alertType: "info",
                 alertMsg: "Generating Ticket Answer",
-                sleep: 999999,
               });
               await handleGetResponse({
                 requestAction: "SET_ANSWER",
                 setAnswer,
                 data,
-                servicename,
+                servicename: currService.enName,
                 options,
                 setAlert,
               });
               setLoading(false);
+              handleCloseAlert();
             } else {
               setAlert({
                 alertType: "error",
@@ -225,6 +228,7 @@ const ServicesGetAnswer = ({}) => {
                 style={{ direction: "rtl" }}
                 InputProps={{
                   readOnly: true,
+                  style: { fontSize: "20px" },
                 }}
                 disabled
                 multiline
