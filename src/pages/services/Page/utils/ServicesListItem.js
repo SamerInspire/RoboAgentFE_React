@@ -59,7 +59,7 @@ const ServicesListItem = ({
           "&:hover": {
             background: isEligiableService ? "" : "#d9ffea",
           },
-          bgcolor: isEligiableService ? "#f0f0f0" : "",
+          bgcolor: isEligiableService ? "#ededed " : "",
         }}
       >
         <Grid
@@ -86,7 +86,12 @@ const ServicesListItem = ({
         </Grid>
       </Grid>
       {isEligiableService && (
-        <Popper id={id} open={open} anchorEl={queryCenterAnchorEl}>
+        <Popper
+          id={id}
+          placement={"bottom-end"}
+          open={open}
+          anchorEl={queryCenterAnchorEl}
+        >
           <Box
             sx={{
               border: 1,
@@ -114,7 +119,7 @@ const ServicesListItem = ({
           right={"10px"}
           sx={{ cursor: "pointer" }}
         >
-          <InfoIcon color="gray" sx={{ fontSize: 24 }} />
+          <InfoIcon sx={{ color: "#808080", fontSize: 24 }} />
         </Box>
       )}
     </Link>
