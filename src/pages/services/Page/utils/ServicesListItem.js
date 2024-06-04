@@ -21,7 +21,8 @@ const ServicesListItem = ({
   const handleClick = (event) => {
     setQueryCenterAnchorEl(queryCenterAnchorEl ? null : event.currentTarget);
   };
-  //change this line to be
+  //uncomment this line
+
   // const isEligiableService =
   //   queryCenterSignup &&
   //   (!eligiableServices[service.enName] || currentUserData.role != "MEMBER");

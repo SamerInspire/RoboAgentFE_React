@@ -7,9 +7,9 @@ import { Services } from "../Schema/ServicesSchema";
 import ServicesListItem from "./utils/ServicesListItem";
 const ServicesList = () => {
   const [currentUserData, setCurrentUserData] = useState({});
-  console.log("currentUserData ===> Siminz ===> ", currentUserData.status);
+  // console.log("currentUserData ===> Siminz ===> ", currentUserData.status);
   const queryCenterSignup = useRef(currentUserData?.status?.startsWith("0"));
-  console.log("queryCenterSignup ===> Siminz ===> ", queryCenterSignup.current);
+  // console.log("queryCenterSignup ===> Siminz ===> ", queryCenterSignup.current);
   const { setAlert } = useContext(AlertContext);
   const [eligiableServices, setEligiableSevices] = useState({ General: true });
 
