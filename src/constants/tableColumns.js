@@ -1,7 +1,7 @@
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { t } from "i18next";
 import { useContext } from "react";
-import { AlertContext } from "hooks/Context/AlertContext";
+import { AlertContext } from "hooks/context/AlertContext";
 
 const { Grid, Button, Typography } = require("@mui/material");
 

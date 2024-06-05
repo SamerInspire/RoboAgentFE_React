@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import AR_Flag from "assets/Images/ic_flag_ar.svg";
 import EN_Flag from "assets/Images/ic_flag_en.svg";
-import { themeContext } from "hooks/Context/ThemeContext";
+import { themeContext } from "hooks/context/ThemeContext";
 
 const StyledMenu = styled(Menu)(({ theme }) => ({
   paper: {

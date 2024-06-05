@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Providers from "components/Providers";
-import { LoginContext } from "hooks/Context/LoginInfoContext";
+import { LoginContext } from "hooks/context/LoginInfoContext";
 import UserMenu from "../MainHeader/UserMenu";
 
 const mockProps = {

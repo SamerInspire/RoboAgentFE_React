@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import Providers from "components/Providers";
-import { LoginContext } from "hooks/Context/LoginInfoContext";
+import { LoginContext } from "hooks/context/LoginInfoContext";
 import User from "../User";
 import UserTable from "../UserTable";
 import DNDServicesModal from "../dialogs/DNDServicesModal";

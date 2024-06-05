@@ -1,9 +1,9 @@
 import { Grid } from "@mui/material";
 import { useContext, useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet";
-import { AlertContext } from "hooks/Context/AlertContext";
+import { AlertContext } from "hooks/context/AlertContext";
 import { handleFetchCurrentUser } from "utils/users/users";
-import { Services } from "../Schema/ServicesSchema";
+import { Services } from "../schema/ServicesSchema";
 import ServicesListItem from "./utils/ServicesListItem";
 const ServicesList = () => {
   const [currentUserData, setCurrentUserData] = useState({});

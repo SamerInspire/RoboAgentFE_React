@@ -2,7 +2,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import LanguageSelector from "../MainHeader/SelectLanguage";
-import { themeContext } from "hooks/Context/ThemeContext";
+import { themeContext } from "hooks/context/ThemeContext";
 import { I18nextProvider } from "react-i18next";
 import i18n from "dictonaries/i18n";
 import Providers from "components/Providers";

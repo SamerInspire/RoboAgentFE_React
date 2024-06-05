@@ -8,7 +8,7 @@ import {
   handleGetAnswerFailure,
   handleOTPCodeActions,
   handleUserCodeActions,
-} from "../responseHandlers";
+} from "../response_handlers";
 
 jest.mock("i18next");
 jest.mock("src/hooks/reducers/store", () => ({

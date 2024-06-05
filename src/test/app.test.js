@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import Providers from "../components/Providers";
 import App from "App";
-import { LoginContext } from "hooks/Context/LoginInfoContext";
+import { LoginContext } from "hooks/context/LoginInfoContext";
 jest.mock("react-apexcharts", () => ({
   __esModule: true,
   default: () => <div />,

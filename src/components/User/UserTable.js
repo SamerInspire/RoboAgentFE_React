@@ -2,7 +2,7 @@ import { Grid, Modal, Popper } from "@mui/material";
 import MUIDataTable from "mui-datatables";
 import { useContext, useEffect, useMemo, useState } from "react";
 import tableColumns from "constants/tableColumns";
-import { AlertContext } from "hooks/Context/AlertContext";
+import { AlertContext } from "hooks/context/AlertContext";
 import { glassMorphisimStyle } from "styles/styles";
 import { handleFilterAuthorities } from "utils/table/tableReshape";
 import {

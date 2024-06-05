@@ -1,14 +1,14 @@
 import { Grid, styled } from "@mui/material";
 import { Helmet } from "react-helmet";
-import ChartCurrentSubject from "pages/Dashboard/ChartCurrentSubject";
-import ChartSiteVisits from "pages/Dashboard/ChartSiteVisits";
-import ConversionRate from "pages/Dashboard/ConversionRate";
-import CurrentVisits from "pages/Dashboard/CurrentVisits";
-import InfoCards from "pages/Dashboard/InfoCards";
-import NewsUpdate from "pages/Dashboard/NewsUpdate";
-import OrderTimeline from "pages/Dashboard/OrderTimeline";
-import SocialTraffic from "pages/Dashboard/SocialTraffic";
-import Tasks from "pages/Dashboard/Tasks";
+import ChartCurrentSubject from "pages/dashboard/ChartCurrentSubject";
+import ChartSiteVisits from "pages/dashboard/ChartSiteVisits";
+import ConversionRate from "pages/dashboard/ConversionRate";
+import CurrentVisits from "pages/dashboard/CurrentVisits";
+import InfoCards from "pages/dashboard/InfoCards";
+import NewsUpdate from "pages/dashboard/NewsUpdate";
+import OrderTimeline from "pages/dashboard/OrderTimeline";
+import SocialTraffic from "pages/dashboard/SocialTraffic";
+import Tasks from "pages/dashboard/Tasks";
 
 // grid container style
 const GridContainerStyle = styled(Grid)(({ theme }) => ({

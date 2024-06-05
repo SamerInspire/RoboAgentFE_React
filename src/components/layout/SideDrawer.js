@@ -23,9 +23,9 @@ import getMoreAvatar from "assets/Images/pom-bot.gif";
 import { useContext } from "react";
 import CustomListItem from "components/Drawer/CustomListItem";
 import { drawerWidth } from "components/layout/DashboardLayout";
-import { LoginContext } from "hooks/Context/LoginInfoContext";
+import { LoginContext } from "hooks/context/LoginInfoContext";
 import { styled } from "@mui/material";
-import AuthWrapper from "../AuthWrapper/AuthWrapper";
+import AuthWrapper from "../auth_wrapper/AuthWrapper";
 import { useTranslation } from "react-i18next";
 const NavDrawerStyle = styled("nav")(({ theme }) => ({
   [theme.breakpoints.up("sm")]: {

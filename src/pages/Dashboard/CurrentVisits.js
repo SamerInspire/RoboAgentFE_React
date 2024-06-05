@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import ReactApexChart from "react-apexcharts";
-import { themeContext } from "hooks/Context/ThemeContext";
+import { themeContext } from "hooks/context/ThemeContext";
 import DashCard from "./DashCard";
 import DashCardHeader from "./DashCardHeader";
 import { styled } from "@mui/material";
