@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import Providers from "src/components/Providers";
+import Providers from "components/Providers";
 import ServicesList from "../Page/ServicesList";
 import ServicesListItem from "../Page/utils/ServicesListItem";
 import { Services } from "../Schema/ServicesSchema";

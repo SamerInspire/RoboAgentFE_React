@@ -3,11 +3,11 @@ import { Navigate } from "react-router-dom";
 // components
 import { useContext } from "react";
 import { useRoutes } from "react-router-dom/dist";
-import DashboardLayout from "src/components/layout/DashboardLayout";
-import Login from "src/pages/auth/login/Login";
-import ErrorPage from "src/pages/common/404";
-import ServicesGetAnswer from "src/pages/services/Page/ServicesGetAnswer";
-import ServicesList from "src/pages/services/Page/ServicesList";
+import DashboardLayout from "components/layout/DashboardLayout";
+import Login from "pages/auth/login/Login";
+import ErrorPage from "pages/common/404";
+import ServicesGetAnswer from "pages/services/Page/ServicesGetAnswer";
+import ServicesList from "pages/services/Page/ServicesList";
 import User from "./components/User/User";
 import { LoginContext } from "./hooks/Context/LoginInfoContext";
 import Dashboard from "./pages/Dashboard/Dashboard";

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Providers from "src/components/Providers";
+import Providers from "components/Providers";
 
 it("should wrap children with the correct provider order", () => {
   render(

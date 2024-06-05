@@ -1,8 +1,8 @@
 import { Box, Toolbar, styled } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { Outlet } from "react-router";
-import ShowAlert from "src/components/ShowAlert";
-import { LoginContext } from "src/hooks/Context/LoginInfoContext";
+import ShowAlert from "components/ShowAlert";
+import { LoginContext } from "hooks/Context/LoginInfoContext";
 import MainHeader from "./MainHeader/MainHeader";
 import SideDrawer from "./SideDrawer";
 

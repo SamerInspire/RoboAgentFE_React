@@ -1,5 +1,5 @@
 // authorities.test.js
-import { CONTAINER_SECTIONS } from "src/constants/dnd";
+import { CONTAINER_SECTIONS } from "constants/dnd";
 import {
   getAuthorityByStatus,
   getAuthorityById,

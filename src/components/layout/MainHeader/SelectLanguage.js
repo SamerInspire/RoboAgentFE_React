@@ -5,9 +5,9 @@ import { styled } from "@mui/material";
 import i18next from "i18next";
 import { useContext } from "react";
 import { useTranslation } from "react-i18next";
-import AR_Flag from "src/assets/Images/ic_flag_ar.svg";
-import EN_Flag from "src/assets/Images/ic_flag_en.svg";
-import { themeContext } from "src/hooks/Context/ThemeContext";
+import AR_Flag from "assets/Images/ic_flag_ar.svg";
+import EN_Flag from "assets/Images/ic_flag_en.svg";
+import { themeContext } from "hooks/Context/ThemeContext";
 
 const StyledMenu = styled(Menu)(({ theme }) => ({
   paper: {

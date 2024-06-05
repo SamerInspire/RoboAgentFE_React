@@ -1,16 +1,16 @@
 import { Grid, Modal, Popper } from "@mui/material";
 import MUIDataTable from "mui-datatables";
 import { useContext, useEffect, useMemo, useState } from "react";
-import tableColumns from "src/constants/tableColumns";
-import { AlertContext } from "src/hooks/Context/AlertContext";
-import { glassMorphisimStyle } from "src/styles/styles";
-import { handleFilterAuthorities } from "src/utils/table/tableReshape";
+import tableColumns from "constants/tableColumns";
+import { AlertContext } from "hooks/Context/AlertContext";
+import { glassMorphisimStyle } from "styles/styles";
+import { handleFilterAuthorities } from "utils/table/tableReshape";
 import {
   handleFetchAllUsers,
   handleFetchAuthorities,
   handleFetchCurrentUser,
   handleFetchServiceList,
-} from "src/utils/users/users";
+} from "utils/users/users";
 import LoadingTableBody from "./TableLoading";
 import DNDServicesModal from "./dialogs/DNDServicesModal";
 import ServiceDialog from "./dialogs/ServiceDialog";

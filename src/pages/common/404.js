@@ -3,7 +3,7 @@ import { Box } from "@mui/system";
 import { Helmet } from "react-helmet";
 // import Lottie from "react-lottie";
 import { Link as RouterLink } from "react-router-dom";
-import animated404 from "src/assets/lottie/Animation - 1715605056269 (3).json";
+import animated404 from "assets/lottie/Animation - 1715605056269 (3).json";
 const defaultOptions = {
   loop: true,
   autoplay: true,

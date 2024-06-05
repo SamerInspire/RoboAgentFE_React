@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter, BrowserRouter as Router } from "react-router-dom";
 import ErrorPage from "../404";
-import Providers from "src/components/Providers";
+import Providers from "components/Providers";
 
 describe("ErrorPage Component", () => {
   beforeEach(() => {

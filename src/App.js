@@ -1,5 +1,5 @@
 import "./App.css";
-import Providers from "./components/Providers";
+import Providers from "components/Providers";
 import Routes from "./routes";
 const App = () => {
   return (

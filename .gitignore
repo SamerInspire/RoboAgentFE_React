@@ -28,3 +28,5 @@ yarn-error.log*
 .env.download
 .env.production
 .env.stage
+package-lock.json
+.gitignore

@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import Providers from "src/components/Providers";
-import { LoginContext } from "src/hooks/Context/LoginInfoContext";
+import Providers from "components/Providers";
+import { LoginContext } from "hooks/Context/LoginInfoContext";
 import SideDrawer from "../SideDrawer";
 
 const mockLoginData = {

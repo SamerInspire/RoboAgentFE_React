@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
-import AuthWrapper from "src/components/AuthWrapper/AuthWrapper";
-import { LoginContext } from "src/hooks/Context/LoginInfoContext";
+import AuthWrapper from "components/AuthWrapper/AuthWrapper";
+import { LoginContext } from "hooks/Context/LoginInfoContext";
 function isAllowedRole(allowedRoles = "", userRole = "") {
   const isAllowed = allowedRoles.some(
     (e) => e.toLowerCase() == userRole.toLowerCase()

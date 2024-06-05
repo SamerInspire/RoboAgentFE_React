@@ -1,18 +1,18 @@
 import { Container, Link, Typography, styled } from "@mui/material";
 import { Box } from "@mui/system";
 import { Helmet } from "react-helmet";
-import FormRegister from "src/components/AuthPages/FormRegister";
-import LeftPanel from "src/components/AuthPages/LeftPanel";
+import FormRegister from "components/AuthPages/FormRegister";
+import LeftPanel from "components/AuthPages/LeftPanel";
 
 // img
 import { useContext, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import RegisterPhoto from "src/assets/Images/auth/register.png";
-import FinalRegister from "src/components/AuthPages/FinalRegister";
-import CustomStepper from "src/components/AuthPages/stepper/CustomStepper";
-import { AlertContext } from "src/hooks/Context/AlertContext";
-import { handleSubmitNewUser } from "src/utils/users/users";
+import RegisterPhoto from "assets/Images/auth/register.png";
+import FinalRegister from "components/AuthPages/FinalRegister";
+import CustomStepper from "components/AuthPages/stepper/CustomStepper";
+import { AlertContext } from "hooks/Context/AlertContext";
+import { handleSubmitNewUser } from "utils/users/users";
 
 // styles
 const ContainerBoxStyle = styled(Box)(({ theme }) => ({

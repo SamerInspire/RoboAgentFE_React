@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import Providers from "src/components/Providers";
+import Providers from "components/Providers";
 import UserTable from "../UserTable";
 
 describe("UserTable Component", () => {

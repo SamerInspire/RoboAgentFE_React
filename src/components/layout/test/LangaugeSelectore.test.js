@@ -2,10 +2,10 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import LanguageSelector from "../MainHeader/SelectLanguage";
-import { themeContext } from "src/hooks/Context/ThemeContext";
+import { themeContext } from "hooks/Context/ThemeContext";
 import { I18nextProvider } from "react-i18next";
-import i18n from "src/dictonaries/i18n";
-import Providers from "src/components/Providers";
+import i18n from "dictonaries/i18n";
+import Providers from "components/Providers";
 
 jest.mock("src/assets/Images/ic_flag_ar.svg", () => "AR_Flag");
 jest.mock("src/assets/Images/ic_flag_en.svg", () => "EN_Flag");

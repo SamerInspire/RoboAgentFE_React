@@ -1,6 +1,6 @@
-import { AlertProvider } from "src/hooks/Context/AlertContext";
-import LoginProvider from "src/hooks/Context/LoginInfoContext";
-import ThemeContextProvider from "src/hooks/Context/ThemeContext";
+import { AlertProvider } from "hooks/Context/AlertContext";
+import LoginProvider from "hooks/Context/LoginInfoContext";
+import ThemeContextProvider from "hooks/Context/ThemeContext";
 function Providers({ children }) {
   return (
     <LoginProvider>

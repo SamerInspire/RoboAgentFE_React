@@ -4,8 +4,8 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { Grid, Typography } from "@mui/material";
-import SortableTaskItem from "src/components/dnd/SortableTaskItem";
-import { glassMorphisimStyle } from "src/styles/styles";
+import SortableTaskItem from "components/dnd/SortableTaskItem";
+import { glassMorphisimStyle } from "styles/styles";
 import DraggableServiceItem from "./DraggableServiceItem";
 
 function ServiceContainer({ id, title, authorities }) {

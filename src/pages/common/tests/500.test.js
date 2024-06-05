@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import SomethingWentWrongError from "../500";
-import Providers from "src/components/Providers";
+import Providers from "components/Providers";
 
 // Mock Lottie component
 

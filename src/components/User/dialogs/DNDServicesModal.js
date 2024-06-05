@@ -13,13 +13,13 @@ import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import { Box, Button, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { useContext, useState } from "react";
-import { AlertContext } from "src/hooks/Context/AlertContext";
+import { AlertContext } from "hooks/Context/AlertContext";
 import {
   findBoardSectionContainer,
   getAuthorityById,
   initializeContainer,
-} from "src/utils/dnd/service";
-import { handleSubmitUserAuths } from "src/utils/users/users";
+} from "utils/dnd/service";
+import { handleSubmitUserAuths } from "utils/users/users";
 import DraggableServiceItem from "./DraggableServiceItem";
 import ServiceContainer from "./ServiceContainer";
 const dropAnimation = {

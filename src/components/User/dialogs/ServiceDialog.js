@@ -11,7 +11,7 @@ import {
   Select,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { handleSubmitUserNewService } from "src/utils/users/users";
+import { handleSubmitUserNewService } from "utils/users/users";
 
 function ServiceDialog({
   isEditServiceDialogOpen,

@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import Login from "../login/Login";
 import { BrowserRouter } from "react-router-dom";
-import Providers from "src/components/Providers";
+import Providers from "components/Providers";
 
 describe("Login Component", () => {
   test("renders Login component with the correct title and headings", () => {

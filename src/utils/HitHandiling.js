@@ -1,4 +1,4 @@
-import { generalSuccessReducer } from "src/hooks/reducers/store";
+import { generalSuccessReducer } from "hooks/reducers/store";
 import {
   JWTFalureHitHandle,
   handleChangePassCodeActions,
