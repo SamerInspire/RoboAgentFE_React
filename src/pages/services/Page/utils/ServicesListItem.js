@@ -21,7 +21,7 @@ const ServicesListItem = ({
   const handleClick = (event) => {
     setQueryCenterAnchorEl(queryCenterAnchorEl ? null : event.currentTarget);
   };
-  console.log("service ===>", service)
+  console.log("service ===>", service);
   //uncomment this line
 
   // const isEligiableService =
@@ -37,9 +37,7 @@ const ServicesListItem = ({
     <Link
       component={isEligiableService ? "" : RouterLink}
       sx={{ textDecoration: "none", position: "relative" }}
-      to={
-        isEligiableService ? "" : `/dash/services/getAnswer/${service.value}`
-      }
+      to={isEligiableService ? "" : `/dash/services/getAnswer/${service.value}`}
     >
       <Grid
         container
@@ -107,7 +105,7 @@ const ServicesListItem = ({
               {queryCenterSignup
                 ? "Please Register in the query center to be able to use the services"
                 : isEligiableService &&
-                "You don't have access to view this service"}
+                  "You don't have access to view this service"}
             </Typography>
           </Box>
         </Popper>
