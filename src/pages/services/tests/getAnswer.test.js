@@ -1,8 +1,8 @@
 import { ThemeProvider } from "@mui/material";
 import { fireEvent, render, waitFor } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
-import { AlertContext } from "src/hooks/Context/AlertContext";
-import { lightTheme } from "src/styles/theme";
+import { AlertContext } from "hooks/Context/AlertContext";
+import { lightTheme } from "styles/theme";
 import ServicesGetAnswer from "../Page/ServicesGetAnswer";
 import { Services } from "../Schema/ServicesSchema";
 

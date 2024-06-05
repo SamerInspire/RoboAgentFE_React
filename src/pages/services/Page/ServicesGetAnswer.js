@@ -5,13 +5,13 @@ import i18next from "i18next";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router";
-import GetAnswerToolbar from "src/components/services/GetAnswerToolbar";
-import ServicesSidebar from "src/components/services/ServicesSidebar";
-import { AlertContext } from "src/hooks/Context/AlertContext";
-import TasksItem from "src/pages/Dashboard/TasksItem";
-import { numbersOnly } from "src/utils/DefualtValidators";
-import { handleGetResponse } from "src/utils/api/answer/service";
-import { handleFetchCurrentUser } from "src/utils/users/users";
+import GetAnswerToolbar from "components/services/GetAnswerToolbar";
+import ServicesSidebar from "components/services/ServicesSidebar";
+import { AlertContext } from "hooks/Context/AlertContext";
+import TasksItem from "pages/Dashboard/TasksItem";
+import { numbersOnly } from "utils/DefualtValidators";
+import { handleGetResponse } from "utils/api/answer/service";
+import { handleFetchCurrentUser } from "utils/users/users";
 
 const ServicesGetAnswer = ({}) => {
   let { servicename } = useParams();

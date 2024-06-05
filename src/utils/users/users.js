@@ -1,4 +1,4 @@
-import AxiosHit from "src/utils/api/AxiosHit";
+import AxiosHit from "utils/api/AxiosHit";
 export async function handleSubmitUserAuths(utils) {
   const { containerSections, userId } = utils;
   try {

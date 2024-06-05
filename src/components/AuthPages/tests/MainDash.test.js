@@ -1,15 +1,15 @@
 import { Grid } from "@mui/material";
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import Providers from "src/components/Providers";
-import ChartSiteVisits from "src/pages/Dashboard/ChartSiteVisits";
-import ConversionRate from "src/pages/Dashboard/ConversionRate";
-import InfoCards from "src/pages/Dashboard/InfoCards";
-import OrderTimeline from "src/pages/Dashboard/OrderTimeline";
-import Tasks from "src/pages/Dashboard/Tasks";
-import ChartCurrentSubject from "src/pages/Dashboard/ChartCurrentSubject";
-import CurrentVisits from "src/pages/Dashboard/CurrentVisits";
-import Dashboard from "src/pages/Dashboard/Dashboard";
+import Providers from "components/Providers";
+import ChartSiteVisits from "pages/Dashboard/ChartSiteVisits";
+import ConversionRate from "pages/Dashboard/ConversionRate";
+import InfoCards from "pages/Dashboard/InfoCards";
+import OrderTimeline from "pages/Dashboard/OrderTimeline";
+import Tasks from "pages/Dashboard/Tasks";
+import ChartCurrentSubject from "pages/Dashboard/ChartCurrentSubject";
+import CurrentVisits from "pages/Dashboard/CurrentVisits";
+import Dashboard from "pages/Dashboard/Dashboard";
 
 jest.mock("react-apexcharts", () => ({
   __esModule: true,

@@ -12,11 +12,11 @@ import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import "react-phone-number-input/style.css";
-import { AlertContext } from "src/hooks/Context/AlertContext";
+import { AlertContext } from "hooks/Context/AlertContext";
 import {
   handleFetchAuthorities,
   handleFetchServiceList,
-} from "src/utils/users/users";
+} from "utils/users/users";
 export async function handleFinalRegistration(
   userRole,
   userTeam,

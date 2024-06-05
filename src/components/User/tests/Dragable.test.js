@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
-import Providers from "src/components/Providers";
-import { LoginContext } from "src/hooks/Context/LoginInfoContext";
+import Providers from "components/Providers";
+import { LoginContext } from "hooks/Context/LoginInfoContext";
 import User from "../User";
 import UserTable from "../UserTable";
 import DNDServicesModal from "../dialogs/DNDServicesModal";

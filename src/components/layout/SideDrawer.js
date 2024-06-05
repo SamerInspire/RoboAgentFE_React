@@ -17,13 +17,13 @@ import {
   RiServerFill,
   RiShoppingBag3Fill,
 } from "react-icons/ri";
-import userAvatar from "src/assets/Images/GreenQiwa.jpg";
-import getMoreAvatar from "src/assets/Images/pom-bot.gif";
+import userAvatar from "assets/Images/GreenQiwa.jpg";
+import getMoreAvatar from "assets/Images/pom-bot.gif";
 
 import { useContext } from "react";
-import CustomListItem from "src/components/Drawer/CustomListItem";
-import { drawerWidth } from "src/components/layout/DashboardLayout";
-import { LoginContext } from "src/hooks/Context/LoginInfoContext";
+import CustomListItem from "components/Drawer/CustomListItem";
+import { drawerWidth } from "components/layout/DashboardLayout";
+import { LoginContext } from "hooks/Context/LoginInfoContext";
 import { styled } from "@mui/material";
 import AuthWrapper from "../AuthWrapper/AuthWrapper";
 import { useTranslation } from "react-i18next";

@@ -3,7 +3,7 @@ import { Box } from "@mui/system";
 import { Helmet } from "react-helmet";
 // import Lottie from "react-lottie";
 import { Link as RouterLink } from "react-router-dom";
-import animated500 from "src/assets/lottie/500.json";
+import animated500 from "assets/lottie/500.json";
 
 // style
 const BoxStyle = styled(Box)(({ theme }) => ({

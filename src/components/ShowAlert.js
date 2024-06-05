@@ -2,7 +2,7 @@ import { CircularProgress } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import Collapse from "@mui/material/Collapse";
 import { useContext } from "react";
-import { AlertContext } from "src/hooks/Context/AlertContext";
+import { AlertContext } from "hooks/Context/AlertContext";
 
 export default function ShowAlert() {
   const { handleCloseAlert, alertInfo, openFailerAlert } =

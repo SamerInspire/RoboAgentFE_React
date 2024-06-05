@@ -1,6 +1,6 @@
 // actions.test.js
 import i18next from "i18next";
-import { generalSuccessReducer } from "src/hooks/reducers/store";
+import { generalSuccessReducer } from "hooks/reducers/store";
 import {
   handleChangePassCodeActions,
   handleEmailCodeActions,

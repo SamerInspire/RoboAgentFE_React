@@ -14,9 +14,9 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import LoadingButton from "src/components/buttons/LoadingButton";
-import FormStyle from "src/styles/styles";
-import { handleRestPassword } from "src/utils/api/auth/otp";
+import LoadingButton from "components/buttons/LoadingButton";
+import FormStyle from "styles/styles";
+import { handleRestPassword } from "utils/api/auth/otp";
 
 function NewPassDialog({
   handleNext,

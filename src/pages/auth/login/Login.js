@@ -1,10 +1,10 @@
 import { Container, Typography, styled } from "@mui/material";
 import { Box } from "@mui/system";
 import { Helmet } from "react-helmet";
-import LoginPhoto from "src/assets/Images/image_processing20210907-13511-1juj33d.gif";
-import FormLogin from "src/components/AuthPages/FormLogin";
-import LeftPanel from "src/components/AuthPages/LeftPanel";
-import { ContainerBoxStyle } from "src/styles/styles";
+import LoginPhoto from "assets/Images/image_processing20210907-13511-1juj33d.gif";
+import FormLogin from "components/AuthPages/FormLogin";
+import LeftPanel from "components/AuthPages/LeftPanel";
+import { ContainerBoxStyle } from "styles/styles";
 
 const RightPanelStyle = styled(Box)(({ theme }) => ({
   display: "flex",

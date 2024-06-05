@@ -1,5 +1,5 @@
 import i18next from "i18next";
-import { generalSuccessReducer } from "src/hooks/reducers/store";
+import { generalSuccessReducer } from "hooks/reducers/store";
 
 export const getResponseShape = (header, code) => {
   const currentLang = i18next.language;

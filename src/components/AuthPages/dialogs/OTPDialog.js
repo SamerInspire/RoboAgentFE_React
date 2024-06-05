@@ -12,10 +12,10 @@ import {
 } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import LoadingButton from "src/components/buttons/LoadingButton";
-import Loader from "src/components/loader/Loader";
-import FormStyle from "src/styles/styles";
-import { handleVerifyEmail, handleVerifyOTP } from "src/utils/api/auth/otp";
+import LoadingButton from "components/buttons/LoadingButton";
+import Loader from "components/loader/Loader";
+import FormStyle from "styles/styles";
+import { handleVerifyEmail, handleVerifyOTP } from "utils/api/auth/otp";
 function OTPDialog({
   otpToken,
   email,

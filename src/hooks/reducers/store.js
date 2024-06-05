@@ -1,6 +1,6 @@
 import axios from "axios";
-import i18n from "src/dictonaries/i18n";
-import { reshapeUserData } from "src/utils/table/tableReshape";
+import i18n from "dictonaries/i18n";
+import { reshapeUserData } from "utils/table/tableReshape";
 
 export function generalSuccessReducer(result, utils) {
   console.log("utils.requestAction ===> ", utils.requestAction);

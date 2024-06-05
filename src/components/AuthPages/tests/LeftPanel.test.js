@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import LeftPanel from "../LeftPanel";
-import Providers from "src/components/Providers";
+import Providers from "components/Providers";
 
 describe("LeftPanel Component", () => {
   test("renders without crashing", () => {

@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import FormStyle from "src/styles/styles";
+import FormStyle from "styles/styles";
 
 const FormRegister = ({
   handleNext,

@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@mui/material";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { AlertContext } from "src/hooks/Context/AlertContext";
-import { lightTheme } from "src/styles/theme";
+import { AlertContext } from "hooks/Context/AlertContext";
+import { lightTheme } from "styles/theme";
 import RolesPopper from "../poppers/RolesPopper";
 
 describe("RolesPopper Component", () => {

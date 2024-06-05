@@ -1,4 +1,4 @@
-import { CONTAINER_SECTIONS } from "src/constants/dnd";
+import { CONTAINER_SECTIONS } from "constants/dnd";
 
 export const getAuthorityByStatus = (authorities, status) => {
   return authorities.filter((authority) => authority.containerValue === status);

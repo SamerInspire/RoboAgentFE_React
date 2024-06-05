@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Providers from "src/components/Providers";
+import Providers from "components/Providers";
 import TasksItem from "../TasksItem";
 import DashCardHeader from "../DashCardHeader";
 import SocialTraffic from "../SocialTraffic";

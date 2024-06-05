@@ -1,8 +1,8 @@
 import { fireEvent, render } from "@testing-library/react";
-import { themeContext } from "src/hooks/Context/ThemeContext";
+import { themeContext } from "hooks/Context/ThemeContext";
 import CurrentThemeSelector from "../MainHeader/DarkModeSelector";
 import { ThemeProvider } from "@mui/material";
-import { lightTheme } from "src/styles/theme";
+import { lightTheme } from "styles/theme";
 
 const renderWithContext = (ui, { providerProps, ...renderOptions }) => {
   return render(

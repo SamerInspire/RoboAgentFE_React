@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import CustomListItem from "../CustomListItem";
-import Providers from "src/components/Providers";
+import Providers from "components/Providers";
 import { BrowserRouter } from "react-router-dom";
 
 describe("CustomListItem Component", () => {

@@ -3,9 +3,9 @@ import { Grid, Link, Popper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useContext, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import i18n from "src/dictonaries/i18n";
-import { AlertContext } from "src/hooks/Context/AlertContext";
-import { glassMorphisimStyle } from "src/styles/styles";
+import i18n from "dictonaries/i18n";
+import { AlertContext } from "hooks/Context/AlertContext";
+import { glassMorphisimStyle } from "styles/styles";
 const ServicesListItem = ({
   service,
   queryCenterSignup,
