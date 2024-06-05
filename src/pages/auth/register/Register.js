@@ -8,7 +8,7 @@ import LeftPanel from "components/auth_pages/LeftPanel";
 import { useContext, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import RegisterPhoto from "assets/Images/auth/register.png";
+import RegisterPhoto from "assets/images/auth/register.png";
 import FinalRegister from "components/auth_pages/FinalRegister";
 import CustomStepper from "components/auth_pages/stepper/CustomStepper";
 import { AlertContext } from "hooks/context/AlertContext";

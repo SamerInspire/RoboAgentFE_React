@@ -17,8 +17,8 @@ import {
   RiServerFill,
   RiShoppingBag3Fill,
 } from "react-icons/ri";
-import userAvatar from "assets/Images/GreenQiwa.jpg";
-import getMoreAvatar from "assets/Images/pom-bot.gif";
+import userAvatar from "assets/images/GreenQiwa.jpg";
+import getMoreAvatar from "assets/images/pom-bot.gif";
 
 import { useContext } from "react";
 import CustomListItem from "components/Drawer/CustomListItem";

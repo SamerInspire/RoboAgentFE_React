@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Providers from "components/Providers";
 import { LoginContext } from "hooks/context/LoginInfoContext";
-import UserMenu from "../MainHeader/UserMenu";
+import UserMenu from "../main_header/UserMenu";
 
 const mockProps = {
   onOpen: jest.fn(),

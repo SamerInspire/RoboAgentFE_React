@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { Outlet } from "react-router";
 import ShowAlert from "components/ShowAlert";
 import { LoginContext } from "hooks/context/LoginInfoContext";
-import MainHeader from "./MainHeader/MainHeader";
+import MainHeader from "./main_header/MainHeader";
 import SideDrawer from "./SideDrawer";
 
 export const drawerWidth = 240;

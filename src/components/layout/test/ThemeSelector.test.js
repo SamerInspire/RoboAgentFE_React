@@ -1,6 +1,6 @@
 import { fireEvent, render } from "@testing-library/react";
 import { themeContext } from "hooks/context/ThemeContext";
-import CurrentThemeSelector from "../MainHeader/DarkModeSelector";
+import CurrentThemeSelector from "../main_header/DarkModeSelector";
 import { ThemeProvider } from "@mui/material";
 import { lightTheme } from "styles/theme";
 

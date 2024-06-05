@@ -14,7 +14,7 @@ import { Button, styled } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import { useContext } from "react";
 import { RiHome4Fill, RiSettings3Fill, RiUserFill } from "react-icons/ri";
-import userAvatar from "assets/Images/GreenQiwa.jpg";
+import userAvatar from "assets/images/GreenQiwa.jpg";
 import { LoginContext } from "hooks/context/LoginInfoContext";
 
 const GrayMainText = styled("div")(({ theme }) => ({
