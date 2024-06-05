@@ -1,4 +1,4 @@
-import { Services } from "../Schema/ServicesSchema";
+import { Services } from "../schema/ServicesSchema";
 
 import { Grid, TextField, Typography } from "@mui/material";
 import i18next from "i18next";
