@@ -1,4 +1,4 @@
-import { Services } from "../Schema/ServicesSchema";
+import { Services } from "../schema/ServicesSchema";
 
 import { Grid, TextField, Typography } from "@mui/material";
 import i18next from "i18next";
@@ -7,8 +7,8 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router";
 import GetAnswerToolbar from "components/services/GetAnswerToolbar";
 import ServicesSidebar from "components/services/ServicesSidebar";
-import { AlertContext } from "hooks/Context/AlertContext";
-import TasksItem from "pages/Dashboard/TasksItem";
+import { AlertContext } from "hooks/context/AlertContext";
+import TasksItem from "pages/dashboard/TasksItem";
 import { numbersOnly } from "utils/DefualtValidators";
 import { handleGetResponse } from "utils/api/answer/service";
 import { handleFetchCurrentUser } from "utils/users/users";

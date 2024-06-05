@@ -7,9 +7,9 @@ import { RiMenu3Line } from "react-icons/ri";
 
 // components
 import { styled } from "@mui/material";
-import LanguageSelector from "components/layout/MainHeader/SelectLanguage";
-import UserMenu from "components/layout/MainHeader/UserMenu";
-import { LoginContext } from "hooks/Context/LoginInfoContext";
+import LanguageSelector from "components/layout/main_header/SelectLanguage";
+import UserMenu from "components/layout/main_header/UserMenu";
+import { LoginContext } from "hooks/context/LoginInfoContext";
 import { drawerWidth } from "../DashboardLayout";
 import ServicesCounter from "./ServicesCounter";
 const AppBarStyle = styled(AppBar)(({ theme }) => ({

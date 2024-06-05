@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import FormLogin from "../FormLogin";
-import LoginProvider from "hooks/Context/LoginInfoContext";
+import LoginProvider from "hooks/context/LoginInfoContext";
 
 describe("FormLogin", () => {
   test("renders initial login form", () => {

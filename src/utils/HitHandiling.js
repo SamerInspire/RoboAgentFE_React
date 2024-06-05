@@ -7,7 +7,7 @@ import {
   handleGetAnswerFailure,
   handleOTPCodeActions,
   handleUserCodeActions,
-} from "./responseHandlers";
+} from "./response_handlers";
 
 export function successHitHandle(result, utils) {
   const { code } = result?.data?.roboAgentRs?.header?.responseStatus;

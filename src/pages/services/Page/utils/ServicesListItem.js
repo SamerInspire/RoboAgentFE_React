@@ -4,7 +4,7 @@ import { Box } from "@mui/system";
 import { useContext, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import i18n from "dictonaries/i18n";
-import { AlertContext } from "hooks/Context/AlertContext";
+import { AlertContext } from "hooks/context/AlertContext";
 import { glassMorphisimStyle } from "styles/styles";
 const ServicesListItem = ({
   service,

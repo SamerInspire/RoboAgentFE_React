@@ -2,7 +2,7 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { Box, IconButton } from "@mui/material";
 import { useContext } from "react";
-import { themeContext } from "hooks/Context/ThemeContext";
+import { themeContext } from "hooks/context/ThemeContext";
 
 const CurrentThemeSelector = (props) => {
   const { currentTheme, setCurrentTheme } = useContext(themeContext);

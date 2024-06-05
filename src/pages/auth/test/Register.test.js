@@ -7,8 +7,8 @@ import {
 import Register from "../register/Register";
 import { BrowserRouter } from "react-router-dom";
 import Providers from "components/Providers";
-import FinalRegister from "components/AuthPages/FinalRegister";
-import FormRegister from "components/AuthPages/FormRegister";
+import FinalRegister from "components/auth_pages/FinalRegister";
+import FormRegister from "components/auth_pages/FormRegister";
 
 describe("Register Component", () => {
   test("renders Register component with initial step", () => {

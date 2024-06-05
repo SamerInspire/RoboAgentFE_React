@@ -1,17 +1,17 @@
 import { Container, Link, Typography, styled } from "@mui/material";
 import { Box } from "@mui/system";
 import { Helmet } from "react-helmet";
-import FormRegister from "components/AuthPages/FormRegister";
-import LeftPanel from "components/AuthPages/LeftPanel";
+import FormRegister from "components/auth_pages/FormRegister";
+import LeftPanel from "components/auth_pages/LeftPanel";
 
 // img
 import { useContext, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import RegisterPhoto from "assets/Images/auth/register.png";
-import FinalRegister from "components/AuthPages/FinalRegister";
-import CustomStepper from "components/AuthPages/stepper/CustomStepper";
-import { AlertContext } from "hooks/Context/AlertContext";
+import RegisterPhoto from "assets/images/auth/register.png";
+import FinalRegister from "components/auth_pages/FinalRegister";
+import CustomStepper from "components/auth_pages/stepper/CustomStepper";
+import { AlertContext } from "hooks/context/AlertContext";
 import { handleSubmitNewUser } from "utils/users/users";
 
 // styles

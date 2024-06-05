@@ -12,7 +12,7 @@ import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import "react-phone-number-input/style.css";
-import { AlertContext } from "hooks/Context/AlertContext";
+import { AlertContext } from "hooks/context/AlertContext";
 import {
   handleFetchAuthorities,
   handleFetchServiceList,

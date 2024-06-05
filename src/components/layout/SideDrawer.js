@@ -17,15 +17,15 @@ import {
   RiServerFill,
   RiShoppingBag3Fill,
 } from "react-icons/ri";
-import userAvatar from "assets/Images/GreenQiwa.jpg";
-import getMoreAvatar from "assets/Images/pom-bot.gif";
+import userAvatar from "assets/images/GreenQiwa.jpg";
+import getMoreAvatar from "assets/images/pom-bot.gif";
 
 import { useContext } from "react";
 import CustomListItem from "components/Drawer/CustomListItem";
 import { drawerWidth } from "components/layout/DashboardLayout";
-import { LoginContext } from "hooks/Context/LoginInfoContext";
+import { LoginContext } from "hooks/context/LoginInfoContext";
 import { styled } from "@mui/material";
-import AuthWrapper from "../AuthWrapper/AuthWrapper";
+import AuthWrapper from "../auth_wrapper/AuthWrapper";
 import { useTranslation } from "react-i18next";
 const NavDrawerStyle = styled("nav")(({ theme }) => ({
   [theme.breakpoints.up("sm")]: {

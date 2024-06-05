@@ -2,7 +2,7 @@ import { Grid } from "@mui/material";
 import { Helmet } from "react-helmet";
 import UserTable from "./UserTable";
 import { useContext } from "react";
-import { LoginContext } from "hooks/Context/LoginInfoContext";
+import { LoginContext } from "hooks/context/LoginInfoContext";
 import { useNavigate } from "react-router";
 
 const User = () => {

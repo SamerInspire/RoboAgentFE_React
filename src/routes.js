@@ -6,11 +6,11 @@ import { useRoutes } from "react-router-dom/dist";
 import DashboardLayout from "components/layout/DashboardLayout";
 import Login from "pages/auth/login/Login";
 import ErrorPage from "pages/common/404";
-import ServicesGetAnswer from "pages/services/Page/ServicesGetAnswer";
-import ServicesList from "pages/services/Page/ServicesList";
-import User from "./components/User/User";
-import { LoginContext } from "./hooks/Context/LoginInfoContext";
-import Dashboard from "./pages/Dashboard/Dashboard";
+import ServicesGetAnswer from "pages/services/page/ServicesGetAnswer";
+import ServicesList from "pages/services/page/ServicesList";
+import User from "./components/user/User";
+import { LoginContext } from "./hooks/context/LoginInfoContext";
+import Dashboard from "./pages/dashboard/Dashboard";
 import Register from "./pages/auth/register/Register";
 import SomethingWentWrongError from "./pages/common/500";
 const allowedPages = {

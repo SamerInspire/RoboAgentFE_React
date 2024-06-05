@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { render, screen, waitFor } from "@testing-library/react";
-import { AlertContext } from "../../hooks/Context/AlertContext";
+import { AlertContext } from "../../hooks/context/AlertContext";
 import ShowAlert from "../ShowAlert";
 
 const mockAlertInfo = {

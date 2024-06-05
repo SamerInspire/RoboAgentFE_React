@@ -13,7 +13,7 @@ import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import { Box, Button, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { useContext, useState } from "react";
-import { AlertContext } from "hooks/Context/AlertContext";
+import { AlertContext } from "hooks/context/AlertContext";
 import {
   findBoardSectionContainer,
   getAuthorityById,

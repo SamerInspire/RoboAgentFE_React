@@ -10,8 +10,6 @@ services:
       com.qiwa.runtime.service-vendor: "inspire"
       # com.qiwa.runtime.log-format: "qiwa"
     restart: unless-stopped
-    ports:
-      - "80:80" #might be deleted if we face an error
     volumes:
       - ./config.json:/usr/share/nginx/html/config.json
     environment:
