@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import Providers from "components/Providers";
 import ServicesList from "../page/ServicesList";
 import ServicesListItem from "../page/utils/ServicesListItem";
-import { Services } from "../schema/ServicesSchema";
+import { Services } from "../Schema/ServicesSchema";
 
 describe("ServicesList Component", () => {
   test("renders services for authorized user", () => {

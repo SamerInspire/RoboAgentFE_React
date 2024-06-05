@@ -1,7 +1,7 @@
 import { Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import i18next from "i18next";
-import { Services } from "pages/services/schema/ServicesSchema";
+import { Services } from "pages/services/Schema/ServicesSchema";
 
 function ServicesSidebar({
   handleChangeCurrentService,
