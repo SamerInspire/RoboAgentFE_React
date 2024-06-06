@@ -1,9 +1,10 @@
 import { Container, Typography, styled } from "@mui/material";
 import { Box } from "@mui/system";
-import { Helmet } from "react-helmet";
 import LoginPhoto from "assets/images/image_processing20210907-13511-1juj33d.gif";
 import FormLogin from "components/auth_pages/FormLogin";
 import LeftPanel from "components/auth_pages/LeftPanel";
+import { Helmet } from "react-helmet";
+import { useTranslation } from "react-i18next";
 import { ContainerBoxStyle } from "styles/styles";
 
 const RightPanelStyle = styled(Box)(({ theme }) => ({
@@ -38,6 +39,7 @@ const RightPanelStyle = styled(Box)(({ theme }) => ({
   },
 }));
 const Login = () => {
+  const { t } = useTranslation();
   return (
     <>
       {/* Helmet */}
@@ -47,16 +49,16 @@ const Login = () => {
 
       <ContainerBoxStyle>
         <LeftPanel
-          title="Hi, Login to continue"
+          title={t("Hi, Login to continue")}
           img={LoginPhoto}
           imgAlt="Login Image"
         />
 
         <RightPanelStyle>
           <Container maxWidth="md" className="form_Container">
-            <Typography variant="h4">Sign in</Typography>
+            <Typography variant="h4">{t("Sign in")}</Typography>
             <Typography paragraph color="textSecondary">
-              Enter your details below.
+              {t("Enter your details below.")}
             </Typography>
             {/* Buttons */}
             {/* <AuthButtonGroup /> */}
@@ -69,5 +71,4 @@ const Login = () => {
     </>
   );
 };
-
 export default Login;

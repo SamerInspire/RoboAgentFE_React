@@ -1,7 +1,9 @@
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { Grid, TextField } from "@mui/material";
-import { useEffect, useState } from "react";
+import { themeContext } from "hooks/context/ThemeContext";
+import { useContext, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 const buttonsStyle = {
   bgcolor: "#f6f6f6",
   height: "40px",
@@ -42,10 +44,12 @@ function ServicesCounter() {
       ? sessionStorage.getItem("ticketsResolved")
       : 0;
   });
+  const { t } = useTranslation();
   useEffect(() => {
     if (ticketsCounter > 0)
       sessionStorage.setItem("ticketsResolved", ticketsCounter);
   }, [ticketsCounter]);
+  const { direction } = useContext(themeContext);
   return (
     <Grid container item alignItems={"center"}>
       <Grid
@@ -56,8 +60,6 @@ function ServicesCounter() {
         xs={2}
         sx={{
           ...buttonsStyle,
-          borderTopLeftRadius: "5px",
-          borderBottomLeftRadius: "5px",
         }}
         onClick={() =>
           ticketsCounter == 0 ? null : setTicketsCounter((prev) => prev - 1)
@@ -68,7 +70,7 @@ function ServicesCounter() {
       <Grid item xs={4}>
         <TextField
           value={ticketsCounter}
-          label={"Tickets"}
+          label={t("Tickets")}
           type="number"
           onChange={(e) =>
             e.target.value == ""
@@ -94,8 +96,6 @@ function ServicesCounter() {
         xs={2}
         sx={{
           ...buttonsStyle,
-          borderTopRightRadius: "5px",
-          borderBottomRightRadius: "5px",
         }}
         onClick={() => setTicketsCounter((prev) => Number(prev) + 1)}
       >

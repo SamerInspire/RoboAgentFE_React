@@ -7,12 +7,13 @@ import { Grid, Typography } from "@mui/material";
 import SortableTaskItem from "components/dnd/SortableTaskItem";
 import { glassMorphisimStyle } from "styles/styles";
 import DraggableServiceItem from "./DraggableServiceItem";
+import { useTranslation } from "react-i18next";
 
 function ServiceContainer({ id, title, authorities }) {
   const { setNodeRef } = useDroppable({
     id,
   });
-
+  const { t } = useTranslation();
   return (
     <Grid
       container
@@ -34,7 +35,7 @@ function ServiceContainer({ id, title, authorities }) {
           variant="h5"
           color={id == "all_services" ? "blue.main" : "primary.main"}
         >
-          {title.split("_").join(" ").toUpperCase()}
+          {t("usersTable." + title.split("_").join(" ").toUpperCase())}
         </Typography>
       </Grid>
       <Grid

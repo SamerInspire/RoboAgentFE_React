@@ -70,6 +70,8 @@ describe("generalSuccessReducer", () => {
     const mockUtils = {
       requestAction: "REGISTER_NEW_USER",
       setAlert: jest.fn(),
+      rest: jest.fn(),
+      clearFinalForm: jest.fn,
     };
 
     generalSuccessReducer(mockResult, mockUtils);

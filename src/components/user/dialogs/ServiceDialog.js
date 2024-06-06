@@ -10,7 +10,8 @@ import {
   OutlinedInput,
   Select,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { handleSubmitUserNewService } from "utils/users/users";
 
 function ServiceDialog({
@@ -26,7 +27,7 @@ function ServiceDialog({
   const handleChangeUserNewService = (serviceId) => {
     setUserNewService(serviceId.target.value);
   };
-  useEffect(() => {}, []);
+  const { t } = useTranslation();
   return (
     <Dialog
       disableEscapeKeyDown
@@ -34,10 +35,10 @@ function ServiceDialog({
       onClose={handleCloseServiceDialog}
       fullWidth={"md"}
     >
-      <DialogTitle>Choose User Main Service</DialogTitle>
+      <DialogTitle>{t("usersTable.Choose User Main Service")}</DialogTitle>
       <DialogContent>
         <FormControl sx={{ my: 1, width: "100%" }}>
-          <InputLabel id="main_service">Service</InputLabel>
+          <InputLabel id="main_service">{t("usersTable.Service")}</InputLabel>
           <Select
             id="main_service"
             fullWidth
@@ -68,7 +69,7 @@ function ServiceDialog({
             })
           }
         >
-          Submit
+          {t("usersTable.Submit")}
         </Button>
       </DialogActions>
     </Dialog>

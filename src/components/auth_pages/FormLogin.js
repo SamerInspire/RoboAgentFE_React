@@ -107,9 +107,9 @@ const FormLogin = () => {
           variant="outlined"
           fullWidth
           type="email"
-          label="Email address"
+          label={t("emailLabel")}
           error={errors.email ? true : false}
-          helperText={errors.email && "Enter a valid email address"}
+          helperText={errors.email && t("Enter a valid email address")}
           {...register("email", { required: true })}
         />
 
@@ -127,7 +127,7 @@ const FormLogin = () => {
               </InputAdornment>
             ),
           }}
-          label="Password"
+          label={t("passwordLabel")}
           error={errors.password ? true : false}
           helperText={
             errors.password && "Enter a valid password (5-15 characters)"
@@ -155,7 +155,7 @@ const FormLogin = () => {
                 onChange={handleToggleRemember}
               />
             }
-            label="Remember me"
+            label={t("Remember me")}
             {...register("rememberUser")}
           />
 

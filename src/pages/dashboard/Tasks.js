@@ -1,22 +1,18 @@
 import {
   Button,
   Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
   FormGroup,
   Grid,
   TextField,
   Typography,
   styled,
 } from "@mui/material";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { v4 as uuidv4 } from "uuid";
 import DashCard from "./DashCard";
 import DashCardHeader from "./DashCardHeader";
 import CustomTransferList from "./TaskTransferList";
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 
 // style
 const FormGroupStyle = styled(FormGroup)(({ theme }) => ({
@@ -50,12 +46,11 @@ const Tasks = () => {
   const handleCloseAddTask = () => {
     setOpenAddTask(false);
   };
-
   return (
     <DashCard>
       <Grid container item justifyContent={"space-between"}>
         <Grid item xs={6}>
-          <DashCardHeader title="Tasks" />
+          <DashCardHeader title={t("dashboard.Tasks")} />
         </Grid>
         <Grid
           container
@@ -72,7 +67,7 @@ const Tasks = () => {
             aria-label={"Add Task"}
             variant="contained"
           >
-            Add Task
+            {t("dashboard.Add Task")}
           </Button>
         </Grid>
       </Grid>
@@ -101,7 +96,7 @@ const Tasks = () => {
           <Grid container item spacing={4}>
             <Grid item xs={6}>
               <Button fullWidth variant="outlined" onClick={handleCloseAddTask}>
-                Discard
+                {t("dashboard.Discard")}
               </Button>
             </Grid>
             <Grid item xs={6}>
@@ -114,7 +109,7 @@ const Tasks = () => {
                 }}
                 autoFocus
               >
-                Add
+                {t("dashboard.Add")}
               </Button>
             </Grid>
           </Grid>

@@ -22,6 +22,7 @@ import {
 import { handleSubmitUserAuths } from "utils/users/users";
 import DraggableServiceItem from "./DraggableServiceItem";
 import ServiceContainer from "./ServiceContainer";
+import { useTranslation } from "react-i18next";
 const dropAnimation = {
   ...defaultDropAnimation,
 };
@@ -29,7 +30,6 @@ const DNDServicesModal = ({
   authorities,
   handleCloseServicesModal,
   userData,
-  setAuthorities,
   setTableData,
   tableData,
 }) => {
@@ -137,7 +137,7 @@ const DNDServicesModal = ({
   const authority = activeAuthorityId
     ? getAuthorityById(authorities, activeAuthorityId)
     : null;
-
+  const { t } = useTranslation();
   return (
     <Grid
       container
@@ -149,7 +149,7 @@ const DNDServicesModal = ({
       <Grid container item p={4} gap={4}>
         <Grid item>
           <Typography variant="h4" fontWeight={"bold"}>
-            Edit User Services
+            {t("usersTable.Edit User Services")}
           </Typography>
         </Grid>
         <DndContext
@@ -207,7 +207,7 @@ const DNDServicesModal = ({
               fullWidth
               variant="contained"
             >
-              Cancel
+              {t("usersTable.Cancel")}
             </Button>
           </Grid>
           <Grid item xs={12} md={4}>
@@ -226,7 +226,7 @@ const DNDServicesModal = ({
               }
               variant="contained"
             >
-              Submit
+              {t("usersTable.Submit")}
             </Button>
           </Grid>
         </Grid>

@@ -33,7 +33,7 @@ const NewsUpdate = () => {
       postingTime: "about 2 hours",
     },
     {
-      title: t("dasbhoard.Dynamic Identity Officer"),
+      title: t("dashboard.Dynamic Identity Officer"),
       subtitle: loremText,
       photo: coverImg_3,
       postingTime: "about 7 hours",

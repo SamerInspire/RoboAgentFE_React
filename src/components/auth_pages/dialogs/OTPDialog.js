@@ -16,6 +16,7 @@ import LoadingButton from "components/buttons/LoadingButton";
 import Loader from "components/loader/Loader";
 import FormStyle from "styles/styles";
 import { handleVerifyEmail, handleVerifyOTP } from "utils/api/auth/otp";
+import { t } from "i18next";
 function OTPDialog({
   otpToken,
   email,
@@ -54,18 +55,20 @@ function OTPDialog({
     >
       <DialogTitle>
         <Typography fontSize={20} fontWeight={"bold"}>
-          OTP Verification
+          {t("OTP Verification")}
         </Typography>
       </DialogTitle>
       <DialogContent sx={{ paddingX: 1, paddingY: 0 }}>
         <DialogContentText fontWeight={"bold"}>
-          Please enter OTP sent to your email
+          {t("forgotPassword.Please enter OTP sent to your email")}
         </DialogContentText>
         <FormStyle sx={{ width: "100%" }}>
           <TextField
             fullWidth
-            label={"OTP"}
-            {...otpRegister("otp", { required: "OTP is Required" })}
+            label={t("OTP")}
+            {...otpRegister("otp", {
+              required: t("forgotPassword.OTP is Required"),
+            })}
           />
         </FormStyle>
         {otpErrors?.otp?.message && (
@@ -80,7 +83,7 @@ function OTPDialog({
           alignItems={"center"}
         >
           <Typography variant="subtitle1">
-            Haven't recieved the OTP ?
+            {t("forgotPassword.Haven't recieved the OTP ?")}
           </Typography>
           {!counter ? (
             <Button
@@ -98,7 +101,7 @@ function OTPDialog({
               }}
               style={{ color: "#2e7d32", mx: 4 }}
             >
-              Resend
+              {t("forgotPassword.Resend")}
             </Button>
           ) : (
             <Typography
@@ -121,14 +124,14 @@ function OTPDialog({
               variant="contained"
               onClick={handleClose}
             >
-              Cancel
+              {t("forgotPassword.Cancel")}
             </Button>
           </Grid>
           <Grid item xs={12} md={6}>
             <LoadingButton
               setIsLoading={setIsLoading}
               isLoading={isLoading}
-              title={"Verify"}
+              title={t("forgotPassword.Verify")}
               clickHandler={otpHandleSubmit(async (data) => {
                 await handleVerifyOTP({
                   otp: data.otp,

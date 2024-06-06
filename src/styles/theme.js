@@ -4,7 +4,6 @@ import { createTheme } from "@mui/material/styles";
 const lightTheme = (dir) =>
   createTheme({
     direction: dir,
-
     typography: {
       fontFamily: `"DM Sans", "Roboto", "Arial", sans-serif`,
     },

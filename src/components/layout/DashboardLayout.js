@@ -1,6 +1,7 @@
-import { Box, Toolbar, styled } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import ShowAlert from "components/ShowAlert";
 import { LoginContext } from "hooks/context/LoginInfoContext";
+import { themeContext } from "hooks/context/ThemeContext";
 import React, { useContext, useState } from "react";
 import { Outlet } from "react-router";
 import SideDrawer from "./SideDrawer";
@@ -19,6 +20,7 @@ const MainStyle = styled("main")(({ theme }) => ({
   flexGrow: 1,
   height: `calc(100vh - 65px)`,
   padding: theme.spacing(3),
+  marginTop: "40px",
 }));
 
 const DashboardLayout = (props) => {
@@ -26,12 +28,18 @@ const DashboardLayout = (props) => {
   const { window } = props;
   const [toggleMenu, setToggleMenu] = useState(false);
   const handleToggleDrawer = () => setToggleMenu(!toggleMenu);
+  const { direction } = useContext(themeContext);
   const handleToggleClose = () => setToggleMenu(false);
   const container =
     window !== undefined ? () => window().document.body : undefined;
   return (
     <React.Fragment>
-      <Box sx={{ display: "flex" }}>
+      <Box
+        sx={{
+          direction: "ltr",
+          display: "flex",
+        }}
+      >
         {/* App Bar */}
         {loginData.isLoggedIn && <MainHeader onClick={handleToggleDrawer} />}
 
@@ -44,11 +52,10 @@ const DashboardLayout = (props) => {
           />
         )}
         {/* Drawer */}
-        {loginData.isLoggedIn ? <></> : <></>}
 
         {/* Content */}
         <MainStyle>
-          {loginData.isLoggedIn && <Toolbar />}
+          {/* {loginData.isLoggedIn && <Toolbar />} */}
           <ShowAlert />
           <Outlet />
         </MainStyle>

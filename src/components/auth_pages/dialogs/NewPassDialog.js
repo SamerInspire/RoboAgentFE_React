@@ -12,9 +12,10 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import LoadingButton from "components/buttons/LoadingButton";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import LoadingButton from "components/buttons/LoadingButton";
+import { useTranslation } from "react-i18next";
 import FormStyle from "styles/styles";
 import { handleRestPassword } from "utils/api/auth/otp";
 
@@ -34,7 +35,7 @@ function NewPassDialog({
   const handleClickShowConfirmPassword = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
-
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -62,19 +63,21 @@ function NewPassDialog({
     >
       <DialogTitle>
         <Typography fontSize={20} fontWeight={"bold"}>
-          Change Your Password
+          {t("forgotPassword.Change Your Password")}
         </Typography>
       </DialogTitle>
       <DialogContent sx={{ paddingX: 1, paddingY: 0 }}>
         <DialogContentText fontWeight={"bold"}>
-          Enter a new password below to change your password
+          {t(
+            "forgotPassword.Enter a new password below to change your password"
+          )}
         </DialogContentText>
         <FormStyle sx={{ width: "100%" }}>
           <TextField
             variant="outlined"
             fullWidth
             type={showPassword ? "text" : "password"}
-            label="Password"
+            label={t("passwordLabel")}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -94,8 +97,9 @@ function NewPassDialog({
               required: true,
               pattern: {
                 value: /^(?=.*[A-Z])(?=.*\d).+$/,
-                message:
-                  "Password must contain at least one capital letter one small and one number",
+                message: t(
+                  "forgotPassword.Password must contain at least one capital letter one small and one number"
+                ),
               },
               // minLength: {
               //   value: 8,
@@ -115,7 +119,7 @@ function NewPassDialog({
             fullWidth
             // disabled={errors.password ? true : false}
             type={showConfirmPassword ? "text" : "password"}
-            label="Confirm Password"
+            label={t("forgotPassword.Confirm Password")}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -142,7 +146,7 @@ function NewPassDialog({
         {watch("restConfirmPass") !== watch("password") &&
         getValues("restConfirmPass") ? (
           <Typography color={"#FF0000"} marginTop={2} variant="body2">
-            Passwords do not match
+            {t("forgotPassword.Passwords do not match")}
           </Typography>
         ) : null}
       </DialogContent>
@@ -157,12 +161,12 @@ function NewPassDialog({
                 reset();
               }}
             >
-              Cancel
+              {t("forgotPassword.Cancel")}
             </Button>
           </Grid>
           <Grid item xs={12} md={6}>
             <LoadingButton
-              title="Change Password"
+              title={t("forgotPassword.Change Password")}
               isLoading={isLoading}
               clickHandler={handleSubmit(async (data) => {
                 await handleRestPassword({

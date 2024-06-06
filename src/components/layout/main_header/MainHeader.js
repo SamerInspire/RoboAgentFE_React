@@ -10,16 +10,17 @@ import { styled } from "@mui/material";
 import LanguageSelector from "components/layout/main_header/SelectLanguage";
 import UserMenu from "components/layout/main_header/UserMenu";
 import { LoginContext } from "hooks/context/LoginInfoContext";
+import { themeContext } from "hooks/context/ThemeContext";
 import { drawerWidth } from "../DashboardLayout";
 import ServicesCounter from "./ServicesCounter";
 const AppBarStyle = styled(AppBar)(({ theme }) => ({
   boxShadow: "none",
   backdropFilter: "blur(6px)",
+
   backgroundColor: "rgba(255, 255, 255, 0.72)",
   color: "#333333",
   [theme.breakpoints.up("sm")]: {
     width: `calc(100% - ${drawerWidth}px)`,
-    flexShrink: 0,
   },
 }));
 
@@ -62,6 +63,7 @@ const MainHeader = (props) => {
   // User Menu
   const handleOpenUserMenu = (e) => setShowUserMenu(e.currentTarget);
   const handleCloseUserMenu = () => setShowUserMenu(null);
+  const { direction } = useContext(themeContext);
   const { loginData } = useContext(LoginContext);
   if (loginData.isLoggedIn) {
     return (
@@ -129,11 +131,11 @@ const MainHeader = (props) => {
           <ContainerStyle>
             {/* Language selector */}
             {/* <DarkModeSelector /> */}
-            {/* <LanguageSelector
+            <LanguageSelector
               anchorEl={showLang}
               onOpen={handleOpenLang}
               onClose={handleCloseLang}
-            /> */}
+            />
           </ContainerStyle>
         </ToolbarStyle>
       </AppBarStyle>

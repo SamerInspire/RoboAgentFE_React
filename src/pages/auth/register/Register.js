@@ -153,14 +153,14 @@ const Register = () => {
             )}
             {/* Terms */}
             <Typography paragraph color="textSecondary" className="terms">
-              {t("By registering, I agree to RoboAgent")}{" "}
+              {t("register.By registering, I agree to RoboAgent")}{" "}
               <Link
                 href="#"
                 onClick={preventDefault}
                 underline="always"
                 color="textPrimary"
               >
-                {t("Terms of Service")}
+                {t("register.Terms of Service")}
               </Link>{" "}
               {t("and")}{" "}
               <Link
@@ -169,7 +169,7 @@ const Register = () => {
                 underline="always"
                 color="textPrimary"
               >
-                {t("Privacy Policy")}
+                {t("register.Privacy Policy")}
               </Link>
               .
             </Typography>

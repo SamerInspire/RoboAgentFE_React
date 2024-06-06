@@ -1,13 +1,18 @@
-import { IconButton, ListItemText, Menu, MenuItem } from "@mui/material";
-import { styled } from "@mui/material";
+import {
+  IconButton,
+  ListItemText,
+  Menu,
+  MenuItem,
+  styled,
+} from "@mui/material";
 
 // images
-import i18next from "i18next";
-import { useContext } from "react";
-import { useTranslation } from "react-i18next";
 import AR_Flag from "assets/images/ic_flag_ar.svg";
 import EN_Flag from "assets/images/ic_flag_en.svg";
 import { themeContext } from "hooks/context/ThemeContext";
+import i18next from "i18next";
+import { useContext } from "react";
+import { useTranslation } from "react-i18next";
 
 const StyledMenu = styled(Menu)(({ theme }) => ({
   paper: {
@@ -81,7 +86,7 @@ const LanguageSelector = (props) => {
             value={el.alt}
             onClick={(e) => {
               i18n.changeLanguage(el.lang);
-              // setDirection(el.lang == "ar" ? "rtl" : "ltr");
+              setDirection(el.lang == "ar" ? "rtl" : "ltr");
               props.onClose(e);
             }}
           >

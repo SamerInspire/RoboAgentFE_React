@@ -1,8 +1,9 @@
 import DownloadIcon from "@mui/icons-material/Download";
 import UpgradeIcon from "@mui/icons-material/Upgrade";
 import { Button, Grid } from "@mui/material";
-import { useContext } from "react";
 import { AlertContext } from "hooks/context/AlertContext";
+import { useContext } from "react";
+import { useTranslation } from "react-i18next";
 import { hanldeSubmitUserNewRole } from "utils/users/users";
 
 function RolesPopper({
@@ -12,6 +13,7 @@ function RolesPopper({
   handleCloseRolePopper,
 }) {
   const { setAlert } = useContext(AlertContext);
+  const { t } = useTranslation();
   return (
     <Grid container item alignItems={"center"} gap={2} p={2}>
       {userData[6]?.toLowerCase() == "MEMBER".toLowerCase() ? (
@@ -34,7 +36,7 @@ function RolesPopper({
             startIcon={<UpgradeIcon />}
             variant="outlined"
           >
-            Promote to team Lead
+            {t("usersTable.Promote to team Lead")}
           </Button>
         </Grid>
       ) : (
@@ -56,7 +58,7 @@ function RolesPopper({
             startIcon={<DownloadIcon />}
             variant="outlined"
           >
-            Emote to Member
+            {t("usersTable.Emote to Member")}
           </Button>
         </Grid>
       )}

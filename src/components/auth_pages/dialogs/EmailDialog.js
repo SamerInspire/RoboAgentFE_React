@@ -14,6 +14,8 @@ import { useForm } from "react-hook-form";
 import LoadingButton from "components/buttons/LoadingButton";
 import FormStyle from "styles/styles";
 import { handleVerifyEmail } from "utils/api/auth/otp";
+import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 function EmailDialog({
   setOtpToken,
@@ -29,7 +31,7 @@ function EmailDialog({
     formState: { errors: emailErrors },
     reset,
   } = useForm();
-
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   return (
     <Dialog
@@ -56,7 +58,7 @@ function EmailDialog({
           <TextField
             fullWidth
             {...register("rest_email", { required: "Email is Required" })}
-            label={"Email"}
+            label={t("emailLabel")}
           />
         </FormStyle>
         {emailErrors?.email?.message && (
@@ -82,7 +84,7 @@ function EmailDialog({
           </Grid>
           <Grid item xs={12} md={6}>
             <LoadingButton
-              title="Send OTP"
+              title={t("forgotPassword.Send OTP")}
               isLoading={isLoading}
               clickHandler={emailHandleSubmit(async () => {
                 await handleVerifyEmail({
