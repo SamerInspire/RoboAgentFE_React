@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { AlertContext } from "hooks/context/AlertContext";
 import { lightTheme } from "styles/theme";
 import ServicesGetAnswer from "../page/ServicesGetAnswer";
-import { Services } from "../schema/ServicesSchema";
+import { Services } from "../Schema/ServicesSchema";
 
 jest.mock("react-router", () => ({
   ...jest.requireActual("react-router"),

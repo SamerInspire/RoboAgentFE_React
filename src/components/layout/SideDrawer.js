@@ -10,6 +10,8 @@ import {
 import { Link } from "react-router-dom";
 
 // icons & images
+import userAvatar from "assets/images/GreenQiwa.jpg";
+import getMoreAvatar from "assets/images/pom-bot.gif";
 import { FaUserFriends, FaUserPlus } from "react-icons/fa";
 import { ImPieChart } from "react-icons/im";
 import {
@@ -17,16 +19,16 @@ import {
   RiServerFill,
   RiShoppingBag3Fill,
 } from "react-icons/ri";
-import userAvatar from "assets/images/GreenQiwa.jpg";
-import getMoreAvatar from "assets/images/pom-bot.gif";
 
-import { useContext } from "react";
+import { styled } from "@mui/material";
 import CustomListItem from "components/drawer/CustomListItem";
 import { drawerWidth } from "components/layout/DashboardLayout";
 import { LoginContext } from "hooks/context/LoginInfoContext";
-import { styled } from "@mui/material";
-import AuthWrapper from "../auth_wrapper/AuthWrapper";
+import { themeContext } from "hooks/context/ThemeContext";
+import i18next from "i18next";
+import { useContext } from "react";
 import { useTranslation } from "react-i18next";
+import AuthWrapper from "../auth_wrapper/AuthWrapper";
 const NavDrawerStyle = styled("nav")(({ theme }) => ({
   [theme.breakpoints.up("sm")]: {
     width: drawerWidth,
@@ -155,6 +157,7 @@ const SideDrawer = (props) => {
   console.log("loginData side ---< ", loginData);
   const links = loginData.isLoggedIn ? afterLogin : beforeLogin;
   const { t } = useTranslation();
+  const { direction } = useContext(themeContext);
   const drawerContent = (
     <>
       {/* Logo */}
@@ -201,13 +204,10 @@ const SideDrawer = (props) => {
       {/* Hidden 01 for sm size */}
       <Hidden smUp implementation="css">
         <Drawer
-          container={props.container}
           variant="temporary"
-          //anchor={theme.direction === "rtl" ? "right" : "left"}
+          anchor={i18next.language == "ar" ? "right" : "left"}
           open={props.toggleMenu}
           onClose={props.onClose}
-          classes={{ paper: props.drawerPaper }}
-          ModalProps={{ keepMounted: true }}
         >
           {/* Drawer Component */}
           {drawerContent}

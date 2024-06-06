@@ -3,6 +3,6 @@ variables:
   NODE_IMAGE: node:18.16-alpine3.16
 
 include:
-  - project: 'takamol/qiwa/infrastructure/ci-cd'
-    file: '/spa/.gitlab-ci.yml'
-    ref: 'master'
+  - project: "takamol/qiwa/infrastructure/ci-cd"
+    file: "/spa/.gitlab-ci.yml"
+    ref: "master"
