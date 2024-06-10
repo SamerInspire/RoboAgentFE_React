@@ -99,7 +99,9 @@ export default function CustomTransferList({ activeTasks, setActiveTasks }) {
           />
         }
         title={title}
-        subheader={`${numberOfChecked(items)}/${items.length} selected`}
+        subheader={
+          `${numberOfChecked(items)}/${items.length} ` + t("dashboard.selected")
+        }
       />
       <Divider />
       <List

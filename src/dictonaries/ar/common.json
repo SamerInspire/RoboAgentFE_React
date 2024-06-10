@@ -122,6 +122,8 @@
     "Add Task": "إضافة مهمة",
     "Discard": "تجاهل",
     "Add": "إضافة",
+    "selected": "المحدد",
+    "New Incomming Tickets": "التذاكر الواردة الجديدة",
     "New order for work payment": "طلب جديد لدفع العمل",
     "work payment included": "تم تضمين دفع العمل",
     "900 tickets, Nitaqat & Balance, Answered": "900 تذكرة، نطاقات ورصيد، تم الرد",
@@ -157,7 +159,11 @@
     "Dynamic Identity Officer": "مسؤول الهوية الديناميكية"
   },
   "Task Name": "اسم المهمة",
-
+  "errors": {
+    "Sorry, page not found!": "عذرًا، الصفحة غير موجودة!",
+    "Sorry, we could not find the page you are looking for ,Perhaps you have mistyped the URL? Be sure to check your spelling": "عذرًا، لم نتمكن من العثور على الصفحة التي تبحث عنها. ربما قمت بكتابة عنوان URL بطريقة خاطئة؟ تأكد من التحقق من تهجئة العنوان.",
+    "Go to Home": "اذهب إلى الصفحة الرئيسية"
+  },
   "register": {
     "Terms of Service": "شروط الخدمة",
     "Privacy Policy": "سياسة الخصوصية",

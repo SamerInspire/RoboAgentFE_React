@@ -1,8 +1,8 @@
 import { Box, styled } from "@mui/material";
-import DashCard from "./DashCard";
-import DashCardHeader from "./DashCardHeader";
 import ReactApexChart from "react-apexcharts";
 import { useTranslation } from "react-i18next";
+import DashCard from "./DashCard";
+import DashCardHeader from "./DashCardHeader";
 
 const DivStyle = styled(Box)(({ theme }) => ({
   paddingTop: theme.spacing(1),
@@ -54,7 +54,7 @@ const ChartCurrentSubject = () => {
   };
   return (
     <DashCard>
-      <DashCardHeader title="New Incomming Tickets" />
+      <DashCardHeader title="dashboard.New Incomming Tickets" />
 
       <DivStyle>
         <ReactApexChart

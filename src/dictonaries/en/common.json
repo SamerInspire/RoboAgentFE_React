@@ -97,7 +97,14 @@
     "VIEW ALL": "VIEW ALL",
     "Rows per page": "Rows per page : "
   },
+  "errors": {
+    "Sorry, page not found!": "Sorry, page not found!",
+    "Sorry, we could not find the page you are looking for ,Perhaps you have mistyped the URL? Be sure to check your spelling": "Sorry, we could not find the page you are looking for ,Perhaps you have mistyped the URL? Be sure to check your spelling",
+    "Go to Home": "Go to Home"
+  },
   "dashboard": {
+    "New Incomming Tickets": "New Incomming Tickets",
+    "selected": "selected",
     "Automation Time line": "Automation Time line",
     "Total active Issues": "Total active Issues",
     "Current Tickets": "Current Tickets",

@@ -44,7 +44,7 @@ const NewsUpdate = () => {
       postingTime: "about 12 hours",
     },
     {
-      title: "Senior Implementation Manager",
+      title: ".Senior Implementation Manager",
       subtitle: loremText,
       photo: coverImg_5,
       postingTime: "about 10 hours",
