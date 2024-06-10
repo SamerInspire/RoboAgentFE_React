@@ -119,15 +119,7 @@ function UserTable() {
           justifyContent: "center",
         }}
       >
-        <Grid
-          container
-          item
-          xs={12}
-          md={6}
-          sx={{
-            ...glassMorphisimStyle,
-          }}
-        >
+        <Grid container item xs={12} md={6} sx={glassMorphisimStyle}>
           <DNDServicesModal
             userData={userData}
             authorities={authorities}

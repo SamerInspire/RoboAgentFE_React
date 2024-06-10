@@ -124,7 +124,6 @@ const FormRegister = ({
         international
         countryCallingCodeEditable={false}
         defaultCountry="SA"
-        keyboardType="phone-pad"
         maxLength="16"
         value={userData?.phoneNumber}
         onChange={(value) => {
@@ -180,8 +179,9 @@ const FormRegister = ({
           required: true,
           pattern: {
             value: /^(?=.*[A-Z])(?=.*\d).+$/,
-            message:
-              "Password must contain at least one capital letter one small and one number",
+            message: t(
+              "register.Password must contain at least one capital letter one small and one number"
+            ),
           },
           onChange: (e) =>
             setPasswordsInfo({ ...passwordsInfo, valuePass: e.target.value }),
@@ -227,8 +227,9 @@ const FormRegister = ({
             setPasswordsInfo({ ...passwordsInfo, valueConf: e.target.value }),
         })}
         error={
-          errors.confPassword ||
-          passwordsInfo.valueConf !== passwordsInfo.valuePass
+          errors.confPassword
+            ? true
+            : false || passwordsInfo.valueConf !== passwordsInfo.valuePass
         }
         helperText={
           errors.confPassword

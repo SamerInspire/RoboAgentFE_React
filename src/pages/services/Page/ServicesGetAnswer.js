@@ -12,12 +12,14 @@ import TasksItem from "pages/dashboard/TasksItem";
 import { numbersOnly } from "utils/DefualtValidators";
 import { handleGetResponse } from "utils/api/answer/service";
 import { handleFetchCurrentUser } from "utils/users/users";
+import { useTranslation } from "react-i18next";
 
 const ServicesGetAnswer = ({}) => {
   let { servicename } = useParams();
   const [answer, setAnswer] = useState("");
   const [currentUserData, setCurrentUserData] = useState({});
   const isEligiable = useRef(false);
+  const { t } = useTranslation();
   console.log("answer ===> Siminz ", answer);
   const [currService, setCurrService] = useState(
     Services.filter((service) => service.value == servicename)[0]
@@ -120,7 +122,7 @@ const ServicesGetAnswer = ({}) => {
               <Grid container item xs={12} gap={1}>
                 <Grid item xs={12}>
                   <Typography variant="body1" fontWeight={500}>
-                    Reason *
+                    {t("getAnswerForm.Reason")} *
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
@@ -149,7 +151,7 @@ const ServicesGetAnswer = ({}) => {
                 <Grid container item xs={12} gap={1} md={6}>
                   <Grid item xs={12}>
                     <Typography variant="body1" fontWeight={500}>
-                      Establishment Number *
+                      {t("getAnswerForm.Establishment Number")} *
                     </Typography>
                   </Grid>
                   <Grid item xs={12}>
@@ -171,7 +173,7 @@ const ServicesGetAnswer = ({}) => {
                 <Grid container item xs={12} md={6} gap={1}>
                   <Grid item xs={12}>
                     <Typography variant="body1" fontWeight={500}>
-                      ID or Iqameh *
+                      {t("getAnswerForm.ID or Iqameh")} *
                     </Typography>
                   </Grid>
                   <Grid item xs={12}>
@@ -221,7 +223,7 @@ const ServicesGetAnswer = ({}) => {
                 variant="outlined"
                 readOnly
                 id="outlined-multiline-static"
-                label="Answer"
+                label={t("getAnswerForm.answer")}
                 textAlign="right"
                 value={answer}
                 style={{ direction: "rtl" }}
@@ -235,7 +237,11 @@ const ServicesGetAnswer = ({}) => {
                 fullWidth
               />
             </Grid>
-            <GetAnswerToolbar loading={loading} />
+            <GetAnswerToolbar
+              searchLabel={t("getAnswerForm.searchButton")}
+              backLabel={t("getAnswerForm.backButton")}
+              loading={loading}
+            />
           </Grid>
         </form>
       </Grid>

@@ -1,5 +1,5 @@
 import { Button, Grid } from "@mui/material";
-function GetAnswerToolbar({ loading }) {
+function GetAnswerToolbar({ loading, searchLabel, backLabel }) {
   return (
     <Grid container item spacing={4} marginBottom={4}>
       <Grid item xs={12} md={6}>
@@ -13,7 +13,7 @@ function GetAnswerToolbar({ loading }) {
           }}
           href="/dash/services"
         >
-          back
+          {backLabel}
         </Button>
       </Grid>
       <Grid item xs={12} md={6}>
@@ -24,7 +24,7 @@ function GetAnswerToolbar({ loading }) {
           isLoading={loading}
           disableElevation
         >
-          Search
+          {searchLabel}
         </Button>
       </Grid>
     </Grid>

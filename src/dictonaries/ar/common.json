@@ -10,29 +10,31 @@
   "links": {
     "login": "تسجيل الدخول",
     "dashboard": "لوحة التحكم",
-    "user": "المستخدم",
+    "user": "المستخدمين",
     "manual": "الدليل",
     "services": "الخدمات",
     "register": "تسجيل"
   },
   "forgotPassword": {
+    "OTP Verification": "التحقق من الرمز",
     "Reset a Password": "إعادة تعيين كلمة المرور",
     "Please enter your email that you wish to change a password for": "يرجى إدخال البريد الإلكتروني الذي تريد تغيير كلمة المرور له",
     "Email is Required": "البريد الإلكتروني مطلوب",
     "Cancel": "إلغاء",
-    "Send OTP": "إرسال OTP",
-    " OTP Verification": "التحقق من OTP",
-    "Please enter OTP sent to your email": "يرجى إدخال OTP المرسل إلى بريدك الإلكتروني",
-    "OTP": "OTP",
+    "Send OTP": "إرسال الرمز",
+    " OTP Verification": "التحقق من الرمز",
+    "Please enter OTP sent to your email": "يرجى إدخال الرمز المرسل إلى بريدك الإلكتروني",
+    "OTP": "الرمز",
     "OTP is Required": "OTP مطلوب",
-    "Haven't recieved the OTP ?": "لم تتلق OTP؟",
+    "Haven't recieved the OTP ?": "لم تتلق الرمز",
     "Resend": "إعادة إرسال",
     "Verify": "تحقق",
     "Change Your Password": "تغيير كلمة المرور",
     "Password must contain at least one capital letter one small and one number": "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل وحرف صغير ورقم",
     "Passwords do not match": "كلمات المرور غير متطابقة",
     "Change Password": "تغيير كلمة المرور",
-    "Confirm Password": "تأكيد كلمة المرور"
+    "Confirm Password": "تأكيد كلمة المرور",
+    "Enter a new password below to change your password": "دخل كلمة مرور جديدة أدناه لتغيير كلمة المرور الخاصة بك "
   },
   "UserNameLabel": "اسم المستخدم",
   "firstnameLabel": "الاسم الأول",
@@ -62,6 +64,14 @@
     "create_admin_acc_label": "إنشاء حساب مشرف",
     "login_btn": "تسجيل الدخول"
   },
+  "getAnswerForm": {
+    "Reason": "السبب ",
+    "Establishment Number": "رقم المنشأة",
+    "ID or Iqameh": "الرقم التعريفي او الأقامة",
+    "answer": "الأجابة",
+    "backButton": "رجوع",
+    "searchButton": "بحث"
+  },
   "usersTable": {
     "Edit User Services": "تعديل خدمات المستخدم",
     "Cancel": "إلغاء",
@@ -72,7 +82,8 @@
     "Service": "الخدمة",
     "Promote to team Lead": "ترقية إلى قائد الفريق",
     "Emote to Member": "خفض إلى عضو",
-    "Users List": "قائمة الموظفين"
+    "Users List": "قائمة الموظفين",
+    "VIEW ALL": "عرض الكل"
   },
   "dashboard": {
     "Automation Time line": "جدول زمني للأتمتة",
@@ -133,6 +144,8 @@
     "finishedTasks": "المهام المكتملة",
     "Dynamic Identity Officer": "مسؤول الهوية الديناميكية"
   },
+  "Task Name": "اسم المهمة",
+
   "register": {
     "Terms of Service": "شروط الخدمة",
     "Privacy Policy": "سياسة الخصوصية",
@@ -165,6 +178,8 @@
     "registerButton": "تسجيل",
     "By registering, I agree to RoboAgent": "بالتسجيل، أوافق على RoboAgent",
     " Terms of Service": " شروط الخدمة",
+    "Password must contain at least one capital letter one small and one number": "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل ورقم صغير ورقم واحد",
+
     "and": "و",
     " Privacy Policy": "سياسة الخصوصية"
   }

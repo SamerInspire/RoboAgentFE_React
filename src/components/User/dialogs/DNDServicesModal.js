@@ -12,8 +12,10 @@ import {
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import { Box, Button, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import { useContext, useState } from "react";
+import i18n from "dictonaries/i18n";
 import { AlertContext } from "hooks/context/AlertContext";
+import { useContext, useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   findBoardSectionContainer,
   getAuthorityById,
@@ -22,7 +24,6 @@ import {
 import { handleSubmitUserAuths } from "utils/users/users";
 import DraggableServiceItem from "./DraggableServiceItem";
 import ServiceContainer from "./ServiceContainer";
-import { useTranslation } from "react-i18next";
 const dropAnimation = {
   ...defaultDropAnimation,
 };
@@ -143,8 +144,11 @@ const DNDServicesModal = ({
       container
       item
       maxHeight={"85vh"}
-      sx={{ overflowY: "scroll" }}
-      gap={4}
+      sx={{
+        overflowY: "scroll",
+        direction: i18n.language == "en" ? "rtl" : "ltr",
+      }}
+      gap={12}
     >
       <Grid container item p={4} gap={4}>
         <Grid item>

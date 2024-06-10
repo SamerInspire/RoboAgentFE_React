@@ -5,11 +5,14 @@ import {
   DialogContent,
   DialogTitle,
   FormControl,
+  Grid,
   InputLabel,
   MenuItem,
   OutlinedInput,
   Select,
+  Typography,
 } from "@mui/material";
+import i18n from "dictonaries/i18n";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { handleSubmitUserNewService } from "utils/users/users";
@@ -33,10 +36,18 @@ function ServiceDialog({
       disableEscapeKeyDown
       open={isEditServiceDialogOpen}
       onClose={handleCloseServiceDialog}
-      fullWidth={"md"}
+      fullWidth
+      maxWidth={"sm"}
+      sx={{
+        direction: i18n.language == "ar" ? "ltr" : "ltr",
+      }}
     >
-      <DialogTitle>{t("usersTable.Choose User Main Service")}</DialogTitle>
-      <DialogContent>
+      <Grid container item xs={12} p={4} gap={4}>
+        <Grid item>
+          <Typography variant="h5" fontWeight={600}>
+            {t("usersTable.Choose User Main Service")} *
+          </Typography>
+        </Grid>
         <FormControl sx={{ my: 1, width: "100%" }}>
           <InputLabel id="main_service">{t("usersTable.Service")}</InputLabel>
           <Select
@@ -52,26 +63,37 @@ function ServiceDialog({
             ))}
           </Select>
         </FormControl>
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={handleCloseServiceDialog}>Cancel</Button>
-        <Button
-          variant="contained"
-          onClick={() =>
-            handleSubmitUserNewService({
-              handleCloseServiceDialog,
-              userId,
-              userNewService,
-              requestAction: "SET_SUBMIT_USER_SERVICE",
-              tableData,
-              setTableData,
-              setAlert,
-            })
-          }
-        >
-          {t("usersTable.Submit")}
-        </Button>
-      </DialogActions>
+        <Grid container item spacing={4}>
+          <Grid item xs={6}>
+            <Button
+              fullWidth
+              variant="outlined"
+              onClick={handleCloseServiceDialog}
+            >
+              {t("usersTable.Cancel")}
+            </Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button
+              variant="contained"
+              fullWidth
+              onClick={() =>
+                handleSubmitUserNewService({
+                  handleCloseServiceDialog,
+                  userId,
+                  userNewService,
+                  requestAction: "SET_SUBMIT_USER_SERVICE",
+                  tableData,
+                  setTableData,
+                  setAlert,
+                })
+              }
+            >
+              {t("usersTable.Submit")}
+            </Button>
+          </Grid>
+        </Grid>
+      </Grid>
     </Dialog>
   );
 }

@@ -1,4 +1,5 @@
 import {
+  Grid,
   IconButton,
   ListItemText,
   Menu,
@@ -15,6 +16,8 @@ import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 
 const StyledMenu = styled(Menu)(({ theme }) => ({
+  display: "flex",
+  gap: "10px",
   paper: {
     minWidth: 175,
     boxShadow: `0 2px 10px -5px ${theme.palette.green.darker}`,
@@ -64,15 +67,20 @@ const LanguageSelector = (props) => {
   const { i18n } = useTranslation();
 
   return (
-    <>
-      <IconButtonStyle
-        aria-controls="language-selector"
-        aria-haspopup="true"
-        onClick={props.onOpen}
-      >
-        {i18next.language == "en" ? languages[1].src : <>{languages[0].src}</>}
-      </IconButtonStyle>
-
+    <Grid container item>
+      <Grid item>
+        <IconButtonStyle
+          aria-controls="language-selector"
+          aria-haspopup="true"
+          onClick={props.onOpen}
+        >
+          {i18next.language == "en" ? (
+            languages[1].src
+          ) : (
+            <>{languages[0].src}</>
+          )}
+        </IconButtonStyle>
+      </Grid>
       <StyledMenu
         id="customized menu"
         anchorEl={props.anchorEl}
@@ -91,11 +99,11 @@ const LanguageSelector = (props) => {
             }}
           >
             {el.src}
-            <ListItemText primary={el.alt} />
+            <ListItemText sx={{ mx: 1 }} primary={el.alt} />
           </StyledMenuItem>
         ))}
       </StyledMenu>
-    </>
+    </Grid>
   );
 };
 
