@@ -16,6 +16,16 @@
     "services": "Services",
     "register": "Register"
   },
+  "stepper": {
+    "User Main Information": "User Main Information",
+    "User Profile": "User Profile"
+  },
+  "userMenu": {
+    "Home": "Home",
+    "Profile": "Profile",
+    "Settings": "Settings",
+    "logout": "LOGOUT"
+  },
   "forgotPassword": {
     "OTP Verification": "OTP Verification",
     "Enter a new password below to change your password": "Enter a new password below to change your password",
@@ -84,7 +94,8 @@
     "Promote to team Lead": "Promote to team Lead",
     "Emote to Member": "Emote to Member",
     "Users List": "Users List",
-    "VIEW ALL": "VIEW ALL"
+    "VIEW ALL": "VIEW ALL",
+    "Rows per page": "Rows per page : "
   },
   "dashboard": {
     "Automation Time line": "Automation Time line",

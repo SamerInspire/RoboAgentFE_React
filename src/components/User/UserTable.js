@@ -28,6 +28,8 @@ function UserTable() {
   const [statusAnchorEl, setStatusAnchorEl] = useState(null);
   const [currentUserData, setCurrentUserData] = useState({});
   const [isOpenServicesModal, setIsOpenServicesModal] = useState(false);
+  const { t } = useTranslation();
+
   const handleCloseRolePopper = () => setStatusAnchorEl(undefined);
 
   const handleCloseServicesModal = () => {
@@ -90,8 +92,15 @@ function UserTable() {
   const options = {
     filterType: "checkbox",
     selectableRowsHeader: false,
+    textLabels: {
+      pagination: {
+        next: "Next Page",
+        previous: "Previous Page",
+        rowsPerPage: t("usersTable.Rows per page"),
+        displayRows: "of",
+      },
+    },
   };
-  const { t } = useTranslation();
   return (
     <Grid container item gap={4}>
       <Grid container item>

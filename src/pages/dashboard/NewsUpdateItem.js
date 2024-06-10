@@ -1,6 +1,7 @@
 import { Link as RouterLink } from "react-router-dom";
 import { Avatar, Typography, Link } from "@mui/material";
 import { Box, styled } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const BoxContainerStyle = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -27,6 +28,7 @@ const BoxContainerStyle = styled(Box)(({ theme }) => ({
 }));
 
 const NewsUpdateItem = (props) => {
+  const { t } = useTranslation();
   return (
     <BoxContainerStyle sx={{ my: 1 }}>
       <Avatar src={props.photo} alt={props.title} />
@@ -34,7 +36,7 @@ const NewsUpdateItem = (props) => {
       <Box sx={{ px: 1.5 }}>
         <Link to="/" component={RouterLink} underline="hover" color="inherit">
           <Typography variant="body1" component="h3">
-            {props.title}
+            {t(props.title)}
           </Typography>
         </Link>
 

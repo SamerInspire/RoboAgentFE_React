@@ -1,5 +1,6 @@
 import { CardHeader } from "@mui/material";
 import { styled } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const CardHeaderStyle = styled(CardHeader)(({ theme }) => ({
   padding: "24px 24px 0 24px",
@@ -16,7 +17,8 @@ const CardHeaderStyle = styled(CardHeader)(({ theme }) => ({
 }));
 
 const DashCardHeader = (props) => {
-  return <CardHeaderStyle title={props.title} subheader={props.subheader} />;
+  const { t } = useTranslation();
+  return <CardHeaderStyle title={t(props.title)} subheader={props.subheader} />;
 };
 
 export default DashCardHeader;

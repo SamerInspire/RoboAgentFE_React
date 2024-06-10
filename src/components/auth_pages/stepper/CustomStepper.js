@@ -14,6 +14,7 @@ import StepConnector, {
 } from "@mui/material/StepConnector";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import Person2Icon from "@mui/icons-material/Person2";
+import { useTranslation } from "react-i18next";
 const QontoStepIconRoot = styled("div")(({ theme, ownerState }) => ({
   color: theme.palette.mode === "dark" ? theme.palette.grey[700] : "#eaeaf0",
   display: "flex",
@@ -143,9 +144,13 @@ ColorlibStepIcon.propTypes = {
   icon: PropTypes.node,
 };
 
-const stepsLabel = ["User Main Information", "User Profile"];
-
 export default function CustomStepper({ activeStep }) {
+  const { t } = useTranslation();
+  const stepsLabel = [
+    t("stepper.User Main Information"),
+    t("stepper.User Profile"),
+  ];
+
   return (
     <Stepper
       alternativeLabel

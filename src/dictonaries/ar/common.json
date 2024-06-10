@@ -15,6 +15,13 @@
     "services": "الخدمات",
     "register": "تسجيل"
   },
+  "userMenu": {
+    "Home": "الصفحة الرئيسية",
+    "Profile": "الملف الشحصي",
+    "Settings": "الأعدادات",
+    "logout": "تسجيل الخروج"
+  },
+  "Tickets": "تذاكر",
   "forgotPassword": {
     "OTP Verification": "التحقق من الرمز",
     "Reset a Password": "إعادة تعيين كلمة المرور",
@@ -35,6 +42,10 @@
     "Change Password": "تغيير كلمة المرور",
     "Confirm Password": "تأكيد كلمة المرور",
     "Enter a new password below to change your password": "دخل كلمة مرور جديدة أدناه لتغيير كلمة المرور الخاصة بك "
+  },
+  "stepper": {
+    "User Main Information": "المعلومات الرئيسية للمستخدم",
+    "User Profile": "ملف تعريفي للمستخدم"
   },
   "UserNameLabel": "اسم المستخدم",
   "firstnameLabel": "الاسم الأول",
@@ -83,7 +94,8 @@
     "Promote to team Lead": "ترقية إلى قائد الفريق",
     "Emote to Member": "خفض إلى عضو",
     "Users List": "قائمة الموظفين",
-    "VIEW ALL": "عرض الكل"
+    "VIEW ALL": "عرض الكل",
+    "Rows per page": "صفوف لكل صفحة : "
   },
   "dashboard": {
     "Automation Time line": "جدول زمني للأتمتة",
