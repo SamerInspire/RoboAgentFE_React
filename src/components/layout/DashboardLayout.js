@@ -19,7 +19,6 @@ const DrawerPaper = styled("div")(({ theme }) => ({
 const MainStyle = styled("main")(({ theme }) => ({
   flexGrow: 1,
   height: "calc(100vh - 65px)",
-  marginTop: "10px",
   padding: theme.spacing(3),
 }));
 

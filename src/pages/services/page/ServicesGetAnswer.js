@@ -20,10 +20,12 @@ const ServicesGetAnswer = ({}) => {
   const [currentUserData, setCurrentUserData] = useState({});
   const isEligiable = useRef(false);
   const { t } = useTranslation();
+  console.log(servicename);
   console.log("answer ===> Siminz ", answer);
   const [currService, setCurrService] = useState(
-    Services.filter((service) => service.value == servicename)[0]
+    Services.filter((service) => service.enName == servicename)[0]
   );
+  console.log(currService);
   const [loading, setLoading] = useState();
   const { setAlert, handleCloseAlert } = useContext(AlertContext);
   const lang = i18next.language;
