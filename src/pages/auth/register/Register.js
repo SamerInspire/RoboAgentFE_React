@@ -162,7 +162,7 @@ const Register = () => {
               >
                 {t("register.Terms of Service")}
               </Link>{" "}
-              {t("and")}{" "}
+              {t("register.and")}{" "}
               <Link
                 href="#"
                 onClick={preventDefault}
