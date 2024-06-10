@@ -20,3 +20,15 @@ body
   > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation2.MuiPopover-paper.css-ubpweo-MuiPaper-root-MuiPopover-paper {
   padding: 20px;
 }
+#root
+  > div
+  > main
+  > div
+  > div
+  > div
+  > div
+  > div.tss-1cdcmys-MUIDataTable-responsiveBase
+  > table
+  > caption {
+  display: none;
+}

@@ -41,7 +41,7 @@ const DashboardLayout = (props) => {
         }}
       >
         {/* App Bar */}
-        {loginData.isLoggedIn && <MainHeader onClick={handleToggleDrawer} />}
+        <MainHeader onClick={handleToggleDrawer} />
 
         {loginData.isLoggedIn && (
           <SideDrawer

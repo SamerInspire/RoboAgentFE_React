@@ -1,8 +1,9 @@
 import { Grid, Modal, Popper } from "@mui/material";
-import MUIDataTable from "mui-datatables";
-import { useContext, useEffect, useMemo, useState } from "react";
 import tableColumns from "constants/tableColumns";
 import { AlertContext } from "hooks/context/AlertContext";
+import MUIDataTable from "mui-datatables";
+import { useContext, useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { glassMorphisimStyle } from "styles/styles";
 import { handleFilterAuthorities } from "utils/table/tableReshape";
 import {
@@ -90,11 +91,12 @@ function UserTable() {
     filterType: "checkbox",
     selectableRowsHeader: false,
   };
+  const { t } = useTranslation();
   return (
     <Grid container item gap={4}>
       <Grid container item>
         <MUIDataTable
-          title={"Users List"}
+          title={t("usersTable.Users List")}
           data={tableData}
           columns={tableColumns({
             setUserData,
