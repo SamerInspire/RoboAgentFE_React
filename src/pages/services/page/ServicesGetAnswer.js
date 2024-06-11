@@ -84,7 +84,7 @@ const ServicesGetAnswer = ({}) => {
     <Grid container item alignItems={"flex-start"} flexWrap={"nowrap"} gap={8}>
       <Grid container item sm={12} md={10} gap={4}>
         <Grid item xs={12}>
-          <Typography variant="h4" style={{ fontWeight: "bold" }}>
+          <Typography variant="h5" style={{ fontWeight: "bold" }}>
             {lang === "en" ? currService.enName : currService.arName}
           </Typography>
         </Grid>
@@ -123,7 +123,7 @@ const ServicesGetAnswer = ({}) => {
             <Grid container item spacing={4}>
               <Grid container item xs={12} gap={1}>
                 <Grid item xs={12}>
-                  <Typography variant="body1" fontWeight={500}>
+                  <Typography variant="body2" fontWeight={500}>
                     {t("getAnswerForm.Reason")} *
                   </Typography>
                 </Grid>
@@ -152,7 +152,7 @@ const ServicesGetAnswer = ({}) => {
               <Grid container item xs={12} spacing={4}>
                 <Grid container item xs={12} gap={1} md={6}>
                   <Grid item xs={12}>
-                    <Typography variant="body1" fontWeight={500}>
+                    <Typography variant="body2" fontWeight={500}>
                       {t("getAnswerForm.Establishment Number")} *
                     </Typography>
                   </Grid>
@@ -174,7 +174,7 @@ const ServicesGetAnswer = ({}) => {
                 </Grid>
                 <Grid container item xs={12} md={6} gap={1}>
                   <Grid item xs={12}>
-                    <Typography variant="body1" fontWeight={500}>
+                    <Typography variant="body2" fontWeight={500}>
                       {t("getAnswerForm.ID or Iqameh")} *
                     </Typography>
                   </Grid>

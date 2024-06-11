@@ -19,7 +19,7 @@ const DrawerPaper = styled("div")(({ theme }) => ({
 const MainStyle = styled("main")(({ theme }) => ({
   flexGrow: 1,
   height: "calc(100vh - 65px)",
-  padding: theme.spacing(3),
+  padding: 16,
 }));
 
 const DashboardLayout = (props) => {
@@ -40,7 +40,7 @@ const DashboardLayout = (props) => {
         }}
       >
         {/* App Bar */}
-        <MainHeader onClick={handleToggleDrawer} />
+        {loginData.isLoggedIn && <MainHeader onClick={handleToggleDrawer} />}
 
         {loginData.isLoggedIn && (
           <SideDrawer

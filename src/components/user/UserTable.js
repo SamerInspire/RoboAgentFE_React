@@ -71,6 +71,7 @@ function UserTable() {
       requestAction: "SET_CURRENT_USER",
       setCurrentUserData,
       setAlert,
+      setIsLoading: () => {},
     });
     handleFetchAuthorities({
       setAuthorities,
@@ -84,7 +85,7 @@ function UserTable() {
       handleFetchServiceList({
         setServiceList,
         requestAction: "SET_SERVICE_LIST",
-        setIsLoading,
+        setIsLoading: () => {},
         setAlert,
       });
     }
@@ -101,6 +102,7 @@ function UserTable() {
       },
     },
   };
+  console.log("loaaaaaaaaaaaaaaaaaading===================>", isLoading);
   return (
     <Grid container item gap={4}>
       <Grid container item>
