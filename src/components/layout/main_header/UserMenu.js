@@ -1,4 +1,7 @@
 // icons
+import HomeIcon from "@mui/icons-material/Home";
+import Person2Icon from "@mui/icons-material/Person2";
+import SettingsIcon from "@mui/icons-material/Settings";
 import {
   Avatar,
   Box,
@@ -8,16 +11,14 @@ import {
   MenuItem,
   Typography,
 } from "@mui/material";
-
 // icons & images
 import { Button, styled } from "@mui/material";
 import Menu from "@mui/material/Menu";
-import { useContext } from "react";
-import { RiHome4Fill, RiSettings3Fill, RiUserFill } from "react-icons/ri";
 import userAvatar from "assets/images/GreenQiwa.jpg";
-import { LoginContext } from "hooks/context/LoginInfoContext";
-import { useTranslation } from "react-i18next";
 import i18n from "dictonaries/i18n";
+import { LoginContext } from "hooks/context/LoginInfoContext";
+import { useContext } from "react";
+import { useTranslation } from "react-i18next";
 
 const GrayMainText = styled("div")(({ theme }) => ({
   color: theme.palette.gray.main,
@@ -84,19 +85,19 @@ const UserMenu = (props) => {
       id: "l1",
       path: "/home",
       title: t("userMenu.Home"),
-      icon: <RiHome4Fill />,
+      icon: <HomeIcon sx={{ color: "primary.main" }} />,
     },
     {
       id: "l2",
       path: "/profile",
       title: t("userMenu.Profile"),
-      icon: <RiUserFill />,
+      icon: <Person2Icon sx={{ color: "primary.main" }} />,
     },
     {
       id: "l3",
       path: "/settings",
       title: t("userMenu.Settings"),
-      icon: <RiSettings3Fill />,
+      icon: <SettingsIcon sx={{ color: "primary.main" }} />,
     },
   ];
   const { loginData, logout } = useContext(LoginContext);
@@ -138,7 +139,13 @@ const UserMenu = (props) => {
           <MenuItemStyle key={el.id}>
             <a href={el.path}>
               {el.icon}
-              <Box component="span">{el.title}</Box>
+              <Typography
+                fontWeight={600}
+                color={"primary.main"}
+                variant="body1"
+              >
+                {el.title}
+              </Typography>
             </a>
           </MenuItemStyle>
         ))}
