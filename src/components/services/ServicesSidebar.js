@@ -10,7 +10,6 @@ function ServicesSidebar({
   currentUserData,
 }) {
   const lang = i18next.language;
-
   return (
     <Grid
       container
@@ -18,7 +17,7 @@ function ServicesSidebar({
       borderLeft={"1px solid darkgray"}
       display={{ sm: "none", md: "grid" }}
       md={2}
-      gap={4}
+      gap={2}
     >
       {Services.map((service, index) => {
         const showService = currentUserData?.roboAuthorities?.some((auth) =>

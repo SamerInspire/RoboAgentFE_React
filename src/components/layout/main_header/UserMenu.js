@@ -131,9 +131,7 @@ const UserMenu = (props) => {
             {loginData.email}
           </GrayMainText>
         </BoxStyle>
-
         <Divider />
-
         {/* list of links */}
         {links.map((el) => (
           <MenuItemStyle key={el.id}>
