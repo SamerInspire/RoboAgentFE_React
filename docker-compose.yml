@@ -1,13 +1,12 @@
 version: "3.7"
 
 services:
-  work-p:
+  roboagent-spa:
     image: $IMAGE_NAME
-    container_name: work-p
     labels:
       com.qiwa.runtime.product-name: "qiwa"
       com.qiwa.runtime.service-name: "roboagent-spa"
-      com.qiwa.runtime.service-vendor: "inspire"
+      com.qiwa.runtime.service-vendor: "inspirejo"
       # com.qiwa.runtime.log-format: "qiwa"
     restart: unless-stopped
     volumes:
