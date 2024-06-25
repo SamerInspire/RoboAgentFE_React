@@ -52,7 +52,7 @@ export async function hanldeSubmitUserNewRole(utils) {
 export async function handleSubmitNewUser(userData, utils) {
   console.log(userData);
   try {
-    const r = await AxiosHit(
+    await AxiosHit(
       {
         url: "/api/users/signup",
         method: "post",

@@ -61,7 +61,7 @@ export async function handleUserCodeActions(result, code, utils) {
   return result;
 }
 export function handleGeneralErrorCodeActions(result, code, utils) {
-  const { header } = result?.data?.roboAgentRs;
+  const { header } = result.data.roboAgentRs;
   const { setAlert } = utils;
   const { alertStatus, message } = getResponseShape(header, code);
   setAlert({ alertType: alertStatus, alertMsg: message });
@@ -81,7 +81,7 @@ export function handleEmailCodeActions(result, code, utils) {
 }
 
 export function handleGetAnswerFailure() {}
-export function unAuthorizedHitHandle(result, codeNumbers, utils) {
+export function unAuthorizedHitHandle() {
   try {
     window.location = "/dash/dashboard";
   } catch (error) {
