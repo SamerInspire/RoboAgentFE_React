@@ -226,7 +226,6 @@ const ServicesGetAnswer = ({}) => {
                 readOnly
                 id="outlined-multiline-static"
                 label={t("getAnswerForm.answer")}
-                textAlign="right"
                 value={answer}
                 style={{ direction: "rtl" }}
                 InputProps={{

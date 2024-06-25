@@ -17,13 +17,17 @@ const buttonsStyle = {
 const textTicketStyles = {
   "& fieldset": {
     borderRadius: "0",
+
     border: "primary.main",
+    outline: "none",
   },
   "&.Mui-focused fieldset": {
-    border: "primary.main",
+    border: "none",
+    outline: "none",
   },
   "&.Mui-focused fieldset": {
-    borderColor: "primary.main",
+    borderColor: "none",
+    outline: "none",
   },
   "& input": {
     textAlign: "center",
@@ -60,6 +64,8 @@ function ServicesCounter() {
         xs={2}
         sx={{
           ...buttonsStyle,
+          borderTopLeftRadius: "5px",
+          borderBottomLeftRadius: "5px",
         }}
         onClick={() =>
           ticketsCounter == 0 ? null : setTicketsCounter((prev) => prev - 1)
@@ -69,6 +75,7 @@ function ServicesCounter() {
       </Grid>
       <Grid item xs={4}>
         <TextField
+          variant="outlined"
           value={ticketsCounter}
           label={t("Tickets")}
           type="number"
@@ -84,6 +91,8 @@ function ServicesCounter() {
               height: 40,
               padding: "0 14px",
               fontWeight: "bold",
+              outline: "none",
+              border: "none",
             },
           }}
         />
@@ -96,6 +105,9 @@ function ServicesCounter() {
         xs={2}
         sx={{
           ...buttonsStyle,
+
+          borderTopRightRadius: "5px",
+          borderBottomRightRadius: "5px",
         }}
         onClick={() => setTicketsCounter((prev) => Number(prev) + 1)}
       >

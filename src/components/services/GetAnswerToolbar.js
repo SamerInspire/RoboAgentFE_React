@@ -21,7 +21,7 @@ function GetAnswerToolbar({ loading, searchLabel, backLabel }) {
           fullWidth
           variant="contained"
           type="submit"
-          isLoading={loading}
+          disabled={loading}
           disableElevation
         >
           {searchLabel}
