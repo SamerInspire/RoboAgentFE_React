@@ -12,7 +12,7 @@ module.exports = {
       // 'plugin:import/typescript',
       // 'plugin:jsx-a11y/recommended',
     ],
-    parser: '@typescript-eslint/parser',
+    // parser: '@typescript-eslint/parser',
     parserOptions: {
       ecmaVersion: 2020,
       sourceType: 'module',

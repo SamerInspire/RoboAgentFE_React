@@ -31,6 +31,7 @@
     "react-router": "^6.0.0-beta.0",
     "react-router-dom": "^6.0.0-beta.0",
     "react-scripts": "^5.0.1",
+    "stylis-plugin-rtl": "2.1.1",
     "uuid": "^9.0.1",
     "validator": "^13.11.0",
     "web-vitals": "^1.1.2"
@@ -39,7 +40,23 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test react-scripts test --watchAll=true --coverage --silent --collectCoverageFrom='src/**/*.{js,jsx}' --transformIgnorePatterns 'node_modules/(?!my-library-dir)/'",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test:unit": "qiwa-scripts test --maxWorkers=25%",
+    "test:clear-cache": "jest --clearCache",
+    "prepare": "npx husky install",
+    "lint": "eslint . --ext ts",
+    "lint:fix": "npm run lint -- --fix",
+    "type-check": "tsc --pretty --noEmit",
+    "pre-commit": "lint-staged",
+    "generator": "plop",
+    "translations": "ts-node -T --skip-project ./scripts/translations-babelsheet/fetch-translations.ts && npm run generate-messages-keys-type",
+    "generate-messages-keys-type": "ts-node -T --skip-project ./scripts/generate-messages-keys-type/generate-messages-keys-type.ts",
+    "cleanup-examples": "ts-node -T --skip-project cleanupExamples/cleanup.ts",
+    "check:circular-deps": "madge --circular --image graph-circular-deps.png src/index.ts && npm run lint -- --rule \"import/no-cycle: error\"",
+    "test:analyze": "qiwa-scripts test --maxWorkers=25% --analyze",
+    "build:analyze": "qiwa-scripts build --analyze",
+    "start:production": "qiwa-scripts start --production --serviceName=dev.react-starter.qiwa.info",
+    "lint:analyze": "cross-env TIMING=all npm run lint --report-unused-disable-directives"
   },
   "browserslist": {
     "production": [
