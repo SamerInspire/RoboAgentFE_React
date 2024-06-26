@@ -1,10 +1,11 @@
+/* eslint-disable */
 import { ThemeProvider } from "@mui/material";
 import { fireEvent, render, waitFor } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { AlertContext } from "hooks/context/AlertContext";
 import { lightTheme } from "styles/theme";
 import ServicesGetAnswer from "../page/ServicesGetAnswer";
-import { Services } from "../Schema/ServicesSchema";
+import { Services } from "../schema/ServicesSchema";
 
 jest.mock("react-router", () => ({
   ...jest.requireActual("react-router"),

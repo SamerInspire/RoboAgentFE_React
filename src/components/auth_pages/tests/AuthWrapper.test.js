@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import React from "react";
 import AuthWrapper from "components/auth_wrapper/AuthWrapper";
 import { LoginContext } from "hooks/context/LoginInfoContext";
 function isAllowedRole(allowedRoles = "", userRole = "") {

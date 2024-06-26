@@ -4,8 +4,9 @@ import { reshapeUserData } from "utils/table/tableReshape";
 
 export function generalSuccessReducer(result, utils) {
   console.log("utils.requestAction ===> ", utils.requestAction);
-  const { body } = result?.data?.roboAgentRs;
-  const { header } = result?.data?.roboAgentRs;
+  const rs  = result?.data?.roboAgentRs;
+  const  body  =rs?.body;
+  const  header = rs?.header;
   const { setAlert } = utils;
   const currentLang = i18n.language;
   const currentMessageLang =

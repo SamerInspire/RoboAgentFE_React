@@ -2,7 +2,7 @@ const { default: AxiosHit } = require("../AxiosHit");
 const {
   handleVerifyEmail,
   handleVerifyOTP,
-  handleRestPassword,
+  // handleRestPassword,
 } = require("../auth/otp");
 
 // Mocking AxiosHit
@@ -72,12 +72,12 @@ describe("handleVerifyOTP", () => {
 });
 
 describe("handleRestPassword", () => {
-  let utils = {
+  /* let utils = {
     newPass: "new-password",
     otpToken: "test-otp-token",
     setIsLoading: jest.fn(),
     handleClose: jest.fn(),
-  };
+  }; */
 
   // test("should call AxiosHit with correct parameters", async () => {
   //   await handleRestPassword(utils);

@@ -1,21 +1,21 @@
+/* eslint-disable no-unused-vars */
 // icons
 import {
   Avatar,
   Box,
   Divider,
   IconButton,
-  Link,
   MenuItem,
   Typography,
+  Button, styled
 } from "@mui/material";
 
 // icons & images
-import { Button, styled } from "@mui/material";
 import Menu from "@mui/material/Menu";
-import { useContext } from "react";
-import { RiHome4Fill, RiSettings3Fill, RiUserFill } from "react-icons/ri";
 import userAvatar from "assets/images/GreenQiwa.jpg";
 import { LoginContext } from "hooks/context/LoginInfoContext";
+import { useContext } from "react";
+import { RiHome4Fill, RiSettings3Fill, RiUserFill } from "react-icons/ri";
 
 const GrayMainText = styled("div")(({ theme }) => ({
   color: theme.palette.gray.main,
@@ -40,21 +40,21 @@ const AvatarButtonStyle = styled(IconButton)(({ theme }) => ({
   },
 }));
 
-const LinkStyle = styled(Link)(({ theme }) => ({
-  display: "block",
-  textAlign: "center",
-  padding: theme.spacing(1),
-  color: theme.palette.common.black,
-  fontSize: theme.spacing(3),
-  fontWeight: 500,
-  border: "1px solid #333",
-  borderRadius: theme.spacing(1),
-  transition: "background 0.25s ease-in",
-  "&:hover": {
-    backgroundColor: theme.palette.gray.lighter,
-    underline: "none",
-  },
-}));
+// const LinkStyle = styled(Link)(({ theme }) => ({
+//   display: "block",
+//   textAlign: "center",
+//   padding: theme.spacing(1),
+//   color: theme.palette.common.black,
+//   fontSize: theme.spacing(3),
+//   fontWeight: 500,
+//   border: "1px solid #333",
+//   borderRadius: theme.spacing(1),
+//   transition: "background 0.25s ease-in",
+//   "&:hover": {
+//     backgroundColor: theme.palette.gray.lighter,
+//     underline: "none",
+//   },
+// }));
 
 const MenuItemStyle = styled(MenuItem)(({ theme }) => ({
   padding: 0,

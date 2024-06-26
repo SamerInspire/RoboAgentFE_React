@@ -1,8 +1,6 @@
-import { DragOverlay } from "@dnd-kit/core";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Grid } from "@mui/material";
-import React from "react";
 
 const SortableTaskItem = ({ children, id, authority, containerId }) => {
   const {

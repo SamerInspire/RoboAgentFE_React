@@ -1,11 +1,10 @@
 // LanguageSelector.test.js
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import LanguageSelector from "../main_header/SelectLanguage";
+import { fireEvent, render, screen } from "@testing-library/react";
+import Providers from "components/Providers";
+import i18n from "dictonaries/i18n";
 import { themeContext } from "hooks/context/ThemeContext";
 import { I18nextProvider } from "react-i18next";
-import i18n from "dictonaries/i18n";
-import Providers from "components/Providers";
+import LanguageSelector from "../main_header/SelectLanguage";
 
 jest.mock("src/assets/images/ic_flag_ar.svg", () => "AR_Flag");
 jest.mock("src/assets/images/ic_flag_en.svg", () => "EN_Flag");

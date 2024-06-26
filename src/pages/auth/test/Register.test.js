@@ -1,14 +1,12 @@
+/* eslint-disable no-unused-vars */
 import {
-  render,
   fireEvent,
-  getByRole,
-  getByLabelText,
+  render
 } from "@testing-library/react";
-import Register from "../register/Register";
-import { BrowserRouter } from "react-router-dom";
 import Providers from "components/Providers";
 import FinalRegister from "components/auth_pages/FinalRegister";
-import FormRegister from "components/auth_pages/FormRegister";
+import { BrowserRouter } from "react-router-dom";
+import Register from "../register/Register";
 
 describe("Register Component", () => {
   test("renders Register component with initial step", () => {

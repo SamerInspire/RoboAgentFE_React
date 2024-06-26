@@ -9,13 +9,12 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import LoadingButton from "components/buttons/LoadingButton";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import LoadingButton from "components/buttons/LoadingButton";
+import { useTranslation } from "react-i18next";
 import FormStyle from "styles/styles";
 import { handleVerifyEmail } from "utils/api/auth/otp";
-import { t } from "i18next";
-import { useTranslation } from "react-i18next";
 
 function EmailDialog({
   setOtpToken,

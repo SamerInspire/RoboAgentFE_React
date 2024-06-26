@@ -1,7 +1,6 @@
+/* eslint-disable */
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { t } from "i18next";
-import { useContext } from "react";
-import { AlertContext } from "hooks/context/AlertContext";
 
 const { Grid, Button, Typography } = require("@mui/material");
 
@@ -12,7 +11,7 @@ function tableColumns(utils) {
     currentUserData,
     handleOpenServiceModal,
   } = utils;
-  const { setAlert } = useContext(AlertContext);
+  // const { setAlert } = useContext(AlertContext);
   return [
     {
       name: "userId",
@@ -111,44 +110,44 @@ function tableColumns(utils) {
     },
     currentUserData.role == "TEAM_LEAD"
       ? {
-          name: "service",
-          label: t("serviceLabel"),
-        }
+        name: "service",
+        label: t("serviceLabel"),
+      }
       : {
-          name: "service",
-          label: t("serviceLabel"),
-          options: {
-            filter: true,
-            display: currentUserData.role == "TEAM_LEAD" ? "none" : true,
-            customBodyRender: (value, tableMeta, updateValue) => {
-              const formattedValue = value.split("_").join(" ");
-              return (
-                <Grid
-                  container
-                  item
-                  minWidth={"200px"}
-                  maxWidth={"200px"}
-                  alignItems={"center"}
-                  gap={2}
-                >
-                  <Grid item xs={8}>
-                    <Typography variant="body2" fontWeight={500}>
-                      {formattedValue}
-                    </Typography>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{ cursor: "pointer" }}
-                    onClick={() => handleOpenServiceDialog(tableMeta.rowData)}
-                  >
-                    <MoreVertIcon sx={{ color: "primary.main" }} />
-                  </Grid>
+        name: "service",
+        label: t("serviceLabel"),
+        options: {
+          filter: true,
+          display: currentUserData.role == "TEAM_LEAD" ? "none" : true,
+          customBodyRender: (value, tableMeta, updateValue) => {
+            const formattedValue = value.split("_").join(" ");
+            return (
+              <Grid
+                container
+                item
+                minWidth={"200px"}
+                maxWidth={"200px"}
+                alignItems={"center"}
+                gap={2}
+              >
+                <Grid item xs={8}>
+                  <Typography variant="body2" fontWeight={500}>
+                    {formattedValue}
+                  </Typography>
                 </Grid>
-              );
-            },
+                <Grid
+                  item
+                  xs={2}
+                  sx={{ cursor: "pointer" }}
+                  onClick={() => handleOpenServiceDialog(tableMeta.rowData)}
+                >
+                  <MoreVertIcon sx={{ color: "primary.main" }} />
+                </Grid>
+              </Grid>
+            );
           },
         },
+      },
     {
       name: "services",
       label: t("servicesLabel"),

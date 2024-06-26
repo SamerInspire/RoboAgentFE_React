@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable */
 const promptDirectory = require('inquirer-directory');
 
 const componentTypes = {

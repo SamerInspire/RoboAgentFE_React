@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import Providers from "components/Providers";

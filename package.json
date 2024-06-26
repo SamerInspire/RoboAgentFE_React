@@ -44,7 +44,7 @@
     "test:unit": "qiwa-scripts test --maxWorkers=25%",
     "test:clear-cache": "jest --clearCache",
     "prepare": "npx husky install",
-    "lint": "eslint . --ext ts",
+    "lint": "eslint --ignore-path .gitignore --ext .js .",
     "lint:fix": "npm run lint -- --fix",
     "type-check": "tsc --pretty --noEmit",
     "pre-commit": "lint-staged",
@@ -72,14 +72,27 @@
   },
   "devDependencies": {
     "@babel/core": "^7.24.5",
+    "@babel/eslint-parser": "7.24.7",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/preset-env": "^7.24.5",
     "@testing-library/jest-dom": "^6.4.5",
     "@testing-library/react": "^15.0.7",
     "@testing-library/user-event": "^12.8.3",
     "babel-jest": "^29.7.0",
+    "eslint-import-resolver-typescript": "3.6.1",
+    "eslint-plugin-import": "2.29.1",
     "react-error-overlay": "^6.0.9",
     "react-router-dom": "^6.0.0-alpha.2",
     "resize-observer-polyfill": "^1.5.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "rules": {
+      "react/jsx-uses-react": "off",
+      "react/react-in-jsx-scope": "off"
+    }
   }
 }

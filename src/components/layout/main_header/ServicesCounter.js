@@ -1,8 +1,7 @@
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { Grid, TextField } from "@mui/material";
-import { themeContext } from "hooks/context/ThemeContext";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 const buttonsStyle = {
   bgcolor: "#f6f6f6",
@@ -22,9 +21,9 @@ const textTicketStyles = {
   "&.Mui-focused fieldset": {
     border: "primary.main",
   },
-  "&.Mui-focused fieldset": {
-    borderColor: "primary.main",
-  },
+  // "&.Mui-focused fieldset": {
+  //   borderColor: "primary.main",
+  // },
   "& input": {
     textAlign: "center",
     color: "primary.main",
@@ -49,7 +48,7 @@ function ServicesCounter() {
     if (ticketsCounter > 0)
       sessionStorage.setItem("ticketsResolved", ticketsCounter);
   }, [ticketsCounter]);
-  const { direction } = useContext(themeContext);
+  // const { direction } = useContext(themeContext);
   return (
     <Grid container item alignItems={"center"}>
       <Grid

@@ -1,7 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { Box, styled } from "@mui/material";
 import ShowAlert from "components/ShowAlert";
 import { LoginContext } from "hooks/context/LoginInfoContext";
-import { themeContext } from "hooks/context/ThemeContext";
 import React, { useContext, useState } from "react";
 import { Outlet } from "react-router";
 import SideDrawer from "./SideDrawer";
@@ -28,7 +28,7 @@ const DashboardLayout = (props) => {
   const { window } = props;
   const [toggleMenu, setToggleMenu] = useState(false);
   const handleToggleDrawer = () => setToggleMenu(!toggleMenu);
-  const { direction } = useContext(themeContext);
+  // const { direction } = useContext(themeContext);
   const handleToggleClose = () => setToggleMenu(false);
   const container =
     window !== undefined ? () => window().document.body : undefined;

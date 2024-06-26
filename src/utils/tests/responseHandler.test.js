@@ -3,7 +3,6 @@ import i18next from "i18next";
 import { generalSuccessReducer } from "hooks/reducers/store";
 import {
   handleChangePassCodeActions,
-  handleEmailCodeActions,
   handleGeneralErrorCodeActions,
   handleGetAnswerFailure,
   handleOTPCodeActions,

@@ -6,6 +6,7 @@ import {
   List,
   Toolbar,
   Typography,
+  styled
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
@@ -20,11 +21,10 @@ import {
   RiShoppingBag3Fill,
 } from "react-icons/ri";
 
-import { styled } from "@mui/material";
+
 import CustomListItem from "components/drawer/CustomListItem";
 import { drawerWidth } from "components/layout/DashboardLayout";
 import { LoginContext } from "hooks/context/LoginInfoContext";
-import { themeContext } from "hooks/context/ThemeContext";
 import i18next from "i18next";
 import { useContext } from "react";
 import { useTranslation } from "react-i18next";
@@ -71,7 +71,7 @@ const GetMoreStyle = styled(Box)(({ theme }) => ({
     position: "absolute",
     bottom: 30,
     left: "50%",
-    width: "50px",
+    // width: "50px",
     width: 120,
     transform: "translate(-50%, -30%)",
     transition: "all 0.3s ease-in",
@@ -157,7 +157,7 @@ const SideDrawer = (props) => {
   console.log("loginData side ---< ", loginData);
   const links = loginData.isLoggedIn ? afterLogin : beforeLogin;
   const { t } = useTranslation();
-  const { direction } = useContext(themeContext);
+  // const { direction } = useContext(themeContext);
   const drawerContent = (
     <>
       {/* Logo */}

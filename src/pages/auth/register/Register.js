@@ -1,17 +1,18 @@
+/* eslint-disable no-unused-vars */
 import { Container, Link, Typography, styled } from "@mui/material";
 import { Box } from "@mui/system";
-import { Helmet } from "react-helmet";
 import FormRegister from "components/auth_pages/FormRegister";
 import LeftPanel from "components/auth_pages/LeftPanel";
+import { Helmet } from "react-helmet";
 
 // img
-import { useContext, useRef, useState } from "react";
-import { useForm } from "react-hook-form";
-import { useTranslation } from "react-i18next";
 import RegisterPhoto from "assets/images/auth/register.png";
 import FinalRegister from "components/auth_pages/FinalRegister";
 import CustomStepper from "components/auth_pages/stepper/CustomStepper";
 import { AlertContext } from "hooks/context/AlertContext";
+import { useContext, useRef, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { handleSubmitNewUser } from "utils/users/users";
 
 // styles
@@ -77,10 +78,10 @@ const Register = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [registeredId, setRegisteredId] = useState(null);
   const [userData, setUserData] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const { setAlert } = useContext(AlertContext);
   const { t } = useTranslation();
-  const myref = useRef();
+  // const myref = useRef();
   const {
     register,
     handleSubmit,

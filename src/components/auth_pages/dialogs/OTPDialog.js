@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {
   Box,
   Button,
@@ -33,7 +34,7 @@ function OTPDialog({
     setError,
   } = useForm();
   const [counter, setCounter] = useState(60);
-  const Ref = useRef(null);
+  // const Ref = useRef(null);
   useEffect(() => {
     const timer =
       counter > 0 && setInterval(() => setCounter((prev) => prev - 1), 1000);

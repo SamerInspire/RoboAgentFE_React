@@ -3,7 +3,6 @@ import {
   handleSubmitUserAuths,
   handleFetchAuthorities,
   hanldeSubmitUserNewRole,
-  handleSubmitNewUser,
   handleSubmitUserNewService,
   handleFetchAllUsers,
   handleFetchServiceList,

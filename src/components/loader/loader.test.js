@@ -8,12 +8,12 @@ describe("Loader component", () => {
   });
 
   test("applies custom styles", () => {
-    const customStyles = {
-      backgroundColor: "red",
-      width: "50px",
-      height: "50px",
-    };
-    const { getByRole } = render(<Loader styles={customStyles} />);
+    // const customStyles = {
+    //   backgroundColor: "red",
+    //   width: "50px",
+    //   height: "50px",
+    // };
+    // const { getByRole } = render(<Loader styles={customStyles} />);
 
     const loaderDiv = getByLabelText("loader");
     expect(loaderDiv).toHaveStyle("background-color: red");

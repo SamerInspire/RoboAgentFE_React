@@ -1,19 +1,14 @@
-import * as React from "react";
-import PropTypes from "prop-types";
-import { styled } from "@mui/material/styles";
-import Stack from "@mui/material/Stack";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
 import Check from "@mui/icons-material/Check";
-import SettingsIcon from "@mui/icons-material/Settings";
-import GroupAddIcon from "@mui/icons-material/GroupAdd";
-import VideoLabelIcon from "@mui/icons-material/VideoLabel";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import Person2Icon from "@mui/icons-material/Person2";
+import Step from "@mui/material/Step";
 import StepConnector, {
   stepConnectorClasses,
 } from "@mui/material/StepConnector";
-import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
-import Person2Icon from "@mui/icons-material/Person2";
+import StepLabel from "@mui/material/StepLabel";
+import Stepper from "@mui/material/Stepper";
+import { styled } from "@mui/material/styles";
+import PropTypes from "prop-types";
 const QontoStepIconRoot = styled("div")(({ theme, ownerState }) => ({
   color: theme.palette.mode === "dark" ? theme.palette.grey[700] : "#eaeaf0",
   display: "flex",

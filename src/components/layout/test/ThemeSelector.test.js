@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { fireEvent, render } from "@testing-library/react";
 import { themeContext } from "hooks/context/ThemeContext";
 import CurrentThemeSelector from "../main_header/DarkModeSelector";

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import "@testing-library/jest-dom";
 import { render, screen, waitFor } from "@testing-library/react";
 import { AlertContext } from "../../hooks/context/AlertContext";

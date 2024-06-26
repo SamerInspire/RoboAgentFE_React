@@ -1,11 +1,9 @@
 import {
   Button,
   Dialog,
-  FormGroup,
   Grid,
   TextField,
-  Typography,
-  styled,
+  Typography
 } from "@mui/material";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -15,10 +13,10 @@ import DashCardHeader from "./DashCardHeader";
 import CustomTransferList from "./TaskTransferList";
 
 // style
-const FormGroupStyle = styled(FormGroup)(({ theme }) => ({
-  padding: theme.spacing(3),
-  paddingBottom: theme.spacing(2),
-}));
+// const FormGroupStyle = styled(FormGroup)(({ theme }) => ({
+//   padding: theme.spacing(3),
+//   paddingBottom: theme.spacing(2),
+// }));
 
 // list of tasks
 function addTask(task, setActiveTasks) {

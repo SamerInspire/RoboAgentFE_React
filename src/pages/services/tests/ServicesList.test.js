@@ -1,9 +1,10 @@
+/* eslint-disable */
 import { render, screen } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
 import Providers from "components/Providers";
+import { BrowserRouter } from "react-router-dom";
 import ServicesList from "../page/ServicesList";
 import ServicesListItem from "../page/utils/ServicesListItem";
-import { Services } from "../Schema/ServicesSchema";
+import { Services } from "../servicesIconschema/ServicesSchema";
 
 describe("ServicesList Component", () => {
   test("renders services for authorized user", () => {

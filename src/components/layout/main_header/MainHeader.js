@@ -1,12 +1,12 @@
+/* eslint-disable no-unused-vars */
 import { useContext, useState } from "react";
 
-import { AppBar, Box, IconButton, Toolbar } from "@mui/material";
+import { AppBar, Box, IconButton, Toolbar, styled } from "@mui/material";
 
 // icons
 import { RiMenu3Line } from "react-icons/ri";
 
 // components
-import { styled } from "@mui/material";
 import LanguageSelector from "components/layout/main_header/SelectLanguage";
 import UserMenu from "components/layout/main_header/UserMenu";
 import { LoginContext } from "hooks/context/LoginInfoContext";
@@ -57,13 +57,13 @@ const MainHeader = (props) => {
   };
 
   // notifications
-  const handleOpenNotification = (e) => setShowNotification(e.currentTarget);
-  const handleCloseNotification = () => setShowNotification(null);
+  // const handleOpenNotification = (e) => setShowNotification(e.currentTarget);
+  // const handleCloseNotification = () => setShowNotification(null);
 
   // User Menu
   const handleOpenUserMenu = (e) => setShowUserMenu(e.currentTarget);
   const handleCloseUserMenu = () => setShowUserMenu(null);
-  const { direction } = useContext(themeContext);
+  // const { direction } = useContext(themeContext);
   const { loginData } = useContext(LoginContext);
   if (loginData.isLoggedIn) {
     return (
