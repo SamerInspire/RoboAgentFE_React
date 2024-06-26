@@ -1,4 +1,4 @@
-export let initialState = {
+export const initialState = {
   isLoggedIn: false,
   token: null,
 };

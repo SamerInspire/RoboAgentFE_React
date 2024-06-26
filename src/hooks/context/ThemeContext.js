@@ -10,7 +10,11 @@ export const themeContext = createContext();
 const ThemeContextProvider = ({ children }) => {
   const [currentTheme, setCurrentTheme] = useState("light");
   const [themeStyles, setThemeStyles] = useState(lightTheme);
-  const [direction, setDirection] = useState("ltr");
+  const [direction, setDirection] = useState(() => {
+    const saved = localStorage.getItem("direction");
+    const initial = JSON.parse(saved);
+    return initial || "ltr";
+  });
   const cacheRtl = createCache({
     key: "muirtl",
     stylisPlugins: [prefixer, rtlPlugin],
@@ -22,6 +26,7 @@ const ThemeContextProvider = ({ children }) => {
     setThemeStyles(
       currentTheme === "light" ? lightTheme(direction) : darkTheme(direction)
     );
+    localStorage.setItem("direction", JSON.stringify(direction));
   }, [currentTheme, direction]);
   return (
     <CacheProvider value={direction == "rtl" ? cacheRtl : ltrCache}>

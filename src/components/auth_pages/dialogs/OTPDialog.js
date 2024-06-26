@@ -18,6 +18,7 @@ import Loader from "components/loader/Loader";
 import FormStyle from "styles/styles";
 import { handleVerifyEmail, handleVerifyOTP } from "utils/api/auth/otp";
 import { t } from "i18next";
+import i18n from "dictonaries/i18n";
 function OTPDialog({
   otpToken,
   email,
@@ -49,6 +50,8 @@ function OTPDialog({
       maxWidth={"sm"}
       sx={{
         textAlign: "center",
+        direction: i18n.language == "ar" ? "ltr" : "ltr",
+
         "& .MuiPaper-root": {
           padding: 1.5,
         },
@@ -56,7 +59,7 @@ function OTPDialog({
     >
       <DialogTitle>
         <Typography fontSize={20} fontWeight={"bold"}>
-          {t("OTP Verification")}
+          {t("forgotPassword.OTP Verification")}
         </Typography>
       </DialogTitle>
       <DialogContent sx={{ paddingX: 1, paddingY: 0 }}>
@@ -66,7 +69,7 @@ function OTPDialog({
         <FormStyle sx={{ width: "100%" }}>
           <TextField
             fullWidth
-            label={t("OTP")}
+            label={t("forgotPassword.OTP")}
             {...otpRegister("otp", {
               required: t("forgotPassword.OTP is Required"),
             })}

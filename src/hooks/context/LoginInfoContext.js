@@ -34,6 +34,7 @@ function LoginProvider(props) {
   function logout() {
     console.log("logout");
     delete axios.defaults.headers.common["authorization"];
+    sessionStorage.removeItem("ticketsResolved");
     loginDispatch({ type: "ON_LOGOUT" });
   }
   return (

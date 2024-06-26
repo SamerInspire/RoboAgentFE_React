@@ -1,10 +1,15 @@
 /* eslint-disable */
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { t } from "i18next";
+import { useContext } from "react";
+import { AlertContext } from "hooks/context/AlertContext";
+import { useTranslation } from "react-i18next";
 
 const { Grid, Button, Typography } = require("@mui/material");
 
 function tableColumns(utils) {
+  const { t } = useTranslation();
+
   const {
     handleStatusClick,
     handleOpenServiceDialog,
@@ -167,7 +172,7 @@ function tableColumns(utils) {
                 variant="contained"
                 onClick={() => handleOpenServiceModal(tableMeta.rowData)}
               >
-                View all
+                {t("usersTable.VIEW ALL")}
               </Button>
             </Grid>
           );

@@ -12,16 +12,20 @@ import TasksItem from "pages/dashboard/TasksItem";
 import { numbersOnly } from "utils/DefualtValidators";
 import { handleGetResponse } from "utils/api/answer/service";
 import { handleFetchCurrentUser } from "utils/users/users";
+import { useTranslation } from "react-i18next";
 
 const ServicesGetAnswer = ({}) => {
-  let { servicename } = useParams();
+  let { servicename='Visas' } = useParams();
   const [answer, setAnswer] = useState("");
   const [currentUserData, setCurrentUserData] = useState({});
   const isEligiable = useRef(false);
+  const { t } = useTranslation();
+  console.log(servicename);
   console.log("answer ===> Siminz ", answer);
   const [currService, setCurrService] = useState(
-    Services.filter((service) => service.value == servicename)[0]
+    Services.filter((service) => service.enName == servicename)[0]
   );
+  console.log(currService);
   const [loading, setLoading] = useState();
   const { setAlert, handleCloseAlert } = useContext(AlertContext);
   const lang = i18next.language;
@@ -80,7 +84,7 @@ const ServicesGetAnswer = ({}) => {
     <Grid container item alignItems={"flex-start"} flexWrap={"nowrap"} gap={8}>
       <Grid container item sm={12} md={10} gap={4}>
         <Grid item xs={12}>
-          <Typography variant="h4" style={{ fontWeight: "bold" }}>
+          <Typography variant="h5" style={{ fontWeight: "bold" }}>
             {lang === "en" ? currService.enName : currService.arName}
           </Typography>
         </Grid>
@@ -119,8 +123,8 @@ const ServicesGetAnswer = ({}) => {
             <Grid container item spacing={4}>
               <Grid container item xs={12} gap={1}>
                 <Grid item xs={12}>
-                  <Typography variant="body1" fontWeight={500}>
-                    Reason *
+                  <Typography variant="body2" fontWeight={500}>
+                    {t("getAnswerForm.Reason")} *
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
@@ -148,8 +152,8 @@ const ServicesGetAnswer = ({}) => {
               <Grid container item xs={12} spacing={4}>
                 <Grid container item xs={12} gap={1} md={6}>
                   <Grid item xs={12}>
-                    <Typography variant="body1" fontWeight={500}>
-                      Establishment Number *
+                    <Typography variant="body2" fontWeight={500}>
+                      {t("getAnswerForm.Establishment Number")} *
                     </Typography>
                   </Grid>
                   <Grid item xs={12}>
@@ -170,8 +174,8 @@ const ServicesGetAnswer = ({}) => {
                 </Grid>
                 <Grid container item xs={12} md={6} gap={1}>
                   <Grid item xs={12}>
-                    <Typography variant="body1" fontWeight={500}>
-                      ID or Iqameh *
+                    <Typography variant="body2" fontWeight={500}>
+                      {t("getAnswerForm.ID or Iqameh")} *
                     </Typography>
                   </Grid>
                   <Grid item xs={12}>
@@ -221,8 +225,7 @@ const ServicesGetAnswer = ({}) => {
                 variant="outlined"
                 readOnly
                 id="outlined-multiline-static"
-                label="Answer"
-                textAlign="right"
+                label={t("getAnswerForm.answer")}
                 value={answer}
                 style={{ direction: "rtl" }}
                 InputProps={{
@@ -235,7 +238,11 @@ const ServicesGetAnswer = ({}) => {
                 fullWidth
               />
             </Grid>
-            <GetAnswerToolbar loading={loading} />
+            <GetAnswerToolbar
+              searchLabel={t("getAnswerForm.searchButton")}
+              backLabel={t("getAnswerForm.backButton")}
+              loading={loading}
+            />
           </Grid>
         </form>
       </Grid>

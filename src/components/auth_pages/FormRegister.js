@@ -102,7 +102,6 @@ const FormRegister = ({
           }
         />
       </Box>
-
       {/* email */}
       <TextField
         variant="outlined"
@@ -122,14 +121,12 @@ const FormRegister = ({
       <PhoneInput
         // id="phoneNumber"
         // name="phoneNumber"
-        international
+        countries={["SA"]}
         countryCallingCodeEditable={false}
         defaultCountry="SA"
-        keyboardType="phone-pad"
         maxLength="16"
         value={userData?.phoneNumber}
         onChange={(value) => {
-          console.log("value ===> ", value);
           value = !!value ? value?.substring(0, 13) : "";
           setUserData((prev) => ({ ...prev, phoneNumber: value }));
         }}
@@ -181,8 +178,9 @@ const FormRegister = ({
           required: true,
           pattern: {
             value: /^(?=.*[A-Z])(?=.*\d).+$/,
-            message:
-              "Password must contain at least one capital letter one small and one number",
+            message: t(
+              "register.Password must contain at least one capital letter one small and one number"
+            ),
           },
           onChange: (e) =>
             setPasswordsInfo({ ...passwordsInfo, valuePass: e.target.value }),
@@ -228,8 +226,9 @@ const FormRegister = ({
             setPasswordsInfo({ ...passwordsInfo, valueConf: e.target.value }),
         })}
         error={
-          errors.confPassword ||
-          passwordsInfo.valueConf !== passwordsInfo.valuePass
+          errors.confPassword
+            ? true
+            : false || passwordsInfo.valueConf !== passwordsInfo.valuePass
         }
         helperText={
           errors.confPassword

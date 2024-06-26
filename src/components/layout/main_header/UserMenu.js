@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars */
 // icons
+import HomeIcon from "@mui/icons-material/Home";
+import Person2Icon from "@mui/icons-material/Person2";
+import SettingsIcon from "@mui/icons-material/Settings";
 import {
   Avatar,
   Box,
@@ -9,13 +12,13 @@ import {
   Typography,
   Button, styled
 } from "@mui/material";
-
 // icons & images
 import Menu from "@mui/material/Menu";
 import userAvatar from "assets/images/GreenQiwa.jpg";
+import i18n from "dictonaries/i18n";
 import { LoginContext } from "hooks/context/LoginInfoContext";
 import { useContext } from "react";
-import { RiHome4Fill, RiSettings3Fill, RiUserFill } from "react-icons/ri";
+import { useTranslation } from "react-i18next";
 
 const GrayMainText = styled("div")(({ theme }) => ({
   color: theme.palette.gray.main,
@@ -74,28 +77,29 @@ const MenuItemStyle = styled(MenuItem)(({ theme }) => ({
 }));
 
 // List of links
-const links = [
-  {
-    id: "l1",
-    path: "/home",
-    title: "Home",
-    icon: <RiHome4Fill />,
-  },
-  {
-    id: "l2",
-    path: "/profile",
-    title: "Profile",
-    icon: <RiUserFill />,
-  },
-  {
-    id: "l3",
-    path: "/settings",
-    title: "Settings",
-    icon: <RiSettings3Fill />,
-  },
-];
 
 const UserMenu = (props) => {
+  const { t } = useTranslation();
+  const links = [
+    {
+      id: "l1",
+      path: "/home",
+      title: t("userMenu.Home"),
+      icon: <HomeIcon sx={{ color: "primary.main" }} />,
+    },
+    {
+      id: "l2",
+      path: "/profile",
+      title: t("userMenu.Profile"),
+      icon: <Person2Icon sx={{ color: "primary.main" }} />,
+    },
+    {
+      id: "l3",
+      path: "/settings",
+      title: t("userMenu.Settings"),
+      icon: <SettingsIcon sx={{ color: "primary.main" }} />,
+    },
+  ];
   const { loginData, logout } = useContext(LoginContext);
   console.log("LoginInfo", loginData);
   return (
@@ -116,6 +120,7 @@ const UserMenu = (props) => {
         keepMounted
         open={Boolean(props.anchorEl)}
         onClose={props.onClose}
+        sx={{ direction: i18n.language == "ar" ? "ltr" : "ltr" }}
       >
         {/* Header */}
         <BoxStyle>
@@ -126,15 +131,19 @@ const UserMenu = (props) => {
             {loginData.email}
           </GrayMainText>
         </BoxStyle>
-
         <Divider />
-
         {/* list of links */}
         {links.map((el) => (
           <MenuItemStyle key={el.id}>
             <a href={el.path}>
               {el.icon}
-              <Box component="span">{el.title}</Box>
+              <Typography
+                fontWeight={600}
+                color={"primary.main"}
+                variant="body1"
+              >
+                {el.title}
+              </Typography>
             </a>
           </MenuItemStyle>
         ))}
@@ -142,7 +151,7 @@ const UserMenu = (props) => {
         {/* Footer */}
         <BoxStyle>
           <Button variant="outlined" onClick={logout} fullWidth>
-            Logout
+            {t("userMenu.logout")}
           </Button>
         </BoxStyle>
       </StyledMenu>

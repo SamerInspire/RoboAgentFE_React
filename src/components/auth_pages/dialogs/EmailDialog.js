@@ -15,6 +15,7 @@ import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import FormStyle from "styles/styles";
 import { handleVerifyEmail } from "utils/api/auth/otp";
+import i18n from "dictonaries/i18n";
 
 function EmailDialog({
   setOtpToken,
@@ -39,6 +40,7 @@ function EmailDialog({
       maxWidth={"sm"}
       sx={{
         textAlign: "center",
+        direction: i18n.language == "ar" ? "ltr" : "ltr",
         "& .MuiPaper-root": {
           padding: 1.5,
         },
@@ -46,12 +48,14 @@ function EmailDialog({
     >
       <DialogTitle>
         <Typography fontSize={20} fontWeight={"bold"}>
-          Reset a Password
+          {t("forgotPassword.Reset a Password")}
         </Typography>
       </DialogTitle>
       <DialogContent sx={{ paddingX: 1, paddingY: 0 }}>
         <DialogContentText fontWeight={"bold"}>
-          Please enter your email that you wish to change a password for
+          {t(
+            "forgotPassword.Please enter your email that you wish to change a password for"
+          )}
         </DialogContentText>
         <FormStyle sx={{ width: "100%" }}>
           <TextField
@@ -78,7 +82,7 @@ function EmailDialog({
                 reset();
               }}
             >
-              Cancel
+              {t("forgotPassword.Cancel")}
             </Button>
           </Grid>
           <Grid item xs={12} md={6}>

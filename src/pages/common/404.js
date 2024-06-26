@@ -2,16 +2,17 @@ import { Button, Typography, styled } from "@mui/material";
 import { Box } from "@mui/system";
 import { Helmet } from "react-helmet";
 // import Lottie from "react-lottie";
+import animated404 from "assets/lottie/Animation - 1715605056269 (3).json";
+import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
-// import animated404 from "assets/lottie/Animation - 1715605056269 (3).json";
-// const defaultOptions = {
-//   loop: true,
-//   autoplay: true,
-//   animationData: animated404,
-//   rendererSettings: {
-//     preserveAspectRatio: "xMidYMid slice",
-//   },
-// };
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: animated404,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
 // style
 const BoxStyle = styled(Box)(({ theme }) => ({
   maxWidth: theme.breakpoints.values.sm,
@@ -44,6 +45,7 @@ const BoxStyle = styled(Box)(({ theme }) => ({
 }));
 
 const ErrorPage = () => {
+  const { t } = useTranslation();
   return (
     <>
       {/* Helmet */}
@@ -53,13 +55,15 @@ const ErrorPage = () => {
 
       <BoxStyle>
         <Typography variant="h3" color={"primary.light"}>
-          Sorry, page not found!
+          {t("errors.Sorry, page not found!")}
         </Typography>
 
         <Typography paragraph color="textSecondary">
-          Sorry, we couldn’t find the page you’re looking for. Perhaps you’ve
-          mistyped the URL? Be sure to check your spelling.
+          {t(
+            `errors.Sorry, we could not find the page you are looking for ,Perhaps you have mistyped the URL? Be sure to check your spelling`
+          )}
         </Typography>
+        {/* <img src={image} alt="404 Error" loading="lazy" /> */}
 
         {/* <img src={image} alt="404 Error" loading="lazy" /> */}
         {/* <Lottie options={defaultOptions} height={400} width={400} /> */}
@@ -70,7 +74,7 @@ const ErrorPage = () => {
           component={RouterLink}
           disableElevation
         >
-          Go to Home
+          {t("errors.Go to Home")}
         </Button>
       </BoxStyle>
     </>

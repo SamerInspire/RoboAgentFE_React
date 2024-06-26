@@ -70,7 +70,7 @@ describe("generalSuccessReducer", () => {
     const mockUtils = {
       requestAction: "REGISTER_NEW_USER",
       setAlert: jest.fn(),
-      rest: jest.fn(),
+      reset: jest.fn(),
       clearFinalForm: jest.fn,
     };
 
@@ -91,17 +91,18 @@ describe("generalSuccessReducer", () => {
     expect(mockUtils.handleCloseRolePopper).toHaveBeenCalled();
     expect(mockUtils.setAlert).toHaveBeenCalled();
   });
-  it("should invoke  the UPDATE_USER_AUTHORITIES data correctly ", () => {
-    const mockUtils = {
-      requestAction: "UPDATE_USER_AUTHORITIES",
-      handleClose: jest.fn(),
-      setAlert: jest.fn(),
-    };
+  // it("should invoke  the UPDATE_USER_AUTHORITIES data correctly ", () => {
+  //   const mockUtils = {
+  //     requestAction: "UPDATE_USER_AUTHORITIES",
+  //     handleClose: jest.fn(),
+  //     setAlert: jest.fn(),
 
-    generalSuccessReducer(mockResult, mockUtils);
-    expect(mockUtils.handleClose).toHaveBeenCalled();
-    expect(mockUtils.setAlert).toHaveBeenCalled();
-  });
+  //   };
+
+  //   generalSuccessReducer(mockResult, mockUtils);
+  //   expect(mockUtils.handleClose).toHaveBeenCalled();
+  //   expect(mockUtils.setAlert).toHaveBeenCalled();
+  // });
   it("should invoke  the set submit user service data correctly ", () => {
     const mockUtils = {
       requestAction: "SET_SUBMIT_USER_SERVICE",

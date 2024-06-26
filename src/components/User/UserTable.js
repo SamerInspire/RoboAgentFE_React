@@ -1,8 +1,9 @@
 import { Grid, Modal, Popper } from "@mui/material";
-import MUIDataTable from "mui-datatables";
-import { useContext, useEffect, useMemo, useState } from "react";
 import tableColumns from "constants/tableColumns";
 import { AlertContext } from "hooks/context/AlertContext";
+import MUIDataTable from "mui-datatables";
+import { useContext, useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { glassMorphisimStyle } from "styles/styles";
 import { handleFilterAuthorities } from "utils/table/tableReshape";
 import {
@@ -27,6 +28,8 @@ function UserTable() {
   const [statusAnchorEl, setStatusAnchorEl] = useState(null);
   const [currentUserData, setCurrentUserData] = useState({});
   const [isOpenServicesModal, setIsOpenServicesModal] = useState(false);
+  const { t } = useTranslation();
+
   const handleCloseRolePopper = () => setStatusAnchorEl(undefined);
 
   const handleCloseServicesModal = () => {
@@ -68,6 +71,7 @@ function UserTable() {
       requestAction: "SET_CURRENT_USER",
       setCurrentUserData,
       setAlert,
+      setIsLoading: () => {},
     });
     handleFetchAuthorities({
       setAuthorities,
@@ -81,7 +85,7 @@ function UserTable() {
       handleFetchServiceList({
         setServiceList,
         requestAction: "SET_SERVICE_LIST",
-        setIsLoading,
+        setIsLoading: () => {},
         setAlert,
       });
     }
@@ -89,12 +93,21 @@ function UserTable() {
   const options = {
     filterType: "checkbox",
     selectableRowsHeader: false,
+    textLabels: {
+      pagination: {
+        next: "Next Page",
+        previous: "Previous Page",
+        rowsPerPage: t("usersTable.Rows per page"),
+        displayRows: "of",
+      },
+    },
   };
+  console.log("loaaaaaaaaaaaaaaaaaading===================>", isLoading);
   return (
     <Grid container item gap={4}>
       <Grid container item>
         <MUIDataTable
-          title={"Users List"}
+          title={t("usersTable.Users List")}
           data={tableData}
           columns={tableColumns({
             setUserData,
@@ -117,15 +130,7 @@ function UserTable() {
           justifyContent: "center",
         }}
       >
-        <Grid
-          container
-          item
-          xs={12}
-          md={6}
-          sx={{
-            ...glassMorphisimStyle,
-          }}
-        >
+        <Grid container item xs={12} md={6} sx={glassMorphisimStyle}>
           <DNDServicesModal
             userData={userData}
             authorities={authorities}

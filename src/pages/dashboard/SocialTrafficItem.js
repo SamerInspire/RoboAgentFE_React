@@ -1,4 +1,5 @@
 import { Box, Typography, styled } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const SocialTrafficItem = ({ icon, amount, title }) => {
   const BoxItemStyle = styled(Box)(({ theme }) => ({
@@ -32,7 +33,7 @@ const SocialTrafficItem = ({ icon, amount, title }) => {
       color: theme.palette.text.secondary,
     },
   }));
-
+  const { t } = useTranslation();
   return (
     <BoxItemStyle>
       <Typography variant="h5" component="h4">
@@ -43,7 +44,7 @@ const SocialTrafficItem = ({ icon, amount, title }) => {
         {amount}
       </Typography>
 
-      <Typography variant="caption">{title}</Typography>
+      <Typography variant="caption">{t("dashboard." + title)}</Typography>
     </BoxItemStyle>
   );
 };

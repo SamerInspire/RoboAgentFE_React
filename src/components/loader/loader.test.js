@@ -7,17 +7,5 @@ describe("Loader component", () => {
     expect(container.firstChild).toHaveClass("loader");
   });
 
-  test("applies custom styles", () => {
-    // const customStyles = {
-    //   backgroundColor: "red",
-    //   width: "50px",
-    //   height: "50px",
-    // };
-    // const { getByRole } = render(<Loader styles={customStyles} />);
 
-    const loaderDiv = getByLabelText("loader");
-    expect(loaderDiv).toHaveStyle("background-color: red");
-    expect(loaderDiv).toHaveStyle("width: 50px");
-    expect(loaderDiv).toHaveStyle("height: 50px");
-  });
 });

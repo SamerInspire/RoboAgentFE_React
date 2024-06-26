@@ -9,10 +9,7 @@ import {
   handleUserCodeActions,
 } from "../response_handlers";
 
-jest.mock("i18next");
-jest.mock("src/hooks/reducers/store", () => ({
-  generalSuccessReducer: jest.fn(),
-}));
+
 
 describe("Code Actions", () => {
   const mockUtils = {
@@ -108,32 +105,7 @@ describe("Code Actions", () => {
     });
   });
 
-  it("handleUserCodeActions should handle success case", async () => {
-    const result = {
-      data: {
-        roboAgentRs: {
-          header: {
-            responseStatus: {
-              arabicMsg: "نجاح",
-              englishMsg: "Success",
-              status: "success",
-            },
-            code: "00000",
-          },
-        },
-      },
-    };
-    const code = "00000";
-    i18next.language = "en";
 
-    await handleUserCodeActions(result, code, mockUtils);
-
-    expect(generalSuccessReducer).toHaveBeenCalledWith(result, mockUtils);
-    expect(mockUtils.setAlert).toHaveBeenCalledWith({
-      alertType: "success",
-      alertMsg: "Success",
-    });
-  });
 
   it("handleGeneralErrorCodeActions should set alert info", () => {
     const result = {

@@ -1,10 +1,11 @@
 import InfoIcon from "@mui/icons-material/Info";
 import { Grid, Link, Popper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { useContext, useState } from "react";
-import { Link as RouterLink } from "react-router-dom";
 import i18n from "dictonaries/i18n";
 import { AlertContext } from "hooks/context/AlertContext";
+import { themeContext } from "hooks/context/ThemeContext";
+import { useContext, useEffect, useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { glassMorphisimStyle } from "styles/styles";
 const ServicesListItem = ({
   service,
@@ -23,7 +24,7 @@ const ServicesListItem = ({
   };
   console.log("service ===>", service);
   //uncomment this line
-
+  const [update, setUpdate] = useState(false);
   // const isEligiableService =
   //   queryCenterSignup &&
   //   (!eligiableServices[service.enName] || currentUserData.role != "MEMBER");
@@ -33,11 +34,15 @@ const ServicesListItem = ({
     queryCenterSignup &&
     (!eligiableServices[service.enName] || currentUserData.role != "MEMBER");
   const handleClosePopper = () => setQueryCenterAnchorEl(null);
+  const { direction } = useContext(themeContext);
+  useEffect(() => {}, [direction]);
   return (
     <Link
       component={isEligiableService ? "" : RouterLink}
       sx={{ textDecoration: "none", position: "relative" }}
-      to={isEligiableService ? "" : `/dash/services/getAnswer/${service.value}`}
+      to={
+        isEligiableService ? "" : `/dash/services/getAnswer/${service.enName}`
+      }
     >
       <Grid
         container

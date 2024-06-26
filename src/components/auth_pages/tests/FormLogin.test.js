@@ -12,7 +12,7 @@ describe("FormLogin", () => {
     );
 
     // Check for elements in the initial login form
-    expect(screen.getByLabelText("Email address")).toBeInTheDocument();
+    expect(screen.getAllByLabelText("Email")[0]).toBeInTheDocument();
     expect(screen.getByLabelText("Password")).toBeInTheDocument();
     expect(
       screen.getByRole("checkbox", { name: "Remember me" })
@@ -36,7 +36,7 @@ describe("FormLogin", () => {
         "Please enter your email that you wish to change a password for"
       )
     ).toBeInTheDocument();
-    expect(screen.getByLabelText("Email")).toBeInTheDocument();
+    expect(screen.getAllByLabelText("Email")[0]).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Cancel" })).toBeInTheDocument();
     expect(
       screen.getByRole("button", { name: "Send OTP" })

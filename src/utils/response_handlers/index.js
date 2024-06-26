@@ -61,8 +61,7 @@ export async function handleUserCodeActions(result, code, utils) {
   return result;
 }
 export function handleGeneralErrorCodeActions(result, code, utils) {
-  const rs  = result?.data?.roboAgentRs;
-  const header  = rs?.header;
+  const { header } = result.data.roboAgentRs;
   const { setAlert } = utils;
   const { alertStatus, message } = getResponseShape(header, code);
   setAlert({ alertType: alertStatus, alertMsg: message });

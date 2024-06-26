@@ -33,7 +33,7 @@ function RolesPopper({
               });
               handleCloseRolePopper();
             }}
-            startIcon={<UpgradeIcon />}
+            startIcon={<UpgradeIcon sx={{ mx: 1 }} />}
             variant="outlined"
           >
             {t("usersTable.Promote to team Lead")}
@@ -55,7 +55,7 @@ function RolesPopper({
                 setAlert,
               });
             }}
-            startIcon={<DownloadIcon />}
+            startIcon={<DownloadIcon sx={{ mx: 1 }} />}
             variant="outlined"
           >
             {t("usersTable.Emote to Member")}

@@ -18,7 +18,7 @@ describe("Tasks Component", () => {
   });
 
   test("renders the Tasks component without crashing", () => {
-    expect(screen.getByText("Tasks")).toBeInTheDocument();
+    expect(screen.getByText("dashboard.Tasks")).toBeInTheDocument();
   });
 
   test("renders the Add Task button", () => {
@@ -29,7 +29,7 @@ describe("Tasks Component", () => {
   test("renders the dialog with the correct title when open", () => {
     const addButton = screen.getByRole("button", { name: /Add Task/i });
     addButton.click();
-    expect(screen.getByText("Add Task")).toBeInTheDocument();
+    expect(screen.getByText("dashboard.Add Task")).toBeInTheDocument();
   });
 });
 

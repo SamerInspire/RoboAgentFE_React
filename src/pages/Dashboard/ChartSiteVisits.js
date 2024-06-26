@@ -1,8 +1,9 @@
+import i18n from "dictonaries/i18n";
 import Chart from "react-apexcharts";
-import DashCard from "./DashCard";
-import DashCardHeader from "./DashCardHeader";
-import DashCardBox from "./DashCardBox";
 import { useTranslation } from "react-i18next";
+import DashCard from "./DashCard";
+import DashCardBox from "./DashCardBox";
+import DashCardHeader from "./DashCardHeader";
 
 // chart data series
 
@@ -56,6 +57,7 @@ const ChartSiteVisits = () => {
     xaxis: {
       type: "datetime",
     },
+
     labels: [
       "01/01/2003",
       "02/01/2003",
@@ -71,6 +73,8 @@ const ChartSiteVisits = () => {
     ],
     tooltip: {
       shared: true,
+      opposite: true,
+
       intersect: false,
       x: { show: false },
       y: {
@@ -81,9 +85,15 @@ const ChartSiteVisits = () => {
         fontFamily: "inherit",
       },
     },
+
     legend: {
+      labels: {
+        style: {
+          fontSize: 30,
+        },
+      },
       position: "top",
-      horizontalAlign: "right",
+      horizontalAlign: i18n.language == "ar" ? "left" : "right",
     },
   };
 

@@ -14,6 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 import LoadingButton from "components/buttons/LoadingButton";
+import i18n from "dictonaries/i18n";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -57,6 +58,8 @@ function NewPassDialog({
       }}
       sx={{
         textAlign: "center",
+        direction: i18n.language == "ar" ? "ltr" : "ltr",
+
         "& .MuiPaper-root": {
           padding: 1.5,
         },

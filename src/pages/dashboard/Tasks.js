@@ -13,6 +13,7 @@ import { v4 as uuidv4 } from "uuid";
 import DashCard from "./DashCard";
 import DashCardHeader from "./DashCardHeader";
 import CustomTransferList from "./TaskTransferList";
+import i18n from "dictonaries/i18n";
 
 // style
 const FormGroupStyle = styled(FormGroup)(({ theme }) => ({
@@ -78,7 +79,14 @@ const Tasks = () => {
           activeTasks={activeTasks}
         />
       </Grid>
-      <Dialog open={openAddTask} onClose={handleCloseAddTask}>
+      {console.log(i18n.language)}
+      <Dialog
+        open={openAddTask}
+        sx={{
+          direction: i18n.language == "ar" ? "ltr" : "ltr",
+        }}
+        onClose={handleCloseAddTask}
+      >
         <Grid container item xs={12} p={4} gap={4}>
           <Grid item>
             <Typography variant="h5" fontWeight={600}>

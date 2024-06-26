@@ -21,7 +21,7 @@ describe("ErrorPage Component", () => {
   it("renders the descriptive paragraph", () => {
     expect(
       screen.getByText(
-        "Sorry, we couldn’t find the page you’re looking for. Perhaps you’ve mistyped the URL? Be sure to check your spelling."
+        "Sorry, we could not find the page you are looking for ,Perhaps you have mistyped the URL? Be sure to check your spelling"
       )
     ).toBeInTheDocument();
   });

@@ -56,7 +56,7 @@ describe("ServiceContainer Component", () => {
         </BrowserRouter>
       </Providers>
     );
-    expect(screen.getByText("TEST TITLE")).toBeInTheDocument();
+    expect(screen.getByText("usersTable.TEST TITLE")).toBeInTheDocument();
     // expect(screen.getByText("ADMIN")).toBeInTheDocument();
     // expect(screen.getByText("SUPER_VISOR")).toBeInTheDocument();
   });
@@ -80,7 +80,7 @@ describe("ServiceDialog Component", () => {
         </BrowserRouter>
       </Providers>
     );
-    expect(screen.getByText("Choose User Main Service")).toBeInTheDocument();
+    expect(screen.getByText("Choose User Main Service *")).toBeInTheDocument();
     expect(screen.getByLabelText("Service")).toBeInTheDocument();
     expect(screen.getByText("Cancel")).toBeInTheDocument();
     expect(screen.getByText("Submit")).toBeInTheDocument();

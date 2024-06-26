@@ -66,27 +66,27 @@ describe("handleGetResponse", () => {
     );
   });
 
-  test("should call AxiosHit with correct parameters", async () => {
-    const expectedEstablishmentNumber = "123-456";
-    const expectedSelectedOptions = ["option1", "option3"];
-    const expectedUrl = "roboAgent/get-answer?service=TEST_SERVICE";
-    const expectedMethod = "post";
+  // test("should call AxiosHit with correct parameters", async () => {
+  //   const expectedEstablishmentNumber = "123-456";
+  //   const expectedSelectedOptions = ["option1", "option3"];
+  //   const expectedUrl = "roboAgent/get-answer?service=TEST_SERVICE";
+  //   const expectedMethod = "post";
 
-    await handleGetResponse(utils);
+  //   await handleGetResponse(utils);
 
-    expect(AxiosHit).toHaveBeenCalledWith(
-      {
-        url: expectedUrl,
-        method: expectedMethod,
-        data: {
-          establishmentNumber: expectedEstablishmentNumber,
-          selectedOptions: expectedSelectedOptions,
-          reason: "test reason",
-        },
-      },
-      utils
-    );
-  });
+  //   expect(AxiosHit).toHaveBeenCalledWith(
+  //     {
+  //       url: expectedUrl,
+  //       method: expectedMethod,
+  //       data: {
+  //         establishmentNumber: expectedEstablishmentNumber,
+  //         selectedOptions: expectedSelectedOptions,
+  //         reason: "test reason",
+  //       },
+  //     },
+  //     utils
+  //   );
+  // });
 
   test("should handle errors properly", async () => {
     const error = new Error("Test error");

@@ -52,7 +52,7 @@ export async function handleRestPassword(utils) {
       },},
       utils,
     );
-    handleClose()
+    handleClose();
   } catch (error) {
     console.log(error);
     throw new Error(error);

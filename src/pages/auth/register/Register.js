@@ -17,7 +17,7 @@ import { handleSubmitNewUser } from "utils/users/users";
 
 // styles
 const ContainerBoxStyle = styled(Box)(({ theme }) => ({
-  minHeight: `calc(100vh - ${theme.mixins.toolbar.minHeight * 2}px)`,
+  minHeight: `calc(100vh - 150px)`,
   display: "grid",
   gap: theme.spacing(3),
   gridTemplateColumns: `350px 1fr`,
@@ -163,7 +163,7 @@ const Register = () => {
               >
                 {t("register.Terms of Service")}
               </Link>{" "}
-              {t("and")}{" "}
+              {t("register.and")}{" "}
               <Link
                 href="#"
                 onClick={preventDefault}
