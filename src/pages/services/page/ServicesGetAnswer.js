@@ -1,5 +1,5 @@
-/* eslint-disable */
 import { Services } from "../schema/ServicesSchema";
+
 import { Grid, TextField, Typography } from "@mui/material";
 import i18next from "i18next";
 import { useContext, useEffect, useRef, useState } from "react";
