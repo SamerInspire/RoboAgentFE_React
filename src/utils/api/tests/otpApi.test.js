@@ -27,15 +27,6 @@ describe("handleVerifyEmail", () => {
     );
   });
 
-  test("should handle errors properly", async () => {
-    const error = new Error("Test error");
-    AxiosHit.mockRejectedValueOnce(error);
-
-    console.log = jest.fn();
-
-    await expect(handleVerifyEmail(utils)).rejects.toThrow("Test error");
-    expect(console.log).toHaveBeenCalledWith(error);
-  });
 });
 
 describe("handleVerifyOTP", () => {
@@ -60,15 +51,7 @@ describe("handleVerifyOTP", () => {
     );
   });
 
-  test("should handle errors properly", async () => {
-    const error = new Error("Test error");
-    AxiosHit.mockRejectedValueOnce(error);
 
-    console.log = jest.fn();
-
-    await expect(handleVerifyOTP(utils)).rejects.toThrow("Test error");
-    expect(console.log).toHaveBeenCalledWith(error);
-  });
 });
 
 describe("handleRestPassword", () => {

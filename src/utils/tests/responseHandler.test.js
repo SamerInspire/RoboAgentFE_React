@@ -10,7 +10,7 @@ import {
 } from "../response_handlers";
 
 jest.mock("i18next");
-jest.mock("src/hooks/reducers/store", () => ({
+jest.mock("src/hooks/reducers/store.js", () => ({
   generalSuccessReducer: jest.fn(),
 }));
 

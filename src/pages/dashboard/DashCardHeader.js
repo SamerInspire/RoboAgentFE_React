@@ -1,5 +1,5 @@
-import { CardHeader , styled } from "@mui/material";
-
+import { CardHeader } from "@mui/material";
+import { styled } from "@mui/material";
 
 const CardHeaderStyle = styled(CardHeader)(({ theme }) => ({
   padding: "24px 24px 0 24px",

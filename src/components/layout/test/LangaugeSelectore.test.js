@@ -6,8 +6,6 @@ import { themeContext } from "hooks/context/ThemeContext";
 import { I18nextProvider } from "react-i18next";
 import LanguageSelector from "../main_header/SelectLanguage";
 
-jest.mock("src/assets/images/ic_flag_ar.svg", () => "AR_Flag");
-jest.mock("src/assets/images/ic_flag_en.svg", () => "EN_Flag");
 
 const mockProps = {
   onOpen: jest.fn(),

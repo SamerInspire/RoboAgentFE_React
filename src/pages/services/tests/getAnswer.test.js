@@ -13,7 +13,7 @@ jest.mock("react-router", () => ({
   useParams: () => ({ servicename: "General" }),
 }));
 
-jest.mock("src/utils/api/answer/service", () => ({
+jest.mock("src/utils/api/answer/service.js", () => ({
   handleGetResponse: jest.fn(),
 }));
 
