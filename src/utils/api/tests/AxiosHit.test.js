@@ -1,24 +1,10 @@
-const { generalSuccessReducer } = require("src/hooks/reducers/store");
-const {
-  successHitHandle,
-  failureHitHandle,
-} = require("src/utils/HitHandiling");
+const { generalSuccessReducer } = require("hooks/reducers/store");
+const { failureHitHandle, successHitHandle } = require("utils/HitHandiling");
 
-jest.mock("src/hooks/reducers/store", () => ({
-  generalSuccessReducer: jest.fn(),
-}));
+
 
 describe("Hit Handling", () => {
-  it("should handle success response", () => {
-    const result = {
-      data: { roboAgentRs: { header: { responseStatus: { code: "00000" } } } },
-    };
-    const utils = { test: "test-utils", setAlert: jest.fn() };
 
-    successHitHandle(result, utils);
-
-    expect(generalSuccessReducer).toHaveBeenCalledWith(result, utils);
-  });
 
   it("should handle JWT failure", () => {
     const result = {

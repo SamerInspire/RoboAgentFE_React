@@ -4,7 +4,7 @@ import Providers from "components/Providers";
 import { BrowserRouter } from "react-router-dom";
 import ServicesList from "../page/ServicesList";
 import ServicesListItem from "../page/utils/ServicesListItem";
-import { Services } from "../servicesIconschema/ServicesSchema";
+import { Services } from "../schema/ServicesSchema";
 
 describe("ServicesList Component", () => {
   test("renders services for authorized user", () => {

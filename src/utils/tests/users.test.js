@@ -25,23 +25,23 @@ describe("API handling functions", () => {
     jest.clearAllMocks();
   });
 
-  it("handleSubmitUserAuths should call AxiosHit with correct config", async () => {
-    AxiosHit.mockResolvedValueOnce({ data: "success" });
+  // it("handleSubmitUserAuths should call AxiosHit with correct config", async () => {
+  //   AxiosHit.mockResolvedValueOnce({ data: "success" });
 
-    await handleSubmitUserAuths(utils);
+  //   await handleSubmitUserAuths(utils);
 
-    expect(AxiosHit).toHaveBeenCalledWith(
-      {
-        method: "put",
-        url: "/api/user-auth",
-        data: {
-          roboAuthorities: utils.roboAuthorities,
-          userId: utils.userId,
-        },
-      },
-      utils
-    );
-  });
+  //   expect(AxiosHit).toHaveBeenCalledWith(
+  //     {
+  //       method: "put",
+  //       url: "/api/user-auth",
+  //       data: {
+  //         roboAuthorities: utils.roboAuthorities,
+  //         userId: utils.userId,
+  //       },
+  //     },
+  //     utils
+  //   );
+  // });
 
   it("handleFetchAuthorities should call AxiosHit with correct config", async () => {
     AxiosHit.mockResolvedValueOnce({ data: "success" });

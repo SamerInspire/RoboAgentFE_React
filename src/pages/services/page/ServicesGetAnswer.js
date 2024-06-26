@@ -15,7 +15,7 @@ import { handleFetchCurrentUser } from "utils/users/users";
 import { useTranslation } from "react-i18next";
 
 const ServicesGetAnswer = ({}) => {
-  let { servicename } = useParams();
+  let { servicename='Visas' } = useParams();
   const [answer, setAnswer] = useState("");
   const [currentUserData, setCurrentUserData] = useState({});
   const isEligiable = useRef(false);

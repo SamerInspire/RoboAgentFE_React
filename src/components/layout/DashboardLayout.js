@@ -5,6 +5,7 @@ import React, { useContext, useState } from "react";
 import { Outlet } from "react-router";
 import SideDrawer from "./SideDrawer";
 import MainHeader from "./main_header/MainHeader";
+import { themeContext } from "hooks/context/ThemeContext";
 
 export const drawerWidth = 240;
 
@@ -26,7 +27,7 @@ const DashboardLayout = (props) => {
   const { window } = props;
   const [toggleMenu, setToggleMenu] = useState(false);
   const handleToggleDrawer = () => setToggleMenu(!toggleMenu);
-  // const { direction } = useContext(themeContext);
+  const { direction } = useContext(themeContext);
   const handleToggleClose = () => setToggleMenu(false);
   const container =
     window !== undefined ? () => window().document.body : undefined;
