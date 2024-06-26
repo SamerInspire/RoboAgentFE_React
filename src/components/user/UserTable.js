@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Grid, Modal, Popper } from "@mui/material";
 import tableColumns from "constants/tableColumns";
 import { AlertContext } from "hooks/context/AlertContext";

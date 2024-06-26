@@ -1,25 +1,23 @@
 import {
   Button,
   Dialog,
-  FormGroup,
   Grid,
   TextField,
-  Typography,
-  styled,
+  Typography
 } from "@mui/material";
+import i18n from "dictonaries/i18n";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { v4 as uuidv4 } from "uuid";
 import DashCard from "./DashCard";
 import DashCardHeader from "./DashCardHeader";
 import CustomTransferList from "./TaskTransferList";
-import i18n from "dictonaries/i18n";
 
-// style
-const FormGroupStyle = styled(FormGroup)(({ theme }) => ({
-  padding: theme.spacing(3),
-  paddingBottom: theme.spacing(2),
-}));
+// // style
+// const FormGroupStyle = styled(FormGroup)(({ theme }) => ({
+//   padding: theme.spacing(3),
+//   paddingBottom: theme.spacing(2),
+// }));
 
 // list of tasks
 function addTask(task, setActiveTasks) {

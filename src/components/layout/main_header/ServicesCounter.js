@@ -24,10 +24,10 @@ const textTicketStyles = {
     border: "none",
     outline: "none",
   },
-  "&.Mui-focused fieldset": {
-    borderColor: "none",
-    outline: "none",
-  },
+  // "&.Mui-focused fieldset": {
+  //   borderColor: "none",
+  //   outline: "none",
+  // },
   "& input": {
     textAlign: "center",
     color: "primary.main",
