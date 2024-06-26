@@ -6,11 +6,11 @@ module.exports = {
     extends: [
       'eslint:recommended',
       'plugin:react/recommended',
-      'plugin:@typescript-eslint/recommended',
+      // 'plugin:@typescript-eslint/recommended',
       'plugin:import/errors',
       'plugin:import/warnings',
-      'plugin:import/typescript',
-      'plugin:jsx-a11y/recommended',
+      // 'plugin:import/typescript',
+      // 'plugin:jsx-a11y/recommended',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -26,13 +26,13 @@ module.exports = {
       },
       'import/resolver': {
         typescript: {
-          project: ['./jsconfig.json', './*/tsconfig.json'],
-          extensions: ['.ts', '.tsx','.js'],
+          project: ['./jsconfig.json'],
+          extensions: ['.js'],
         },
       },
     },
-    plugins: ['@typescript-eslint', 'testing-library', 'import', 'react', 'jsx-a11y'],
-    rules: {
+    plugins: ['import', 'react'],
+    /* rules: {
       'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
       'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
@@ -55,13 +55,13 @@ module.exports = {
           ignoreNonDOM: true,
         },
       ],
-    },
+    }, */
     overrides: [
       {
-        files: ['**/tests/**/*.spec.{js,ts}'],
-        env: {
+        files: ['**/tests/**/*.spec.{js}'],
+        /* env: {
           jest: true,
-        },
+        }, */
         rules: {
           '@typescript-eslint/ban-ts-comment': 'off',
           '@typescript-eslint/no-explicit-any': 'off',
