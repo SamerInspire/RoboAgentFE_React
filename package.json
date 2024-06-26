@@ -41,7 +41,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test react-scripts test --watchAll=true --coverage --silent --collectCoverageFrom='src/**/*.{js,jsx}' --transformIgnorePatterns 'node_modules/(?!my-library-dir)/'",
     "eject": "react-scripts eject",
-    "test:unit": "qiwa-scripts test --maxWorkers=25%",
+    "test:unit": "react-scripts test --maxWorkers=25%",
     "test:clear-cache": "jest --clearCache",
     "prepare": "npx husky install",
     "lint": "eslint --ignore-path .gitignore --ext .js .",
@@ -93,6 +93,11 @@
     "rules": {
       "react/jsx-uses-react": "off",
       "react/react-in-jsx-scope": "off"
+    }
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^axios$": "axios/dist/node/axios.cjs"
     }
   }
 }
