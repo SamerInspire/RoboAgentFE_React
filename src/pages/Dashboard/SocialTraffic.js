@@ -25,22 +25,22 @@ const SocialTraffic = () => {
   const { t } = useTranslation();
   const list = [
     {
-      title: t("dashboard.Facebook"),
+      title: t("Facebook"),
       amount: "47.10k",
       icon: <RiFacebookFill />,
     },
     {
-      title: t("dashboard.Google"),
+      title: t("Google"),
       amount: "65.60k",
       icon: <RiGoogleFill />,
     },
     {
-      title: t("dashboard.LinkedIn"),
+      title: t("LinkedIn"),
       amount: "84.14k",
       icon: <RiLinkedinFill />,
     },
     {
-      title: t("dashboard.Twitter"),
+      title: t("Twitter"),
       amount: "15.70k",
       icon: <RiTwitterFill />,
     },

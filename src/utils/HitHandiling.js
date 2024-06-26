@@ -10,8 +10,7 @@ import {
 } from "./response_handlers";
 
 export function successHitHandle(result, utils) {
-  const rs  = result?.data?.roboAgentRs?.header?.responseStatus;
-  const code = rs?.code
+  const { code } = result.data.roboAgentRs.header.responseStatus;
   const { codeLetters, codeNumbers } = handleExtractCodeInfo(code, "string");
   console.log("Code Letter======>", codeLetters);
   switch (codeLetters) {
@@ -33,10 +32,8 @@ export function successHitHandle(result, utils) {
 }
 export function failureHitHandle(result, utils) {
   const { setAlert } = utils;
-  let status = result.response?.status
-  if ([401, 402, 403].includes(status)) {
-    const rs = result?.response.data?.roboAgentRs?.header?.responseStatus;
-    const  code = rs?.code
+  if ([401, 402, 403].includes(result.response?.status)) {
+    const { code } = result.response.data.roboAgentRs.header.responseStatus;
     const { codeLetters, codeNumbers } = handleExtractCodeInfo(code);
     switch (codeLetters) {
       case "JWT":

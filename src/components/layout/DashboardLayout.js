@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import { Box, styled } from "@mui/material";
+import { Box, Toolbar, styled } from "@mui/material";
 import ShowAlert from "components/ShowAlert";
 import { LoginContext } from "hooks/context/LoginInfoContext";
 import React, { useContext, useState } from "react";
@@ -18,9 +17,8 @@ const DrawerPaper = styled("div")(({ theme }) => ({
 
 const MainStyle = styled("main")(({ theme }) => ({
   flexGrow: 1,
-  height: `calc(100vh - 65px)`,
-  padding: theme.spacing(3),
-  marginTop: "40px",
+  height: "calc(100vh - 65px)",
+  padding: 16,
 }));
 
 const DashboardLayout = (props) => {
@@ -36,7 +34,7 @@ const DashboardLayout = (props) => {
     <React.Fragment>
       <Box
         sx={{
-          direction: "ltr",
+          direction: direction == "rtl" ? "ltr" : "ltr",
           display: "flex",
         }}
       >
@@ -55,7 +53,7 @@ const DashboardLayout = (props) => {
 
         {/* Content */}
         <MainStyle>
-          {/* {loginData.isLoggedIn && <Toolbar />} */}
+          {loginData.isLoggedIn && <Toolbar />}
           <ShowAlert />
           <Outlet />
         </MainStyle>

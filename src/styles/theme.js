@@ -5,7 +5,7 @@ const lightTheme = (dir) =>
   createTheme({
     direction: dir,
     typography: {
-      fontFamily: `"DM Sans", "Roboto", "Arial", sans-serif`,
+      fontFamily: `"Noto Sans Arabic","DM Sans", "Arial", sans-serif`,
     },
     palette: {
       primary: {

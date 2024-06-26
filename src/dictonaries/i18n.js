@@ -10,7 +10,7 @@ i18n.use(initReactI18next).init({
       translation: require("./ar/common.json"),
     },
   },
-  lng: "en",
+  lng: JSON.parse(localStorage.getItem("direction")) == "rtl" ? "ar" : "en",
   fallbackLng: "en",
   interpolation: {
     escapeValue: false,

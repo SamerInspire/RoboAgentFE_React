@@ -9,7 +9,7 @@ const {
 jest.mock("../AxiosHit");
 
 describe("handleVerifyEmail", () => {
-  let utils = {
+  const utils = {
     email: "test@example.com",
     setIsLoading: jest.fn(),
     handleClose: jest.fn(),

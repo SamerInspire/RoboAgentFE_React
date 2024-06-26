@@ -10,7 +10,7 @@ if (JSON.parse(localStorage.getItem("userInfo"))) {
 export default async function AxiosHit(config, utils) {
   console.log("utils axios ===> ", utils);
   console.log("config axios ===> ", config);
-  let result = await axios(config)
+  const result = await axios(config)
     .then((successResponse) => successHitHandle(successResponse, utils))
     .catch((errorResponse) => failureHitHandle(errorResponse, utils));
   return result;

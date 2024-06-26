@@ -16,7 +16,19 @@
     "services": "Services",
     "register": "Register"
   },
+  "stepper": {
+    "User Main Information": "User Main Information",
+    "User Profile": "User Profile"
+  },
+  "userMenu": {
+    "Home": "Home",
+    "Profile": "Profile",
+    "Settings": "Settings",
+    "logout": "LOGOUT"
+  },
   "forgotPassword": {
+    "OTP Verification": "OTP Verification",
+    "Enter a new password below to change your password": "Enter a new password below to change your password",
     "Reset a Password": "Reset a Password",
     "Please enter your email that you wish to change a password for": "Please enter your email that you wish to change a password for",
     "Email is Required": "Email is Required",
@@ -63,6 +75,14 @@
     "create_admin_acc_label": "Create Admin Account",
     "login_btn": "Login"
   },
+  "getAnswerForm": {
+    "Reason": "Reason ",
+    "Establishment Number": "Establishment Number",
+    "ID or Iqameh": "ID or Iqameh",
+    "answer": "Answer",
+    "backButton": "Back",
+    "searchButton": "Search"
+  },
   "usersTable": {
     "Edit User Services": "Edit User Services",
     "Cancel": "Cancel",
@@ -72,9 +92,19 @@
     "Choose User Main Service": "Choose User Main Service",
     "Service": "Service",
     "Promote to team Lead": "Promote to team Lead",
-    "Emote to Member": "Emote to Member"
+    "Emote to Member": "Emote to Member",
+    "Users List": "Users List",
+    "VIEW ALL": "VIEW ALL",
+    "Rows per page": "Rows per page : "
+  },
+  "errors": {
+    "Sorry, page not found!": "Sorry, page not found!",
+    "Sorry, we could not find the page you are looking for ,Perhaps you have mistyped the URL? Be sure to check your spelling": "Sorry, we could not find the page you are looking for ,Perhaps you have mistyped the URL? Be sure to check your spelling",
+    "Go to Home": "Go to Home"
   },
   "dashboard": {
+    "New Incomming Tickets": "New Incomming Tickets",
+    "selected": "selected",
     "Automation Time line": "Automation Time line",
     "Total active Issues": "Total active Issues",
     "Current Tickets": "Current Tickets",
@@ -165,9 +195,11 @@
     "Service": "Service",
     "backButton": "Back",
     "registerButton": "Register",
+    "Password must contain at least one capital letter one small and one number": "Password must contain at least one capital letter one small and one number",
     "By registering, I agree to RoboAgent": "By registering, I agree to RoboAgent",
     " Terms of Service": " Terms of Service",
     "and": "and",
-    " Privacy Policy": "Privacy Policy"
+    " Privacy Policy": "Privacy Policy",
+    "Task Name": "Task Name"
   }
 }
