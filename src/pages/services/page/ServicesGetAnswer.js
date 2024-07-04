@@ -106,7 +106,7 @@ const ServicesGetAnswer = ({}) => {
                 requestAction: "SET_ANSWER",
                 setAnswer,
                 data,
-                servicename: currService.value,
+                servicename: currService.enName,
                 options,
                 setAlert,
               });

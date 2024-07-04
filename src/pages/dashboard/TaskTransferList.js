@@ -29,17 +29,7 @@ export default function CustomTransferList({ activeTasks, setActiveTasks }) {
 
   const [checked, setChecked] = React.useState([]);
 
-  const [right, setRight] = React.useState([
-    { id: uuidv4(), label: t("dashboard.Close the target"), status: false },
-    {
-      id: uuidv4(),
-      label: t("dashboard.Send Reminder on UM Email"),
-      status: false,
-    },
-    { id: uuidv4(), label: t("dashboard.Start the Automation"), status: false },
-    { id: uuidv4(), label: t("dashboard.Manual Script genrate"), status: true },
-    { id: uuidv4(), label: t("dashboard.Sprint Showcase"), status: false },
-  ]);
+  const [right, setRight] = React.useState([]);
   const leftChecked = intersection(checked, activeTasks);
   const rightChecked = intersection(checked, right);
 

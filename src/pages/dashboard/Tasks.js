@@ -29,14 +29,6 @@ const Tasks = () => {
   const [addedTaskName, setAddedTaskName] = useState("");
   const [activeTasks, setActiveTasks] = useState([
     { id: uuidv4(), label: t("dashboard.Close the target"), status: false },
-    {
-      id: uuidv4(),
-      label: t("dashboard.Send Reminder on UM Email"),
-      status: false,
-    },
-    { id: uuidv4(), label: t("dashboard.Start the Automation"), status: false },
-    { id: uuidv4(), label: t("dashboard.Manual Script genrate"), status: true },
-    { id: uuidv4(), label: t("dashboard.Sprint Showcase"), status: false },
   ]);
   const handleOpenAddTask = () => {
     setOpenAddTask(true);
