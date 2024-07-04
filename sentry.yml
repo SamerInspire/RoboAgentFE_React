@@ -1,0 +1,7 @@
+general:
+  sentry: enabled
+
+project:
+  teams:
+    - q-agency
+  platform: javascript

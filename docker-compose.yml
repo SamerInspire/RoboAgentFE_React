@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  roboagent-spa:
+    image: $IMAGE_NAME
+    labels:
+      com.qiwa.runtime.product-name: "qiwa"
+      com.qiwa.runtime.service-name: "roboagent-spa"
+      com.qiwa.runtime.service-vendor: "inspirejo"
+      # com.qiwa.runtime.log-format: "qiwa"
+    restart: unless-stopped
+    volumes:
+      - ./config.json:/usr/share/nginx/html/config.json
+    environment:
+      VIRTUAL_HOST: robo-agent.$URL
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost/index.html || exit 1"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
