@@ -1,7 +1,0 @@
-variables:
-  PACKAGE_MANAGER: npm
-  NODE_IMAGE: node:22-alpine3.19
-include:
-  - project: 'takamol/qiwa/infrastructure/ci-cd'
-    file: '/spa/.gitlab-ci.yml'
-    ref: 'master'
