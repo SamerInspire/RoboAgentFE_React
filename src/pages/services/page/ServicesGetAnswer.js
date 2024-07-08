@@ -1,31 +1,27 @@
 /* eslint-disable */
-import { Services } from "../schema/ServicesSchema";
+import { Services } from '../schema/ServicesSchema';
 
-import { Grid, TextField, Typography } from "@mui/material";
-import i18next from "i18next";
-import { useContext, useEffect, useRef, useState } from "react";
-import { useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router";
-import GetAnswerToolbar from "components/services/GetAnswerToolbar";
-import ServicesSidebar from "components/services/ServicesSidebar";
-import { AlertContext } from "hooks/context/AlertContext";
-import TasksItem from "pages/dashboard/TasksItem";
-import { numbersOnly } from "utils/DefualtValidators";
-import { handleGetResponse } from "utils/api/answer/service";
-import { handleFetchCurrentUser } from "utils/users/users";
-import { useTranslation } from "react-i18next";
+import { Grid, TextField, Typography } from '@mui/material';
+import GetAnswerToolbar from 'components/services/GetAnswerToolbar';
+import ServicesSidebar from 'components/services/ServicesSidebar';
+import { AlertContext } from 'hooks/context/AlertContext';
+import i18next from 'i18next';
+import TasksItem from 'pages/dashboard/TasksItem';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import { useNavigate, useParams } from 'react-router';
+import { numbersOnly } from 'utils/DefualtValidators';
+import { handleGetResponse } from 'utils/api/answer/service';
+import { handleFetchCurrentUser } from 'utils/users/users';
 
 const ServicesGetAnswer = ({}) => {
-  let { servicename='Visas' } = useParams();
-  const [answer, setAnswer] = useState("");
+  let { servicename = 'Visas' } = useParams();
+  const [answer, setAnswer] = useState('');
   const [currentUserData, setCurrentUserData] = useState({});
   const isEligiable = useRef(false);
   const { t } = useTranslation();
-  console.log(servicename);
-  console.log("answer ===> Siminz ", answer);
-  const [currService, setCurrService] = useState(
-    Services.filter((service) => service.enName == servicename)[0]
-  );
+  const [currService, setCurrService] = useState(Services.filter((service) => service.enName == servicename)[0]);
   console.log(currService);
   const [loading, setLoading] = useState();
   const { setAlert, handleCloseAlert } = useContext(AlertContext);
@@ -33,10 +29,12 @@ const ServicesGetAnswer = ({}) => {
   const navigate = useNavigate();
   const [options, setOptions] = useState(() => {
     const options = {};
-    currService.options.map((o) => (options[o["id"]] = false));
+    currService.options.map((o) => (options[o['id']] = false));
     return options;
   });
-
+  useEffect(() => {
+    setOptions(currService.options.map((o) => (options[o['id']] = false)));
+  }, [currService]);
   // form submit
   const handelCheckValue = (id, status) => {
     options[id] = status;
@@ -44,31 +42,28 @@ const ServicesGetAnswer = ({}) => {
   // hook form
   useEffect(() => {
     handleFetchCurrentUser({
-      requestAction: "SET_CURRENT_USER",
+      requestAction: 'SET_CURRENT_USER',
       setCurrentUserData,
       setAlert,
     });
   }, []);
   useEffect(() => {
-    if (servicename == "General" || currentUserData.role == "ADMIN") {
+    if (servicename == 'General' || currentUserData.role == 'ADMIN') {
       isEligiable.current = true;
     } else {
       if (currentUserData.roboAuthorities) {
         currentUserData.roboAuthorities.map((auth) => {
-          if (currService.allowedAuthorities.includes(auth.name))
-            isEligiable.current = true;
+          if (currService.allowedAuthorities.includes(auth.name)) isEligiable.current = true;
         });
-        if (!isEligiable.current) navigate("/dash/services");
+        if (!isEligiable.current) navigate('/dash/services');
       }
     }
     return setAlert();
   }, [currentUserData]);
   function handleChangeCurrentService(serviceName, setCurrService) {
-    navigate("/dash/services/getAnswer/" + serviceName, { replace: true });
+    navigate('/dash/services/getAnswer/' + serviceName, { replace: true });
 
-    setCurrService(
-      Services.filter((service) => service.enName == serviceName)[0]
-    );
+    setCurrService(Services.filter((service) => service.enName == serviceName)[0]);
   }
   const {
     register,
@@ -76,34 +71,37 @@ const ServicesGetAnswer = ({}) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      establishment_number: "",
-      id_number: "",
-      check_options: "",
+      establishment_number: '',
+      id_number: '',
+      check_options: '',
     },
   });
   return (
-    <Grid container item alignItems={"flex-start"} flexWrap={"nowrap"} gap={8}>
+    <Grid container item alignItems={'flex-start'} flexWrap={'nowrap'} gap={8}>
       <Grid container item sm={12} md={10} gap={4}>
         <Grid item xs={12}>
-          <Typography variant="h5" style={{ fontWeight: "bold" }}>
-            {lang === "en" ? currService.enName : currService.arName}
+          <Typography variant="h5" style={{ fontWeight: 'bold' }}>
+            {lang === 'en' ? currService.enName : currService.arName}
           </Typography>
         </Grid>
+        {console.log(currService.enName)}
         <form
           style={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
           }}
           onSubmit={handleSubmit(async (data) => {
             if (isEligiable.current) {
               setLoading(true);
+              setAnswer('');
               setAlert({
-                alertType: "info",
-                alertMsg: "Generating Ticket Answer",
+                alertType: 'info',
+                sleep: 5000000,
+                alertMsg: 'Generating Ticket Answer',
               });
               await handleGetResponse({
-                requestAction: "SET_ANSWER",
+                requestAction: 'SET_ANSWER',
                 setAnswer,
                 data,
                 servicename: currService.enName,
@@ -111,39 +109,38 @@ const ServicesGetAnswer = ({}) => {
                 setAlert,
               });
               setLoading(false);
-              handleCloseAlert();
             } else {
               setAlert({
-                alertType: "error",
-                alertMsg: "Sorry You Are not Eligiable to use this service",
+                alertType: 'error',
+                alertMsg: 'Sorry You Are not Eligiable to use this service',
               });
             }
           })}
         >
-          <Grid container item position={"relative"} xs={12} gap={4}>
+          <Grid container item position={'relative'} xs={12} gap={4}>
             <Grid container item spacing={4}>
               <Grid container item xs={12} gap={1}>
                 <Grid item xs={12}>
                   <Typography variant="body2" fontWeight={500}>
-                    {t("getAnswerForm.Reason")} *
+                    {t('getAnswerForm.Reason')} *
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
                     id="outlined-multiline-static"
                     fullWidth
-                    {...register("reason", {
+                    {...register('reason', {
                       onChange: (e) =>
                         numbersOnly(e, {
-                          type: "IDNo",
+                          type: 'IDNo',
                           maxNumber: 10,
-                          replaceWith: "",
+                          replaceWith: '',
                         }),
                       onPaste: (e) =>
                         numbersOnly(e, {
-                          type: "IDNo",
+                          type: 'IDNo',
                           maxNumber: 10,
-                          replaceWith: "",
+                          replaceWith: '',
                         }),
                     })}
                     disabled={loading}
@@ -154,7 +151,7 @@ const ServicesGetAnswer = ({}) => {
                 <Grid container item xs={12} gap={1} md={6}>
                   <Grid item xs={12}>
                     <Typography variant="body2" fontWeight={500}>
-                      {t("getAnswerForm.Establishment Number")} *
+                      {t('getAnswerForm.Establishment Number')} *
                     </Typography>
                   </Grid>
                   <Grid item xs={12}>
@@ -162,39 +159,39 @@ const ServicesGetAnswer = ({}) => {
                       fullWidth
                       id="outlined-multiline-static"
                       pattern="[0-9]*"
-                      {...register("establishmentNumber", {
+                      {...register('establishmentNumber', {
                         onChange: (e) => numbersOnly(e),
                         onPaste: (e) => numbersOnly(e),
                         require: true,
                       })}
                       disabled={loading}
                       error={errors.email ? true : false}
-                      helperText={errors.email && "Enter a valid email address"}
+                      helperText={errors.email && 'Enter a valid email address'}
                     />
                   </Grid>
                 </Grid>
                 <Grid container item xs={12} md={6} gap={1}>
                   <Grid item xs={12}>
                     <Typography variant="body2" fontWeight={500}>
-                      {t("getAnswerForm.ID or Iqameh")} *
+                      {t('getAnswerForm.ID or Iqameh')} *
                     </Typography>
                   </Grid>
                   <Grid item xs={12}>
                     <TextField
                       fullWidth
                       id="outlined-multiline-static"
-                      {...register("id_number", {
+                      {...register('id_number', {
                         onChange: (e) =>
                           numbersOnly(e, {
-                            type: "IDNo",
+                            type: 'IDNo',
                             maxNumber: 10,
-                            replaceWith: "",
+                            replaceWith: '',
                           }),
                         onPaste: (e) =>
                           numbersOnly(e, {
-                            type: "IDNo",
+                            type: 'IDNo',
                             maxNumber: 10,
-                            replaceWith: "",
+                            replaceWith: '',
                           }),
                       })}
                       disabled={loading}
@@ -211,9 +208,7 @@ const ServicesGetAnswer = ({}) => {
                       key={el.id}
                       id={el.id}
                       status={!el.active}
-                      label={
-                        lang === "en" ? el.label.enLabel : el.label.arLabel
-                      }
+                      label={lang === 'en' ? el.label.enLabel : el.label.arLabel}
                       mission={false}
                       checkOptions={handelCheckValue}
                     />
@@ -226,12 +221,12 @@ const ServicesGetAnswer = ({}) => {
                 variant="outlined"
                 readOnly
                 id="outlined-multiline-static"
-                label={t("getAnswerForm.answer")}
+                label={t('getAnswerForm.answer')}
                 value={answer}
-                style={{ direction: "rtl" }}
+                style={{ direction: 'rtl' }}
                 InputProps={{
                   readOnly: true,
-                  style: { fontSize: "20px" },
+                  style: { fontSize: '20px' },
                 }}
                 disabled
                 multiline
@@ -240,8 +235,8 @@ const ServicesGetAnswer = ({}) => {
               />
             </Grid>
             <GetAnswerToolbar
-              searchLabel={t("getAnswerForm.searchButton")}
-              backLabel={t("getAnswerForm.backButton")}
+              searchLabel={t('getAnswerForm.searchButton')}
+              backLabel={t('getAnswerForm.backButton')}
               loading={loading}
             />
           </Grid>

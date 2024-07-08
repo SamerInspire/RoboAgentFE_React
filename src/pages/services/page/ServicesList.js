@@ -1,36 +1,35 @@
 /* eslint-disable */
-import { Grid } from "@mui/material";
-import { AlertContext } from "hooks/context/AlertContext";
-import { useContext, useEffect, useRef, useState } from "react";
-import { Helmet } from "react-helmet";
-import { handleFetchCurrentUser } from "utils/users/users";
-import { Services } from "../schema/ServicesSchema";
-import ServicesListItem from "./utils/ServicesListItem";
+import { Grid } from '@mui/material';
+import { AlertContext } from 'hooks/context/AlertContext';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet';
+import { handleFetchCurrentUser } from 'utils/users/users';
+import { Services } from '../schema/ServicesSchema';
+import ServicesListItem from './utils/ServicesListItem';
 const ServicesList = () => {
   const [currentUserData, setCurrentUserData] = useState({});
   // console.log("currentUserData ===> Siminz ===> ", currentUserData.status);
-  const queryCenterSignup = useRef(currentUserData?.status?.startsWith("0"));
+  const queryCenterSignup = useRef(currentUserData?.status?.startsWith('0') && currentUserData.team !== 'L1');
   // console.log("queryCenterSignup ===> Siminz ===> ", queryCenterSignup.current);
   const { setAlert } = useContext(AlertContext);
   const [eligiableServices, setEligiableSevices] = useState({ General: true });
 
   useEffect(() => {
     handleFetchCurrentUser({
-      requestAction: "SET_CURRENT_USER",
+      requestAction: 'SET_CURRENT_USER',
       setCurrentUserData,
       setAlert,
     });
     if (queryCenterSignup.current)
       setAlert({
-        alertType: "warning",
-        alertMsg:
-          "Please Register in the query center to be able to use the services",
+        alertType: 'warning',
+        alertMsg: 'Please Register in the query center to be able to use the services',
         sleep: 1000000,
       });
     return () =>
       setAlert({
-        alertType: "",
-        alertMsg: "",
+        alertType: '',
+        alertMsg: '',
         sleep: 0,
       });
   }, []);
@@ -38,10 +37,9 @@ const ServicesList = () => {
     if (currentUserData.roboAuthorities) {
       Services.map((service, index) => {
         const showService = currentUserData.roboAuthorities.some((auth) =>
-          service?.allowedAuthorities?.includes(auth.name)
+          service?.allowedAuthorities?.includes(auth.name),
         );
-        if (showService)
-          setEligiableSevices((prev) => ({ ...prev, [service.enName]: true }));
+        if (showService) setEligiableSevices((prev) => ({ ...prev, [service.enName]: true }));
       });
       console.log(eligiableServices);
     }
