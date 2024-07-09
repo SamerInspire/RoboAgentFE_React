@@ -22,9 +22,6 @@ const textTicketStyles = {
   },
   '&.Mui-focused fieldset': {
     border: 'none',
-    outline: 'none',
-  },
-  '&.Mui-focused fieldset': {
     borderColor: 'none',
     outline: 'none',
   },

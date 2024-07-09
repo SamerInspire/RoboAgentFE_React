@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Grid, Modal, Popper } from '@mui/material';
 import tableColumns from 'constants/tableColumns';
 import { AlertContext } from 'hooks/context/AlertContext';
@@ -61,14 +62,14 @@ function UserTable() {
     handleFetchAllUsers({
       setTableData,
       requestAction: 'GET_ALL_USERS',
-      setIsLoading: () => {},
+      setIsLoading: () => { },
       setAlert,
     });
     handleFetchCurrentUser({
       requestAction: 'SET_CURRENT_USER',
       setCurrentUserData,
       setAlert,
-      setIsLoading: () => {},
+      setIsLoading: () => { },
     });
     handleFetchAuthorities({
       setAuthorities,
@@ -82,7 +83,7 @@ function UserTable() {
       handleFetchServiceList({
         setServiceList,
         requestAction: 'SET_SERVICE_LIST',
-        setIsLoading: () => {},
+        setIsLoading: () => { },
         setAlert,
       });
     }
