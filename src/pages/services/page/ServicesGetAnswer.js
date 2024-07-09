@@ -34,6 +34,9 @@ const ServicesGetAnswer = ({}) => {
   });
   useEffect(() => {
     setOptions(currService.options.map((o) => (options[o['id']] = false)));
+    setLoading(false);
+    setAnswer('');
+    handleCloseAlert();
   }, [currService]);
   // form submit
   const handelCheckValue = (id, status) => {
@@ -62,7 +65,6 @@ const ServicesGetAnswer = ({}) => {
   }, [currentUserData]);
   function handleChangeCurrentService(serviceName, setCurrService) {
     navigate('/dash/services/getAnswer/' + serviceName, { replace: true });
-
     setCurrService(Services.filter((service) => service.enName == serviceName)[0]);
   }
   const {
@@ -108,6 +110,7 @@ const ServicesGetAnswer = ({}) => {
                 options,
                 setAlert,
               });
+
               setLoading(false);
             } else {
               setAlert({
