@@ -11,7 +11,6 @@ import ListItemText from '@mui/material/ListItemText';
 import * as React from 'react';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { v4 as uuidv4 } from 'uuid';
 
 function not(a, b) {
   return a.filter((value) => b.indexOf(value) === -1);
