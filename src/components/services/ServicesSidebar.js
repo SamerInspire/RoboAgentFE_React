@@ -32,7 +32,7 @@ function ServicesSidebar({
               alignItems={"center"}
               p={2}
               onClick={() =>
-                handleChangeCurrentService(service.enName, setCurrService)
+                handleChangeCurrentService(service.value, setCurrService)
               }
               sx={{
                 cursor: "pointer",
@@ -62,7 +62,7 @@ function ServicesSidebar({
               alignItems={"center"}
               p={1}
               onClick={() =>
-                handleChangeCurrentService(service.enName, setCurrService)
+                handleChangeCurrentService(service.value, setCurrService)
               }
               sx={{
                 cursor: "pointer",
@@ -91,7 +91,7 @@ function ServicesSidebar({
             gap={2}
             p={1}
             onClick={() =>
-              handleChangeCurrentService(service.enName, setCurrService)
+              handleChangeCurrentService(service.value, setCurrService)
             }
             alignItems={"center"}
             sx={{
