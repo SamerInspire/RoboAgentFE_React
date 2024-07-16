@@ -11,6 +11,7 @@ describe("ServicesList Component", () => {
     const currentUserData = {
       role: "MEMBER",
       roboAuthorities: [{ name: "VISAS" }],
+      status: '1'
     };
 
     render(
@@ -28,26 +29,36 @@ describe("ServicesList Component", () => {
 
     // Check if all allowed services are rendered
     services.forEach((service) => {
-      expect(screen.getByText(service.enName)).toBeInTheDocument();
+      expect(screen.getByText(service.description)).toBeInTheDocument();
     });
   });
 
   test("does  render services for unauthorized user", () => {
     const currentUserData = {
-      role: "MEMBER",
-      roboAuthorities: [],
+      email:"S.ibrahim-c@takamol.com.sa",
+      firstName:"Samer",
+      lastName:"Ibrahim",
+      middleName:"Subhi",
+      roboAuthorities:[],
+      role:"MEMBER",
+      service:"VISAS",
+      status:"1 - User registered in QC",
+      team:"L2",
+      userId:173,
+      userName:"SamerUser"
+
     };
 
     render(
       <BrowserRouter>
         <Providers>
-          <ServicesList currentUserData={currentUserData} />
+          <ServicesList currentUserDataParam={currentUserDataParam} />
         </Providers>
       </BrowserRouter>
     );
     Services.forEach((service) => {
-      if (service.allowedAuthorities[0] !== "all") {
-        expect(screen.queryByText(service.enName)).toBeInTheDocument();
+      if (service.allowedAuthorities[0] !== "all" && currentUserData) {
+        expect(screen.queryByText(service.description))?.toBeInTheDocument();
       }
     });
   });
@@ -71,10 +82,10 @@ describe("ServicesListItem Component", () => {
     );
 
     // Check if the service name and image are displayed
-    expect(screen.getByText(service.enName)).toBeInTheDocument();
+    expect(screen.getByText(service.description)).toBeInTheDocument();
     expect(screen.getByRole("img")).toHaveAttribute(
       "src",
-      service.backgroundImg
+      service.bcUrl
     );
   });
 
@@ -90,10 +101,10 @@ describe("ServicesListItem Component", () => {
       </BrowserRouter>
     );
 
-    const serviceElement = screen.getByText(service.enName).closest("a");
+    const serviceElement = screen.getByText(service.description).closest("a");
     expect(serviceElement).toHaveAttribute(
       "href",
-      `/dash/services/getAnswer/${service.enName}`
+      `/dash/services/getAnswer/${service.service}`
     );
   });
 });

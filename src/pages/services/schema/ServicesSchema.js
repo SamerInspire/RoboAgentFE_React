@@ -7,292 +7,345 @@ import VisasImg from "assets/images/services/passport-svgrepo-com.svg";
 import PrivilegesImg from "assets/images/services/permissions-svgrepo-com.svg";
 import EmployeesTransferImg from "assets/images/services/transfer-svgrepo-com.svg";
 import UserManagmentImg from "assets/images/services/user-id-svgrepo-com.svg";
-export const Services = [
+export let Services = [
   {
-    enName: "General",
-    arName: "الخدمات العامة",
-    allowedAuthorities: ["all"],
-    options: [
+    "id": 1,
+    "service": "EMP_LIST",
+    "description": "Employee list",
+    "descriptionAr": "قائمة الموظفين",
+    "bcUrl": EmployeeListImg,
+    "serviceOptions": [
       {
-        id: "validate",
-        label: {
-          arLabel: "التحقق من المنشأة",
-          enLabel: "check the Establishment",
-        },
-        active: true,
-      },
-      {
-        id: "nitaq",
-        label: { arLabel: "رد النطاق", enLabel: "Nitaq Check" },
-        active: true,
-      },
-      {
-        id: "notCountedSaudis",
-        label: {
-          arLabel: "السعوديين المحتسبين بأقل من 1",
-          enLabel: "Less than one Saudis",
-        },
-        active: true,
-      },
-      {
-        id: "calcBalance",
-        label: { arLabel: "رد الرصيد", enLabel: "Get balance answer" },
-        active: true,
-      },
+        "otptionId": 1680,
+        "name": "updateLaborer",
+        "arDescription": "التحقق وتحديث بيانات الموظف",
+        "enDescription": "Check and update Laborer information"
+      }
     ],
-    backgroundImg: generalImg,
+    "allowedAuthorities": []
   },
   {
-    enName: "Visas",
-    arName: "خدمة التأشيرات",
-    allowedAuthorities: ["VISAS"],
-    value: "VISAS",
-    options: [
+    "id": 2,
+    "service": "CONTRACT_MANAG",
+    "description": "Contract management",
+    "descriptionAr": "ادارة عقود العمل",
+    "bcUrl": ContractManagerImg,
+    "serviceOptions": [
       {
-        id: "CancelVisas",
-        label: {
-          arLabel: "التأشيرات بإنتظار الإلغاء",
-          enLabel: "Pending for cancelation Visas",
-        },
-        active: true,
+        "otptionId": 1686,
+        "name": "ContractDetails",
+        "arDescription": "التحقق من تفاصيل العقد للموظف",
+        "enDescription": "Contract Details"
       },
       {
-        id: "visaCheckAllCases",
-        label: {
-          arLabel: "التحقق من التأشيرات",
-          enLabel: "Check Visas and Bordernumber",
-        },
-        active: true,
+        "otptionId": 1688,
+        "name": "ContractAuthenticationIndicator",
+        "arDescription": "التحقق من نسبة توثيق العقود",
+        "enDescription": "Contract Authentication Indicator"
       },
       {
-        id: "issuingIssues",
-        label: {
-          arLabel: "التحقق من مشاكل في الإصدار",
-          enLabel: "Check Issuing Issues",
-        },
-        active: true,
+        "otptionId": 1685,
+        "name": "AbsentFromWork",
+        "arDescription": "طلبات إنقطاع عن العمل",
+        "enDescription": "Absent From Work"
       },
       {
-        id: "allowanceEnds",
-        label: {
-          arLabel: "تحول المنشأة لتوسع",
-          enLabel: "Transformed to Expansion (Allownce EndDate)",
-        },
-        active: true,
-      },
+        "otptionId": 1687,
+        "name": "TerminateContract",
+        "arDescription": "طلب إنهاء العلاقة التعاقدية",
+        "enDescription": "Terminate Contract"
+      }
     ],
-    backgroundImg: VisasImg,
+    "allowedAuthorities": []
   },
   {
-    enName: "Employee List",
-    arName: "قائمة الموظفين",
-    value: "EMP_LIST",
-    allowedAuthorities: ["SUPER_VISOR"],
-    options: [
+    "id": 3,
+    "service": "VISAS",
+    "description": "Visas",
+    "descriptionAr": "التأشيرات",
+    "bcUrl": VisasImg,
+    "serviceOptions": [
       {
-        id: "updateLaborer",
-        label: {
-          arLabel: "التحقق وتحديث بيانات الموظف",
-          enLabel: "Check and update Laborer information",
-        },
-        active: true,
+        "otptionId": 1679,
+        "name": "allowanceEnds",
+        "arDescription": "حول المنشأة لتوسع ر",
+        "enDescription": "Transformed to Expansion (Allownce EndDate)"
       },
       {
-        id: "changeActivity",
-        label: {
-          arLabel: "التحقق من تغير نشاط المنشأة",
-          enLabel: "Check establishment change activity",
-        },
-        active: true,
+        "otptionId": 1677,
+        "name": "visaCheckAllCases",
+        "arDescription": "التحقق من التأشيرات",
+        "enDescription": "Check Visas and Bordernumber"
       },
+      {
+        "otptionId": 1678,
+        "name": "issuingIssues",
+        "arDescription": "التحقق من مشاكل في الإصدار",
+        "enDescription": "Check Issuing Issues"
+      },
+      {
+        "otptionId": 1676,
+        "name": "CancelVisas",
+        "arDescription": "التأشيرات بإنتظار الإلغاء",
+        "enDescription": "Pending for cancelation Visas"
+      }
     ],
-    backgroundImg: EmployeeListImg,
+    "allowedAuthorities": []
   },
   {
-    enName: "Work Permit",
-    arName: "رخص العمل",
-    allowedAuthorities: ["WP_ROLE"],
-    value: "WORK_PERMIT",
-    options: [
+    "id": 4,
+    "service": "EMP_TRANSFER",
+    "description": "Employee transfer",
+    "descriptionAr": "نقل الخدمات",
+    "bcUrl": EmployeesTransferImg,
+    "serviceOptions": [
       {
-        id: "financialExemption",
-        label: {
-          arLabel: "الإعفاء المالي",
-          enLabel: "Check Financial Exemption",
-        },
-        active: true,
+        "otptionId": 1691,
+        "name": "CheckETRequest",
+        "arDescription": "التحقق من تفاصيل طلب النقل",
+        "enDescription": "Check Employee Transfeer Request"
       },
       {
-        id: "indebtednessDetails",
-        label: { arLabel: "المديونية", enLabel: "Indebtedness Details" },
-        active: true,
+        "otptionId": 1693,
+        "name": "TBetweenBranches",
+        "arDescription": "النقل بين الفروع",
+        "enDescription": "Transfeer between branches"
       },
       {
-        id: "paymentNumbers",
-        label: { arLabel: "أرقام السداد", enLabel: "payment Numbers" },
-        active: true,
-      },
-      {
-        id: "wpDetails",
-        label: { arLabel: "تفاصيل الرخصة'", enLabel: "Work Permit Details" },
-        active: true,
-      },
+        "otptionId": 1692,
+        "name": "CheckEstNatPercentage",
+        "arDescription": "التحقق من نسب الجنسيات لنقل",
+        "enDescription": "Establishment nationalities percentage"
+      }
     ],
-    backgroundImg: WorkPermitImg,
+    "allowedAuthorities": []
   },
   {
-    enName: "Contract Manager",
-    arName: "خدمة عقود العمل",
-    allowedAuthorities: ["CM_ROLE"],
-    value: "CONTRACT_MANAG",
-    options: [
+    "id": 5,
+    "service": "CHANGE_OCUP",
+    "description": "Change occupation",
+    "descriptionAr": "إدارة تغير المهن",
+    "bcUrl": ChangeOccupationImg,
+    "serviceOptions": [
       {
-        id: "AbsentFromWork",
-        label: {
-          arLabel: "طلبات إنقطاع عن العمل",
-          enLabel: "Absent From Work",
-        },
-        active: true,
+        "otptionId": 1694,
+        "name": "CheckCORequest",
+        "arDescription": "التحقق من طلب تغير المهنة",
+        "enDescription": "Check Change Occupation Request"
       },
       {
-        id: "ContractDetails",
-        label: {
-          arLabel: "التحقق من تفاصيل العقد للموظف",
-          enLabel: "Contract Details",
-        },
-        active: true,
+        "otptionId": 1696,
+        "name": "COValidate",
+        "arDescription": "التحقق من إمكانية التغير لمهنة",
+        "enDescription": "Change occupation validate"
       },
       {
-        id: "TerminateContract",
-        label: {
-          arLabel: "طلب إنهاء العلاقة التعاقدية",
-          enLabel: "Terminate Contract",
-        },
-        active: true,
+        "otptionId": 1697,
+        "name": "OccupationCorrection",
+        "arDescription": "التحقق من طلب تصحيح المهنة",
+        "enDescription": "Occupation Correction"
       },
       {
-        id: "ContractAuthenticationIndicator",
-        label: {
-          arLabel: "التحقق من نسبة توثيق العقود",
-          enLabel: "Contract Authentication Indicator",
-        },
-        active: true,
-      },
+        "otptionId": 1695,
+        "name": "CONatPercentage",
+        "arDescription": "نسب التوطين للمهن",
+        "enDescription": "Change Occupation Nat Percentage"
+      }
     ],
-    backgroundImg: ContractManagerImg,
+    "allowedAuthorities": []
   },
   {
-    enName: "User Managment",
-    arName: "خدمة ادارة المستخدمين",
-    allowedAuthorities: ["UM_ROLE"],
-    value: "USER_MANAG",
-    options: [
+    "id": 6,
+    "service": "WORK_PERMIT",
+    "description": "Work permit managment",
+    "descriptionAr": "إدارة رخص العمل",
+    "bcUrl": WorkPermitImg,
+    "serviceOptions": [
       {
-        id: "notAppearEsts",
-        label: {
-          arLabel: "المنشأة لا تظهر",
-          enLabel: "not Appear Establishments",
-        },
-        active: true,
+        "otptionId": 1682,
+        "name": "indebtednessDetails",
+        "arDescription": "المديونية",
+        "enDescription": "Indebtedness Details"
       },
       {
-        id: "CheckPaymentRef",
-        label: {
-          arLabel: "التحقق من دفع الأشتراك",
-          enLabel: "Check Payment Referance",
-        },
-        active: true,
+        "otptionId": 1684,
+        "name": "wpDetails",
+        "arDescription": "تفاصيل الرخصة",
+        "enDescription": "Work Permit Details"
       },
+      {
+        "otptionId": 1681,
+        "name": "financialExemption",
+        "arDescription": "الإعفاء المالي",
+        "enDescription": "Check Financial Exemption"
+      },
+      {
+        "otptionId": 1683,
+        "name": "paymentNumbers",
+        "arDescription": "أرقام السداد",
+        "enDescription": "payment Numbers"
+      }
     ],
-    backgroundImg: UserManagmentImg,
+    "allowedAuthorities": []
   },
   {
-    enName: "Privileges",
-    arName: "خدمة ادارة الصلاحيات",
-    allowedAuthorities: ["PM_ROLE"],
-    value: "PRIVILIAGE_MANAG",
-    options: [
-      {
-        id: "checkPrivileges",
-        label: { arLabel: "االتحقق من الصلاحيات", enLabel: "Check Privileges" },
-        active: true,
-      },
-    ],
-    backgroundImg: PrivilegesImg,
+    "id": 7,
+    "service": "E_ADVISOR",
+    "description": "E-Adviser",
+    "descriptionAr": "المستشار الإلكتروني",
+    "bcUrl": generalImg,
+    "serviceOptions": [],
+    "allowedAuthorities": []
   },
   {
-    enName: "Employees Transfer",
-    arName: "نقل الخدمات",
-    allowedAuthorities: ["ET_ROLE"],
-    value: "EMP_TRANSFER",
-    options: [
+    "id": 8,
+    "service": "PRIVILIAGE_MANAG",
+    "description": "Privilege management",
+    "descriptionAr": "إدارة الصلاحيات",
+    "bcUrl": PrivilegesImg,
+    "serviceOptions": [
       {
-        id: "CheckETRequest",
-        label: {
-          arLabel: "التحقق من تفاصيل طلب النقل",
-          enLabel: "Check Employee Transfeer Request",
-        },
-        active: true,
-      },
-      {
-        id: "CheckEstNatPercentage",
-        label: {
-          arLabel: "التحقق من نسب الجنسيات لنقل",
-          enLabel: "Establishment nationalities percentage",
-        },
-        active: true,
-      },
-      {
-        id: "TBetweenBranches",
-        label: {
-          arLabel: "النقل بين الفروع",
-          enLabel: "Transfeer between branches",
-        },
-        active: true,
-      },
+        "otptionId": 1690,
+        "name": "checkPrivileges",
+        "arDescription": "التحقق من الصلاحيات",
+        "enDescription": "Check Privileges"
+      }
     ],
-    backgroundImg: EmployeesTransferImg,
+    "allowedAuthorities": []
   },
   {
-    enName: "Change Occupation",
-    arName: "خدمة تغيير المهن",
-    allowedAuthorities: ["CO_ROLE"],
-    value: "CHANGE_OCUP",
-    options: [
+    "id": 9,
+    "service": "USER_MANAG",
+    "description": "User managment",
+    "descriptionAr": "إدارة المستخدمين",
+    "bcUrl": UserManagmentImg,
+    "serviceOptions": [
       {
-        id: "CheckCORequest",
-        label: {
-          arLabel: "التحقق من طلب تغير المهنة",
-          enLabel: "Check Change Occupation Request",
-        },
-        active: true,
-      },
-      {
-        id: "CheckSaudiCertificate",
-        label: {
-          arLabel: "التحقق من اصدار شهادة السعودة",
-          enLabel: "Check Saudi Certificate",
-        },
-        active: true,
-      },
-      {
-        id: "CheckNameofSaudiCertificate",
-        label: {
-          arLabel: "التحقق من شهادة السعودة",
-          enLabel: "Check Name of Saudi Certificate",
-        },
-        active: true,
-      },
-      {
-        id: "OccupationCorrection",
-        label: {
-          arLabel: "التحقق من طلب تصحيح المهنة",
-          enLabel: "Occupation Correction",
-        },
-        active: true,
-      },
+        "otptionId": 1689,
+        "name": "CheckPaymentRef",
+        "arDescription": "التحقق من دفع الأشتراك",
+        "enDescription": "Check Payment Referance"
+      }
     ],
-    backgroundImg: ChangeOccupationImg,
+    "allowedAuthorities": []
   },
+  {
+    "id": 10,
+    "service": "GENERAL",
+    "description": "General",
+    "descriptionAr": "الخدمات العامة",
+    "bcUrl": generalImg,
+    "serviceOptions": [
+      {
+        "otptionId": 1672,
+        "name": "validate",
+        "arDescription": "التحقق من المنشأة",
+        "enDescription": "check the Establishment"
+      },
+      {
+        "otptionId": 1673,
+        "name": "nitaq",
+        "arDescription": "رد النطاق",
+        "enDescription": "Nitaq Check"
+      },
+      {
+        "otptionId": 1674,
+        "name": "notCountedSaudis",
+        "arDescription": "السعوديين المحتسبين بأقل من 1",
+        "enDescription": "Less than one Saudis"
+      },
+      {
+        "otptionId": 1675,
+        "name": "calcBalance",
+        "arDescription": "رد الرصيد",
+        "enDescription": "Get balance answer"
+      }
+    ],
+    "allowedAuthorities": []
+  },
+  {
+    "id": 11,
+    "service": "EFM",
+    "description": "Establishment file managment",
+    "descriptionAr": "إدارة ملف المنشأة",
+    "bcUrl": generalImg,
+    "serviceOptions": [
+      {
+        "otptionId": 1700,
+        "name": "ChangeActivity",
+        "arDescription": "التحقق من تغير نشاط المنشأة",
+        "enDescription": "Check establishment change activity"
+      },
+      {
+        "otptionId": 1701,
+        "name": "CheckAndUpdateEst",
+        "arDescription": "التحقق وتحديث المنشأة",
+        "enDescription": "Check and update Establishment"
+      },
+      {
+        "otptionId": 1706,
+        "name": "CloseEstablishment",
+        "arDescription": "التحقق من إغلاق المنشأة",
+        "enDescription": "Validate Close Establishment"
+      },
+      {
+        "otptionId": 1702,
+        "name": "notAppearEsts",
+        "arDescription": "المنشأة لا تظهر",
+        "enDescription": "not Appear Establishments"
+      }
+    ],
+    "allowedAuthorities": []
+  },
+  {
+    "id": 12,
+    "service": "VIOLATIONS",
+    "description": "Violation Objections",
+    "descriptionAr": "الإعتراض على المخالفات",
+    "bcUrl": generalImg,
+    "serviceOptions": [
+      {
+        "otptionId": 1703,
+        "name": "PaidViolations",
+        "arDescription": "المخالفات المدفوعة",
+        "enDescription": "Paid violations"
+      },
+      {
+        "otptionId": 1705,
+        "name": "UnpaidViolations",
+        "arDescription": "المخالفات الغير مدفوعة",
+        "enDescription": "Unpaid violations"
+      },
+      {
+        "otptionId": 1704,
+        "name": "CancelledViolations",
+        "arDescription": "المخالفات الملغية",
+        "enDescription": "Cancelled violations"
+      }
+    ],
+    "allowedAuthorities": []
+  },
+  {
+    "id": 13,
+    "service": "CERTIFICATE_MANAGEMENT",
+    "description": "Certifications Management ",
+    "descriptionAr": "إدارة الشهادات",
+    "bcUrl": ContractManagerImg,
+    "serviceOptions": [
+      {
+        "otptionId": 1698,
+        "name": "CheckSaudiCertificate",
+        "arDescription": "التحقق من اصدار شهادة السعودة",
+        "enDescription": "Check Saudi Certificate"
+      },
+      {
+        "otptionId": 1699,
+        "name": "CheckNameofSaudiCertificate",
+        "arDescription": "التحقق من شهادة السعودة",
+        "enDescription": "Check Name of Saudi Certificate"
+      }
+    ],
+    "allowedAuthorities": []
+  }
 ];
 //E_ADVISOR

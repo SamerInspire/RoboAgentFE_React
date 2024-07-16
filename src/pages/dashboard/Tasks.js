@@ -24,9 +24,7 @@ const Tasks = () => {
   const [activeTasks, setActiveTasks] = useState(() =>
     sessionStorage.getItem('activeTasks')
       ? JSON.parse(sessionStorage.getItem('activeTasks'))
-      : [
-          { id: uuidv4(), label: t('dashboard.Close the target'), status: false }
-        ],
+      : [{ id: uuidv4(), label: t('dashboard.Close the target'), status: false }],
   );
   useEffect(() => {
     sessionStorage.setItem('activeTasks', JSON.stringify(activeTasks));

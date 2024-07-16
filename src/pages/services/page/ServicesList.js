@@ -1,20 +1,26 @@
 /* eslint-disable */
-import { Grid } from '@mui/material';
+import { Grid, Skeleton } from '@mui/material';
 import { AlertContext } from 'hooks/context/AlertContext';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { handleFetchCurrentUser } from 'utils/users/users';
-import { Services } from '../schema/ServicesSchema';
+import { handleFetchCurrentUser, handleFetchServiceList } from 'utils/users/users';
 import ServicesListItem from './utils/ServicesListItem';
 const ServicesList = () => {
   const [currentUserData, setCurrentUserData] = useState({});
-  // console.log("currentUserData ===> Siminz ===> ", currentUserData.status);
   const queryCenterSignup = useRef(currentUserData?.status?.startsWith('0') && currentUserData.team !== 'L1');
   // console.log("queryCenterSignup ===> Siminz ===> ", queryCenterSignup.current);
   const { setAlert } = useContext(AlertContext);
   const [eligiableServices, setEligiableSevices] = useState({ General: true });
-
+  const [Services, setServices] = useState(!!JSON.parse(localStorage.getItem('ServiceList'))? JSON.parse(localStorage.getItem('ServiceList')): ['','','',''])
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
+    handleFetchServiceList({
+      setServiceList: setServices,
+      requestAction: "SET_SERVICE_LIST",
+      setIsLoading: setIsLoading,
+      setAlert: () => { },
+    })
+    console.log("Services ", 'ServiceList')
     handleFetchCurrentUser({
       requestAction: 'SET_CURRENT_USER',
       setCurrentUserData,
@@ -39,29 +45,39 @@ const ServicesList = () => {
         const showService = currentUserData.roboAuthorities.some((auth) =>
           service?.allowedAuthorities?.includes(auth.name),
         );
-        if (showService) setEligiableSevices((prev) => ({ ...prev, [service.enName]: true }));
+        if (showService) setEligiableSevices((prev) => ({ ...prev, [service.description]: true }));
       });
       console.log(eligiableServices);
     }
   }, [currentUserData]);
   if (currentUserData) {
     return (
-      <Grid container item spacing={4}>
+      isLoading ? <Grid container item spacing={4}>
         <Helmet>
           <title>Services | RoboAgent</title>
         </Helmet>
         {Services.map((service, index) => (
-          <Grid key={service.enName + index} item xs={12} sm={6} md={4} lg={3}>
-            <ServicesListItem
-              eligiableServices={eligiableServices}
-              currentUserData={currentUserData}
-              service={service}
-              queryCenterSignup={queryCenterSignup.current}
-            />
+          <Grid key={service.description + index} item xs={12} sm={6} md={4} lg={3}>
+            <Skeleton variant="rectangular" width={370} height={250} />
           </Grid>
         ))}
       </Grid>
-    );
+        : <Grid container item spacing={4}>
+          <Helmet>
+            <title>Services | RoboAgent</title>
+          </Helmet>
+          {Services.map((service, index) => (
+            <Grid key={service.description + index} item xs={12} sm={6} md={4} lg={3}>
+              <ServicesListItem
+                eligiableServices={eligiableServices}
+                currentUserData={currentUserData}
+                service={service}
+                queryCenterSignup={queryCenterSignup.current}
+              />
+            </Grid>
+          ))}
+        </Grid>
+        );
   }
 };
-export default ServicesList;
+        export default ServicesList;

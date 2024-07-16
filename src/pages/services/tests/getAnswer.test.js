@@ -39,8 +39,8 @@ describe('ServicesGetAnswer component', () => {
     const { getByText } = renderWithContexts(<ServicesGetAnswer />, {
       providerProps,
     });
-    const service = Services.find((service) => service.enName === 'Visas');
-    expect(getByText(service.enName)).toBeInTheDocument();
+    const service = Services.find((service) => service.description === 'Visas');
+    expect(getByText(service.description)).toBeInTheDocument();
   });
 
   // test("handles form submission correctly", async () => {

@@ -1,7 +1,8 @@
 import { Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import generalImg from "assets/images/services/apps-svgrepo-com.svg";
 import i18next from "i18next";
-import { Services } from "pages/services/schema/ServicesSchema";
+import { useState } from "react";
 
 function ServicesSidebar({
   handleChangeCurrentService,
@@ -9,6 +10,10 @@ function ServicesSidebar({
   setCurrService,
   currentUserData,
 }) {
+  const [Services] = useState(JSON.parse(localStorage.getItem('ServiceList'))? JSON.parse(localStorage.getItem('ServiceList')): ['','','',''])
+
+  console.log("Services ", JSON.parse(localStorage.getItem('ServiceList')))
+
   const lang = i18next.language;
   return (
     <Grid
@@ -24,7 +29,7 @@ function ServicesSidebar({
           service?.allowedAuthorities?.includes(auth.name)
         );
         return currentUserData.role == "ADMIN" ? (
-          <Grid key={service.enName + index} item xs={12}>
+          <Grid key={service.description + index} item xs={12}>
             <Grid
               container
               item
@@ -32,29 +37,29 @@ function ServicesSidebar({
               alignItems={"center"}
               p={2}
               onClick={() =>
-                handleChangeCurrentService(service.value, setCurrService)
+                handleChangeCurrentService(service.service, setCurrService)
               }
               sx={{
                 cursor: "pointer",
-                fontWeight: service.enName === currService.enName ? "600" : "",
-                color: service.enName === currService.enName ? "#04554C" : "",
+                fontWeight: service.description === currService.description ? "600" : "",
+                color: service.description === currService.description ? "#04554C" : "",
                 backgroundColor:
-                  service.enName === currService.enName ? "#d9ffea" : "",
+                  service.description === currService.description ? "#d9ffea" : "",
               }}
             >
               <Box
                 component={"img"}
-                src={service.backgroundImg}
+                src={service.bcUrl ? service.bcUrl : generalImg}
                 sx={{ width: "20px", height: "20px" }}
               />
               <Typography variant="body1" fontWeight={"600"} color={"gray"}>
                 {" "}
-                {lang == "en" ? service.enName : service.arName}
+                {lang == "en" ? service.description : service.arName}
               </Typography>
             </Grid>
           </Grid>
         ) : showService ? (
-          <Grid key={service.enName + index} py={2} item xs={12}>
+          <Grid key={service.description + index} py={2} item xs={12}>
             <Grid
               container
               item
@@ -62,24 +67,24 @@ function ServicesSidebar({
               alignItems={"center"}
               p={1}
               onClick={() =>
-                handleChangeCurrentService(service.value, setCurrService)
+                handleChangeCurrentService(service.service, setCurrService)
               }
               sx={{
                 cursor: "pointer",
-                fontWeight: service.enName === currService.enName ? "600" : "",
-                color: service.enName === currService.enName ? "#04554C" : "",
+                fontWeight: service.description === currService.description ? "600" : "",
+                color: service.description === currService.description ? "#04554C" : "",
                 backgroundColor:
-                  service.enName === currService.enName ? "#d9ffea" : "",
+                  service.description === currService.description ? "#d9ffea" : "",
               }}
             >
               <Box
                 component={"img"}
-                src={service.backgroundImg}
+                src={service.bcUrl ? service.bcUrl : generalImg}
                 sx={{ width: "20px", height: "20px" }}
               />
               <Typography variant="body1" fontWeight={"600"} color={"gray"}>
                 {" "}
-                {lang == "en" ? service.enName : service.arName}
+                {lang == "en" ? service.description : service.arName}
               </Typography>
             </Grid>
           </Grid>
@@ -87,29 +92,29 @@ function ServicesSidebar({
           <Grid
             container
             item
-            key={service.enName + index}
+            key={service.description + index}
             gap={2}
             p={1}
             onClick={() =>
-              handleChangeCurrentService(service.value, setCurrService)
+              handleChangeCurrentService(service.service, setCurrService)
             }
             alignItems={"center"}
             sx={{
               cursor: "pointer",
-              fontWeight: service.enName === currService.enName ? "600" : "",
-              color: service.enName === currService.enName ? "#04554C" : "",
+              fontWeight: service.description === currService.description ? "600" : "",
+              color: service.description === currService.description ? "#04554C" : "",
               backgroundColor:
-                service.enName === currService.enName ? "#d9ffea" : "",
+                service.description === currService.description ? "#d9ffea" : "",
             }}
           >
             <Box
               component={"img"}
-              src={service.backgroundImg}
+              src={service.bcUrl ? service.bcUrl : generalImg}
               sx={{ width: "20px", height: "20px" }}
             />
             <Typography variant="body1" fontWeight={"600"} color={"gray"}>
               {" "}
-              {lang == "en" ? service.enName : service.arName}
+              {lang == "en" ? service.description : service.descriptionAr}
             </Typography>
           </Grid>
         ) : null;
