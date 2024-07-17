@@ -1,82 +1,83 @@
-import generalImg from "assets/images/services/apps-svgrepo-com.svg";
-import ChangeOccupationImg from "assets/images/services/change-record-type-svgrepo-com.svg";
-import ContractManagerImg from "assets/images/services/contract-sign-line-svgrepo-com.svg";
-import EmployeeListImg from "assets/images/services/list-svgrepo-com.svg";
-import WorkPermitImg from "assets/images/services/location-permit-svgrepo-com.svg";
-import VisasImg from "assets/images/services/passport-svgrepo-com.svg";
-import PrivilegesImg from "assets/images/services/permissions-svgrepo-com.svg";
-import EmployeesTransferImg from "assets/images/services/transfer-svgrepo-com.svg";
-import UserManagmentImg from "assets/images/services/user-id-svgrepo-com.svg";
+import generalImg from 'assets/images/services/apps-svgrepo-com.svg';
+import ChangeOccupationImg from 'assets/images/services/change-record-type-svgrepo-com.svg';
+import ContractManagerImg from 'assets/images/services/contract-sign-line-svgrepo-com.svg';
+import EmployeeListImg from 'assets/images/services/list-svgrepo-com.svg';
+import WorkPermitImg from 'assets/images/services/location-permit-svgrepo-com.svg';
+import VisasImg from 'assets/images/services/passport-svgrepo-com.svg';
+import PrivilegesImg from 'assets/images/services/permissions-svgrepo-com.svg';
+import EmployeesTransferImg from 'assets/images/services/transfer-svgrepo-com.svg';
+import UserManagmentImg from 'assets/images/services/user-id-svgrepo-com.svg';
 export const Services = [
   {
-    enName: "General",
-    arName: "الخدمات العامة",
-    allowedAuthorities: ["all"],
+    enName: 'General',
+    arName: 'الخدمات العامة',
+    value: 'General',
+    allowedAuthorities: ['all'],
     options: [
       {
-        id: "validate",
+        id: 'validate',
         label: {
-          arLabel: "التحقق من المنشأة",
-          enLabel: "check the Establishment",
+          arLabel: 'التحقق من المنشأة',
+          enLabel: 'check the Establishment',
         },
         active: true,
       },
       {
-        id: "nitaq",
-        label: { arLabel: "رد النطاق", enLabel: "Nitaq Check" },
+        id: 'nitaq',
+        label: { arLabel: 'رد النطاق', enLabel: 'Nitaq Check' },
         active: true,
       },
       {
-        id: "notCountedSaudis",
+        id: 'notCountedSaudis',
         label: {
-          arLabel: "السعوديين المحتسبين بأقل من 1",
-          enLabel: "Less than one Saudis",
+          arLabel: 'السعوديين المحتسبين بأقل من 1',
+          enLabel: 'Less than one Saudis',
         },
         active: true,
       },
       {
-        id: "calcBalance",
-        label: { arLabel: "رد الرصيد", enLabel: "Get balance answer" },
+        id: 'calcBalance',
+        label: { arLabel: 'رد الرصيد', enLabel: 'Get balance answer' },
         active: true,
       },
     ],
     backgroundImg: generalImg,
   },
   {
-    enName: "Visas",
-    arName: "خدمة التأشيرات",
-    allowedAuthorities: ["VISAS"],
-    value: "VISAS",
+    enName: 'Visas',
+    arName: 'خدمة التأشيرات',
+    allowedAuthorities: ['VISAS'],
+    value: 'VISAS',
     options: [
       {
-        id: "CancelVisas",
+        id: 'CancelVisas',
         label: {
-          arLabel: "التأشيرات بإنتظار الإلغاء",
-          enLabel: "Pending for cancelation Visas",
+          arLabel: 'التأشيرات بإنتظار الإلغاء',
+          enLabel: 'Pending for cancelation Visas',
         },
         active: true,
       },
       {
-        id: "visaCheckAllCases",
+        id: 'visaCheckAllCases',
         label: {
-          arLabel: "التحقق من التأشيرات",
-          enLabel: "Check Visas and Bordernumber",
+          arLabel: 'التحقق من التأشيرات',
+          enLabel: 'Check Visas and Bordernumber',
         },
         active: true,
       },
       {
-        id: "issuingIssues",
+        id: 'issuingIssues',
         label: {
-          arLabel: "التحقق من مشاكل في الإصدار",
-          enLabel: "Check Issuing Issues",
+          arLabel: 'التحقق من مشاكل في الإصدار',
+          enLabel: 'Check Issuing Issues',
         },
         active: true,
       },
       {
-        id: "allowanceEnds",
+        id: 'allowanceEnds',
         label: {
-          arLabel: "تحول المنشأة لتوسع",
-          enLabel: "Transformed to Expansion (Allownce EndDate)",
+          arLabel: 'تحول المنشأة لتوسع',
+          enLabel: 'Transformed to Expansion (Allownce EndDate)',
         },
         active: true,
       },
@@ -84,24 +85,24 @@ export const Services = [
     backgroundImg: VisasImg,
   },
   {
-    enName: "Employee List",
-    arName: "قائمة الموظفين",
-    value: "EMP_LIST",
-    allowedAuthorities: ["SUPER_VISOR"],
+    enName: 'Employee List',
+    arName: 'قائمة الموظفين',
+    value: 'EMP_LIST',
+    allowedAuthorities: ['SUPER_VISOR'],
     options: [
       {
-        id: "updateLaborer",
+        id: 'updateLaborer',
         label: {
-          arLabel: "التحقق وتحديث بيانات الموظف",
-          enLabel: "Check and update Laborer information",
+          arLabel: 'التحقق وتحديث بيانات الموظف',
+          enLabel: 'Check and update Laborer information',
         },
         active: true,
       },
       {
-        id: "changeActivity",
+        id: 'changeActivity',
         label: {
-          arLabel: "التحقق من تغير نشاط المنشأة",
-          enLabel: "Check establishment change activity",
+          arLabel: 'التحقق من تغير نشاط المنشأة',
+          enLabel: 'Check establishment change activity',
         },
         active: true,
       },
@@ -109,72 +110,72 @@ export const Services = [
     backgroundImg: EmployeeListImg,
   },
   {
-    enName: "Work Permit",
-    arName: "رخص العمل",
-    allowedAuthorities: ["WP_ROLE"],
-    value: "WORK_PERMIT",
+    enName: 'Work Permit',
+    arName: 'رخص العمل',
+    allowedAuthorities: ['WP_ROLE'],
+    value: 'WORK_PERMIT',
     options: [
       {
-        id: "financialExemption",
+        id: 'financialExemption',
         label: {
-          arLabel: "الإعفاء المالي",
-          enLabel: "Check Financial Exemption",
+          arLabel: 'الإعفاء المالي',
+          enLabel: 'Check Financial Exemption',
         },
         active: true,
       },
       {
-        id: "indebtednessDetails",
-        label: { arLabel: "المديونية", enLabel: "Indebtedness Details" },
+        id: 'indebtednessDetails',
+        label: { arLabel: 'المديونية', enLabel: 'Indebtedness Details' },
         active: true,
       },
       {
-        id: "paymentNumbers",
-        label: { arLabel: "أرقام السداد", enLabel: "payment Numbers" },
+        id: 'paymentNumbers',
+        label: { arLabel: 'أرقام السداد', enLabel: 'payment Numbers' },
         active: true,
       },
       {
-        id: "wpDetails",
-        label: { arLabel: "تفاصيل الرخصة'", enLabel: "Work Permit Details" },
+        id: 'wpDetails',
+        label: { arLabel: "تفاصيل الرخصة'", enLabel: 'Work Permit Details' },
         active: true,
       },
     ],
     backgroundImg: WorkPermitImg,
   },
   {
-    enName: "Contract Manager",
-    arName: "خدمة عقود العمل",
-    allowedAuthorities: ["CM_ROLE"],
-    value: "CONTRACT_MANAG",
+    enName: 'Contract Manager',
+    arName: 'خدمة عقود العمل',
+    allowedAuthorities: ['CM_ROLE'],
+    value: 'CONTRACT_MANAG',
     options: [
       {
-        id: "AbsentFromWork",
+        id: 'AbsentFromWork',
         label: {
-          arLabel: "طلبات إنقطاع عن العمل",
-          enLabel: "Absent From Work",
+          arLabel: 'طلبات إنقطاع عن العمل',
+          enLabel: 'Absent From Work',
         },
         active: true,
       },
       {
-        id: "ContractDetails",
+        id: 'ContractDetails',
         label: {
-          arLabel: "التحقق من تفاصيل العقد للموظف",
-          enLabel: "Contract Details",
+          arLabel: 'التحقق من تفاصيل العقد للموظف',
+          enLabel: 'Contract Details',
         },
         active: true,
       },
       {
-        id: "TerminateContract",
+        id: 'TerminateContract',
         label: {
-          arLabel: "طلب إنهاء العلاقة التعاقدية",
-          enLabel: "Terminate Contract",
+          arLabel: 'طلب إنهاء العلاقة التعاقدية',
+          enLabel: 'Terminate Contract',
         },
         active: true,
       },
       {
-        id: "ContractAuthenticationIndicator",
+        id: 'ContractAuthenticationIndicator',
         label: {
-          arLabel: "التحقق من نسبة توثيق العقود",
-          enLabel: "Contract Authentication Indicator",
+          arLabel: 'التحقق من نسبة توثيق العقود',
+          enLabel: 'Contract Authentication Indicator',
         },
         active: true,
       },
@@ -182,24 +183,24 @@ export const Services = [
     backgroundImg: ContractManagerImg,
   },
   {
-    enName: "User Managment",
-    arName: "خدمة ادارة المستخدمين",
-    allowedAuthorities: ["UM_ROLE"],
-    value: "USER_MANAG",
+    enName: 'User Managment',
+    arName: 'خدمة ادارة المستخدمين',
+    allowedAuthorities: ['UM_ROLE'],
+    value: 'USER_MANAG',
     options: [
       {
-        id: "notAppearEsts",
+        id: 'notAppearEsts',
         label: {
-          arLabel: "المنشأة لا تظهر",
-          enLabel: "not Appear Establishments",
+          arLabel: 'المنشأة لا تظهر',
+          enLabel: 'not Appear Establishments',
         },
         active: true,
       },
       {
-        id: "CheckPaymentRef",
+        id: 'CheckPaymentRef',
         label: {
-          arLabel: "التحقق من دفع الأشتراك",
-          enLabel: "Check Payment Referance",
+          arLabel: 'التحقق من دفع الأشتراك',
+          enLabel: 'Check Payment Referance',
         },
         active: true,
       },
@@ -207,46 +208,46 @@ export const Services = [
     backgroundImg: UserManagmentImg,
   },
   {
-    enName: "Privileges",
-    arName: "خدمة ادارة الصلاحيات",
-    allowedAuthorities: ["PM_ROLE"],
-    value: "PRIVILIAGE_MANAG",
+    enName: 'Privileges',
+    arName: 'خدمة ادارة الصلاحيات',
+    allowedAuthorities: ['PM_ROLE'],
+    value: 'PRIVILIAGE_MANAG',
     options: [
       {
-        id: "checkPrivileges",
-        label: { arLabel: "االتحقق من الصلاحيات", enLabel: "Check Privileges" },
+        id: 'checkPrivileges',
+        label: { arLabel: 'االتحقق من الصلاحيات', enLabel: 'Check Privileges' },
         active: true,
       },
     ],
     backgroundImg: PrivilegesImg,
   },
   {
-    enName: "Employees Transfer",
-    arName: "نقل الخدمات",
-    allowedAuthorities: ["ET_ROLE"],
-    value: "EMP_TRANSFER",
+    enName: 'Employees Transfer',
+    arName: 'نقل الخدمات',
+    allowedAuthorities: ['ET_ROLE'],
+    value: 'EMP_TRANSFER',
     options: [
       {
-        id: "CheckETRequest",
+        id: 'CheckETRequest',
         label: {
-          arLabel: "التحقق من تفاصيل طلب النقل",
-          enLabel: "Check Employee Transfeer Request",
+          arLabel: 'التحقق من تفاصيل طلب النقل',
+          enLabel: 'Check Employee Transfeer Request',
         },
         active: true,
       },
       {
-        id: "CheckEstNatPercentage",
+        id: 'CheckEstNatPercentage',
         label: {
-          arLabel: "التحقق من نسب الجنسيات لنقل",
-          enLabel: "Establishment nationalities percentage",
+          arLabel: 'التحقق من نسب الجنسيات لنقل',
+          enLabel: 'Establishment nationalities percentage',
         },
         active: true,
       },
       {
-        id: "TBetweenBranches",
+        id: 'TBetweenBranches',
         label: {
-          arLabel: "النقل بين الفروع",
-          enLabel: "Transfeer between branches",
+          arLabel: 'النقل بين الفروع',
+          enLabel: 'Transfeer between branches',
         },
         active: true,
       },
@@ -254,40 +255,40 @@ export const Services = [
     backgroundImg: EmployeesTransferImg,
   },
   {
-    enName: "Change Occupation",
-    arName: "خدمة تغيير المهن",
-    allowedAuthorities: ["CO_ROLE"],
-    value: "CHANGE_OCUP",
+    enName: 'Change Occupation',
+    arName: 'خدمة تغيير المهن',
+    allowedAuthorities: ['CO_ROLE'],
+    value: 'CHANGE_OCUP',
     options: [
       {
-        id: "CheckCORequest",
+        id: 'CheckCORequest',
         label: {
-          arLabel: "التحقق من طلب تغير المهنة",
-          enLabel: "Check Change Occupation Request",
+          arLabel: 'التحقق من طلب تغير المهنة',
+          enLabel: 'Check Change Occupation Request',
         },
         active: true,
       },
       {
-        id: "CheckSaudiCertificate",
+        id: 'CheckSaudiCertificate',
         label: {
-          arLabel: "التحقق من اصدار شهادة السعودة",
-          enLabel: "Check Saudi Certificate",
+          arLabel: 'التحقق من اصدار شهادة السعودة',
+          enLabel: 'Check Saudi Certificate',
         },
         active: true,
       },
       {
-        id: "CheckNameofSaudiCertificate",
+        id: 'CheckNameofSaudiCertificate',
         label: {
-          arLabel: "التحقق من شهادة السعودة",
-          enLabel: "Check Name of Saudi Certificate",
+          arLabel: 'التحقق من شهادة السعودة',
+          enLabel: 'Check Name of Saudi Certificate',
         },
         active: true,
       },
       {
-        id: "OccupationCorrection",
+        id: 'OccupationCorrection',
         label: {
-          arLabel: "التحقق من طلب تصحيح المهنة",
-          enLabel: "Occupation Correction",
+          arLabel: 'التحقق من طلب تصحيح المهنة',
+          enLabel: 'Occupation Correction',
         },
         active: true,
       },

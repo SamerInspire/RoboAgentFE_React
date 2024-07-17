@@ -34,7 +34,7 @@ const ServicesListItem = ({ service, queryCenterSignup, eligiableServices, curre
     <Link
       component={isEligiableService ? '' : RouterLink}
       sx={{ textDecoration: 'none', position: 'relative' }}
-      to={isEligiableService ? '' : `/dash/services/getAnswer/${service.enName}`}
+      to={isEligiableService ? '' : `/dash/services/getAnswer/${service.value}`}
     >
       <Grid
         container

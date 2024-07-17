@@ -21,7 +21,7 @@ const ServicesGetAnswer = ({}) => {
   const [currentUserData, setCurrentUserData] = useState({});
   const isEligiable = useRef(false);
   const { t } = useTranslation();
-  const [currService, setCurrService] = useState(Services.filter((service) => service.enName == servicename)[0]);
+  const [currService, setCurrService] = useState(Services.filter((service) => service.value == servicename)[0]);
   console.log(currService);
   const [loading, setLoading] = useState();
   const { setAlert, handleCloseAlert } = useContext(AlertContext);
@@ -65,7 +65,9 @@ const ServicesGetAnswer = ({}) => {
   }, [currentUserData]);
   function handleChangeCurrentService(serviceName, setCurrService) {
     navigate('/dash/services/getAnswer/' + serviceName, { replace: true });
-    setCurrService(Services.filter((service) => service.enName == serviceName)[0]);
+    console.log(serviceName, 'servicename');
+
+    setCurrService(Services.filter((service) => service.value == serviceName)[0]);
   }
   const {
     register,
