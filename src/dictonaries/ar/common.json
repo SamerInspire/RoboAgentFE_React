@@ -165,6 +165,7 @@
     "Go to Home": "اذهب إلى الصفحة الرئيسية"
   },
   "register": {
+    "invalidEmail": "الرجاء ادخال بريد الكتروني صحيح",
     "Terms of Service": "شروط الخدمة",
     "Privacy Policy": "سياسة الخصوصية",
     "User registration": "تسجيل المستخدم",

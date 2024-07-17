@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Checkbox, FormControlLabel, styled } from "@mui/material";
+import { Checkbox, FormControlLabel, styled } from '@mui/material';
+import { useState } from 'react';
 
 const TasksItem = ({ id, status, label, mission, checkOptions }) => {
   const [checked, setChecked] = useState(status);
@@ -10,35 +10,29 @@ const TasksItem = ({ id, status, label, mission, checkOptions }) => {
 
   // style
   const FormControlLabelStyle = styled(FormControlLabel)(({ theme }) => ({
-    "& .MuiCheckbox-root": {
-      transition: "all 0.5s ease",
+    '& .MuiCheckbox-root': {
+      transition: 'all 0.5s ease',
       color: theme.palette.success.main,
-      "&:hover": {
+      '&:hover': {
         backgroundColor: theme.palette.green.lighter,
       },
     },
 
-    "& .Mui-checked	": {
+    '& .Mui-checked	': {
       color: `${theme.palette.green.darker} !important`,
     },
 
-    "& .MuiFormControlLabel-label": {
-      color: checked && mission ? theme.palette.text.disabled : "inherit",
-      textDecoration: checked && mission ? "line-through" : null,
+    '& .MuiFormControlLabel-label': {
+      color: checked && mission ? theme.palette.text.disabled : 'inherit',
+      textDecoration: checked && mission ? 'line-through' : null,
     },
   }));
 
   return (
     <FormControlLabelStyle
       key={id}
-      control={
-        <Checkbox
-          checked={checked}
-          onChange={handleChange}
-          id={id}
-          name="selectedOptions"
-        />
-      }
+      checked={false}
+      control={<Checkbox checked={checked} onChange={handleChange} id={id} name="selectedOptions" />}
       label={label}
     />
   );

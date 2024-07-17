@@ -3,7 +3,7 @@ import { Grid, Modal, Popper } from '@mui/material';
 import tableColumns from 'constants/tableColumns';
 import { AlertContext } from 'hooks/context/AlertContext';
 import MUIDataTable from 'mui-datatables';
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { glassMorphisimStyle } from 'styles/styles';
 import { handleFilterAuthorities } from 'utils/table/tableReshape';
@@ -13,7 +13,6 @@ import {
   handleFetchCurrentUser,
   handleFetchServiceList,
 } from 'utils/users/users';
-import LoadingTableBody from './TableLoading';
 import DNDServicesModal from './dialogs/DNDServicesModal';
 import ServiceDialog from './dialogs/ServiceDialog';
 import RolesPopper from './poppers/RolesPopper';
@@ -57,19 +56,18 @@ function UserTable() {
 
   const statusPopperId = statusOpen ? 'simple-popper' : undefined;
 
-  const BodyComponent = useMemo(() => (props) => <LoadingTableBody loading={isLoading} {...props} />, [isLoading]);
   useEffect(() => {
     handleFetchAllUsers({
       setTableData,
       requestAction: 'GET_ALL_USERS',
-      setIsLoading: () => { },
+      setIsLoading,
       setAlert,
     });
     handleFetchCurrentUser({
       requestAction: 'SET_CURRENT_USER',
       setCurrentUserData,
       setAlert,
-      setIsLoading: () => { },
+      setIsLoading: () => {},
     });
     handleFetchAuthorities({
       setAuthorities,
@@ -83,7 +81,7 @@ function UserTable() {
       handleFetchServiceList({
         setServiceList,
         requestAction: 'SET_SERVICE_LIST',
-        setIsLoading: () => { },
+        setIsLoading: () => {},
         setAlert,
       });
     }
@@ -115,7 +113,6 @@ function UserTable() {
             currentUserData,
           })}
           options={options}
-          components={{ TableBody: BodyComponent }}
         />
       </Grid>
 

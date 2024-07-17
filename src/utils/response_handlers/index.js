@@ -59,6 +59,7 @@ export async function handleUserCodeActions(result, code, utils) {
   setAlert({
     alertType: alertStatus,
     alertMsg: message + ' ' + TransactionId,
+    open: true,
   });
   return result;
 }
