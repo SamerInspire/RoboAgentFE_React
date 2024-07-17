@@ -23,15 +23,11 @@ const ServicesGetAnswer = ({}) => {
       ? JSON.parse(localStorage.getItem('ServiceList'))
       : ['', '', '', ''],
   );
-  console.log('servicename ----> ', servicename);
   const [currService, setCurrService] = useState(Services.filter((service) => service.service == servicename)[0]);
-  console.log(currService);
   const [loading, setLoading] = useState();
   const { setAlert, handleCloseAlert } = useContext(AlertContext);
   const lang = i18next.language;
   const navigate = useNavigate();
-  console.log('Services ----> ', Services);
-
   const [options, setOptions] = useState(() => {
     const options = {};
     if (!!currService) {
@@ -103,8 +99,6 @@ const ServicesGetAnswer = ({}) => {
             {lang === 'en' ? currService.description : currService.descriptionAr}
           </Typography>
         </Grid>
-        {console.log(currService.description)}
-        {console.log(currService.service)}
         <form
           style={{
             width: '100%',
