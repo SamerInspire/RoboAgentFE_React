@@ -12,7 +12,6 @@ import { useNavigate, useParams } from 'react-router';
 import { numbersOnly } from 'utils/DefualtValidators';
 import { handleGetResponse } from 'utils/api/answer/service';
 import { handleFetchCurrentUser } from 'utils/users/users';
-
 const ServicesGetAnswer = ({}) => {
   let { servicename = 'General' } = useParams();
   const [answer, setAnswer] = useState('');
