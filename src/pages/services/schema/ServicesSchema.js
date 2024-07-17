@@ -266,7 +266,7 @@ export let Services = [
   {
     id: 11,
     service: 'EFM',
-    description: 'Establishment file managment',
+    description: 'Establishment  managment',
     descriptionAr: 'إدارة ملف المنشأة',
     bcUrl: generalImg,
     serviceOptions: [

@@ -1,17 +1,17 @@
-import AxiosHit from "utils/api/AxiosHit";
+import AxiosHit from 'utils/api/AxiosHit';
 export async function handleSubmitUserAuths(utils) {
   const { containerSections, userId } = utils;
   try {
     await AxiosHit(
       {
-        method: "put",
-        url: "/api/user-auth",
+        method: 'put',
+        url: '/api/user-auth',
         data: {
-          roboAuthorities: containerSections["active_services"],
+          roboAuthorities: containerSections['active_services'],
           userId: userId,
         },
       },
-      utils
+      utils,
     );
   } catch (error) {
     console.error(error);
@@ -23,10 +23,10 @@ export const handleFetchAuthorities = async (utils) => {
     setIsLoading(true);
     await AxiosHit(
       {
-        method: "get",
-        url: "/api/user-auth",
+        method: 'get',
+        url: '/api/user-auth',
       },
-      utils
+      utils,
     );
     setIsLoading(false);
   } catch (error) {
@@ -38,10 +38,10 @@ export async function hanldeSubmitUserNewRole(utils) {
   try {
     await AxiosHit(
       {
-        method: "put",
+        method: 'put',
         url: `/api/user-roles/${userId}/roles/${newRole}`,
       },
-      utils
+      utils,
     );
   } catch (error) {
     console.log(error);
@@ -54,11 +54,11 @@ export async function handleSubmitNewUser(userData, utils) {
   try {
     await AxiosHit(
       {
-        url: "/api/users/signup",
-        method: "post",
+        url: '/api/users/signup',
+        method: 'post',
         data: { ...userData, roboAuthorities: undefined },
       },
-      utils
+      utils,
     );
     // console.log("r ======> ",r)
     // handleSubmitUserAuths({
@@ -76,10 +76,10 @@ export async function handleSubmitUserNewService(utils) {
   try {
     await AxiosHit(
       {
-        method: "put",
+        method: 'put',
         url: `/api/service/${userId}/service/${userNewService}`,
       },
-      utils
+      utils,
     );
   } catch (error) {
     console.log(error);
@@ -92,10 +92,10 @@ export async function handleFetchAllUsers(utils) {
     setIsLoading(true);
     await AxiosHit(
       {
-        url: "/api/users/getallusers?size=40",
-        method: "get",
+        url: '/api/users/getallusers?size=40',
+        method: 'get',
       },
-      utils
+      utils,
     );
     setIsLoading(false);
   } catch (error) {
@@ -109,10 +109,10 @@ export async function handleFetchServiceList(utils) {
     setIsLoading(true);
     await AxiosHit(
       {
-        method: "get",
-        url: "/api/service",
+        method: 'get',
+        url: '/api/service',
       },
-      utils
+      utils,
     );
     setIsLoading(false);
   } catch (error) {
@@ -123,10 +123,10 @@ export async function handleFetchCurrentUser(utils) {
   try {
     await AxiosHit(
       {
-        url: "/api/users/currentuser",
-        method: "get",
+        url: '/api/users/currentuser',
+        method: 'get',
       },
-      utils
+      utils,
     );
   } catch (error) {
     console.log(error);

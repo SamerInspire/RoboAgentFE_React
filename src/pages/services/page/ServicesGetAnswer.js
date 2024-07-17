@@ -26,7 +26,6 @@ const ServicesGetAnswer = ({}) => {
   );
   console.log('servicename ----> ', servicename);
   const [currService, setCurrService] = useState(Services.filter((service) => service.service == servicename)[0]);
-  const [currService, setCurrService] = useState(Services.filter((service) => service.value == servicename)[0]);
   console.log(currService);
   const [loading, setLoading] = useState();
   const { setAlert, handleCloseAlert } = useContext(AlertContext);
