@@ -1,6 +1,4 @@
 /* eslint-disable */
-import { Services } from '../schema/ServicesSchema';
-
 import { Grid, TextField, Typography } from '@mui/material';
 import GetAnswerToolbar from 'components/services/GetAnswerToolbar';
 import ServicesSidebar from 'components/services/ServicesSidebar';
@@ -16,24 +14,45 @@ import { handleGetResponse } from 'utils/api/answer/service';
 import { handleFetchCurrentUser } from 'utils/users/users';
 
 const ServicesGetAnswer = ({}) => {
-  let { servicename = 'Visas' } = useParams();
+  let { servicename = 'General' } = useParams();
   const [answer, setAnswer] = useState('');
   const [currentUserData, setCurrentUserData] = useState({});
   const isEligiable = useRef(false);
   const { t } = useTranslation();
+  const [Services] = useState(
+    !!JSON.parse(localStorage.getItem('ServiceList'))
+      ? JSON.parse(localStorage.getItem('ServiceList'))
+      : ['', '', '', ''],
+  );
+  console.log('servicename ----> ', servicename);
+  const [currService, setCurrService] = useState(Services.filter((service) => service.service == servicename)[0]);
   const [currService, setCurrService] = useState(Services.filter((service) => service.value == servicename)[0]);
   console.log(currService);
   const [loading, setLoading] = useState();
   const { setAlert, handleCloseAlert } = useContext(AlertContext);
   const lang = i18next.language;
   const navigate = useNavigate();
+  console.log('Services ----> ', Services);
+
   const [options, setOptions] = useState(() => {
     const options = {};
-    currService.options.map((o) => (options[o['id']] = false));
+    if (!!currService) {
+      currService.serviceOptions.map((o) => {
+        options[o['name']] = false;
+        options[o['active']] = false;
+        o['active'] = true;
+      });
+    }
     return options;
   });
   useEffect(() => {
-    setOptions(currService.options.map((o) => (options[o['id']] = false)));
+    setOptions(
+      currService.serviceOptions.map((o) => {
+        options[o['name']] = false;
+        options[o['active']] = false;
+        o['active'] = true;
+      }),
+    );
     setLoading(false);
     setAnswer('');
     handleCloseAlert();
@@ -65,9 +84,7 @@ const ServicesGetAnswer = ({}) => {
   }, [currentUserData]);
   function handleChangeCurrentService(serviceName, setCurrService) {
     navigate('/dash/services/getAnswer/' + serviceName, { replace: true });
-    console.log(serviceName, 'servicename');
-
-    setCurrService(Services.filter((service) => service.value == serviceName)[0]);
+    setCurrService(Services.filter((service) => service.service == serviceName)[0]);
   }
   const {
     register,
@@ -85,10 +102,11 @@ const ServicesGetAnswer = ({}) => {
       <Grid container item sm={12} md={10} gap={4}>
         <Grid item xs={12}>
           <Typography variant="h5" style={{ fontWeight: 'bold' }}>
-            {lang === 'en' ? currService.enName : currService.arName}
+            {lang === 'en' ? currService.description : currService.descriptionAr}
           </Typography>
         </Grid>
-        {console.log(currService.enName)}
+        {console.log(currService.description)}
+        {console.log(currService.service)}
         <form
           style={{
             width: '100%',
@@ -108,7 +126,7 @@ const ServicesGetAnswer = ({}) => {
                 requestAction: 'SET_ANSWER',
                 setAnswer,
                 data,
-                servicename: currService.enName,
+                servicename: currService.service,
                 options,
                 setAlert,
               });
@@ -207,13 +225,13 @@ const ServicesGetAnswer = ({}) => {
             </Grid>
             <Grid container item>
               <Grid container gap={4} item xs={12}>
-                {currService.options.map((el) => (
-                  <Grid key={el.label.enLabel} item>
+                {currService.serviceOptions.map((el) => (
+                  <Grid key={el.enDescription} item>
                     <TasksItem
-                      key={el.id}
-                      id={el.id}
+                      key={el.optionId}
+                      id={el.name}
                       status={!el.active}
-                      label={lang === 'en' ? el.label.enLabel : el.label.arLabel}
+                      label={lang === 'en' ? el.enDescription : el.arDescription}
                       mission={false}
                       checkOptions={handelCheckValue}
                     />

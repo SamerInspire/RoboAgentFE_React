@@ -7,6 +7,7 @@ import { themeContext } from 'hooks/context/ThemeContext';
 import { useContext, useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { glassMorphisimStyle } from 'styles/styles';
+import generalImg from 'assets/images/services/apps-svgrepo-com.svg';
 const ServicesListItem = ({ service, queryCenterSignup, eligiableServices, currentUserData }) => {
   const lang = i18n.language;
   const [queryCenterAnchorEl, setQueryCenterAnchorEl] = useState(null);
@@ -17,7 +18,7 @@ const ServicesListItem = ({ service, queryCenterSignup, eligiableServices, curre
   const handleClick = (event) => {
     setQueryCenterAnchorEl(queryCenterAnchorEl ? null : event.currentTarget);
   };
-  console.log('service ===>', service);
+  // console.log('service ===>', service);
   //uncomment this line
   // const [update, setUpdate] = useState(false);
   // const isEligiableService =
@@ -26,7 +27,7 @@ const ServicesListItem = ({ service, queryCenterSignup, eligiableServices, curre
 
   //change this line to be the above commented code i dont have access to the query center in jordan
   const isEligiableService =
-    queryCenterSignup && (!eligiableServices[service.enName] || currentUserData.role != 'MEMBER');
+    queryCenterSignup && (!eligiableServices[service.description] || currentUserData.role != 'MEMBER');
   const handleClosePopper = () => setQueryCenterAnchorEl(null);
   const { direction } = useContext(themeContext);
   useEffect(() => {}, [direction]);
@@ -34,7 +35,7 @@ const ServicesListItem = ({ service, queryCenterSignup, eligiableServices, curre
     <Link
       component={isEligiableService ? '' : RouterLink}
       sx={{ textDecoration: 'none', position: 'relative' }}
-      to={isEligiableService ? '' : `/dash/services/getAnswer/${service.value}`}
+      to={isEligiableService ? '' : `/dash/services/getAnswer/${service.service}`}
     >
       <Grid
         container
@@ -71,9 +72,13 @@ const ServicesListItem = ({ service, queryCenterSignup, eligiableServices, curre
             flexDirection: 'column',
           }}
         >
-          <Box component={'img'} src={service.backgroundImg} sx={{ width: '90px', height: '80px' }} />
+          <Box
+            component={'img'}
+            src={service.bcUrl ? service.bcUrl : generalImg}
+            sx={{ width: '90px', height: '80px' }}
+          />
           <Typography variant="h5" fontWeight={700} textAlign={'center'}>
-            {lang == 'en' ? service.enName : service.arName}
+            {lang == 'en' ? service.description : service.descriptionAr}
           </Typography>
         </Grid>
       </Grid>

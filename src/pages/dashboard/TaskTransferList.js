@@ -32,8 +32,7 @@ export default function CustomTransferList({ activeTasks, setActiveTasks }) {
   const [right, setRight] = React.useState(
     sessionStorage.getItem('finishedTasks')
       ? JSON.parse(sessionStorage.getItem('finishedTasks'))
-      : [
-        ],
+      : [],
   );
   useEffect(() => {
     sessionStorage.setItem('finishedTasks', JSON.stringify(right));
