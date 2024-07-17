@@ -8,6 +8,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { glassMorphisimStyle } from 'styles/styles';
 import generalImg from 'assets/images/services/apps-svgrepo-com.svg';
+import { Services } from 'pages/services/schema/ServicesSchema';
 const ServicesListItem = ({ service, queryCenterSignup, eligiableServices, currentUserData }) => {
   const lang = i18n.language;
   const [queryCenterAnchorEl, setQueryCenterAnchorEl] = useState(null);
@@ -18,6 +19,8 @@ const ServicesListItem = ({ service, queryCenterSignup, eligiableServices, curre
   const handleClick = (event) => {
     setQueryCenterAnchorEl(queryCenterAnchorEl ? null : event.currentTarget);
   };
+  console.log(service);
+  console.log('services schema',Services);
   // console.log('service ===>', service);
   //uncomment this line
   // const [update, setUpdate] = useState(false);
@@ -74,7 +77,7 @@ const ServicesListItem = ({ service, queryCenterSignup, eligiableServices, curre
         >
           <Box component={'img'} src={service.bcUrl ? service.bcUrl : generalImg} sx={{ width: '90px', height: '80px' }} />
           <Typography variant="h5" fontWeight={700} textAlign={'center'}>
-            {lang == 'en' ? service.description : service.descriptionAr}
+            {lang == 'en' ? service.description : Services[service.id - 1].descriptionAr}
           </Typography>
         </Grid>
       </Grid>

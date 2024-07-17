@@ -3,6 +3,7 @@ import { Box } from "@mui/system";
 import generalImg from "assets/images/services/apps-svgrepo-com.svg";
 import i18next from "i18next";
 import { useState } from "react";
+import { Services as ServicesSchema }  from "pages/services/schema/ServicesSchema";
 
 function ServicesSidebar({
   handleChangeCurrentService,
@@ -54,7 +55,7 @@ function ServicesSidebar({
               />
               <Typography variant="body1" fontWeight={"600"} color={"gray"}>
                 {" "}
-                {lang == "en" ? service.description : service.arName}
+                {lang == "en" ? service.description : ServicesSchema[service.id -1].descriptionAr}
               </Typography>
             </Grid>
           </Grid>
@@ -84,7 +85,7 @@ function ServicesSidebar({
               />
               <Typography variant="body1" fontWeight={"600"} color={"gray"}>
                 {" "}
-                {lang == "en" ? service.description : service.arName}
+                {lang == "en" ? service.description : ServicesSchema[service.id -1].descriptionAr}
               </Typography>
             </Grid>
           </Grid>
@@ -114,7 +115,7 @@ function ServicesSidebar({
             />
             <Typography variant="body1" fontWeight={"600"} color={"gray"}>
               {" "}
-              {lang == "en" ? service.description : service.descriptionAr}
+              {lang == "en" ? service.description :ServicesSchema[service.id -1].descriptionAr}
             </Typography>
           </Grid>
         ) : null;
