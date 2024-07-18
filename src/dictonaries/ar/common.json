@@ -84,6 +84,7 @@
     "searchButton": "بحث"
   },
   "usersTable": {
+    "Sorry, there is no matching data to display": "عذرًا، ليس هنالك بيانات متوفرة للعرض",
     "Edit User Services": "تعديل خدمات المستخدم",
     "Cancel": "إلغاء",
     "Submit": "إرسال",

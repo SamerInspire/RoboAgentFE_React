@@ -1,15 +1,14 @@
 /* eslint-disable */
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { t } from 'i18next';
-import { useContext } from 'react';
-import { AlertContext } from 'hooks/context/AlertContext';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 const { Grid, Button, Typography } = require('@mui/material');
 
 function tableColumns(utils) {
   const { t } = useTranslation();
-  const { handleStatusClick, handleOpenServiceDialog, currentUserData, handleOpenServiceModal } = utils;
+  const { handleStatusClick, handleOpenServiceDialog, currentUserData, handleOpenServiceModal, setIsColumsRenderd } =
+    utils;
   return [
     {
       name: 'userId',
@@ -113,7 +112,6 @@ function tableColumns(utils) {
             display: currentUserData.role == 'TEAM_LEAD' ? 'none' : true,
             customBodyRender: (value, tableMeta, updateValue) => {
               const formattedValue = value.split('_').join(' ');
-              console.log(tableMeta);
               return (
                 <Grid container item minWidth={'200px'} maxWidth={'200px'} alignItems={'center'} gap={2}>
                   <Grid item xs={8}>

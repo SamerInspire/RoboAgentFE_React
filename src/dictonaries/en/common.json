@@ -84,6 +84,7 @@
     "searchButton": "Search"
   },
   "usersTable": {
+    "Sorry, there is no matching data to display": "Sorry, there is no matching data to display",
     "Edit User Services": "Edit User Services",
     "Cancel": "Cancel",
     "Submit": "Submit",
