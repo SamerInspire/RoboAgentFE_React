@@ -72,7 +72,11 @@ const ServicesListItem = ({ service, queryCenterSignup, eligiableServices, curre
             flexDirection: 'column',
           }}
         >
-          <Box component={'img'} src={service.bcUrl ? service.bcUrl : generalImg} sx={{ width: '90px', height: '80px' }} />
+          <Box
+            component={'img'}
+            src={service.bcUrl ? service.bcUrl : generalImg}
+            sx={{ width: '90px', height: '80px' }}
+          />
           <Typography variant="h5" fontWeight={700} textAlign={'center'}>
             {lang == 'en' ? service.description : service.descriptionAr}
           </Typography>

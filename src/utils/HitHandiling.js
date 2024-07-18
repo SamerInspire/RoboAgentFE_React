@@ -24,7 +24,7 @@ export function successHitHandle(result, utils) {
     case 'CPW':
       return handleChangePassCodeActions(result, codeNumbers, utils);
     case 'GAM':
-      return handleGetAnswerFailure(result, codeNumbers);
+      return handleGetAnswerFailure(result, codeNumbers, utils);
     default:
       return handleGeneralErrorCodeActions(result, codeNumbers, utils);
   }
