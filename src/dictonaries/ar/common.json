@@ -84,6 +84,7 @@
     "searchButton": "بحث"
   },
   "usersTable": {
+    "Sorry, there is no matching data to display": "عذرًا، ليس هنالك بيانات متوفرة للعرض",
     "Edit User Services": "تعديل خدمات المستخدم",
     "Cancel": "إلغاء",
     "Submit": "إرسال",
@@ -165,6 +166,7 @@
     "Go to Home": "اذهب إلى الصفحة الرئيسية"
   },
   "register": {
+    "invalidEmail": "الرجاء ادخال بريد الكتروني صحيح",
     "Terms of Service": "شروط الخدمة",
     "Privacy Policy": "سياسة الخصوصية",
     "User registration": "تسجيل المستخدم",

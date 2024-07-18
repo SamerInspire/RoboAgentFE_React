@@ -10,7 +10,7 @@ const FormStyle = styled('form')(({ theme }) => ({
   // root style
   marginTop: theme.spacing(2),
   display: 'grid',
-  gap: theme.spacing(3),
+  gap: 16,
 
   // input style
   '& label.Mui-focused': {

@@ -1,17 +1,18 @@
-import { Button } from "@mui/material";
-import Loader from "../loader/Loader";
+import { Button } from '@mui/material';
+import Loader from '../loader/Loader';
 
 function LoadingButton({
   isLoading,
-  loaderStyle = { width: "30px", height: "30px" },
-  clickHandler,
+  loaderStyle = { width: '30px', height: '30px' },
+  clickHandler = () => {},
   title,
-  type = "submit",
+  type = 'submit',
 }) {
+  console.log(isLoading);
   return (
     <Button
       fullWidth
-      variant="contained"
+      variant={isLoading ? 'outlined' : 'contained'}
       type={type}
       onClick={() => clickHandler()}
       disabled={isLoading}

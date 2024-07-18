@@ -20,32 +20,37 @@ const ServicesGetAnswer = ({ }) => {
   const [currentUserData, setCurrentUserData] = useState({});
   const isEligiable = useRef(false);
   const { t } = useTranslation();
-  const [Services] = useState(!!JSON.parse(localStorage.getItem('ServiceList'))? JSON.parse(localStorage.getItem('ServiceList')): ['','','',''])
-  console.log("servicename ----> ", servicename)
-  const [currService, setCurrService] = useState(Services.filter((service) => service.service == servicename)[0]);
-  console.log(currService);
+  const [Services] = useState(
+    !!JSON.parse(localStorage.getItem('ServiceList'))
+      ? JSON.parse(localStorage.getItem('ServiceList'))
+      : ['', '', '', ''],
+  );
+  const [currService, setCurrService] = useState(
+    Services.filter((service) => service.service == servicename)[0] || Services[0],
+  );
   const [loading, setLoading] = useState();
   const { setAlert, handleCloseAlert } = useContext(AlertContext);
   const lang = i18next.language;
   const navigate = useNavigate();
-  console.log("Services ----> ", Services)
-
   const [options, setOptions] = useState(() => {
     const options = {};
-    if (!!currService){
-      currService.serviceOptions.map((o) => {options[o['name']] = false
-        options[o['active']] = false
-        o['active'] = true
-    });}
+    if (!!currService) {
+      currService.serviceOptions.map((o) => {
+        options[o['name']] = false;
+        options[o['active']] = false;
+        o['active'] = true;
+      });
+    }
     return options;
   });
   useEffect(() => {
-    setOptions(currService.serviceOptions.map((o) => {
-      options[o['name']] = false
-      options[o['active']] = false
-      o['active'] = true
-
-    }));
+    setOptions(
+      currService.serviceOptions.map((o) => {
+        options[o['name']] = false;
+        options[o['active']] = false;
+        o['active'] = true;
+      }),
+    );
     setLoading(false);
     setAnswer('');
     handleCloseAlert();
@@ -99,8 +104,6 @@ const ServicesGetAnswer = ({ }) => {
             {lang === 'en' ? ServicesSchema[currService.id - 1].description : ServicesSchema[currService.id - 1].descriptionAr}
           </Typography>
         </Grid>
-        {console.log(currService.description)}
-        {console.log(currService.service)}
         <form
           style={{
             width: '100%',
