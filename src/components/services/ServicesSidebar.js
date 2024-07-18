@@ -54,7 +54,7 @@ function ServicesSidebar({
               />
               <Typography variant="body1" fontWeight={"600"} color={"gray"}>
                 {" "}
-                {lang == "en" ? service.description : service.arName}
+                {lang == "en" ? service.description : service.descriptionAr}
               </Typography>
             </Grid>
           </Grid>
@@ -84,7 +84,7 @@ function ServicesSidebar({
               />
               <Typography variant="body1" fontWeight={"600"} color={"gray"}>
                 {" "}
-                {lang == "en" ? service.description : service.arName}
+                {lang == "en" ? service.description : service.descriptionAr}
               </Typography>
             </Grid>
           </Grid>
