@@ -1,11 +1,11 @@
 import { Checkbox, FormControlLabel, IconButton, InputAdornment, Link, TextField } from '@mui/material';
 import { Box } from '@mui/system';
+import { AlertContext } from 'hooks/context/AlertContext';
+import { LoginContext } from 'hooks/context/LoginInfoContext';
 import { t } from 'i18next';
 import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
-import { AlertContext } from 'hooks/context/AlertContext';
-import { LoginContext } from 'hooks/context/LoginInfoContext';
 import FormStyle from 'styles/styles';
 import LoadingButton from '../buttons/LoadingButton';
 import CustomToast from '../toast/CustomToast';
@@ -26,6 +26,7 @@ const FormLogin = () => {
   const handleToggleRemember = () => setRemember(!remember);
   const { setAlert } = useContext(AlertContext);
   const [otpToken, setOtpToken] = useState('');
+  const [restEmail, setRestEmail] = useState('');
   const handleNext = () => {
     setSteps((prev) => prev + 1);
   };
@@ -34,7 +35,6 @@ const FormLogin = () => {
     register,
     handleSubmit,
     formState: { errors },
-    getValues,
   } = useForm({
     defaultValues: {
       email: '',
@@ -57,20 +57,18 @@ const FormLogin = () => {
         <EmailDialog
           handleNext={handleNext}
           steps={steps}
+          setRestEmail={setRestEmail}
           setSnackbarData={setSnackbarData}
           setOtpToken={setOtpToken}
-          register={register}
-          getValues={getValues}
           handleClose={handleCloseDialogs}
           setAlert={setAlert}
-          errors={errors}
         />
       )}
       {steps === 2 && (
         <OTPDialog
           handleNext={handleNext}
           setSnackbarData={setSnackbarData}
-          email={getValues('rest_email')}
+          email={restEmail}
           steps={steps}
           errors={errors}
           otpToken={otpToken}
@@ -83,7 +81,7 @@ const FormLogin = () => {
         <NewPassDialog
           setSnackbarData={setSnackbarData}
           setAlert={setAlert}
-          email={getValues('email')}
+          email={restEmail}
           handleNext={handleNext}
           steps={steps}
           otpToken={otpToken}

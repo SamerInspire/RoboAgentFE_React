@@ -23,7 +23,9 @@ const ServicesGetAnswer = ({}) => {
       ? JSON.parse(localStorage.getItem('ServiceList'))
       : ['', '', '', ''],
   );
-  const [currService, setCurrService] = useState(Services.filter((service) => service.service == servicename)[0]);
+  const [currService, setCurrService] = useState(
+    Services.filter((service) => service.service == servicename)[0] || Services[0],
+  );
   const [loading, setLoading] = useState();
   const { setAlert, handleCloseAlert } = useContext(AlertContext);
   const lang = i18next.language;

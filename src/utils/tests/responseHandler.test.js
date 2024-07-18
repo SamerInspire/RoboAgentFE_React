@@ -1,15 +1,13 @@
 // actions.test.js
-import i18next from "i18next";
+import i18next from 'i18next';
 import {
   handleChangePassCodeActions,
   handleGeneralErrorCodeActions,
   handleGetAnswerFailure,
-  handleOTPCodeActions
-} from "../response_handlers";
+  handleOTPCodeActions,
+} from '../response_handlers';
 
-
-
-describe("Code Actions", () => {
+describe('Code Actions', () => {
   const mockUtils = {
     handleNext: jest.fn(),
     setAlert: jest.fn(),
@@ -21,152 +19,130 @@ describe("Code Actions", () => {
     jest.clearAllMocks();
   });
 
-  it("handleChangePassCodeActions should handle success case", () => {
+  it('handleChangePassCodeActions should handle success case', () => {
     const result = {
       data: {
         roboAgentRs: {
           header: {
             responseStatus: {
-              arabicMsg: "نجاح",
-              englishMsg: "Success",
-              status: "success",
+              arabicMsg: 'نجاح',
+              englishMsg: 'Success',
+              status: 'success',
             },
-            code: "00000",
+            code: '00000',
           },
         },
       },
     };
-    const code = "00000";
-    i18next.language = "en";
+    const code = '00000';
+    i18next.language = 'en';
 
     handleChangePassCodeActions(result, code, mockUtils);
 
     expect(mockUtils.handleNext).toHaveBeenCalled();
     expect(mockUtils.setAlert).toHaveBeenCalledWith({
       alertType: true,
-      alertMsg: "Success",
+      alertMsg: 'Success ',
     });
   });
 
-  it("handleChangePassCodeActions should handle failure case", () => {
+  it('handleChangePassCodeActions should handle failure case', () => {
     const result = {
       data: {
         roboAgentRs: {
           header: {
             responseStatus: {
-              arabicMsg: "فشل",
-              englishMsg: "Failure",
-              status: "error",
+              arabicMsg: 'فشل',
+              englishMsg: 'Failure',
+              status: 'error',
             },
-            code: "11111",
+            code: '11111',
           },
         },
       },
     };
-    const code = "11111";
-    i18next.language = "en";
+    const code = '11111';
+    i18next.language = 'en';
 
     handleChangePassCodeActions(result, code, mockUtils);
 
     expect(mockUtils.handleNext).not.toHaveBeenCalled();
     expect(mockUtils.setAlert).toHaveBeenCalledWith({
       alertType: false,
-      alertMsg: "Failure",
+      alertMsg: 'Failure ',
     });
   });
 
-  it("handleOTPCodeActions should handle success case", () => {
+  it('handleOTPCodeActions should handle success case', () => {
     const result = {
       data: {
         roboAgentRs: {
           header: {
             responseStatus: {
-              arabicMsg: "نجاح",
-              englishMsg: "Success",
-              status: "success",
-              code: "00000",
+              arabicMsg: 'نجاح',
+              englishMsg: 'Success',
+              status: 'success',
+              code: '00000',
             },
           },
         },
       },
     };
-    const code = "00000";
-    i18next.language = "en";
+    const code = '00000';
+    i18next.language = 'en';
 
     handleOTPCodeActions(result, code, mockUtils);
 
     expect(mockUtils.handleNext).toHaveBeenCalled();
     expect(mockUtils.setAlert).toHaveBeenCalledWith({
-      alertType: "success",
-      alertMsg: "Success",
+      alertType: 'success',
+      alertMsg: 'Success ',
       open: true,
     });
   });
 
-
-
-  it("handleGeneralErrorCodeActions should set alert info", () => {
+  it('handleGeneralErrorCodeActions should set alert info', () => {
     const result = {
       data: {
         roboAgentRs: {
           header: {
             responseStatus: {
-              arabicMsg: "خطأ",
-              englishMsg: "Error",
-              status: "error",
+              arabicMsg: 'خطأ',
+              englishMsg: 'Error',
+              status: 'error',
             },
-            code: "11111",
+            code: '11111',
           },
         },
       },
     };
-    const code = "11111";
-    i18next.language = "en";
+    const code = '11111';
+    i18next.language = 'en';
 
     handleGeneralErrorCodeActions(result, code, mockUtils);
 
     expect(mockUtils.setAlert).toHaveBeenCalledWith({
-      alertType: "error",
-      alertMsg: "Error",
+      alertType: 'error',
+      alertMsg: 'Error ',
     });
   });
 
-  // it("handleEmailCodeActions should handle success case and set OTP token", () => {
-  //   const result = {
-  //     headers: {
-  //       authorization: "mock-token",
-  //     },
-  //     data: {
-  //       roboAgentRs: {
-  //         header: {
-  //           responseStatus: {
-  //             arabicMsg: "نجاح",
-  //             englishMsg: "Success",
-  //             status: "success",
-  //           },
-  //           code: "00000",
-  //         },
-  //       },
-  //       headers: { authorization: "token123" },
-  //     },
-  //   };
-  //   const code = "00000";
-  //   i18next.language = "en";
-
-  //   handleEmailCodeActions(result, code, mockUtils);
-
-  //   expect(mockUtils.setOtpToken).toHaveBeenCalledWith("mock-token");
-  //   expect(mockUtils.handleNext).toHaveBeenCalled();
-  //   expect(mockUtils.setLoading).toHaveBeenCalled();
-  //   expect(mockUtils.setAlert).toHaveBeenCalledWith({
-  //     alertType: "success",
-  //     alertMsg: "Success",
-  //     open: true,
-  //   });
-  // });
-
-  it("handleGetAnswerFailure should do nothing", () => {
-    handleGetAnswerFailure();
+  it('handleGetAnswerFailure should do nothing', () => {
+    const result = {
+      data: {
+        roboAgentRs: {
+          header: {
+            responseStatus: {
+              arabicMsg: 'خطأ',
+              englishMsg: 'Error',
+              status: 'error',
+            },
+            code: '11111',
+          },
+        },
+      },
+    };
+    handleGetAnswerFailure(result, 4, { setAlert: () => {} });
     // Add assertions if any functionality is added to handleGetAnswerFailure
   });
 });

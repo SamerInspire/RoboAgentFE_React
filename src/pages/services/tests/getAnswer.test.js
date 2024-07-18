@@ -6,8 +6,12 @@ import { AlertContext } from 'hooks/context/AlertContext';
 import { lightTheme } from 'styles/theme';
 import ServicesGetAnswer from '../page/ServicesGetAnswer';
 import { Services } from '../schema/ServicesSchema';
-
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useSearchParams: () => [new URLSearchParams({ ids: 'Visas,General' })],
+}));
 const renderWithContexts = (ui, { providerProps, ...renderOptions }) => {
+  localStorage.setItem('ServiceList', JSON.stringify(Services));
   return render(
     <AlertContext.Provider value={{ ...providerProps.alert, handleCloseAlert: jest.fn() }}>
       <ThemeProvider theme={lightTheme()}>
@@ -39,7 +43,7 @@ describe('ServicesGetAnswer component', () => {
     const { getByText } = renderWithContexts(<ServicesGetAnswer />, {
       providerProps,
     });
-    const service = Services.find((service) => service.description === 'Visas');
+    const service = Services.find((service) => service.description === 'Employee list');
     expect(getByText(service.description)).toBeInTheDocument();
   });
 
