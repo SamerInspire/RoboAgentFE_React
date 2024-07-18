@@ -50,9 +50,9 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
                 src={service.bcUrl ? service.bcUrl : generalImg}
                 sx={{ width: '20px', height: '20px' }}
               />
-              <Typography variant="body2" fontWeight={'600'} color={'gray'}>
-                {' '}
-                {lang == 'en' ? service.description : service.arName}
+              <Typography variant="body1" fontWeight={"600"} color={"gray"}>
+                {" "}
+                {lang == "en" ? service.description : service.descriptionAr}
               </Typography>
             </Grid>
           </Grid>
@@ -77,9 +77,9 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
                 src={service.bcUrl ? service.bcUrl : generalImg}
                 sx={{ width: '20px', height: '20px' }}
               />
-              <Typography variant="body2" fontWeight={'600'} color={'gray'}>
-                {' '}
-                {lang == 'en' ? service.description : service.arName}
+              <Typography variant="body1" fontWeight={"600"} color={"gray"}>
+                {" "}
+                {lang == "en" ? service.description : service.descriptionAr}
               </Typography>
             </Grid>
           </Grid>
