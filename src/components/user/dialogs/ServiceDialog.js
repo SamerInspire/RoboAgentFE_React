@@ -12,7 +12,9 @@ import {
 import i18n from 'dictonaries/i18n';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { handleSubmitUserNewService } from 'utils/users/users';
+import { handleSubmitUserNewService } from 'utils/users/users'
+import LoadingButton from 'components/buttons/LoadingButton';
+import Loader from 'components/loader/Loader';
 
 function ServiceDialog({
   isEditServiceDialogOpen,
@@ -25,6 +27,12 @@ function ServiceDialog({
   userActiveService,
 }) {
   const [userNewService, setUserNewService] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const handleClose = (event,reason) => {
+    if (reason && reason ==="backdropClick")
+      return;
+    handleCloseServiceDialog
+  }
   const handleChangeUserNewService = (serviceId) => {
     setUserNewService(serviceId.target.value);
   };
@@ -33,7 +41,9 @@ function ServiceDialog({
     <Dialog
       disableEscapeKeyDown
       open={isEditServiceDialogOpen}
-      onClose={handleCloseServiceDialog}
+      onClose={
+        handleClose
+        }
       fullWidth
       maxWidth={'sm'}
       sx={{
@@ -72,8 +82,10 @@ function ServiceDialog({
             <Button
               variant="contained"
               fullWidth
-              onClick={() =>
-                handleSubmitUserNewService({
+              disabled={isLoading}
+              onClick={ async () =>{
+                setIsLoading(true);
+                await handleSubmitUserNewService({
                   handleCloseServiceDialog,
                   userId,
                   userNewService,
@@ -82,10 +94,16 @@ function ServiceDialog({
                   setTableData,
                   setAlert,
                 })
+                setIsLoading(false)
+               }
+                
               }
             >
-              {t('usersTable.Submit')}
+              {/* {t('usersTable.Submit')} */}
+              {isLoading ? <Loader styles={ { width: "30px", height: "30px" }} /> : t('usersTable.Submit')}
             </Button>
+            {/* } */}
+            
           </Grid>
         </Grid>
       </Grid>

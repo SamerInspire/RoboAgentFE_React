@@ -170,7 +170,7 @@ function tableColumns(utils) {
               <Button
                 fullWidth
                 variant="contained"
-                onClick={() => handleOpenServiceModal(tableMeta.rowData)}
+                onClick={() => handleOpenServiceModal(tableMeta.rowData) }
               >
                 {t("usersTable.VIEW ALL")}
               </Button>

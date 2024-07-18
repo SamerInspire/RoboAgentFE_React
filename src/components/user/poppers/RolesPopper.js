@@ -2,9 +2,10 @@ import DownloadIcon from "@mui/icons-material/Download";
 import UpgradeIcon from "@mui/icons-material/Upgrade";
 import { Button, Grid } from "@mui/material";
 import { AlertContext } from "hooks/context/AlertContext";
-import { useContext } from "react";
+import { useContext,useState } from "react";
 import { useTranslation } from "react-i18next";
 import { hanldeSubmitUserNewRole } from "utils/users/users";
+import Loader from "components/loader/Loader";
 
 function RolesPopper({
   userData,
@@ -12,6 +13,7 @@ function RolesPopper({
   tableData,
   handleCloseRolePopper,
 }) {
+  const [isLoading, setIsLoading] = useState(false);
   const { setAlert } = useContext(AlertContext);
   const { t } = useTranslation();
   return (
@@ -20,8 +22,10 @@ function RolesPopper({
         <Grid item>
           <Button
             fullWidth
-            onClick={() => {
-              hanldeSubmitUserNewRole({
+            disabled={isLoading}
+            onClick={async () => {
+              setIsLoading(true);
+              await hanldeSubmitUserNewRole({
                 userId: userData[0],
                 newRole: "TEAM_LEAD",
                 setTableData,
@@ -32,19 +36,23 @@ function RolesPopper({
                 setAlert,
               });
               handleCloseRolePopper();
+              setIsLoading(false);
             }}
-            startIcon={<UpgradeIcon sx={{ mx: 1 }} />}
+            startIcon={isLoading? null : <UpgradeIcon sx={{ mx: 1 }} />}
             variant="outlined"
           >
-            {t("usersTable.Promote to team Lead")}
+            {/* {t("usersTable.Promote to team Lead")} */}
+            {isLoading ? <Loader styles={ { width: "30px", height: "30px" }} /> : t("usersTable.Promote to team Lead")}
           </Button>
         </Grid>
       ) : (
         <Grid item>
           <Button
             fullWidth
-            onClick={() => {
-              hanldeSubmitUserNewRole({
+            disabled={isLoading}
+            onClick={async () => {
+              setIsLoading(true);
+              await hanldeSubmitUserNewRole({
                 userId: userData[0],
                 newRole: "MEMBER",
                 setTableData,
@@ -54,11 +62,15 @@ function RolesPopper({
                 handleCloseRolePopper,
                 setAlert,
               });
+              handleCloseRolePopper();
+              setIsLoading(false);
             }}
-            startIcon={<DownloadIcon sx={{ mx: 1 }} />}
+            startIcon={isLoading? null :<DownloadIcon sx={{ mx: 1 }} />}
             variant="outlined"
           >
-            {t("usersTable.Emote to Member")}
+            {/* {t("usersTable.Emote to Member")} */}
+            {isLoading ? <Loader styles={ { width: "30px", height: "30px" }} /> : t("usersTable.Emote to Member")}
+
           </Button>
         </Grid>
       )}

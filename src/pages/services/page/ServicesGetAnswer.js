@@ -96,7 +96,7 @@ const ServicesGetAnswer = ({ }) => {
         <Grid item xs={12}>
           <Typography variant="h5" style={{ fontWeight: 'bold' }}>
             {console.log('CurrService',currService)}
-            {lang === 'en' ? currService.description : ServicesSchema[currService.id - 1].descriptionAr}
+            {lang === 'en' ? ServicesSchema[currService.id - 1].description : ServicesSchema[currService.id - 1].descriptionAr}
           </Typography>
         </Grid>
         {console.log(currService.description)}
