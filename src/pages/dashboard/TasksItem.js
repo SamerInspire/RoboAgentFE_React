@@ -31,7 +31,7 @@ const TasksItem = ({ id, status, label, mission, checkOptions }) => {
   return (
     <FormControlLabelStyle
       key={id}
-      checked={false}
+      checked={checked}
       control={<Checkbox checked={checked} onChange={handleChange} id={id} name="selectedOptions" />}
       label={label}
     />

@@ -5,6 +5,28 @@ import { BrowserRouter } from 'react-router-dom';
 import ServicesList from '../page/ServicesList';
 import ServicesListItem from '../page/utils/ServicesListItem';
 import { Services } from '../schema/ServicesSchema';
+import ChangeOccupationImg from 'assets/images/services/change-record-type-svgrepo-com.svg';
+import ContractManagerImg from 'assets/images/services/contract-sign-line-svgrepo-com.svg';
+import EmployeeListImg from 'assets/images/services/list-svgrepo-com.svg';
+import WorkPermitImg from 'assets/images/services/location-permit-svgrepo-com.svg';
+import VisasImg from 'assets/images/services/passport-svgrepo-com.svg';
+import PrivilegesImg from 'assets/images/services/permissions-svgrepo-com.svg';
+import EmployeesTransferImg from 'assets/images/services/transfer-svgrepo-com.svg';
+import UserManagmentImg from 'assets/images/services/user-id-svgrepo-com.svg';
+import generalImg from 'assets/images/services/apps-svgrepo-com.svg';
+
+
+
+const IconsMap = [{ key: 'generalImg', value: generalImg },
+{ key: 'ChangeOccupationImg', value: ChangeOccupationImg },
+{ key: 'ContractManagerImg', value: ContractManagerImg },
+{ key: 'EmployeeListImg', value: EmployeeListImg },
+{ key: 'WorkPermitImg', value: WorkPermitImg },
+{ key: 'VisasImg', value: VisasImg },
+{ key: 'PrivilegesImg', value: PrivilegesImg },
+{ key: 'EmployeesTransferImg', value: EmployeesTransferImg },
+{ key: 'UserManagmentImg', value: UserManagmentImg }]
+
 
 describe('ServicesList Component', () => {
   test('renders services for authorized user', () => {
@@ -71,10 +93,11 @@ describe('ServicesListItem Component', () => {
         ,/
       </BrowserRouter>,
     );
-
+    let bcUrl = IconsMap.find(icon => icon.key == service.bcUrl)?.value
+    bcUrl = bcUrl ? bcUrl : generalImg
     // Check if the service name and image are displayed
     expect(screen.getByText(service.description)).toBeInTheDocument();
-    expect(screen.getByRole('img')).toHaveAttribute('src', service.bcUrl);
+    expect(screen.getByRole('img')).toHaveAttribute('src', bcUrl);
   });
 
   test('click handler is attached correctly', () => {

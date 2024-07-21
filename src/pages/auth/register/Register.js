@@ -114,7 +114,6 @@ const Register = () => {
           setAlert,
           requestAction: 'REGISTER_NEW_USER',
           reset,
-          reset,
           clearFinalForm,
         },
       );

@@ -12,16 +12,14 @@ import { useNavigate, useParams } from 'react-router';
 import { numbersOnly } from 'utils/DefualtValidators';
 import { handleGetResponse } from 'utils/api/answer/service';
 import { handleFetchCurrentUser } from 'utils/users/users';
-const ServicesGetAnswer = ({}) => {
+const ServicesGetAnswer = ({ }) => {
   let { servicename = 'General' } = useParams();
   const [answer, setAnswer] = useState('');
   const [currentUserData, setCurrentUserData] = useState({});
   const isEligiable = useRef(false);
   const { t } = useTranslation();
   const [Services] = useState(
-    !!JSON.parse(localStorage.getItem('ServiceList'))
-      ? JSON.parse(localStorage.getItem('ServiceList'))
-      : ['', '', '', ''],
+    JSON.parse(localStorage.getItem('ServiceList'))
   );
   const [currService, setCurrService] = useState(
     Services.filter((service) => service.service == servicename)[0] || Services[0],
@@ -224,7 +222,7 @@ const ServicesGetAnswer = ({}) => {
                     <TasksItem
                       key={el.optionId}
                       id={el.name}
-                      status={!el.active}
+                      status={false}
                       label={lang === 'en' ? el.enDescription : el.arDescription}
                       mission={false}
                       checkOptions={handelCheckValue}

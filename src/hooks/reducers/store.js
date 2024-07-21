@@ -29,6 +29,7 @@ export function generalSuccessReducer(result, utils) {
     case 'SET_SERVICE_LIST': {
       const { setServiceList } = utils;
       console.log(body);
+      localStorage.removeItem('ServiceList')
       localStorage.setItem('ServiceList', JSON.stringify(body.roboServices))
       setServiceList(body.roboServices);
       break;
