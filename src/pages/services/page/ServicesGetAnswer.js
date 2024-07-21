@@ -64,16 +64,17 @@ const ServicesGetAnswer = ({ }) => {
     });
   }, []);
   useEffect(() => {
-    if (servicename == 'General' || currentUserData.role == 'ADMIN') {
+    // if (servicename == 'General' || currentUserData.role == 'ADMIN') {
       isEligiable.current = true;
-    } else {
-      if (currentUserData.roboAuthorities) {
-        currentUserData.roboAuthorities.map((auth) => {
-          if (currService.allowedAuthorities.includes(auth.name)) isEligiable.current = true;
-        });
-        if (!isEligiable.current) navigate('/dash/services');
-      }
-    }
+    // } else {
+    //   if (currentUserData.roboAuthorities) {
+    //     currentUserData.roboAuthorities.map((auth) => {
+    //       allowedAuthorities = currService.allowedAuthorities.map(auths => auths.name)
+    //       if (allowedAuthorities.includes(auth.name)) isEligiable.current = true;
+    //     });
+    //     if (!isEligiable.current) navigate('/dash/services');
+    //   }
+    // }
     return setAlert();
   }, [currentUserData]);
   function handleChangeCurrentService(serviceName, setCurrService) {
