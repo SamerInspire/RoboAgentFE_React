@@ -3,15 +3,6 @@ import { Box } from '@mui/system';
 import generalImg from 'assets/images/services/apps-svgrepo-com.svg';
 import i18next from 'i18next';
 import { useState } from 'react';
-import ChangeOccupationImg from 'assets/images/services/change-record-type-svgrepo-com.svg';
-import ContractManagerImg from 'assets/images/services/contract-sign-line-svgrepo-com.svg';
-import EmployeeListImg from 'assets/images/services/list-svgrepo-com.svg';
-import WorkPermitImg from 'assets/images/services/location-permit-svgrepo-com.svg';
-import VisasImg from 'assets/images/services/passport-svgrepo-com.svg';
-import PrivilegesImg from 'assets/images/services/permissions-svgrepo-com.svg';
-import EmployeesTransferImg from 'assets/images/services/transfer-svgrepo-com.svg';
-import UserManagmentImg from 'assets/images/services/user-id-svgrepo-com.svg';
-
 
 function ServicesSidebar({ handleChangeCurrentService, currService, setCurrService, currentUserData }) {
   const [Services] = useState(
@@ -20,17 +11,6 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
       : ['', '', '', ''],
   );
 
-  const IconsMap = [{ key: 'generalImg', value: generalImg },
-    { key: 'ChangeOccupationImg', value: ChangeOccupationImg },
-    { key: 'ContractManagerImg', value: ContractManagerImg },
-    { key: 'EmployeeListImg', value: EmployeeListImg },
-    { key: 'WorkPermitImg', value: WorkPermitImg },
-    { key: 'VisasImg', value: VisasImg },
-    { key: 'PrivilegesImg', value: PrivilegesImg },
-    { key: 'EmployeesTransferImg', value: EmployeesTransferImg },
-    { key: 'UserManagmentImg', value: UserManagmentImg }]
-
-    
   console.log('Services ', JSON.parse(localStorage.getItem('ServiceList')));
 
   const lang = i18next.language;
@@ -49,8 +29,6 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
         const showService = currentUserData?.roboAuthorities?.some((auth) =>
           service?.allowedAuthorities?.includes(auth.name),
         );
-        let bcUrl = IconsMap.find(icon => icon.key == service.bcUrl)?.value
-        bcUrl = bcUrl ? bcUrl : generalImg
         return currentUserData.role == 'ADMIN' ? (
           <Grid key={service.description + index} item xs={12}>
             <Grid
@@ -69,12 +47,12 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
             >
               <Box
                 component={'img'}
-                src={bcUrl}
+                src={service.bcUrl ? service.bcUrl : generalImg}
                 sx={{ width: '20px', height: '20px' }}
               />
-              <Typography variant="body1" fontWeight={"600"} color={"gray"}>
-                {" "}
-                {lang == "en" ? service.description : service.descriptionAr}
+              <Typography variant="body1" fontWeight={'600'} color={'gray'}>
+                {' '}
+                {lang == 'en' ? service.description : service.descriptionAr}
               </Typography>
             </Grid>
           </Grid>
@@ -96,12 +74,12 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
             >
               <Box
                 component={'img'}
-                src={bcUrl}
+                src={service.bcUrl ? service.bcUrl : generalImg}
                 sx={{ width: '20px', height: '20px' }}
               />
-              <Typography variant="body1" fontWeight={"600"} color={"gray"}>
-                {" "}
-                {lang == "en" ? service.description : service.descriptionAr}
+              <Typography variant="body1" fontWeight={'600'} color={'gray'}>
+                {' '}
+                {lang == 'en' ? service.description : service.descriptionAr}
               </Typography>
             </Grid>
           </Grid>
@@ -123,10 +101,10 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
           >
             <Box
               component={'img'}
-              src={bcUrl}
+              src={service.bcUrl ? service.bcUrl : generalImg}
               sx={{ width: '20px', height: '20px' }}
             />
-            <Typography variant="body2" fontWeight={'600'} color={'gray'}>
+            <Typography variant="body1" fontWeight={'600'} color={'gray'}>
               {' '}
               {lang == 'en' ? service.description : service.descriptionAr}
             </Typography>
