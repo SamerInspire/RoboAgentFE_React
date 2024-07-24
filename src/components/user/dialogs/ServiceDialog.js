@@ -25,6 +25,7 @@ function ServiceDialog({
   userActiveService,
 }) {
   const [userNewService, setUserNewService] = useState();
+  const lang = useTranslation();
   const handleChangeUserNewService = (serviceId) => {
     setUserNewService(serviceId.target.value);
   };
@@ -51,13 +52,14 @@ function ServiceDialog({
           <Select
             id="main_service"
             fullWidth
+            sx
             defaultValue={userActiveService}
             onChange={handleChangeUserNewService}
             input={<OutlinedInput label="Service" />}
           >
             {serviceList?.map?.((service) => (
-              <MenuItem key={service.id} value={service.service}>
-                {service.service.split('_').join(' ')}
+              <MenuItem key={service.id} sx={{ direction: 'ltr' }} value={service.service}>
+                {i18n.language == 'ar' ? service.descriptionAr : service.description}
               </MenuItem>
             ))}
           </Select>
