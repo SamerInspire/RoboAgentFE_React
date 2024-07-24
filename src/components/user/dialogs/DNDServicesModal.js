@@ -20,10 +20,11 @@ import { findBoardSectionContainer, getAuthorityById, initializeContainer } from
 import { handleSubmitUserAuths } from 'utils/users/users';
 import DraggableServiceItem from './DraggableServiceItem';
 import ServiceContainer from './ServiceContainer';
+import Loader from 'components/loader/Loader';
 const dropAnimation = {
   ...defaultDropAnimation,
 };
-const DNDServicesModal = ({ authorities, handleCloseServicesModal, userData, setTableData, tableData }) => {
+const DNDServicesModal = ({ authorities, handleCloseServicesModal, userData, setTableData, tableData, setIsServicesModalLoading, isServicesModalLoading }) => {
   const initialContainersSections = initializeContainer(authorities);
   const [containerSections, setContainerSections] = useState(initialContainersSections);
   const [activeAuthorityId, setActiveAuthorityId] = useState(null);
@@ -165,8 +166,10 @@ const DNDServicesModal = ({ authorities, handleCloseServicesModal, userData, set
           <Grid item xs={12} md={4}>
             <Button
               fullWidth
-              onClick={() =>
-                handleSubmitUserAuths({
+              disabled={isServicesModalLoading}
+              onClick={async () =>{
+                setIsServicesModalLoading(true);
+                await handleSubmitUserAuths({
                   requestAction: 'UPDATE_USER_AUTHORITIES',
                   setAlert,
                   userId: userData[0],
@@ -174,11 +177,15 @@ const DNDServicesModal = ({ authorities, handleCloseServicesModal, userData, set
                   containerSections,
                   setTableData,
                   tableData,
-                })
+                });
+                setIsServicesModalLoading(false);
+              }
+                
               }
               variant="contained"
             >
-              {t('usersTable.Submit')}
+              {/* {t('usersTable.Submit')} */}
+              {isServicesModalLoading ? <Loader styles={ { width: "30px", height: "30px" }} /> : t('usersTable.Submit')}
             </Button>
           </Grid>
         </Grid>

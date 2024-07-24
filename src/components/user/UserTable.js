@@ -30,9 +30,13 @@ function UserTable() {
   const [statusAnchorEl, setStatusAnchorEl] = useState(null);
   const [currentUserData, setCurrentUserData] = useState({});
   const [isOpenServicesModal, setIsOpenServicesModal] = useState(false);
+  const [isServicesModalLoading, setIsServicesModalLoading] = useState(false);
   const { t } = useTranslation();
   const handleCloseRolePopper = () => setStatusAnchorEl(undefined);
-  const handleCloseServicesModal = () => {
+
+  const handleCloseServicesModal = (event,reason) => {
+    if (reason && reason ==="backdropClick")
+      return;
     setIsOpenServicesModal(false);
   };
   const handleCloseServiceDialog = () => {
@@ -323,6 +327,8 @@ function UserTable() {
             tableData={tableData}
             setAuthorities={setAuthorities}
             handleCloseServicesModal={handleCloseServicesModal}
+            setIsServicesModalLoading={setIsServicesModalLoading}
+            isServicesModalLoading={isServicesModalLoading}
           />
         </Grid>
       </Modal>
