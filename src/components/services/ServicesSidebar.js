@@ -3,7 +3,6 @@ import { Box } from "@mui/system";
 import generalImg from "assets/images/services/apps-svgrepo-com.svg";
 import i18next from "i18next";
 import { useState } from "react";
-import { Services as ServicesSchema }  from "pages/services/schema/ServicesSchema";
 
 function ServicesSidebar({ handleChangeCurrentService, currService, setCurrService, currentUserData }) {
   const [Services] = useState(
@@ -53,7 +52,7 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
               />
               <Typography variant="body1" fontWeight={"600"} color={"gray"}>
                 {" "}
-                {lang == "en" ? service.description : ServicesSchema[service.id -1].descriptionAr}
+                {lang == "en" ? service.description : service.descriptionAr} 
               </Typography>
             </Grid>
           </Grid>
@@ -80,7 +79,7 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
               />
               <Typography variant="body1" fontWeight={"600"} color={"gray"}>
                 {" "}
-                {lang == "en" ? service.description : ServicesSchema[service.id -1].descriptionAr}
+                {lang == "en" ? service.description : service.descriptionAr}
               </Typography>
             </Grid>
           </Grid>
@@ -107,7 +106,7 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
             />
             <Typography variant="body1" fontWeight={"600"} color={"gray"}>
               {" "}
-              {lang == "en" ? service.description :ServicesSchema[service.id -1].descriptionAr}
+              {lang == "en" ? service.description :service.descriptionAr}
             </Typography>
           </Grid>
         ) : null;

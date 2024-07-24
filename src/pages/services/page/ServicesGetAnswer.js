@@ -12,7 +12,6 @@ import { useNavigate, useParams } from 'react-router';
 import { numbersOnly } from 'utils/DefualtValidators';
 import { handleGetResponse } from 'utils/api/answer/service';
 import { handleFetchCurrentUser } from 'utils/users/users';
-import { Services as ServicesSchema } from '../schema/ServicesSchema';
 
 const ServicesGetAnswer = ({ }) => {
   let { servicename = 'General' } = useParams();
@@ -101,7 +100,7 @@ const ServicesGetAnswer = ({ }) => {
         <Grid item xs={12}>
           <Typography variant="h5" style={{ fontWeight: 'bold' }}>
             {console.log('CurrService',currService)}
-            {lang === 'en' ? ServicesSchema[currService.id - 1].description : ServicesSchema[currService.id - 1].descriptionAr}
+            {lang === 'en' ? currService.description : currService.descriptionAr}
           </Typography>
         </Grid>
         <form
