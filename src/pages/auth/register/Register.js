@@ -104,7 +104,7 @@ const Register = () => {
     } else {
       setAlert({
         alertType: 'info',
-        alertMsg: 'Registering User',
+        alertMsg: t('register.Registering User'),
         sleep: 99999,
       });
       await handleSubmitNewUser(

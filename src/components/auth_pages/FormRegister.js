@@ -154,7 +154,6 @@ const FormRegister = ({ handleNext, setUserData, userData, register, errors, han
           maxLength: 12,
           pattern: {
             value: /^(?=.*[A-Z])(?=.*\d).+$/,
-
             message: t('forgotPassword.Password must contain at least one capital letter one small and one number'),
           },
           onChange: (e) => setPasswordsInfo({ ...passwordsInfo, valuePass: e.target.value }),

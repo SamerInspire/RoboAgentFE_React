@@ -168,6 +168,7 @@
     "Dynamic Identity Officer": "Dynamic Identity Officer"
   },
   "register": {
+    "Registering User": "Registering User",
     "invalidEmail": "Please Enter a valid email address",
     "Terms of Service": "Terms of Service",
     "Privacy Policy": "Privacy Policy",
