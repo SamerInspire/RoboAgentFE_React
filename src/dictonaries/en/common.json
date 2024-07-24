@@ -42,7 +42,7 @@
     "Resend": "Resend",
     "Verify": "Verify",
     "Change Your Password": "Change Your Password",
-    "Password must contain at least one capital letter one small and one number": "Password must contain at least one capital letter one small and one number",
+    "Password must contain at least one capital letter one small and one number": "Password must contain at least one capital letter one small and one number and at leas 6 characters",
     "Passwords do not match": "Passwords do not match",
     "Change Password": "Change Password",
     "Confirm Password": "Confirm Password"
@@ -73,7 +73,8 @@
     "not_registered_label": "Not registered?",
     "create_user_acc_label": "Create User Account",
     "create_admin_acc_label": "Create Admin Account",
-    "login_btn": "Login"
+    "login_btn": "Login",
+    "Enter a valid password (6-15 characters)": "Enter a valid password (6-15 characters)"
   },
   "getAnswerForm": {
     "Reason": "Reason ",

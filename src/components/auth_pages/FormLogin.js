@@ -120,11 +120,11 @@ const FormLogin = () => {
           }}
           label={t('passwordLabel')}
           error={errors.password ? true : false}
-          helperText={errors.password && 'Enter a valid password (5-15 characters)'}
+          helperText={errors.password && t('login_page.Enter a valid password (6-15 characters)')}
           {...register('password', {
             required: true,
-            minLength: 5,
-            maxLength: 50,
+            minLength: 6,
+            maxLength: 16,
           })}
         />
 

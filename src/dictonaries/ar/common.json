@@ -37,7 +37,7 @@
     "Resend": "إعادة إرسال",
     "Verify": "تحقق",
     "Change Your Password": "تغيير كلمة المرور",
-    "Password must contain at least one capital letter one small and one number": "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل وحرف صغير ورقم",
+    "Password must contain at least one capital letter one small and one number": " يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل وحرف صغير ورقم وان يتكون من (6-16)حرف",
     "Passwords do not match": "كلمات المرور غير متطابقة",
     "Change Password": "تغيير كلمة المرور",
     "Confirm Password": "تأكيد كلمة المرور",
@@ -73,7 +73,8 @@
     "not_registered_label": "غير مسجل؟",
     "create_user_acc_label": "إنشاء حساب مستخدم",
     "create_admin_acc_label": "إنشاء حساب مشرف",
-    "login_btn": "تسجيل الدخول"
+    "login_btn": "تسجيل الدخول",
+    "Enter a valid password (6-15 characters)": "لرجاء إدخال كلمة مرور صالحة (6-15 حرفًا)"
   },
   "getAnswerForm": {
     "Reason": "السبب ",

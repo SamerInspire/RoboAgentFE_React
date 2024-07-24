@@ -20,7 +20,7 @@ const FormRegister = ({ handleNext, setUserData, userData, register, errors, han
   // submit
 
   return (
-    <FormStyle component="form" onSubmit={handleSubmit((data) => handleNext(data))}>
+    <FormStyle noValidate component="form" onSubmit={handleSubmit((data) => handleNext(data))}>
       <Box
         sx={{
           display: 'grid',
@@ -150,6 +150,8 @@ const FormRegister = ({ handleNext, setUserData, userData, register, errors, han
         label={t('passwordLabel')}
         {...register('password', {
           required: true,
+          minLength: 6,
+          maxLength: 12,
           pattern: {
             value: /^(?=.*[A-Z])(?=.*\d).+$/,
 
@@ -157,7 +159,10 @@ const FormRegister = ({ handleNext, setUserData, userData, register, errors, han
           },
           onChange: (e) => setPasswordsInfo({ ...passwordsInfo, valuePass: e.target.value }),
         })}
-        helperText={errors.password && t('Password must contain at least one capital letter one small and one number')}
+        helperText={
+          errors.password &&
+          t('forgotPassword.Password must contain at least one capital letter one small and one number')
+        }
         error={errors.password ? true : false}
       />
       <TextField

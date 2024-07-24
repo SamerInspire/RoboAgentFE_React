@@ -2,7 +2,7 @@ import axios from 'axios';
 import { failureHitHandle, successHitHandle } from '../HitHandiling';
 
 axios.defaults.baseURL = process.env.REACT_APP_BACKEND_API_ENDPOINT_URL;
-console.log(process.env.REACT_APP_BACKEND_API_ENDPOINT_URL);
+console.log(process.env.REACT_APP_BACKEND_API_ENDPOINT_URL, 'backend point');
 if (JSON.parse(localStorage.getItem('userInfo'))) {
   const token = JSON.parse(localStorage.getItem('userInfo')).token;
   axios.defaults.headers.common['authorization'] = token;
