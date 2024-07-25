@@ -8,7 +8,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { glassMorphisimStyle } from 'styles/styles';
 import generalImg from 'assets/images/services/apps-svgrepo-com.svg';
-import { Services } from 'pages/services/schema/ServicesSchema';
+import { IconsMap, Services } from 'pages/services/schema/ServicesSchema';
 const ServicesListItem = ({ service, queryCenterSignup, eligiableServices, currentUserData }) => {
   const lang = i18n.language;
   const [queryCenterAnchorEl, setQueryCenterAnchorEl] = useState(null);
@@ -33,7 +33,7 @@ const ServicesListItem = ({ service, queryCenterSignup, eligiableServices, curre
     queryCenterSignup && (!eligiableServices[service.description] || currentUserData.role != 'MEMBER');
   const handleClosePopper = () => setQueryCenterAnchorEl(null);
   const { direction } = useContext(themeContext);
-  useEffect(() => {}, [direction]);
+  useEffect(() => { }, [direction]);
   let bcUrl = IconsMap.find((icon) => icon.key == service.bcUrl)?.value;
   bcUrl = bcUrl ? bcUrl : generalImg;
   return (

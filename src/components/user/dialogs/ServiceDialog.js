@@ -9,12 +9,11 @@ import {
   Select,
   Typography,
 } from '@mui/material';
+import Loader from 'components/loader/Loader';
 import i18n from 'dictonaries/i18n';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { handleSubmitUserNewService } from 'utils/users/users';
-import LoadingButton from 'components/buttons/LoadingButton';
-import Loader from 'components/loader/Loader';
 
 function ServiceDialog({
   isEditServiceDialogOpen,
