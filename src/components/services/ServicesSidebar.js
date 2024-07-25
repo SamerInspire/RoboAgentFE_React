@@ -2,6 +2,7 @@ import { Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import generalImg from 'assets/images/services/apps-svgrepo-com.svg';
 import i18next from 'i18next';
+import { IconsMap } from 'pages/services/schema/ServicesSchema';
 import { useState } from 'react';
 
 function ServicesSidebar({ handleChangeCurrentService, currService, setCurrService, currentUserData }) {
@@ -26,6 +27,9 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
       gap={2}
     >
       {Services.map((service, index) => {
+        let bcUrl = IconsMap.find((icon) => icon.key == service.bcUrl)?.value;
+        bcUrl = bcUrl ? bcUrl : generalImg;
+
         const showService = currentUserData?.roboAuthorities?.some((auth) =>
           service?.allowedAuthorities?.includes(auth.name),
         );
@@ -47,7 +51,7 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
             >
               <Box
                 component={'img'}
-                src={service.bcUrl ? service.bcUrl : generalImg}
+                src={bcUrl}
                 sx={{ width: '20px', height: '20px' }}
               />
               <Typography variant="body1" fontWeight={'600'} color={'gray'}>
@@ -74,7 +78,7 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
             >
               <Box
                 component={'img'}
-                src={service.bcUrl ? service.bcUrl : generalImg}
+                src={bcUrl}
                 sx={{ width: '20px', height: '20px' }}
               />
               <Typography variant="body1" fontWeight={'600'} color={'gray'}>
@@ -101,7 +105,7 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
           >
             <Box
               component={'img'}
-              src={service.bcUrl ? service.bcUrl : generalImg}
+              src={bcUrl}
               sx={{ width: '20px', height: '20px' }}
             />
             <Typography variant="body1" fontWeight={'600'} color={'gray'}>
