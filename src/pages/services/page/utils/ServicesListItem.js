@@ -9,6 +9,26 @@ import { Link as RouterLink } from 'react-router-dom';
 import { glassMorphisimStyle } from 'styles/styles';
 import generalImg from 'assets/images/services/apps-svgrepo-com.svg';
 import { Services } from 'pages/services/schema/ServicesSchema';
+import ChangeOccupationImg from 'assets/images/services/change-record-type-svgrepo-com.svg';
+import ContractManagerImg from 'assets/images/services/contract-sign-line-svgrepo-com.svg';
+import EmployeeListImg from 'assets/images/services/list-svgrepo-com.svg';
+import WorkPermitImg from 'assets/images/services/location-permit-svgrepo-com.svg';
+import VisasImg from 'assets/images/services/passport-svgrepo-com.svg';
+import PrivilegesImg from 'assets/images/services/permissions-svgrepo-com.svg';
+import EmployeesTransferImg from 'assets/images/services/transfer-svgrepo-com.svg';
+import UserManagmentImg from 'assets/images/services/user-id-svgrepo-com.svg';
+
+const IconsMap = [
+  { key: 'generalImg', value: generalImg },
+  { key: 'ChangeOccupationImg', value: ChangeOccupationImg },
+  { key: 'ContractManagerImg', value: ContractManagerImg },
+  { key: 'EmployeeListImg', value: EmployeeListImg },
+  { key: 'WorkPermitImg', value: WorkPermitImg },
+  { key: 'VisasImg', value: VisasImg },
+  { key: 'PrivilegesImg', value: PrivilegesImg },
+  { key: 'EmployeesTransferImg', value: EmployeesTransferImg },
+  { key: 'UserManagmentImg', value: UserManagmentImg },
+];
 const ServicesListItem = ({ service, queryCenterSignup, eligiableServices, currentUserData }) => {
   const lang = i18n.language;
   const [queryCenterAnchorEl, setQueryCenterAnchorEl] = useState(null);
@@ -21,12 +41,6 @@ const ServicesListItem = ({ service, queryCenterSignup, eligiableServices, curre
   };
   console.log(service);
   console.log('services schema', Services);
-  // console.log('service ===>', service);
-  //uncomment this line
-  // const [update, setUpdate] = useState(false);
-  // const isEligiableService =
-  //   queryCenterSignup &&
-  //   (!eligiableServices[service.enName] || currentUserData.role != "MEMBER");
 
   //change this line to be the above commented code i dont have access to the query center in jordan
   const isEligiableService =

@@ -15,18 +15,17 @@ import EmployeesTransferImg from 'assets/images/services/transfer-svgrepo-com.sv
 import UserManagmentImg from 'assets/images/services/user-id-svgrepo-com.svg';
 import generalImg from 'assets/images/services/apps-svgrepo-com.svg';
 
-
-
-const IconsMap = [{ key: 'generalImg', value: generalImg },
-{ key: 'ChangeOccupationImg', value: ChangeOccupationImg },
-{ key: 'ContractManagerImg', value: ContractManagerImg },
-{ key: 'EmployeeListImg', value: EmployeeListImg },
-{ key: 'WorkPermitImg', value: WorkPermitImg },
-{ key: 'VisasImg', value: VisasImg },
-{ key: 'PrivilegesImg', value: PrivilegesImg },
-{ key: 'EmployeesTransferImg', value: EmployeesTransferImg },
-{ key: 'UserManagmentImg', value: UserManagmentImg }]
-
+const IconsMap = [
+  { key: 'generalImg', value: generalImg },
+  { key: 'ChangeOccupationImg', value: ChangeOccupationImg },
+  { key: 'ContractManagerImg', value: ContractManagerImg },
+  { key: 'EmployeeListImg', value: EmployeeListImg },
+  { key: 'WorkPermitImg', value: WorkPermitImg },
+  { key: 'VisasImg', value: VisasImg },
+  { key: 'PrivilegesImg', value: PrivilegesImg },
+  { key: 'EmployeesTransferImg', value: EmployeesTransferImg },
+  { key: 'UserManagmentImg', value: UserManagmentImg },
+];
 
 describe('ServicesList Component', () => {
   test('renders services for authorized user', () => {
@@ -93,8 +92,8 @@ describe('ServicesListItem Component', () => {
         ,/
       </BrowserRouter>,
     );
-    let bcUrl = IconsMap.find(icon => icon.key == service.bcUrl)?.value
-    bcUrl = bcUrl ? bcUrl : generalImg
+    let bcUrl = IconsMap.find((icon) => icon.key == service.bcUrl)?.value;
+    bcUrl = bcUrl ? bcUrl : generalImg;
     // Check if the service name and image are displayed
     expect(screen.getByText(service.description)).toBeInTheDocument();
     expect(screen.getByRole('img')).toHaveAttribute('src', bcUrl);
