@@ -8,16 +8,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { glassMorphisimStyle } from 'styles/styles';
 import generalImg from 'assets/images/services/apps-svgrepo-com.svg';
-import ChangeOccupationImg from 'assets/images/services/change-record-type-svgrepo-com.svg';
-import ContractManagerImg from 'assets/images/services/contract-sign-line-svgrepo-com.svg';
-import EmployeeListImg from 'assets/images/services/list-svgrepo-com.svg';
-import WorkPermitImg from 'assets/images/services/location-permit-svgrepo-com.svg';
-import VisasImg from 'assets/images/services/passport-svgrepo-com.svg';
-import PrivilegesImg from 'assets/images/services/permissions-svgrepo-com.svg';
-import EmployeesTransferImg from 'assets/images/services/transfer-svgrepo-com.svg';
-import UserManagmentImg from 'assets/images/services/user-id-svgrepo-com.svg';
-
-import { Services } from 'pages/services/schema/ServicesSchema';
+import { IconsMap, Services } from 'pages/services/schema/ServicesSchema';
 const ServicesListItem = ({ service, queryCenterSignup, eligiableServices, currentUserData }) => {
   const lang = i18n.language;
   const [queryCenterAnchorEl, setQueryCenterAnchorEl] = useState(null);
@@ -51,7 +42,7 @@ const ServicesListItem = ({ service, queryCenterSignup, eligiableServices, curre
     queryCenterSignup && (!eligiableServices[service.description] || currentUserData.role != 'MEMBER');
   const handleClosePopper = () => setQueryCenterAnchorEl(null);
   const { direction } = useContext(themeContext);
-  useEffect(() => {}, [direction]);
+  useEffect(() => { }, [direction]);
   let bcUrl = IconsMap.find((icon) => icon.key == service.bcUrl)?.value;
   bcUrl = bcUrl ? bcUrl : generalImg;
   return (

@@ -113,7 +113,7 @@ const ServicesGetAnswer = ({}) => {
               setAlert({
                 alertType: 'info',
                 sleep: 5000000,
-                alertMsg: 'Generating Ticket Answer',
+                alertMsg: 'Generating Answer',
               });
               await handleGetResponse({
                 requestAction: 'SET_ANSWER',
