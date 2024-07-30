@@ -101,6 +101,7 @@ const FormRegister = ({ handleNext, setUserData, userData, register, errors, han
         helperText={errors.email && t('register.Enter a valid email address')}
       />
       <PhoneInput
+        international
         countries={['SA']}
         countryCallingCodeEditable={false}
         defaultCountry="SA"
