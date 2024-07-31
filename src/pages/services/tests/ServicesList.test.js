@@ -1,6 +1,5 @@
 /* eslint-disable */
 import { render, screen } from '@testing-library/react';
-import generalImg from 'assets/images/services/apps-svgrepo-com.svg';
 import Providers from 'components/Providers';
 import { BrowserRouter } from 'react-router-dom';
 import ServicesList from '../page/ServicesList';
