@@ -14,7 +14,6 @@ import VisasImg from 'assets/images/services/passport-svgrepo-com.svg';
 import PrivilegesImg from 'assets/images/services/permissions-svgrepo-com.svg';
 import EmployeesTransferImg from 'assets/images/services/transfer-svgrepo-com.svg';
 import UserManagmentImg from 'assets/images/services/user-id-svgrepo-com.svg';
-import generalImg from 'assets/images/services/apps-svgrepo-com.svg';
 
 const IconsMap = [
   { key: 'generalImg', value: generalImg },
