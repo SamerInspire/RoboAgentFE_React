@@ -6,7 +6,8 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import 'react-phone-number-input/style.css';
 import { AlertContext } from 'hooks/context/AlertContext';
-import { handleFetchAuthorities, handleFetchServiceList } from 'utils/users/users';
+import { handleFetchAuthorities, handleFetchServiceList,handleFetchAllUsers, handleFetchCurrentUser } from 'utils/users/users';
+import i18next from 'i18next';
 export async function handleFinalRegistration(userRole, userTeam, userServices, userMainService, userId) {
   try {
     const rolePromise = axios.post(`/api/user-roles/${userId}/roles/${userRole}`);
@@ -21,8 +22,10 @@ export async function handleFinalRegistration(userRole, userTeam, userServices, 
     throw new Error(error);
   }
 }
+const lang = i18next.language;
 const FinalRegister = ({ handleBack, handleNext }) => {
   const [selectedRole, setSelectedRole] = useState('MEMBER');
+  const [currentUserData, setCurrentUserData] = useState({});
   const [serviceList, setServiceList] = useState([]);
   const [authorities, setAuthorities] = useState([]);
   const [selectedTeam, setSelectedTeam] = useState('L2');
@@ -34,7 +37,7 @@ const FinalRegister = ({ handleBack, handleNext }) => {
     { value: 'TEAM_LEAD', title: t('register.Team Lead') },
     { value: 'MEMBER', title: t('register.Member') },
   ];
-  const teams = ['L1', 'L2'];
+  const teams = ['LO','L1', 'L2'];
   const {
     handleSubmit,
     reset: clearFinalForm,
@@ -52,6 +55,11 @@ const FinalRegister = ({ handleBack, handleNext }) => {
       setServiceList,
       requestAction: 'SET_SERVICE_LIST',
       setIsLoading: () => {},
+      setAlert,
+    });
+    handleFetchCurrentUser({
+      requestAction: 'SET_CURRENT_USER',
+      setCurrentUserData,
       setAlert,
     });
   }, []);
@@ -106,7 +114,7 @@ const FinalRegister = ({ handleBack, handleNext }) => {
               <Typography variant="h5">{t('register.Choose user team')} </Typography>
             </Grid>
             {teams.map((team) => (
-              <Grid item xs={12} md={4} key={team}>
+              <Grid item xs={12} md={3} key={team}>
                 <Button
                   fullWidth
                   variant={team == selectedTeam ? 'contained' : 'outlined'}
@@ -132,9 +140,11 @@ const FinalRegister = ({ handleBack, handleNext }) => {
                   multiple
                   onChange={handleChange}
                 >
+                  {console.log('authorities',currentUserData)}
                   {authorities.map((auth) => (
                     <MenuItem key={auth.authId} value={auth.authId}>
-                      {auth.description}
+                      {/* {auth.description} */}
+                      {lang == 'en' ? auth.description : auth.descriptionAr}
                     </MenuItem>
                   ))}
                 </Select>
@@ -153,7 +163,8 @@ const FinalRegister = ({ handleBack, handleNext }) => {
                 >
                   {serviceList.map((service) => (
                     <MenuItem key={service.service} value={service.service}>
-                      {service.description}
+                      {/* {service.description} */}
+                      {lang == 'en' ? service.description : service.descriptionAr}
                     </MenuItem>
                   ))}
                 </Select>

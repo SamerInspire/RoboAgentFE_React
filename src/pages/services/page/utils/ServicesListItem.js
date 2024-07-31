@@ -93,7 +93,7 @@ const ServicesListItem = ({ service, queryCenterSignup, eligiableServices, curre
         >
           <Box component={'img'} src={bcUrl} sx={{ width: '90px', height: '80px' }} />
           <Typography variant="h5" fontWeight={700} textAlign={'center'}>
-            {lang == 'en' ? service.description : Services[service.id - 1].descriptionAr}
+            {lang == 'en' ? service.description : service.descriptionAr}
           </Typography>
         </Grid>
       </Grid>

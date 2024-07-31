@@ -12,9 +12,11 @@ import CustomToast from '../toast/CustomToast';
 import EmailDialog from './dialogs/EmailDialog';
 import NewPassDialog from './dialogs/NewPassDialog';
 import OTPDialog from './dialogs/OTPDialog';
+import cookies from 'react-cookies';
 const FormLogin = () => {
+  const cachedLoginData = cookies.load('loginData');
   const [showPassword, setShowPassord] = useState(false);
-  const [remember, setRemember] = useState(true);
+  const [remember, setRemember] = useState((cachedLoginData?.rememberUser) ? cachedLoginData.rememberUser : false);
   const [steps, setSteps] = useState(0);
   const [snackbarData, setSnackbarData] = useState({
     alertType: '',
@@ -37,8 +39,8 @@ const FormLogin = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: '',
-      password: '',
+      email: (cachedLoginData?.email) ? cachedLoginData?.email : "",
+      password: (cachedLoginData?.password) ? cachedLoginData?.password : "",
       rememberUser: true,
     },
   });
@@ -96,6 +98,8 @@ const FormLogin = () => {
         {/* Email */}
         <TextField
           variant="outlined"
+          //defaultValue= {(cachedLoginData?.email) ? cachedLoginData?.email : ""}  
+          // value={(cachedLoginData?.email) ? cachedLoginData?.email : ""}
           fullWidth
           type="email"
           label={t('emailLabel')}

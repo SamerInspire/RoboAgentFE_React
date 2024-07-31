@@ -3,6 +3,7 @@ import React from "react";
 import AxiosHit from "utils/api/AxiosHit";
 import { initialState } from "../reducers/loginReducer";
 import { useLocalStorage } from "../custom/useLocalStorage";
+import cookies from 'react-cookies';
 
 export const LoginContext = React.createContext();
 function LoginProvider(props) {
@@ -12,6 +13,14 @@ function LoginProvider(props) {
   // }
   async function login(loginData, setAlert, setIsLoading) {
     setIsLoading(true);
+    console.log('check remember user', loginData);
+    if (loginData.rememberUser) {
+      const options = { path: '/', maxAge: 7 * 24 * 60 * 60 };
+      cookies.save('loginData', loginData, options);
+      console.log('saved login details',cookies.load('loginData'));
+    } else {
+      cookies.remove('loginData',{path:'/'});
+    }
 
     await AxiosHit(
       {
