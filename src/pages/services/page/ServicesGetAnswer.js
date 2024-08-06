@@ -27,32 +27,42 @@ const ServicesGetAnswer = ({}) => {
   const { setAlert, handleCloseAlert } = useContext(AlertContext);
   const lang = i18next.language;
   const navigate = useNavigate();
-  const [options, setOptions] = useState(() => {
-    const options = {};
-    if (!!currService) {
-      currService.serviceOptions.map((o) => {
-        options[o['name']] = false;
-        options[o['active']] = false;
-        o['active'] = true;
-      });
-    }
-    return options;
-  });
+  const [options, setOptions] = useState({});
+  
+  const createNewOption = (options) => {
+    const newOption = {};
+    options.forEach(option => {
+        newOption[option.name] = false;
+    });
+    return newOption;
+};
+  // () => {
+  //   const options = {};
+  //   if (!!currService) {
+  //     currService.serviceOptions.map((o) => {
+  //       options[o['name']] = false;
+  //       options[o['active']] = false;
+  //       o['active'] = true;
+  //     });
+  //   }
+  //   return options;
+  // }
   useEffect(() => {
-    setOptions(
-      currService.serviceOptions.map((o) => {
-        options[o['name']] = false;
-        options[o['active']] = false;
-        o['active'] = true;
-      }),
-    );
+    const newOptions = {};
+    currService.serviceOptions.forEach(option => {
+        newOptions[option.name] = false;
+    });
+    setOptions(newOptions);
     setLoading(false);
     setAnswer('');
     handleCloseAlert();
   }, [currService]);
   // form submit
   const handelCheckValue = (id, status) => {
+    let optionsChange = options;
     options[id] = status;
+    setOptions(optionsChange);
+    console.log('options changed',options);
   };
   // hook form
   useEffect(() => {
@@ -86,7 +96,7 @@ const ServicesGetAnswer = ({}) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      establishment_number: '',
+      establishmentNumber: '',
       id_number: '',
       check_options: '',
     },
