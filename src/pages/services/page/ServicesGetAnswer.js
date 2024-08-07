@@ -28,14 +28,7 @@ const ServicesGetAnswer = ({}) => {
   const lang = i18next.language;
   const navigate = useNavigate();
   const [options, setOptions] = useState({});
-  
-  const createNewOption = (options) => {
-    const newOption = {};
-    options.forEach(option => {
-        newOption[option.name] = false;
-    });
-    return newOption;
-};
+
   // () => {
   //   const options = {};
   //   if (!!currService) {
@@ -51,6 +44,8 @@ const ServicesGetAnswer = ({}) => {
     const newOptions = {};
     currService.serviceOptions.forEach(option => {
         newOptions[option.name] = false;
+        newOption.active = false;
+        option.active=true;
     });
     setOptions(newOptions);
     setLoading(false);
