@@ -44,7 +44,7 @@ const ServicesGetAnswer = ({}) => {
     const newOptions = {};
     currService.serviceOptions.forEach(option => {
         newOptions[option.name] = false;
-        newOption.active = false;
+        newOptions.active = false;
         option.active=true;
     });
     setOptions(newOptions);
