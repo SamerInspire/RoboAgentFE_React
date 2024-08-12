@@ -12,6 +12,7 @@ import CustomStepper from 'components/auth_pages/stepper/CustomStepper';
 import { AlertContext } from 'hooks/context/AlertContext';
 import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { handleSubmitNewUser } from 'utils/users/users';
 
@@ -81,6 +82,7 @@ const Register = () => {
   // const [isLoading, setIsLoading] = useState(false);
   const { setAlert } = useContext(AlertContext);
   const { t } = useTranslation();
+  const navigate = useNavigate();
   // const myref = useRef();
   const {
     register,
@@ -117,6 +119,18 @@ const Register = () => {
           clearFinalForm,
         },
       );
+      await setActiveStep(0);
+      reset({
+        defaultValues: {
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: '',
+          userRole: 'MEMBER',
+          userTeam: 'L2',
+        },
+      });
+      navigate('/dash/register');
     }
   };
   const handleBack = () => setActiveStep((prev) => prev - 1);

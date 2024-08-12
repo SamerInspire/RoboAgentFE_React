@@ -17,6 +17,10 @@ const ServicesGetAnswer = ({}) => {
   let { servicename = 'General' } = useParams();
   const [answer, setAnswer] = useState('');
   const [currentUserData, setCurrentUserData] = useState({});
+  const [estNumber,setEstNumber] = useState('');
+  const [idNum,setIdNum] = useState('');
+  const estNumberRequired = !idNum;
+  const idNumRequired = !estNumber;
   const isEligiable = useRef(false);
   const { t } = useTranslation();
   const [Services] = useState(JSON.parse(localStorage.getItem('ServiceList')));
@@ -151,20 +155,27 @@ const ServicesGetAnswer = ({}) => {
                     id="outlined-multiline-static"
                     fullWidth
                     {...register('reason', {
-                      onChange: (e) =>
-                        numbersOnly(e, {
-                          type: 'IDNo',
-                          maxNumber: 10,
-                          replaceWith: '',
-                        }),
-                      onPaste: (e) =>
-                        numbersOnly(e, {
-                          type: 'IDNo',
-                          maxNumber: 10,
-                          replaceWith: '',
-                        }),
+                      required: true,
+                      maxLength:30,
+                      // onChange: (e) =>
+                      //   numbersOnly(e, {
+                      //     type: 'IDNo',
+                      //     maxNumber: 30,
+                      //     replaceWith: '',
+                      //   }),
+                      // onPaste: (e) =>
+                      //   numbersOnly(e, {
+                      //     type: 'IDNo',
+                      //     maxNumber: 30,
+                      //     replaceWith: '',
+                      //   }),
                     })}
                     disabled={loading}
+                    error={errors.reason ? true : false}
+                    helperText={
+                      errors.reason &&
+                      t('getAnswerForm.reason required')
+                    }
                   />
                 </Grid>
               </Grid>
@@ -179,15 +190,27 @@ const ServicesGetAnswer = ({}) => {
                     <TextField
                       fullWidth
                       id="outlined-multiline-static"
-                      pattern="[0-9]*"
+                      pattern="/^\d{1,14}-?\d{0,14}$/"
                       {...register('establishmentNumber', {
-                        onChange: (e) => numbersOnly(e),
-                        onPaste: (e) => numbersOnly(e),
-                        require: true,
+                        onChange: (e) => {
+                          numbersOnly(e,{maxNumber:14});
+                          setEstNumber(e.target.value);
+                          console.log(estNumber);
+                        },
+                        onPaste: (e) => {
+                          numbersOnly(e,{maxNumber:14})
+                          setEstNumber(e.target.value);
+                        },
+                        maxLength:14,
+                        required: estNumberRequired,
                       })}
                       disabled={loading}
-                      error={errors.email ? true : false}
-                      helperText={errors.email && 'Enter a valid email address'}
+                      error={errors.establishmentNumber && errors.id_number? true : false}
+                      // helperText={errors.email && 'Enter a valid email address'}
+                      helperText={
+                        (errors.establishmentNumber && errors.id_number) &&
+                        t('getAnswerForm.establishmentNumber or IdNumber required')
+                      }
                     />
                   </Grid>
                 </Grid>
@@ -200,22 +223,38 @@ const ServicesGetAnswer = ({}) => {
                   <Grid item xs={12}>
                     <TextField
                       fullWidth
+                      pattern="/^\d{10}$/"
                       id="outlined-multiline-static"
                       {...register('id_number', {
+                        required: idNumRequired,
+                        minLength:10,
+                        maxLength:10,
                         onChange: (e) =>
+                        {
                           numbersOnly(e, {
                             type: 'IDNo',
                             maxNumber: 10,
                             replaceWith: '',
-                          }),
+                          });
+                          setIdNum(e.target.value);
+                        }
+                          ,
                         onPaste: (e) =>
+                        {
                           numbersOnly(e, {
                             type: 'IDNo',
                             maxNumber: 10,
                             replaceWith: '',
-                          }),
+                          });
+                          setIdNum(e.target.value);
+                        }
                       })}
                       disabled={loading}
+                      error={ errors.id_number && errors.establishmentNumber ? true : false}
+                      helperText={
+                        (errors.establishmentNumber && errors.id_number) &&
+                        t('getAnswerForm.establishmentNumber or IdNumber required')
+                      }
                     />
                   </Grid>
                 </Grid>

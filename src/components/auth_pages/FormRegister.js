@@ -152,16 +152,17 @@ const FormRegister = ({ handleNext, setUserData, userData, register, errors, han
         {...register('password', {
           required: true,
           minLength: 6,
-          maxLength: 12,
+          maxLength: 16,
           pattern: {
-            value: /^(?=.*[A-Z])(?=.*\d).+$/,
-            message: t('forgotPassword.Password must contain at least one capital letter one small and one number'),
+            value: /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{6,16}$/,
+            // /^(?=.*[A-Z])(?=.*\d).+$/,
+            message: t('forgotPassword.Password must contain at least a capital letter, a small letter, a number and a special character'),
           },
           onChange: (e) => setPasswordsInfo({ ...passwordsInfo, valuePass: e.target.value }),
         })}
         helperText={
           errors.password &&
-          t('forgotPassword.Password must contain at least one capital letter one small and one number')
+          t('forgotPassword.Password must contain at least one capital letter one small and one number and one special character')
         }
         error={errors.password ? true : false}
       />

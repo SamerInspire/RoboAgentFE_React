@@ -3,7 +3,13 @@ import AxiosHit from "../AxiosHit";
 export async function handleGetResponse(utils) {
   const { data, servicename, options } = utils;
   let { reason, establishmentNumber, id_number } = data;
-  establishmentNumber += id_number != "" ? "-" + id_number : "";
+  
+  if (establishmentNumber && establishmentNumber!=""){
+    establishmentNumber += id_number != "" ? "-" + id_number : "";  
+  } else {
+    establishmentNumber = id_number;
+  }
+  //establishmentNumber += id_number != "" ? "-" + id_number : "";
 
   const selectedOptions = Object.keys(options).filter((key) =>
     options[key] ? true : false
