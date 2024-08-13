@@ -38,6 +38,7 @@
     "Verify": "تحقق",
     "Change Your Password": "تغيير كلمة المرور",
     "Password must contain at least one capital letter one small and one number": " يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل وحرف صغير ورقم وان يتكون من (6-16)حرف",
+    "Password must contain at least one capital letter one small and one number and one special character": " يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل وحرف صغير و رمز مميز ورقم وان يتكون من (6-16)حرف",
     "Passwords do not match": "كلمات المرور غير متطابقة",
     "Change Password": "تغيير كلمة المرور",
     "Confirm Password": "تأكيد كلمة المرور",
@@ -82,7 +83,9 @@
     "ID or Iqameh": "الرقم التعريفي او الأقامة",
     "answer": "الأجابة",
     "backButton": "رجوع",
-    "searchButton": "بحث"
+    "searchButton": "بحث",
+    "reason required":" برجاء إدخال السبب",
+    "establishmentNumber or IdNumber required" : "برجاء إدخال رقم المنشأة او الرقم التعريفي او الأقامة"
   },
   "usersTable": {
     "Sorry, there is no matching data to display": "عذرًا، ليس هنالك بيانات متوفرة للعرض",

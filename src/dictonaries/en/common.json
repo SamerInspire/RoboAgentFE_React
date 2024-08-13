@@ -43,6 +43,7 @@
     "Verify": "Verify",
     "Change Your Password": "Change Your Password",
     "Password must contain at least one capital letter one small and one number": "Password must contain at least one capital letter one small and one number and at leas 6 characters",
+    "Password must contain at least one capital letter one small and one number and one special character": "Password must contain at least one capital letter, one small letter, one number, one special character and at least 6 characters length",
     "Passwords do not match": "Passwords do not match",
     "Change Password": "Change Password",
     "Confirm Password": "Confirm Password"
@@ -82,7 +83,9 @@
     "ID or Iqameh": "ID or Iqameh",
     "answer": "Answer",
     "backButton": "Back",
-    "searchButton": "Search"
+    "searchButton": "Search",
+    "reason required":"Reason is required",
+    "establishmentNumber or IdNumber required" : "Please provide either Establishment number or ID/Iqama Number"
   },
   "usersTable": {
     "Sorry, there is no matching data to display": "Sorry, there is no matching data to display",
