@@ -45,7 +45,7 @@ const numbersOnly = (
   e.target.value = e.target.value.replaceAll(/[$&+,:;=?@#|'<>.^*()%!]+/g, "");
   e.target.value = e.target.value.replaceAll(/[\u0621-\u064A]/g, "");
   e.target.value = e.target.value.replaceAll(/[\u0660-\u0669]/g, "");
-  if (type !== "est") {
+  if (props.type !== "est") {
     e.target.value = e.target.value.replace("-", "");
   }
   e.target.value = e.target.value
