@@ -133,3 +133,40 @@ export async function handleFetchCurrentUser(utils) {
     throw new Error(error);
   }
 }
+export async function handleUpdateUserInfo(userData, utils) {
+  console.log("submit update user info ::",userData);
+  try {
+    await AxiosHit(
+      {
+        url: '/api/users/update-info',
+        method: 'post',
+        data: userData,
+      },
+      utils,
+    );
+  } catch (error) {
+    console.log("update user info error",error);
+    throw new Error(error);
+  }
+}
+export async function handleChangePassword(utils) {
+  const { email, newPass,confirmPass, setIsLoading, handleClose } = utils;
+  setIsLoading(true);
+  try {
+    await AxiosHit({
+      method: "post",
+      url: "/api/users/change-pass",
+      //headers: { Authorization: `${otpToken}` },
+      data: {
+        email:email,
+        password: newPass,
+        confirmedPassword: confirmPass
+      },},
+      utils,
+    );
+    handleClose();
+  } catch (error) {
+    console.log(error);
+    throw new Error(error);
+  }
+}

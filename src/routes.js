@@ -12,6 +12,7 @@ import User from "./components/user/User";
 import { LoginContext } from "./hooks/context/LoginInfoContext";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Register from "./pages/auth/register/Register";
+import Profile from "./pages/profile/Profile";
 import SomethingWentWrongError from "./pages/common/500";
 const allowedPages = {
   usersTable: {
@@ -24,6 +25,9 @@ const allowedPages = {
     allowedRoles: ["ADMIN"],
   },
   services: {
+    allowedRoles: ["ADMIN", "TEAM_LEAD", "MEMBER"],
+  },
+  profile: {
     allowedRoles: ["ADMIN", "TEAM_LEAD", "MEMBER"],
   },
 };
@@ -62,6 +66,18 @@ const Routes = () => {
       ],
     },
     { path: "/error", element: <SomethingWentWrongError /> },
+    {
+      path: "profile",
+      element: loginData.isLoggedIn ? (
+        <Profile />
+      ) : (
+        <Navigate to="/auth/login" />
+      ),
+      children: [
+        { path: "*", element: <ErrorPage /> },
+        { path: "", element: <Profile /> },
+      ],
+    },
     // dash
 
     {
