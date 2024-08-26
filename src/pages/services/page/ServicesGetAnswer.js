@@ -13,12 +13,12 @@ import { numbersOnly } from 'utils/DefualtValidators';
 import { handleGetResponse } from 'utils/api/answer/service';
 import { handleFetchCurrentUser } from 'utils/users/users';
 
-const ServicesGetAnswer = ({}) => {
+const ServicesGetAnswer = ({ }) => {
   let { servicename = 'General' } = useParams();
   const [answer, setAnswer] = useState('');
   const [currentUserData, setCurrentUserData] = useState({});
-  const [estNumber,setEstNumber] = useState('');
-  const [idNum,setIdNum] = useState('');
+  const [estNumber, setEstNumber] = useState('');
+  const [idNum, setIdNum] = useState('');
   const estNumberRequired = !idNum;
   const idNumRequired = !estNumber;
   const isEligiable = useRef(false);
@@ -47,9 +47,9 @@ const ServicesGetAnswer = ({}) => {
   useEffect(() => {
     const newOptions = {};
     currService.serviceOptions.forEach(option => {
-        newOptions[option.name] = false;
-        newOptions.active = false;
-        option.active=true;
+      newOptions[option.name] = false;
+      newOptions.active = false;
+      option.active = true;
     });
     setOptions(newOptions);
     setLoading(false);
@@ -61,7 +61,7 @@ const ServicesGetAnswer = ({}) => {
     let optionsChange = options;
     options[id] = status;
     setOptions(optionsChange);
-    console.log('options changed',options);
+    console.log('options changed', options);
   };
   // hook form
   useEffect(() => {
@@ -156,7 +156,7 @@ const ServicesGetAnswer = ({}) => {
                     fullWidth
                     {...register('reason', {
                       required: true,
-                      maxLength:30,
+                      maxLength: 30,
                       // onChange: (e) =>
                       //   numbersOnly(e, {
                       //     type: 'IDNo',
@@ -193,19 +193,19 @@ const ServicesGetAnswer = ({}) => {
                       pattern="/^\d{14}$|^\d{1,14}-\d{1,14}$/"
                       {...register('establishmentNumber', {
                         onChange: (e) => {
-                          numbersOnly(e,{maxNumber:15,type:"est"});
+                          numbersOnly(e, { maxNumber: 14, type: 'est', replaceWith: '-' });
                           setEstNumber(e.target.value);
                           console.log(estNumber);
                         },
                         onPaste: (e) => {
-                          numbersOnly(e,{maxNumber:15,type:"est"})
+                          numbersOnly(e, { maxNumber: 14, type: 'est' })
                           setEstNumber(e.target.value);
                         },
-                        maxLength:14,
+                        maxLength: 14,
                         required: estNumberRequired,
                       })}
                       disabled={loading}
-                      error={errors.establishmentNumber && errors.id_number? true : false}
+                      error={errors.establishmentNumber && errors.id_number ? true : false}
                       // helperText={errors.email && 'Enter a valid email address'}
                       helperText={
                         (errors.establishmentNumber && errors.id_number) &&
@@ -227,10 +227,9 @@ const ServicesGetAnswer = ({}) => {
                       id="outlined-multiline-static"
                       {...register('id_number', {
                         required: idNumRequired,
-                        minLength:10,
-                        maxLength:10,
-                        onChange: (e) =>
-                        {
+                        minLength: 10,
+                        maxLength: 10,
+                        onChange: (e) => {
                           numbersOnly(e, {
                             type: 'IDNo',
                             maxNumber: 10,
@@ -238,9 +237,8 @@ const ServicesGetAnswer = ({}) => {
                           });
                           setIdNum(e.target.value);
                         }
-                          ,
-                        onPaste: (e) =>
-                        {
+                        ,
+                        onPaste: (e) => {
                           numbersOnly(e, {
                             type: 'IDNo',
                             maxNumber: 10,
@@ -250,7 +248,7 @@ const ServicesGetAnswer = ({}) => {
                         }
                       })}
                       disabled={loading}
-                      error={ errors.id_number && errors.establishmentNumber ? true : false}
+                      error={errors.id_number && errors.establishmentNumber ? true : false}
                       helperText={
                         (errors.establishmentNumber && errors.id_number) &&
                         t('getAnswerForm.establishmentNumber or IdNumber required')
