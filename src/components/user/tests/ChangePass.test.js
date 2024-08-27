@@ -1,22 +1,4 @@
-// import { render, screen } from "@testing-library/react";
-// import ChangePassDialog from "../dialogs/ChangePassDialog";
-
-// describe("change pass Dialog", () => {
-//   const registerMock = jest.fn();
-//   test("change pass dialog", () => {
-//     render(<ChangePassDialog changePass={true}/>);
-//     expect(screen.getByLabelText("Password")).toBeInTheDocument();
-//     expect(screen.getByLabelText("Confirm Password")).toBeInTheDocument();
-//     expect(screen.getByRole("button", { name: "Cancel" })).toBeInTheDocument();
-//     expect(
-//       screen.getByRole("button", { name: "Change Password" })
-//     ).toBeInTheDocument();
-//   });
-// });
-
-// testing generated test
-import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ChangePassDialog from '../dialogs/ChangePassDialog';
 
