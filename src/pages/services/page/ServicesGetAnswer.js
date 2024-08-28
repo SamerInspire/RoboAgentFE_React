@@ -190,7 +190,7 @@ const ServicesGetAnswer = ({ }) => {
                     <TextField
                       fullWidth
                       id="outlined-multiline-static"
-                      pattern="/^\d{1,14}-?\d{0,14}$/"
+                      pattern="/^\d{14}$|^\d{1,14}-\d{1,14}$/"
                       {...register('establishmentNumber', {
                         onChange: (e) => {
                           numbersOnly(e, { maxNumber: 14, type: 'est', replaceWith: '-' });

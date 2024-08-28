@@ -11,21 +11,22 @@ const ServicesList = () => {
   // console.log("queryCenterSignup ===> Siminz ===> ", queryCenterSignup.current);
   const { setAlert } = useContext(AlertContext);
   const [eligiableServices, setEligiableSevices] = useState({ General: true });
-  const [Services, setServices] = useState(!!JSON.parse(localStorage.getItem('ServiceList'))? JSON.parse(localStorage.getItem('ServiceList')): ['','','',''])
+  const [Services, setServices] = useState(!!JSON.parse(localStorage.getItem('ServiceList'))? JSON.parse(localStorage.getItem('ServiceList')): Array(12).fill(''))
   const [isLoading, setIsLoading] = useState(true)
-  useEffect(() => {
-    handleFetchServiceList({
+  const prepareData = async() => {
+    await handleFetchServiceList({
       setServiceList: setServices,
       requestAction: "SET_SERVICE_LIST",
-      setIsLoading: setIsLoading,
+      setIsLoading: () => { },
       setAlert: () => { },
-    })
+    });
     console.log("Services ", 'ServiceList')
-    handleFetchCurrentUser({
+    await handleFetchCurrentUser({
       requestAction: 'SET_CURRENT_USER',
       setCurrentUserData,
       setAlert,
     });
+    setIsLoading(false);
     if (queryCenterSignup.current)
       setAlert({
         alertType: 'warning',
@@ -38,6 +39,10 @@ const ServicesList = () => {
         alertMsg: '',
         sleep: 0,
       });
+
+  }
+  useEffect(() => {
+   prepareData();
   }, []);
   useEffect(() => {
     if (currentUserData.roboAuthorities) {
@@ -50,9 +55,10 @@ const ServicesList = () => {
       console.log(eligiableServices);
     }
   }, [currentUserData]);
-  if (currentUserData) {
+  //if (currentUserData) {
     return (
-      isLoading ? <Grid container item spacing={4}>
+    <>
+      {isLoading && (<Grid container item spacing={4}>
         <Helmet>
           <title>Services | RoboAgent</title>
         </Helmet>
@@ -61,8 +67,9 @@ const ServicesList = () => {
             <Skeleton variant="rectangular" width={370} height={250} />
           </Grid>
         ))}
-      </Grid>
-        : <Grid container item spacing={4}>
+      </Grid>)}
+      
+      {!isLoading && (<Grid container item spacing={4}>
           <Helmet>
             <title>Services | RoboAgent</title>
           </Helmet>
@@ -76,8 +83,9 @@ const ServicesList = () => {
               />
             </Grid>
           ))}
-        </Grid>
+        </Grid>)}
+        </>
         );
-  }
-};
+        }
+//};
         export default ServicesList;

@@ -40,7 +40,7 @@ const numbersOnly = (
   e,
   props = { type: "est", replaceWith: "-", maxNumber: "20" }
 ) => {
-  const { type, replaceWith, maxNumber } = props;
+  const { replaceWith, maxNumber } = props;
   e.target.value = e.target.value.replaceAll(/[a-zA-Z]+/g, "");
   e.target.value = e.target.value.replaceAll(/[$&+,:;=?@#|'<>.^*()%!]+/g, "");
   e.target.value = e.target.value.replaceAll(/[\u0621-\u064A]/g, "");

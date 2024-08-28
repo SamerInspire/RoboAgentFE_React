@@ -94,6 +94,11 @@ export function generalSuccessReducer(result, utils) {
     case 'SET_CURRENT_USER': {
       const { setCurrentUserData } = utils;
       setCurrentUserData(body.user);
+      break;
+    }
+    case 'UPDATE_USER_INFO': {
+      const { setAlert} = utils;
+      setAlert({ alertType: 'success', alertMsg: currentMessageLang });
     }
   }
   return result;
