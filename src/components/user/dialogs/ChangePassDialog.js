@@ -85,12 +85,53 @@ function ChangePassDialog({
             "forgotPassword.Enter a new password below to change your password"
           )}
         </DialogContentText>
+        {/* current password input */}
         <FormStyle sx={{ width: "100%" }}>
           <TextField
             variant="outlined"
             fullWidth
             type={showPassword ? "text" : "password"}
-            label={t("passwordLabel")}
+            label={t("currentPasswordLabel")}
+            onKeyDown={handleKeyDown}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+            {...register("currentPassword", {
+              required: true,
+              pattern: {
+                value: /^(?=.*[A-Z])(?=.*\d).+$/,
+                message: t(
+                  "forgotPassword.Password must contain at least one capital letter one small and one number"
+                ),
+              },
+              // minLength: {
+              //   value: 8,
+              //   message: "Password must be at least 8 characters",
+              // },
+            })}
+          />
+        </FormStyle>
+        {errors?.currentPassword?.message && (
+          <Typography variant="body2" color={"#FF0000"} marginTop={2}>
+            {errors?.currentPassword?.message}
+          </Typography>
+        )}
+        <FormStyle sx={{ width: "100%" }}>
+          <TextField
+            variant="outlined"
+            fullWidth
+            type={showPassword ? "text" : "password"}
+            label={t("newPasswordLabel")}
             onKeyDown={handleKeyDown}
             InputProps={{
               endAdornment: (
@@ -164,6 +205,12 @@ function ChangePassDialog({
             {t("forgotPassword.Passwords do not match")}
           </Typography>
         ) : null}
+        {watch("password") == watch("currentPassword") &&
+        getValues("password") ? (
+          <Typography color={"#FF0000"} marginTop={2} variant="body2">
+            {t("forgotPassword.New Password cannot be same as current password")}
+          </Typography>
+        ) : null}
       </DialogContent>
       <DialogActions sx={{ paddingTop: 4 }}>
         <Grid container item spacing={4}>
@@ -189,6 +236,7 @@ function ChangePassDialog({
                 console.log('change password email',email);
                 await handleChangePassword({
                     newPass: data.password,
+                    currentPass: data.currentPassword,
                     confirmPass: data.restConfirmPass,
                     email: email,
                     setAlert,

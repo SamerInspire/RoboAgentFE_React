@@ -22,7 +22,8 @@ describe('ChangePassDialog Component', () => {
 
   test("change pass dialog", () => {
     render(<ChangePassDialog changePass={true}/>);
-    expect(screen.getByLabelText("Password")).toBeInTheDocument();
+    expect(screen.getByLabelText("Current Password")).toBeInTheDocument();
+    expect(screen.getByLabelText("New Password")).toBeInTheDocument();
     expect(screen.getByLabelText("Confirm Password")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Cancel" })).toBeInTheDocument();
     expect(
