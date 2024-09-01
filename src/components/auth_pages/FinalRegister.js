@@ -22,7 +22,7 @@ export async function handleFinalRegistration(userRole, userTeam, userServices, 
     throw new Error(error);
   }
 }
-const lang = i18next.language;
+
 const FinalRegister = ({selectedAuthorities, setSelectedAuthorities,selectedService, setSelectedService, register,handleBack, handleNext }) => {
   const [selectedRole, setSelectedRole] = useState('MEMBER');
   const [currentUserData, setCurrentUserData] = useState({});
@@ -43,6 +43,7 @@ const FinalRegister = ({selectedAuthorities, setSelectedAuthorities,selectedServ
     reset: clearFinalForm,
     formState: { errors },
   } = useForm({});
+  const lang = i18next.language;
 
   useEffect(() => {
     handleFetchAuthorities({
