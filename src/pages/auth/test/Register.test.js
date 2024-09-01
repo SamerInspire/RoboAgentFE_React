@@ -55,10 +55,14 @@ test("transitions from FormRegister to FinalRegister on button click", () => {
 
 describe("FinalRegister Component", () => {
   test("renders FinalRegister with all components", () => {
+    const selectedAuthorities = [
+      '',''
+    ]
+    const selectedService=['']
     const { getByText, getByLabelText } = render(
       <BrowserRouter>
         <Providers>
-          <FinalRegister />
+          <FinalRegister selectedAuthorities={selectedAuthorities} selectedService={selectedService} />
         </Providers>
       </BrowserRouter>
     );

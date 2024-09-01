@@ -150,7 +150,7 @@ export async function handleUpdateUserInfo(userData, utils) {
   }
 }
 export async function handleChangePassword(utils) {
-  const { email, newPass,confirmPass, setIsLoading, handleClose } = utils;
+  const { email, currentPass, newPass,confirmPass, setIsLoading, handleClose } = utils;
   setIsLoading(true);
   try {
     await AxiosHit({
@@ -159,6 +159,7 @@ export async function handleChangePassword(utils) {
       //headers: { Authorization: `${otpToken}` },
       data: {
         email:email,
+        currentPassword: currentPass,
         password: newPass,
         confirmedPassword: confirmPass
       },},
