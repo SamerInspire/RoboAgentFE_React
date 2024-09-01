@@ -23,14 +23,14 @@ export async function handleFinalRegistration(userRole, userTeam, userServices, 
   }
 }
 const lang = i18next.language;
-const FinalRegister = ({ handleBack, handleNext }) => {
+const FinalRegister = ({selectedAuthorities, setSelectedAuthorities,selectedService, setSelectedService, register,handleBack, handleNext }) => {
   const [selectedRole, setSelectedRole] = useState('MEMBER');
   const [currentUserData, setCurrentUserData] = useState({});
   const [serviceList, setServiceList] = useState([]);
   const [authorities, setAuthorities] = useState([]);
   const [selectedTeam, setSelectedTeam] = useState('L2');
-  const [selectedAuthorities, setSelectedAuthorities] = useState([]);
-  const [selectedService, setSelectedService] = useState('');
+  // const [selectedAuthorities, setSelectedAuthorities] = useState([]);
+  // const [selectedService, setSelectedService] = useState('');
   const { t } = useTranslation();
   const { setAlert } = useContext(AlertContext);
   const userRoles = [

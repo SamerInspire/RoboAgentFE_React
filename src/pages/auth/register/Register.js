@@ -79,6 +79,8 @@ const Register = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [registeredId, setRegisteredId] = useState(null);
   const [userData, setUserData] = useState({});
+  const [selectedAuthorities, setSelectedAuthorities] = useState([]);
+  const [selectedService, setSelectedService] = useState('');
   // const [isLoading, setIsLoading] = useState(false);
   const { setAlert } = useContext(AlertContext);
   const { t } = useTranslation();
@@ -96,7 +98,7 @@ const Register = () => {
       email: '',
       password: '',
       userRole: 'MEMBER',
-      userTeam: 'L2',
+      userTeam: 'L2'
     },
   });
   const handleNext = async (data, clearFinalForm) => {
@@ -159,7 +161,15 @@ const Register = () => {
                 errors={errors}
               />
             )}
-            {activeStep == 1 && <FinalRegister handleBack={handleBack} handleNext={handleNext} />}
+            {activeStep == 1 && (
+              <FinalRegister 
+                register={register} 
+                handleBack={handleBack} 
+                handleNext={handleNext}
+                selectedAuthorities={selectedAuthorities} 
+                setSelectedAuthorities={setSelectedAuthorities}
+                selectedService={selectedService} 
+                setSelectedService={setSelectedService} />)}
             {/* Terms */}
             <Typography paragraph color="textSecondary" className="terms">
               {t('register.By registering, I agree to RoboAgent')}{' '}

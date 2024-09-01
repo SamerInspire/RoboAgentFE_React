@@ -1,9 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import FinalRegister from "../FinalRegister"; // replace with your actual import
 
+const selectedAuthorities = [
+  '',''
+]
+const selectedService=['']
 describe("FinalRegister Component", () => {
   beforeEach(() => {
-    render(<FinalRegister />);
+    render(<FinalRegister selectedService={selectedService} selectedAuthorities={selectedAuthorities}/>);
   });
 
   test("should render user role selection", () => {
