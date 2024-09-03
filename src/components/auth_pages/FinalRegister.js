@@ -29,15 +29,10 @@ const FinalRegister = ({selectedAuthorities, setSelectedAuthorities,selectedServ
   const [serviceList, setServiceList] = useState([]);
   const [authorities, setAuthorities] = useState([]);
   const [selectedTeam, setSelectedTeam] = useState('L2');
-  // const [selectedAuthorities, setSelectedAuthorities] = useState([]);
-  // const [selectedService, setSelectedService] = useState('');
+  const [teams, setTeams]=useState([]);
+  const [userRoles,setUserRoles]= useState([]);
   const { t } = useTranslation();
   const { setAlert } = useContext(AlertContext);
-  const userRoles = [
-    { value: 'TEAM_LEAD', title: t('register.Team Lead') },
-    { value: 'MEMBER', title: t('register.Member') },
-  ];
-  const teams = ['LO','L1', 'L2'];
   const {
     handleSubmit,
     reset: clearFinalForm,
@@ -48,6 +43,8 @@ const FinalRegister = ({selectedAuthorities, setSelectedAuthorities,selectedServ
   useEffect(() => {
     handleFetchAuthorities({
       setAuthorities,
+      setTeams,
+      setUserRoles,
       requestAction: 'GET_ALL_AUTHORITIES',
       setIsLoading: () => {},
       setAlert,
@@ -99,13 +96,13 @@ const FinalRegister = ({selectedAuthorities, setSelectedAuthorities,selectedServ
               <Typography variant="h5">{t('register.Choose user role')} </Typography>
             </Grid>
             {userRoles.map((role) => (
-              <Grid item xs={12} md={4} key={role.value}>
+              <Grid item xs={12} md={4} key={role.id}>
                 <Button
                   fullWidth
-                  variant={role.value == selectedRole ? 'contained' : 'outlined'}
-                  onClick={() => setSelectedRole(role.value)}
+                  variant={role.role == selectedRole ? 'contained' : 'outlined'}
+                  onClick={() => setSelectedRole(role.role)}
                 >
-                  {role.title}
+                  {lang == 'en' ? role.description : role.descriptionAr}
                 </Button>
               </Grid>
             ))}

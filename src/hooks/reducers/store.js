@@ -40,8 +40,14 @@ export function generalSuccessReducer(result, utils) {
       break;
     }
     case 'GET_ALL_AUTHORITIES': {
-      const { setAuthorities } = utils;
+      const { setAuthorities,setTeams,setUserRoles } = utils;
       setAuthorities(body.roboAuthorities);
+      if (setTeams){
+        setTeams(body.teams);
+      }
+      if (setUserRoles){
+        setUserRoles(body.roles);
+      }
       break;
     }
     case 'REGISTER_NEW_USER': {
