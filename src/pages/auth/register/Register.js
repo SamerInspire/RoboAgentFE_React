@@ -10,11 +10,11 @@ import RegisterPhoto from 'assets/images/auth/register.png';
 import FinalRegister from 'components/auth_pages/FinalRegister';
 import CustomStepper from 'components/auth_pages/stepper/CustomStepper';
 import { AlertContext } from 'hooks/context/AlertContext';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { handleSubmitNewUser } from 'utils/users/users';
+import { handleSubmitNewUser, handleFetchAuthorities } from 'utils/users/users';
 
 // styles
 const ContainerBoxStyle = styled(Box)(({ theme }) => ({
@@ -101,6 +101,15 @@ const Register = () => {
       userTeam: 'L2'
     },
   });
+  useEffect(() => {
+    handleFetchAuthorities({
+      setAuthorities : () => {},
+      // setTeams,
+      // setUserRoles,
+      requestAction: 'GET_ALL_AUTHORITIES',
+      setIsLoading: () => {},
+      setAlert,
+    });},[]);
   const handleNext = async (data, clearFinalForm) => {
     if (activeStep == 0) {
       setUserData((prev) => ({ ...prev, ...data }));
