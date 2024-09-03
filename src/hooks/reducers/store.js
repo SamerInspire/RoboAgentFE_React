@@ -40,14 +40,14 @@ export function generalSuccessReducer(result, utils) {
       break;
     }
     case 'GET_ALL_AUTHORITIES': {
-      const { setAuthorities,setTeams,setUserRoles } = utils;
+      const { setAuthorities } = utils;
       setAuthorities(body.roboAuthorities);
-      if (setTeams){
-        setTeams(body.teams);
-      }
-      if (setUserRoles){
-        setUserRoles(body.roles);
-      }
+      localStorage.removeItem('Authorities');
+      localStorage.removeItem('Teams');
+      localStorage.removeItem('Roles');
+      localStorage.setItem('Authorities',JSON.stringify(body.roboAuthorities));
+      localStorage.setItem('Teams',JSON.stringify(body.teams));
+      localStorage.setItem('Roles',JSON.stringify(body.roles));
       break;
     }
     case 'REGISTER_NEW_USER': {

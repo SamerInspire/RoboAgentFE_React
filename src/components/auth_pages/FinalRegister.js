@@ -29,8 +29,8 @@ const FinalRegister = ({selectedAuthorities, setSelectedAuthorities,selectedServ
   const [serviceList, setServiceList] = useState([]);
   const [authorities, setAuthorities] = useState([]);
   const [selectedTeam, setSelectedTeam] = useState('L2');
-  const [teams, setTeams]=useState([]);
-  const [userRoles,setUserRoles]= useState([]);
+  const [teams, setTeams]=useState(JSON.parse(localStorage.getItem('Teams')) ? JSON.parse(localStorage.getItem('Teams')) : [] );
+  const [userRoles,setUserRoles]= useState(JSON.parse(localStorage.getItem('Roles')) ? JSON.parse(localStorage.getItem('Roles')) : []);
   const { t } = useTranslation();
   const { setAlert } = useContext(AlertContext);
   const {
@@ -43,8 +43,8 @@ const FinalRegister = ({selectedAuthorities, setSelectedAuthorities,selectedServ
   useEffect(() => {
     handleFetchAuthorities({
       setAuthorities,
-      setTeams,
-      setUserRoles,
+      // setTeams,
+      // setUserRoles,
       requestAction: 'GET_ALL_AUTHORITIES',
       setIsLoading: () => {},
       setAlert,
