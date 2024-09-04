@@ -77,7 +77,7 @@ const FinalRegister = ({selectedAuthorities, setSelectedAuthorities,selectedServ
   return (
     <form
       noValidate
-      onSubmit={handleSubmit(() =>
+      onSubmit={handleSubmit(() => {
         handleNext(
           {
             role: selectedRole,
@@ -86,7 +86,8 @@ const FinalRegister = ({selectedAuthorities, setSelectedAuthorities,selectedServ
             service: selectedService,
           },
           clearFinalForm,
-        ),
+        )
+      }
       )}
     >
       <Grid container item gap={4}>
