@@ -56,7 +56,7 @@ export async function handleSubmitNewUser(userData, utils) {
       {
         url: '/api/users/signup',
         method: 'post',
-        data: { ...userData, phone_Number:undefined}
+        data: { ...userData, phone_Number:undefined, userRole:undefined, userTeam:undefined}
         // , roboAuthorities: undefined 
       },
       utils,
