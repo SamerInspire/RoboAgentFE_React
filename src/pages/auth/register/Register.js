@@ -120,6 +120,7 @@ const Register = () => {
         alertMsg: t('register.Registering User'),
         sleep: 99999,
       });
+      console.log('Submit new user',userData);
       await handleSubmitNewUser(
         { ...userData, ...data },
         {
