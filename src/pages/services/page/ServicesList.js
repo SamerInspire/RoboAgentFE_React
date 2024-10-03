@@ -45,7 +45,7 @@ const ServicesList = () => {
    prepareData();
   }, []);
   useEffect(() => {
-    if (currentUserData.roboAuthorities) {
+    if (currentUserData?.roboAuthorities) {
       Services.map((service, index) => {
         const showService = currentUserData.roboAuthorities.some((auth) =>
           service?.allowedAuthorities?.includes(auth.name),

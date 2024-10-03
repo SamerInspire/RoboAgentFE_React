@@ -10,12 +10,12 @@ function isAllowedRole(allowedRoles = "", userRole = "") {
 describe("AuthWrapper Component", () => {
   test("renders children when user role is allowed", () => {
     const contextValue = {
-      loginData: { role: "admin" },
+      loginData: { role: {role: "ADMIN", id:4}},
     };
 
     render(
       <LoginContext.Provider value={contextValue}>
-        <AuthWrapper roles={["admin"]}>
+        <AuthWrapper roles={["ADMIN"]}>
           <div>Allowed Content</div>
         </AuthWrapper>
       </LoginContext.Provider>
@@ -31,7 +31,7 @@ describe("AuthWrapper Component", () => {
 
     render(
       <LoginContext.Provider value={contextValue}>
-        <AuthWrapper roles={["admin"]}>
+        <AuthWrapper roles={["ADMIN"]}>
           <div>Allowed Content</div>
         </AuthWrapper>
       </LoginContext.Provider>
@@ -42,7 +42,7 @@ describe("AuthWrapper Component", () => {
 
   test("isAllowedRole function returns true for allowed role", () => {
     const allowedRoles = ["admin", "user"];
-    const userRole = "admin";
+    const userRole = {role: "ADMIN", id:4};
 
     const result = isAllowedRole(allowedRoles, userRole);
     expect(result).toBe(true);
@@ -50,7 +50,7 @@ describe("AuthWrapper Component", () => {
 
   test("isAllowedRole function returns false for disallowed role", () => {
     const allowedRoles = ["admin", "user"];
-    const userRole = "guest";
+    const userRole = {role: "MEMBER", id:2};
 
     const result = isAllowedRole(allowedRoles, userRole);
     expect(result).toBe(false);

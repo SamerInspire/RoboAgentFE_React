@@ -14,8 +14,6 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Register from "./pages/auth/register/Register";
 import Profile from "./pages/profile/Profile";
 import SomethingWentWrongError from "./pages/common/500";
-import ManualServicesList from "pages/manual/ManualServicesList";
-import ServicesManual from "pages/manual/ServicesManual";
 const allowedPages = {
   usersTable: {
     allowedRoles: ["ADMIN", "TEAM_LEAD"],
@@ -31,10 +29,7 @@ const allowedPages = {
   },
   profile: {
     allowedRoles: ["ADMIN", "TEAM_LEAD", "MEMBER"],
-  },
-  manual: {
-    allowedRoles: ["ADMIN", "TEAM_LEAD", "MEMBER"],
-  },
+  }
 };
 const Routes = () => {
   const { loginData } = useContext(LoginContext);
@@ -114,8 +109,8 @@ const Routes = () => {
         {
           path: "manual",
           children: [
-            { path: "", element: <ManualServicesList /> },
-            { path: ":servicename", element: <ServicesManual /> },
+            { path: "", element: <ErrorPage />  },
+            { path: ":servicename", element: <ErrorPage />  },
           ],
         },
         {

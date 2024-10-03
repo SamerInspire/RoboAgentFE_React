@@ -54,7 +54,7 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
         const showService = currentUserData?.roboAuthorities?.some((auth) =>
           service?.allowedAuthorities?.includes(auth.name),
         );
-        return currentUserData.role?.role == 'ADMIN' ? (
+        return currentUserData?.role?.role == 'ADMIN' ? (
           <Grid key={service.descriptionEn + index} item xs={12}>
             <Grid
               container

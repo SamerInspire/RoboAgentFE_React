@@ -27,7 +27,7 @@ describe("Routes component", () => {
   });
 
   it("redirects to dashboard if logged in", () => {
-    const loginData = { isLoggedIn: true, role: "MEMBER" };
+    const loginData = { isLoggedIn: true,  role: {role: "MEMBER", id:4} };
 
     const { getAllByText } = render(
       <Providers>
@@ -43,7 +43,7 @@ describe("Routes component", () => {
   });
 
   it("renders user page for allowed role", () => {
-    const loginData = { isLoggedIn: true, role: "ADMIN" };
+    const loginData = { isLoggedIn: true,  role: {role: "ADMIN", id:4} };
 
     const { getAllByText } = render(
       <Providers>
@@ -59,7 +59,7 @@ describe("Routes component", () => {
   });
 
   it("redirects to dashboard if role is not allowed", () => {
-    const loginData = { isLoggedIn: true, role: "MEMBER" };
+    const loginData = { isLoggedIn: true, role:{ id:2, role: "MEMBER"} };
 
     const { getByText, getAllByText } = render(
       <Providers>

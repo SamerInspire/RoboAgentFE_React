@@ -13,7 +13,7 @@ describe("User Component", () => {
     render(
       <Providers>
         <MemoryRouter>
-          <LoginContext.Provider value={{ loginData: { role: "ADMIN" } }}>
+          <LoginContext.Provider value={{ loginData: { role: {role: "ADMIN", id:4}} }}>
             <User />
           </LoginContext.Provider>
         </MemoryRouter>
@@ -38,8 +38,8 @@ describe("User Component", () => {
 
 describe("ServiceContainer Component", () => {
   const authorities = [
-    { id: 1, name: "ADMIN", authId: 1 },
-    { id: 2, name: "SUPER_VISOR", authId: 2 },
+    { authId: 1, name: "ADMIN"},
+    { authId: 2, name: "SUPER_VISOR" },
   ];
 
   it("displays the correct title and service items", () => {
@@ -68,6 +68,7 @@ describe("ServiceDialog Component", () => {
     tableData: [],
     setAlert: jest.fn(),
     setTableData: jest.fn(),
+    userActiveService: {id:1},
   };
 
   it("displays the correct title, form controls, and buttons", () => {
@@ -87,8 +88,8 @@ describe("ServiceDialog Component", () => {
 
 describe("DNDServicesModal Component", () => {
   const authorities = [
-    { id: 1, name: "ADMIN", authId: 1 },
-    { id: 2, name: "SUPER_VISOR", authId: 2 },
+    { authId: 1, name: "ADMIN" },
+    { authId: 2, name: "SUPER_VISOR" },
   ];
   const props = {
     authorities,

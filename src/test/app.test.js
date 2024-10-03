@@ -13,7 +13,7 @@ describe("App component", () => {
       <MemoryRouter>
         <Providers>
           <LoginContext.Provider
-            value={{ loginData: { isLoggedIn: false, role: "ADMIN" } }}
+            value={{ loginData: { isLoggedIn: false, role: {role: "ADMIN", id:4} } }}
           >
             <App />
           </LoginContext.Provider>

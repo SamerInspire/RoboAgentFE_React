@@ -87,8 +87,8 @@
     "answer": "الأجابة",
     "backButton": "رجوع",
     "searchButton": "بحث",
-    "reason required":" برجاء إدخال السبب",
-    "establishmentNumber or IdNumber required" : "برجاء إدخال رقم المنشأة او الرقم التعريفي او الأقامة"
+    "reason required":" الرجاء إدخال السبب",
+    "establishmentNumber or IdNumber required" : "الرجاء إدخال رقم المنشأة او الرقم التعريفي او الأقامة"
   },
   "usersTable": {
     "Sorry, there is no matching data to display": "عذرًا، ليس هنالك بيانات متوفرة للعرض",

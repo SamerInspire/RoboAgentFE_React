@@ -44,7 +44,7 @@ const ServicesListItem = ({ service, queryCenterSignup, eligiableServices, curre
 
   //change this line to be the above commented code i dont have access to the query center in jordan
   const isEligiableService =
-    queryCenterSignup && (!eligiableServices[service.descriptionEn] || currentUserData.role.role != 'MEMBER');
+    queryCenterSignup && (!eligiableServices[service.descriptionEn] || currentUserData?.role?.role != 'MEMBER');
   const handleClosePopper = () => setQueryCenterAnchorEl(null);
   const { direction } = useContext(themeContext);
   useEffect(() => {}, [direction]);
@@ -54,7 +54,7 @@ const ServicesListItem = ({ service, queryCenterSignup, eligiableServices, curre
     <Link
       component={isEligiableService ? '' : RouterLink}
       sx={{ textDecoration: 'none', position: 'relative' }}
-      to={isEligiableService ? '' : `/dash/services/getAnswer/${service.service}`}
+      to={isEligiableService ? '' : `/dash/services/getAnswer/${service?.service}`}
     >
       <Grid
         container

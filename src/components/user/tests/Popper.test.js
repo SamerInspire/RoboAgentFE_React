@@ -15,7 +15,7 @@ describe("RolesPopper Component", () => {
     "Doe",
     "john.doe@example.com",
     "Active",
-    "MEMBER",
+    {role: "MEMBER", id:2},
   ];
   const userDataTeamLead = [
     2,
@@ -24,7 +24,7 @@ describe("RolesPopper Component", () => {
     "Smith",
     "jane.smith@example.com",
     "Active",
-    "TEAM_LEAD",
+    {role: "TEAM_LEAD", id:3},
   ];
 
   it('displays "Promote to Team Lead" button when user role is MEMBER', () => {

@@ -13,10 +13,10 @@ jest.mock("../api/AxiosHit.js");
 
 describe("API handling functions", () => {
   const utils = {
-    roboAuthorities: ["authority1", "authority2"],
+    roboAuthorities: [{authId:1, name:"authority1"},{ authId:2, name:"authority2"}],
     userId: "user123",
-    newRole: "admin",
-    userNewService: "service1",
+    newRole: {role: "ADMIN", id:4},
+    userNewService: {id:2,service:"service1"},
     someUtil: jest.fn(),
     setIsLoading: jest.fn(),
   };
@@ -65,7 +65,7 @@ describe("API handling functions", () => {
     expect(AxiosHit).toHaveBeenCalledWith(
       {
         method: "put",
-        url: `/api/user-roles/${utils.userId}/roles/${utils.newRole}`,
+        url: `/api/user-roles/${utils.userId}/roles/${utils.newRole.id}`,
       },
       utils
     );
@@ -123,7 +123,7 @@ describe("API handling functions", () => {
     expect(AxiosHit).toHaveBeenCalledWith(
       {
         method: "put",
-        url: `/api/service/${utils.userId}/service/${utils.userNewService}`,
+        url: `/api/service/${utils.userId}/service/${utils.userNewService.id}`,
       },
       utils
     );

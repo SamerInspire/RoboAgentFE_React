@@ -30,11 +30,10 @@ const IconsMap = [
 describe('ServicesList Component', () => {
   test('renders services for authorized user', () => {
     const currentUserData = {
-      role: 'MEMBER',
-      roboAuthorities: [{ name: 'VISAS' }],
+      role: {role:'MEMBER',id:2},
+      roboAuthorities: [{ authId:1,name: 'VISAS' }],
       status: '1',
     };
-
     render(
       <BrowserRouter>
         <Providers>
@@ -59,10 +58,10 @@ describe('ServicesList Component', () => {
       lastName: 'Ibrahim',
       middleName: 'Subhi',
       roboAuthorities: [],
-      role: 'MEMBER',
-      service: 'VISAS',
+      role: {role:'MEMBER',id:2},
+      service: {service:'VISAS',id:1},
       status: '1 - User registered in QC',
-      team: 'L2',
+      team: {team:'L2',id:2},
       userId: 173,
       userName: 'SamerUser',
     };
