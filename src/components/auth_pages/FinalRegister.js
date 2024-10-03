@@ -24,13 +24,13 @@ export async function handleFinalRegistration(userRole, userTeam, userServices, 
 }
 
 const FinalRegister = ({selectedAuthorities, setSelectedAuthorities,selectedService, setSelectedService, register,handleBack, handleNext }) => {
-  const [selectedRole, setSelectedRole] = useState('MEMBER');
   const [currentUserData, setCurrentUserData] = useState({});
   const [serviceList, setServiceList] = useState([]);
   const [authorities, setAuthorities] = useState([]);
-  const [selectedTeam, setSelectedTeam] = useState('L2');
   const [teams, setTeams]=useState(JSON.parse(localStorage.getItem('Teams')) ? JSON.parse(localStorage.getItem('Teams')) : [] );
   const [userRoles,setUserRoles]= useState(JSON.parse(localStorage.getItem('Roles')) ? JSON.parse(localStorage.getItem('Roles')) : []);
+  const [selectedTeam, setSelectedTeam] = useState(teams.filter((t)=> t.team=='L2')[0]);
+  const [selectedRole, setSelectedRole] = useState(userRoles.filter((r)=> r.role=='MEMBER')[0]);
   const { t } = useTranslation();
   const { setAlert } = useContext(AlertContext);
   const {
@@ -100,10 +100,10 @@ const FinalRegister = ({selectedAuthorities, setSelectedAuthorities,selectedServ
               <Grid item xs={12} md={4} key={role.id}>
                 <Button
                   fullWidth
-                  variant={role.role == selectedRole ? 'contained' : 'outlined'}
+                  variant={role.id == selectedRole.id ? 'contained' : 'outlined'}
                   onClick={() => setSelectedRole(role.role)}
                 >
-                  {lang == 'en' ? role.description : role.descriptionAr}
+                  {lang == 'en' ? role.descriptionEn : role.descriptionAr}
                 </Button>
               </Grid>
             ))}
@@ -116,10 +116,10 @@ const FinalRegister = ({selectedAuthorities, setSelectedAuthorities,selectedServ
               <Grid item xs={12} md={3} key={team}>
                 <Button
                   fullWidth
-                  variant={team == selectedTeam ? 'contained' : 'outlined'}
+                  variant={team.id == selectedTeam.id ? 'contained' : 'outlined'}
                   onClick={(e) => setSelectedTeam(team)}
                 >
-                  {team}
+                  {lang == 'en' ? team.descriptionEn : team.descriptionAr}
                 </Button>
               </Grid>
             ))}
@@ -143,7 +143,7 @@ const FinalRegister = ({selectedAuthorities, setSelectedAuthorities,selectedServ
                   {authorities.map((auth) => (
                     <MenuItem key={auth.authId} value={auth.authId}>
                       {/* {auth.description} */}
-                      {lang == 'en' ? auth.description : auth.descriptionAr}
+                      {lang == 'en' ? auth.descriptionEn : auth.descriptionAr}
                     </MenuItem>
                   ))}
                 </Select>
@@ -156,14 +156,14 @@ const FinalRegister = ({selectedAuthorities, setSelectedAuthorities,selectedServ
               <FormControl fullWidth>
                 <InputLabel>{t('register.Service')}</InputLabel>
                 <Select
-                  value={selectedService}
+                  value={selectedService?.id}
                   label={t('register.Service')}
-                  onChange={(e) => setSelectedService(e.target.value)}
+                  onChange={(e) => setSelectedService(serviceList.filter((s)=> s.id == e.target.value )[0] )}
                 >
                   {serviceList.map((service) => (
-                    <MenuItem key={service.service} value={service.service}>
+                    <MenuItem key={service.service} value={service.id}>
                       {/* {service.description} */}
-                      {lang == 'en' ? service.description : service.descriptionAr}
+                      {lang == 'en' ? service.descriptionEn : service.descriptionAr}
                     </MenuItem>
                   ))}
                 </Select>

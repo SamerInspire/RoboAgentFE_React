@@ -33,6 +33,7 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
 
     
   console.log('Services ', JSON.parse(localStorage.getItem('ServiceList')));
+  console.log('Current user data - side bar',currentUserData);
 
   const lang = i18next.language;
   return (
@@ -53,8 +54,8 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
         const showService = currentUserData?.roboAuthorities?.some((auth) =>
           service?.allowedAuthorities?.includes(auth.name),
         );
-        return currentUserData.role == 'ADMIN' ? (
-          <Grid key={service.description + index} item xs={12}>
+        return currentUserData.role?.role == 'ADMIN' ? (
+          <Grid key={service.descriptionEn + index} item xs={12}>
             <Grid
               container
               item
@@ -64,9 +65,9 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
               onClick={() => handleChangeCurrentService(service.service, setCurrService)}
               sx={{
                 cursor: 'pointer',
-                fontWeight: service.description === currService.description ? '600' : '',
-                color: service.description === currService.description ? '#04554C' : '',
-                backgroundColor: service.description === currService.description ? '#d9ffea' : '',
+                fontWeight: service.descriptionEn === currService.descriptionEn ? '600' : '',
+                color: service.descriptionEn === currService.descriptionEn ? '#04554C' : '',
+                backgroundColor: service.descriptionEn === currService.descriptionEn ? '#d9ffea' : '',
               }}
             >
               <Box
@@ -76,12 +77,12 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
               />
               <Typography variant="body1" fontWeight={'600'} color={'gray'}>
                 {' '}
-                {lang == 'en' ? service.description : service.descriptionAr}
+                {lang == 'en' ? service.descriptionEn : service.descriptionAr}
               </Typography>
             </Grid>
           </Grid>
         ) : showService ? (
-          <Grid key={service.description + index} py={2} item xs={12}>
+          <Grid key={service.descriptionEn + index} py={2} item xs={12}>
             <Grid
               container
               item
@@ -91,9 +92,9 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
               onClick={() => handleChangeCurrentService(service.service, setCurrService)}
               sx={{
                 cursor: 'pointer',
-                fontWeight: service.description === currService.description ? '600' : '',
-                color: service.description === currService.description ? '#04554C' : '',
-                backgroundColor: service.description === currService.description ? '#d9ffea' : '',
+                fontWeight: service.descriptionEn === currService.descriptionEn ? '600' : '',
+                color: service.descriptionEn === currService.descriptionEn ? '#04554C' : '',
+                backgroundColor: service.descriptionEn === currService.descriptionEn ? '#d9ffea' : '',
               }}
             >
               <Box
@@ -103,7 +104,7 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
               />
               <Typography variant="body1" fontWeight={'600'} color={'gray'}>
                 {' '}
-                {lang == 'en' ? service.description : service.descriptionAr}
+                {lang == 'en' ? service.descriptionEn : service.descriptionAr}
               </Typography>
             </Grid>
           </Grid>
@@ -111,16 +112,16 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
           <Grid
             container
             item
-            key={service.description + index}
+            key={service.descriptionEn + index}
             gap={2}
             p={1}
             onClick={() => handleChangeCurrentService(service.service, setCurrService)}
             alignItems={'center'}
             sx={{
               cursor: 'pointer',
-              fontWeight: service.description === currService.description ? '600' : '',
-              color: service.description === currService.description ? '#04554C' : '',
-              backgroundColor: service.description === currService.description ? '#d9ffea' : '',
+              fontWeight: service.descriptionEn === currService.descriptionEn ? '600' : '',
+              color: service.descriptionEn === currService.descriptionEn ? '#04554C' : '',
+              backgroundColor: service.descriptionEn === currService.descriptionEn ? '#d9ffea' : '',
             }}
           >
             <Box
@@ -130,7 +131,7 @@ function ServicesSidebar({ handleChangeCurrentService, currService, setCurrServi
             />
             <Typography variant="body1" fontWeight={'600'} color={'gray'}>
               {' '}
-              {lang == 'en' ? service.description : service.descriptionAr}
+              {lang == 'en' ? service.descriptionEn : service.descriptionAr}
             </Typography>
           </Grid>
         ) : null;

@@ -3,7 +3,7 @@ import AuthWrapper from "components/auth_wrapper/AuthWrapper";
 import { LoginContext } from "hooks/context/LoginInfoContext";
 function isAllowedRole(allowedRoles = "", userRole = "") {
   const isAllowed = allowedRoles.some(
-    (e) => e.toLowerCase() == userRole.toLowerCase()
+    (e) => e.toLowerCase() == userRole.role.toLowerCase()
   );
   return isAllowed;
 }

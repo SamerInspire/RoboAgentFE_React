@@ -69,7 +69,7 @@ function tableColumns(utils) {
 
       options: {
         filter: true,
-        display: currentUserData.role == 'TEAM_LEAD' ? 'none' : true,
+        display: currentUserData.role.role == 'TEAM_LEAD' ? 'none' : true,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <Grid container item minWidth={'150px'} alignItems={'center'} gap={2}>
@@ -99,7 +99,7 @@ function tableColumns(utils) {
         filter: true,
       },
     },
-    currentUserData.role == 'TEAM_LEAD'
+    currentUserData.role.role == 'TEAM_LEAD'
       ? {
           name: 'service',
           label: t('serviceLabel'),
@@ -109,7 +109,7 @@ function tableColumns(utils) {
           label: t('serviceLabel'),
           options: {
             filter: true,
-            display: currentUserData.role == 'TEAM_LEAD' ? 'none' : true,
+            display: currentUserData.role.role == 'TEAM_LEAD' ? 'none' : true,
             customBodyRender: (value, tableMeta, updateValue) => {
               const formattedValue = value.split('_').join(' ');
               return (

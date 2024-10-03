@@ -14,6 +14,7 @@ import {
   handleFetchServiceList,
 } from 'utils/users/users';
 import DNDServicesModal from './dialogs/DNDServicesModal';
+import i18next from 'i18next';
 
 import { Skeleton } from '@mui/material';
 import ServiceDialog from './dialogs/ServiceDialog';
@@ -33,6 +34,7 @@ function UserTable() {
   const [isServicesModalLoading, setIsServicesModalLoading] = useState(false);
   const { t } = useTranslation();
   const handleCloseRolePopper = () => setStatusAnchorEl(undefined);
+  const lang = i18next.language;
 
   const handleCloseServicesModal = (event,reason) => {
     if (reason && reason ==="backdropClick")
@@ -62,7 +64,7 @@ function UserTable() {
     handleFetchAllUsers({
       setTableData,
       requestAction: 'GET_ALL_USERS',
-      setIsLoading: () => {},
+      setIsLoading : () => {},
       setAlert,
     });
     handleFetchCurrentUser({
@@ -79,7 +81,7 @@ function UserTable() {
     });
   }, []);
   useEffect(() => {
-    if (currentUserData.role === 'ADMIN') {
+    if (currentUserData?.role?.role === 'ADMIN') {
       handleFetchServiceList({
         setServiceList,
         requestAction: 'SET_SERVICE_LIST',
@@ -211,13 +213,13 @@ function UserTable() {
 
               options: {
                 filter: true,
-                display: currentUserData.role == 'TEAM_LEAD' ? 'none' : true,
+                display: currentUserData?.role?.role == 'TEAM_LEAD' ? 'none' : true,
                 customBodyRender: (value, tableMeta, updateValue) => {
                   return (
                     <Grid container item minWidth={'150px'} alignItems={'center'} gap={2}>
                       <Grid item xs={8}>
                         <Typography variant="body2" fontWeight={500}>
-                          {value}
+                          {lang== 'en' ? value.descriptionEn : value.descriptionAr}
                         </Typography>
                       </Grid>
                       <Grid
@@ -241,7 +243,7 @@ function UserTable() {
                 filter: true,
               },
             },
-            currentUserData.role == 'TEAM_LEAD'
+            currentUserData?.role?.role == 'TEAM_LEAD'
               ? {
                   name: 'service',
                   label: t('serviceLabel'),
@@ -251,14 +253,15 @@ function UserTable() {
                   label: t('serviceLabel'),
                   options: {
                     filter: true,
-                    display: currentUserData.role == 'TEAM_LEAD' ? 'none' : true,
+                    display: currentUserData?.role?.role == 'TEAM_LEAD' ? 'none' : true,
                     customBodyRender: (value, tableMeta, updateValue) => {
-                      const formattedValue = value.split('_').join(' ');
+                      
+                      //const formattedValue = value.service.split('_').join(' ');
                       return (
                         <Grid container item minWidth={'200px'} maxWidth={'200px'} alignItems={'center'} gap={2}>
                           <Grid item xs={8}>
                             <Typography variant="body2" fontWeight={500}>
-                              {formattedValue}
+                              {lang== 'en' ? value.descriptionEn : value.descriptionAr}
                             </Typography>
                           </Grid>
                           <Grid
@@ -299,7 +302,9 @@ function UserTable() {
                   return (
                     <Grid container item alignItems={'center'}>
                       <Grid item>
-                        <Typography>{value}</Typography>
+                        <Typography>
+                          {lang== 'en' ? value.descriptionEn : value.descriptionAr}
+                        </Typography>
                       </Grid>
                     </Grid>
                   );

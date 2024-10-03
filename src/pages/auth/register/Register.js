@@ -96,9 +96,7 @@ const Register = () => {
       firstName: '',
       lastName: '',
       email: '',
-      password: '',
-      userRole: 'MEMBER',
-      userTeam: 'L2'
+      password: ''
     },
   });
   useEffect(() => {

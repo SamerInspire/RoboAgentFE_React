@@ -78,7 +78,7 @@ const Profile = (props) => {
     });
   }, []);
   useEffect(() => {
-    if (currentUserData.role === 'ADMIN') {
+    if (currentUserData.role.role === 'ADMIN') {
       handleFetchServiceList({
         setServiceList,
         requestAction: 'SET_SERVICE_LIST',
@@ -299,8 +299,8 @@ const Profile = (props) => {
                                         <TextField
                                             id="outlined-multiline-static"
                                             fullWidth
-                                            defaultValue={currentUserData.role}
-                                            value={currentUserData.role}
+                                            defaultValue={currentUserData.role.role}
+                                            value={currentUserData.role.role}
                                             InputProps={{
                                                 readOnly:true,
                                                 disabled:true
@@ -344,8 +344,8 @@ const Profile = (props) => {
                                             id="outlined-multiline-static"
                                             fullWidth
                                             disabled={true}
-                                            defaultValue={currentUserData.team}
-                                            value={currentUserData.team}
+                                            defaultValue={currentUserData.team.team}
+                                            value={currentUserData.team.team}
                                             InputProps={{
                                                 readOnly:true,
                                                 disabled:true

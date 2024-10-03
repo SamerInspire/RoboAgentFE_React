@@ -7,7 +7,7 @@ import UserTable from "./UserTable";
 const User = () => {
   const { loginData } = useContext(LoginContext);
   // const navigate = useNavigate();
-  if (loginData.role == "ADMIN" || loginData.role == "TEAM_LEAD") {
+  if (loginData.role.role == "ADMIN" || loginData.role.role == "TEAM_LEAD") {
     return (
       <>
         <Helmet>

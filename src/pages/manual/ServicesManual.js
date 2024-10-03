@@ -12,11 +12,15 @@ import { useNavigate, useParams } from 'react-router';
 import { numbersOnly } from 'utils/DefualtValidators';
 import { handleGetResponse } from 'utils/api/answer/service';
 import { handleFetchCurrentUser } from 'utils/users/users';
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import 'dayjs/locale/ar-sa';
 
-const ServicesGetAnswer = ({ }) => {
+
+const ServicesManual = ({ }) => {
   let { servicename = 'General' } = useParams();
   const [answer, setAnswer] = useState('');
-  const [currentUserData, setCurrentUserData] = useState(JSON.parse(localStorage.getItem('userInfo')));
+  const [currentUserData, setCurrentUserData] = useState({});
   const [estNumber, setEstNumber] = useState('');
   const [idNum, setIdNum] = useState('');
   const estNumberRequired = !idNum;
@@ -144,7 +148,7 @@ const ServicesGetAnswer = ({ }) => {
         >
           <Grid container item position={'relative'} xs={12} gap={4}>
             <Grid container item spacing={4}>
-              <Grid container item xs={12} gap={1}>
+              {/* <Grid container item xs={12} gap={1}>
                 <Grid item xs={12}>
                   <Typography variant="body2" fontWeight={500}>
                     {t('getAnswerForm.Reason')} *
@@ -178,16 +182,17 @@ const ServicesGetAnswer = ({ }) => {
                     }
                   />
                 </Grid>
-              </Grid>
+              </Grid> */}
               <Grid container item xs={12} spacing={4}>
                 <Grid container item xs={12} gap={1} md={6}>
                   <Grid item xs={12}>
                     <Typography variant="body2" fontWeight={500}>
-                      {t('getAnswerForm.Establishment Number')} *
+                      {/* {t('getAnswerForm.Establishment Number')} * */}
+                      {t('Start Date')} *
                     </Typography>
                   </Grid>
                   <Grid item xs={12}>
-                    <TextField
+                    {/* <TextField
                       fullWidth
                       id="outlined-multiline-static"
                       pattern="/^\d{14}$|^\d{1,14}-\d{1,14}$/"
@@ -211,17 +216,22 @@ const ServicesGetAnswer = ({ }) => {
                         (errors.establishmentNumber && errors.id_number) &&
                         t('getAnswerForm.establishmentNumber or IdNumber required')
                       }
-                    />
+                    /> */}
+                    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={(lang=='ar')?'ar-sa':'en'} >
+                      <DatePicker label="Start date" />
+                    </LocalizationProvider>
+                    
                   </Grid>
                 </Grid>
                 <Grid container item xs={12} md={6} gap={1}>
                   <Grid item xs={12}>
                     <Typography variant="body2" fontWeight={500}>
-                      {t('getAnswerForm.ID or Iqameh')} *
+                      {/* {t('getAnswerForm.ID or Iqameh')} * */}
+                      {t('End Date')} *
                     </Typography>
                   </Grid>
                   <Grid item xs={12}>
-                    <TextField
+                    {/* <TextField
                       fullWidth
                       pattern="/^\d{10}$/"
                       id="outlined-multiline-static"
@@ -253,7 +263,10 @@ const ServicesGetAnswer = ({ }) => {
                         (errors.establishmentNumber && errors.id_number) &&
                         t('getAnswerForm.establishmentNumber or IdNumber required')
                       }
-                    />
+                    /> */}
+                    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={(lang=='ar')?'ar-sa':'en'} >
+                      <DatePicker label="End date"/>
+                    </LocalizationProvider>
                   </Grid>
                 </Grid>
               </Grid>
@@ -310,4 +323,4 @@ const ServicesGetAnswer = ({ }) => {
   );
 };
 
-export default ServicesGetAnswer;
+export default ServicesManual;

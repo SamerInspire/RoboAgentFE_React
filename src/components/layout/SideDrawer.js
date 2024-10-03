@@ -129,7 +129,7 @@ const afterLogin = [
   },
   {
     id: "L2",
-    path: "/dash/product",
+    path: "/dash/manual",
     icon: <RiShoppingBag3Fill />,
     title: "Manual",
     allowedRoles: ["ADMIN", "TEAM_LEAD", "MEMBER"],
