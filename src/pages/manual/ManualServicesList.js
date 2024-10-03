@@ -4,9 +4,9 @@ import { AlertContext } from 'hooks/context/AlertContext';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { handleFetchCurrentUser, handleFetchServiceList } from 'utils/users/users';
-import ServicesListItem from './utils/ServicesListItem';
-const ServicesList = () => {
-  const [currentUserData, setCurrentUserData] = useState( JSON.parse(localStorage.getItem('userInfo')));
+import ManualServicesListItem from './utils/ManualServicesListItem';
+const ManualServicesList = () => {
+  const [currentUserData, setCurrentUserData] = useState({});
   const queryCenterSignup = useRef(currentUserData?.status?.startsWith('0') && currentUserData.team.team !== 'L1');
   // console.log("queryCenterSignup ===> Siminz ===> ", queryCenterSignup.current);
   const { setAlert } = useContext(AlertContext);
@@ -20,7 +20,7 @@ const ServicesList = () => {
       setIsLoading: () => { },
       setAlert: () => { },
     });
-    console.log("Services ", Services);
+    console.log("Services ", 'ServiceList')
     await handleFetchCurrentUser({
       requestAction: 'SET_CURRENT_USER',
       setCurrentUserData,
@@ -63,7 +63,7 @@ const ServicesList = () => {
           <title>Services | RoboAgent</title>
         </Helmet>
         {Services.map((service, index) => (
-          <Grid key={service.service + index} item xs={12} sm={6} md={4} lg={3}>
+          <Grid key={service.descriptionEn + index} item xs={12} sm={6} md={4} lg={3}>
             <Skeleton variant="rectangular" width={370} height={250} />
           </Grid>
         ))}
@@ -75,7 +75,7 @@ const ServicesList = () => {
           </Helmet>
           {Services.map((service, index) => (
             <Grid key={service.descriptionEn + index} item xs={12} sm={6} md={4} lg={3}>
-              <ServicesListItem
+              <ManualServicesListItem
                 eligiableServices={eligiableServices}
                 currentUserData={currentUserData}
                 service={service}
@@ -88,4 +88,4 @@ const ServicesList = () => {
         );
         }
 //};
-        export default ServicesList;
+        export default ManualServicesList;

@@ -39,7 +39,7 @@ export async function hanldeSubmitUserNewRole(utils) {
     await AxiosHit(
       {
         method: 'put',
-        url: `/api/user-roles/${userId}/roles/${newRole}`,
+        url: `/api/user-roles/${userId}/roles/${newRole.id}`,
       },
       utils,
     );
@@ -78,7 +78,7 @@ export async function handleSubmitUserNewService(utils) {
     await AxiosHit(
       {
         method: 'put',
-        url: `/api/service/${userId}/service/${userNewService}`,
+        url: `/api/service/${userId}/service/${userNewService.id}`,
       },
       utils,
     );

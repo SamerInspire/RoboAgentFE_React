@@ -1,6 +1,7 @@
 import { Grid, Typography } from "@mui/material";
 import servicesIcons from "constants/servicesIcons";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
+import i18next from "i18next";
 const DraggableServiceItem = ({ authority }) => {
   return (
     <Grid
@@ -21,7 +22,7 @@ const DraggableServiceItem = ({ authority }) => {
       </Grid>
       <Grid item xs={8}>
         <Typography variant="body1" fontWeight={600}>
-          {authority.description}
+          {i18next.language =='en' ? authority.descriptionEn : authority.descriptionAr }
         </Typography>
       </Grid>
       <Grid item>

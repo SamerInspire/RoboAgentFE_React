@@ -14,6 +14,8 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Register from "./pages/auth/register/Register";
 import Profile from "./pages/profile/Profile";
 import SomethingWentWrongError from "./pages/common/500";
+import ManualServicesList from "pages/manual/ManualServicesList";
+import ServicesManual from "pages/manual/ServicesManual";
 const allowedPages = {
   usersTable: {
     allowedRoles: ["ADMIN", "TEAM_LEAD"],
@@ -28,6 +30,9 @@ const allowedPages = {
     allowedRoles: ["ADMIN", "TEAM_LEAD", "MEMBER"],
   },
   profile: {
+    allowedRoles: ["ADMIN", "TEAM_LEAD", "MEMBER"],
+  },
+  manual: {
     allowedRoles: ["ADMIN", "TEAM_LEAD", "MEMBER"],
   },
 };
@@ -92,7 +97,7 @@ const Routes = () => {
         {
           path: "user",
           element: allowedPages.usersTable.allowedRoles.includes(
-            loginData.role
+            loginData.role?.role
           ) ? (
             <User />
           ) : (
@@ -107,9 +112,16 @@ const Routes = () => {
           ],
         },
         {
+          path: "manual",
+          children: [
+            { path: "", element: <ManualServicesList /> },
+            { path: ":servicename", element: <ServicesManual /> },
+          ],
+        },
+        {
           path: "register",
           element: allowedPages.register.allowedRoles.includes(
-            loginData.role
+            loginData.role?.role
           ) ? (
             <Register />
           ) : (

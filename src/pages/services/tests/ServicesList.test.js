@@ -48,7 +48,7 @@ describe('ServicesList Component', () => {
 
     // Check if all allowed services are rendered
     services.forEach((service) => {
-      expect(screen.getByText(service.description)).toBeInTheDocument();
+      expect(screen.getByText(service.descriptionEn)).toBeInTheDocument();
     });
   });
 
@@ -95,7 +95,7 @@ describe('ServicesListItem Component', () => {
     let bcUrl = IconsMap.find((icon) => icon.key == service.bcUrl)?.value;
     bcUrl = bcUrl ? bcUrl : generalImg;
     // Check if the service name and image are displayed
-    expect(screen.getByText(service.description)).toBeInTheDocument();
+    expect(screen.getByText(service.descriptionEn)).toBeInTheDocument();
     expect(screen.getByRole('img')).toHaveAttribute('src', bcUrl);
   });
 
@@ -108,7 +108,7 @@ describe('ServicesListItem Component', () => {
       </BrowserRouter>,
     );
 
-    const serviceElement = screen.getByText(service.description).closest('a');
+    const serviceElement = screen.getByText(service.descriptionEn).closest('a');
     expect(serviceElement).toHaveAttribute('href', `/dash/services/getAnswer/${service.service}`);
   });
 });

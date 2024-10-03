@@ -16,9 +16,12 @@ function RolesPopper({
   const [isLoading, setIsLoading] = useState(false);
   const { setAlert } = useContext(AlertContext);
   const { t } = useTranslation();
+  const Roles = JSON.parse(localStorage.getItem('Roles'));
+  console.log('user data',userData);
+
   return (
     <Grid container item alignItems={"center"} gap={2} p={2}>
-      {userData[6]?.toLowerCase() == "MEMBER".toLowerCase() ? (
+      {userData[6]?.role?.toLowerCase() == "MEMBER".toLowerCase() ? (
         <Grid item>
           <Button
             fullWidth
@@ -27,7 +30,7 @@ function RolesPopper({
               setIsLoading(true);
               await hanldeSubmitUserNewRole({
                 userId: userData[0],
-                newRole: "TEAM_LEAD",
+                newRole: Roles.filter((r)=>r.role =='TEAM_LEAD')[0] ,
                 setTableData,
                 requestAction: "UPDATE_USER_ROLE",
                 tableData,
@@ -54,7 +57,7 @@ function RolesPopper({
               setIsLoading(true);
               await hanldeSubmitUserNewRole({
                 userId: userData[0],
-                newRole: "MEMBER",
+                newRole: Roles.filter((r)=>r.role =='MEMBER')[0],
                 setTableData,
                 requestAction: "UPDATE_USER_ROLE",
                 tableData,

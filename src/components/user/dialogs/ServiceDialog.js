@@ -32,7 +32,9 @@ function ServiceDialog({
     handleCloseServiceDialog;
   };
   const handleChangeUserNewService = (serviceId) => {
-    setUserNewService(serviceId.target.value);
+    const newService = serviceList.filter((s)=> s.id == serviceId.target.value)[0]
+    console.log('newService',newService);
+    setUserNewService(newService);
   };
   const { t } = useTranslation();
   return (
@@ -58,13 +60,13 @@ function ServiceDialog({
             id="main_service"
             fullWidth
             sx
-            defaultValue={userActiveService}
+            defaultValue={userActiveService.id}
             onChange={handleChangeUserNewService}
             input={<OutlinedInput label="Service" />}
           >
             {serviceList?.map?.((service) => (
-              <MenuItem key={service.id} sx={{ direction: 'ltr' }} value={service.service}>
-                {i18n.language == 'ar' ? service.descriptionAr : service.description}
+              <MenuItem key={service.id} sx={{ direction: 'ltr' }} value={service.id}>
+                {i18n.language == 'ar' ? service.descriptionAr : service.descriptionEn}
               </MenuItem>
             ))}
           </Select>
